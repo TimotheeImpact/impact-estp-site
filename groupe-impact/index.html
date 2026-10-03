@@ -1,0 +1,68 @@
+---
+layout: default
+title: Groupe Impact
+description: "Le Groupe Impact développe le concept d'Impact ESTP dans d'autres écoles et universités, partout en France : interviews, podcasts et un réseau national d'étudiants."
+---
+<div class="page-head">
+  <p class="label">Groupe Impact · Réseau national</p>
+  <h1>Impact arrive dans ton école</h1>
+  <p class="intro">Né à l'ESTP Paris, Impact veut devenir un réseau national. Avec le Groupe Impact, on développe le concept dans d'autres écoles et universités, et on aide chaque équipe à lancer ses interviews et ses podcasts.</p>
+</div>
+
+<section class="block" style="padding-top:32px" aria-label="Ton projet">
+  <div class="hook">
+    <p class="label">Et si c'était toi ?</p>
+    <p class="hook-q">Tu as envie de faire l'interview de ton futur manager, mais tu ne sais pas comment t'y prendre ?</p>
+    <p>Contacte-nous et créons ensemble le réseau Impact dans ton école : on te transmet la méthode, les outils et le réseau pour lancer ton média étudiant.</p>
+    <div class="actions" style="margin-top:20px">
+      {%- if site.email != "" %}
+      <a class="btn primary" href="mailto:{{ site.email }}?subject=Groupe%20Impact%20dans%20mon%20%C3%A9cole">Lancer Impact dans mon école</a>
+      {%- endif %}
+      {%- if site.linkedin != "" %}
+      <a class="btn{% if site.email == "" %} primary{% endif %}" href="{{ site.linkedin }}">{% if site.email == "" %}Nous écrire sur LinkedIn{% else %}LinkedIn{% endif %}</a>
+      {%- endif %}
+      {%- if site.instagram != "" %}
+      <a class="btn" href="{{ site.instagram }}">Nous écrire sur Instagram</a>
+      {%- endif %}
+    </div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="t-apport">
+  <div class="head"><div><p class="label">Ce qu'on t'apporte</p><h2 id="t-apport">Tout pour lancer ton média</h2></div></div>
+  <div class="offers">
+    <div class="offer">
+      <p class="label">La méthode</p>
+      <h3>Trouver et convaincre les invités</h3>
+      <p>Comment repérer les bons profils, leur écrire, préparer les questions et mener une interview qui sonne vrai.</p>
+    </div>
+    <div class="offer">
+      <p class="label">Vidéo et podcast</p>
+      <h3>Lancer vos podcasts</h3>
+      <p>Matériel, tournage, son et montage : on t'aide à créer le podcast ou la chaîne de ton école, sans budget de départ.</p>
+    </div>
+    <div class="offer">
+      <p class="label">Le réseau</p>
+      <h3>Une marque et un réseau national</h3>
+      <p>La marque Impact, une diffusion commune, des invités et des entreprises partenaires partagés entre les écoles.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="t-etapes">
+  <div class="head"><div><p class="label">Comment ça marche</p><h2 id="t-etapes">Trois étapes pour démarrer</h2></div></div>
+  <ol class="steps">
+    <li><b>On en parle</b><p>Un premier échange de 15 minutes en visio pour découvrir ton école et ton projet.</p></li>
+    <li><b>Tu montes ton équipe</b><p>Deux ou trois étudiants motivés suffisent. On vous forme à la méthode Impact.</p></li>
+    <li><b>Première interview</b><p>On prépare et on lance ensemble votre premier épisode, puis vous volez de vos propres ailes.</p></li>
+  </ol>
+</section>
+
+<section class="block" aria-labelledby="t-deja">
+  <div class="head"><div><p class="label">Déjà dans le Groupe</p><h2 id="t-deja">Le réseau aujourd'hui</h2></div></div>
+  <div class="network">
+    <div class="node on"><b>Impact ESTP</b><span>ESTP Paris, campus de Cachan</span></div>
+    <div class="node on"><b>Impact Italia</b><span>Interviews en italien, lac Majeur</span></div>
+    <div class="node"><b>Ton école ?</b><span>Écris-nous pour lancer Impact chez toi</span></div>
+  </div>
+</section>

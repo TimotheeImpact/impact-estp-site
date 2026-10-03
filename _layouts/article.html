@@ -12,12 +12,17 @@ layout: default
   </div>
 
   {%- if page.partenaire %}
-  <p class="disclosure" style="margin-top:24px"><b>Collaboration commerciale.</b> Cet article accompagne un contenu réalisé dans le cadre d'un partenariat rémunéré.</p>
+  <p class="disclosure" style="margin-top:24px"><b>Partenariat.</b> Cet article a été réalisé dans le cadre d'un partenariat rémunéré{% if page.entreprise %} avec {{ page.entreprise }}{% endif %}.</p>
   {%- endif %}
 
   <div class="prose" style="margin-top:28px">
     {{ content }}
   </div>
+
+  <aside class="stage-cta" aria-label="Vivier de stages">
+    <p><b>Tu cherches un stage dans ce secteur ?</b> Dépose ton profil dans le vivier Impact : on te transmet les offres qui te correspondent.</p>
+    <a class="btn primary" href="{{ '/stages/' | relative_url }}">Rejoindre le vivier</a>
+  </aside>
 
   {%- if page.interview %}
   {%- assign iv = site.interviews | where: "slug", page.interview | first %}
@@ -31,5 +36,5 @@ layout: default
   {%- endif %}
   {%- endif %}
 
-  <p class="rules" style="max-width:68ch;margin-top:40px"><b>Nos règles.</b> Une interview n'est jamais achetée. Les contenus réalisés avec une entreprise partenaire portent la mention « Collaboration commerciale ».</p>
+  <p class="rules" style="max-width:68ch;margin-top:40px"><b>Nos règles.</b> Chaque chiffre est sourcé, chaque citation est relue par la personne interviewée, et tout contenu financé par une entreprise est signalé comme tel.</p>
 </article>

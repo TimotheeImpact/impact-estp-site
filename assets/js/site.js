@@ -4,7 +4,7 @@
   var count = document.getElementById('count');
   var choix = { statut: 'all', langue: 'all', theme: 'all' };
   var attr = { statut: 'data-statut', langue: 'data-langue', theme: 'data-theme-tag' };
-  document.querySelectorAll('.filters[data-group]').forEach(function (group) {
+  document.querySelectorAll('.filters[data-group]:not([data-target])').forEach(function (group) {
     var g = group.getAttribute('data-group');
     var buttons = group.querySelectorAll('button');
     buttons.forEach(function (b) {
@@ -20,6 +20,20 @@
           if (show) n++;
         });
         if (count) count.textContent = n === 0 ? 'Aucune interview pour ce choix' : n + (n > 1 ? ' interviews' : ' interview');
+      });
+    });
+  });
+
+  // Filtre simple d'une liste (rubriques de la presse écrite)
+  document.querySelectorAll('.filters[data-target]').forEach(function (group) {
+    var g = group.getAttribute('data-group');
+    var items = document.querySelectorAll(group.getAttribute('data-target') + ' > li');
+    var buttons = group.querySelectorAll('button');
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var f = b.getAttribute('data-filter');
+        buttons.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+        items.forEach(function (li) { li.hidden = f !== 'all' && li.getAttribute('data-' + g) !== f; });
       });
     });
   });

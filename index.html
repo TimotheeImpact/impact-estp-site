@@ -60,12 +60,10 @@ layout: default
   <div class="head">
     <div>
       <p class="label">Presse écrite</p>
-      <h2 id="t-presse">À lire en cinq minutes</h2>
-      <p>Chaque interview devient un article : l'essentiel, les chiffres, et les citations à retenir.</p>
+      <h2 id="t-presse">Comprendre le secteur</h2>
+      <p>{{ site.presse_rendezvous }}, un article pour comprendre les chantiers et l'énergie qui construisent demain, écrit par des étudiants ingénieurs.</p>
     </div>
-    {%- if articles.size > 0 %}
-    <a href="{{ '/presse/' | relative_url }}">Tous les articles</a>
-    {%- endif %}
+    <a href="{{ '/presse/' | relative_url }}">{% if articles.size > 0 %}Tous les articles{% else %}Découvrir la presse écrite{% endif %}</a>
   </div>
   {%- if articles.size > 0 %}
   {%- assign une = articles.first %}
@@ -86,13 +84,13 @@ layout: default
         {%- endfor %}
       </ul>
       {%- endif %}
-      <p class="rules"><b>Nos règles.</b> Une interview n'est jamais achetée. Les contenus réalisés avec une entreprise partenaire portent la mention « Collaboration commerciale ».</p>
+      <p class="rules"><b>Nos règles.</b> Chaque chiffre est sourcé, chaque citation est relue par la personne interviewée, et tout contenu financé par une entreprise est signalé comme tel.</p>
     </div>
   </div>
   {%- else %}
   <div class="empty">
     <p class="label">Bientôt</p>
-    <p>Les premiers articles de la rédaction arrivent avec les prochaines interviews.</p>
+    <p>Premier article le {{ site.presse_premier_article | default: "mardi" | downcase }} à 18h : décryptages, métiers, débats et prolongements de nos interviews.</p>
   </div>
   {%- endif %}
 </section>

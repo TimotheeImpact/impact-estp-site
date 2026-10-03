@@ -7,18 +7,23 @@
 # 4. Colle, remplis, puis clique « Commit changes ».
 
 title: "Titre de l'article"
-chapeau: "Deux phrases qui donnent envie de lire, avec le nom de l'invité et ce qu'on apprend."
+chapeau: "Deux phrases qui donnent envie de lire : le sujet et ce qu'un étudiant ingénieur y apprend."
 auteur: "Prénom"
 
-# Un thème parmi : bas-carbone, energie, grands-projets, carrieres, international
-theme: carrieres
+# Une rubrique parmi : grands-projets, energie, batiment-durable, innovation, metiers
+rubrique: energie
+
+# Un format parmi : decryptage, metier, debat, video
+format: decryptage
 
 # Nom du fichier de l'interview liée, sans le .md (laisse vide s'il n'y en a pas)
 interview: ""
 
+# Mets true si une entreprise a financé l'article (la mention « Partenariat » s'affiche) et écris son nom
 partenaire: false
+entreprise: ""
 ---
-Le texte de l'article commence ici. Une ligne vide entre chaque paragraphe.
+Le texte de l'article commence ici (600 à 1 000 mots). Une ligne vide entre chaque paragraphe. Chaque chiffre a sa source en lien.
 
 ## Un intertitre
 

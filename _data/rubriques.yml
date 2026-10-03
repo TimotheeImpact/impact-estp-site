@@ -1,0 +1,16 @@
+# Rubriques de la presse écrite. « id » sert dans les articles (rubrique: energie), « nom » s'affiche sur le site.
+- id: grands-projets
+  nom: Grands projets
+  sujets: Grand Paris Express, nouveau nucléaire EPR2, éolien en mer, rénovation des ponts et ouvrages d'art.
+- id: energie
+  nom: Énergie
+  sujets: Hydrogène vert, stockage par batteries, réseaux électriques, navires câbliers, géothermie.
+- id: batiment-durable
+  nom: Bâtiment durable
+  sujets: La RE2020 expliquée, réemploi des matériaux, construction bois en hauteur, rénovation énergétique.
+- id: innovation
+  nom: Innovation
+  sujets: BIM, jumeaux numériques, IA et drones sur chantier, start-up du béton bas carbone.
+- id: metiers
+  nom: Métiers et carrière
+  sujets: Retours de stage, double diplôme, bureau d'études ou travaux, salaires d'entrée, alternance, portraits d'entreprises.

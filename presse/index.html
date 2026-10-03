@@ -1,19 +1,39 @@
 ---
 layout: default
-title: Presse
-description: "Les articles d'Impact ESTP : l'essentiel de chaque interview, les chiffres et les citations à retenir."
+title: Presse écrite
+description: "La presse écrite d'Impact ESTP : chaque mardi, un article pour comprendre les chantiers et l'énergie qui construisent demain, écrit par des étudiants ingénieurs."
 ---
 <div class="page-head">
   <p class="label">Presse écrite</p>
-  <h1>À lire en cinq minutes</h1>
-  <p class="intro">Chaque interview devient un article : l'essentiel, les chiffres, et les citations à retenir.</p>
+  <h1>Comprendre les chantiers et l'énergie qui construisent demain</h1>
+  <p class="intro">Écrit par des étudiants ingénieurs. Au-delà des interviews, on explique et on questionne le secteur : grands projets, énergie, bâtiment durable, innovation et métiers.</p>
 </div>
 
-<section class="block" style="padding-top:32px" aria-label="Liste des articles">
+<div class="press-facts" aria-label="La presse écrite en bref">
+  <div><p class="label">Rendez-vous</p><div class="v">{{ site.presse_rendezvous }}</div></div>
+  {%- if site.presse_premier_article != "" and site.posts.size == 0 %}
+  <div><p class="label">Premier article</p><div class="v">{{ site.presse_premier_article }}</div></div>
+  {%- endif %}
+  <div><p class="label">Format</p><div class="v">600 à 1 000 mots</div></div>
+  <div><p class="label">Rubriques</p><div class="v">{{ site.data.rubriques.size }} thèmes, 4 formats</div></div>
+</div>
+
+<section class="block" style="padding-top:40px" aria-labelledby="t-articles">
+  <div class="head"><div><p class="label">À lire</p><h2 id="t-articles">Les articles</h2></div></div>
   {%- if site.posts.size > 0 %}
-  <ul class="article-list narrow">
+  <div class="filter-rows">
+    <div class="filters" data-group="rubrique" data-target="#articles" role="group" aria-label="Filtrer par rubrique">
+      <span class="label">Rubrique</span>
+      <button type="button" data-filter="all" aria-pressed="true">Toutes</button>
+      {%- for r in site.data.rubriques %}
+      {%- assign n = site.posts | where: "rubrique", r.id | size %}
+      {%- if n > 0 %}<button type="button" data-filter="{{ r.id }}" aria-pressed="false">{{ r.nom }}</button>{% endif %}
+      {%- endfor %}
+    </div>
+  </div>
+  <ul class="article-list narrow" id="articles">
     {%- for a in site.posts %}
-    <li><a href="{{ a.url | relative_url }}">
+    <li data-rubrique="{{ a.rubrique }}"><a href="{{ a.url | relative_url }}">
       <span class="label">{% include article-meta.html item=a %}</span>
       <h3>{{ a.title }}</h3>
       {%- if a.chapeau %}<span style="color:var(--ink-soft)">{{ a.chapeau }}</span>{% endif %}
@@ -23,8 +43,71 @@ description: "Les articles d'Impact ESTP : l'essentiel de chaque interview, les 
   {%- else %}
   <div class="empty narrow">
     <p class="label">Bientôt</p>
-    <p>Les premiers articles de la rédaction arrivent avec les prochaines interviews. En attendant, toutes nos interviews sont <a href="{{ '/interviews/' | relative_url }}">en vidéo</a>.</p>
+    <p>Le premier article sort le {{ site.presse_premier_article | default: "mardi à 18h" | downcase }}{% if site.presse_premier_article != "" %} à 18h{% endif %}. Ensuite, un nouvel article chaque mardi. En attendant, toutes nos interviews sont <a href="{{ '/interviews/' | relative_url }}">en vidéo</a>.</p>
   </div>
   {%- endif %}
-  <p class="rules narrow"><b>Nos règles.</b> Une interview n'est jamais achetée. Les contenus réalisés avec une entreprise partenaire portent la mention « Collaboration commerciale ».</p>
+</section>
+
+<section class="block" aria-labelledby="t-formats">
+  <div class="head">
+    <div>
+      <p class="label">Quatre formats</p>
+      <h2 id="t-formats">Un cycle de quatre semaines</h2>
+      <p>Chaque article répond à une question simple : qu'est-ce qu'un étudiant ingénieur apprend en le lisant ?</p>
+    </div>
+  </div>
+  <ol class="formats">
+    {%- for f in site.data.formats %}
+    <li>
+      <p class="label">Semaine {{ forloop.index }}</p>
+      <h3>{{ f.nom }}</h3>
+      <p>{{ f.principe }}</p>
+      <p class="example">« {{ f.exemple }} »</p>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+
+<section class="block" aria-labelledby="t-rubriques">
+  <div class="head"><div><p class="label">Nos sujets</p><h2 id="t-rubriques">Cinq rubriques</h2></div></div>
+  <div class="rubriques">
+    {%- for r in site.data.rubriques %}
+    <div class="rubrique">
+      <h3>{{ r.nom }}</h3>
+      <p>{{ r.sujets }}</p>
+    </div>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="block" aria-labelledby="t-redaction">
+  <div class="press-team">
+    <div>
+      <p class="label">La rédaction</p>
+      <h2 id="t-redaction" class="h-mid">Des étudiants qui écrivent pour des étudiants</h2>
+      <ul class="team">
+        {%- for m in site.presse_redaction %}
+        <li><b>{{ m.nom }}</b><span>{{ m.role }}</span></li>
+        {%- endfor %}
+      </ul>
+      <div class="contact-box" style="margin-top:20px">
+        <p><b>Écris pour Impact.</b> Étudiant, alumni ou enseignant : propose une tribune ou ton retour de stage, en France comme à l'étranger.</p>
+        {%- if site.email != "" %}
+        <a class="btn primary" href="mailto:{{ site.email }}?subject=Proposition%20d%27article">Proposer un sujet</a>
+        {%- elsif site.linkedin != "" %}
+        <a class="btn primary" href="{{ site.linkedin }}">Proposer un sujet sur LinkedIn</a>
+        {%- endif %}
+      </div>
+    </div>
+    <div class="charter">
+      <p class="label">Notre charte</p>
+      <ul>
+        <li><b>Chaque chiffre est sourcé</b>, avec un lien vers la source.</li>
+        <li><b>Chaque citation est relue</b> par la personne qui l'a prononcée avant publication.</li>
+        <li><b>Un ton clair</b> et pédagogique, sans jargon non expliqué.</li>
+        <li><b>Aucun contenu payé caché</b> : un article financé par un partenaire porte la mention « Partenariat ».</li>
+        <li><b>Des images libres de droits</b> ou fournies par l'entreprise, toujours créditées.</li>
+      </ul>
+    </div>
+  </div>
 </section>

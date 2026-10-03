@@ -40,7 +40,12 @@ Si tu estimes que tes droits ne sont pas respectés, tu peux adresser une récla
 
 ## Cookies et services extérieurs
 
-Ce site ne dépose **aucun cookie** et n'utilise aucun outil de mesure d'audience.
+Ce site ne dépose **aucun cookie**.
+{% if site.umami_id != "" %}
+Pour savoir combien de personnes lisent le site et quelles pages les intéressent, nous utilisons **Umami**, un outil de mesure d'audience sans cookie. Il ne collecte aucune donnée permettant de t'identifier et ne te suit pas d'un site à l'autre : nous voyons seulement des chiffres globaux (nombre de visites, pages vues, pays, site d'origine).
+{% else %}
+Il n'utilise aucun outil de mesure d'audience.
+{% endif %}
 
 Les vignettes des vidéos sont affichées depuis les serveurs de YouTube, ce qui leur transmet ton adresse IP. Le lecteur vidéo YouTube, lui, ne se charge que lorsque tu cliques sur lecture, en mode « confidentialité renforcée » (youtube-nocookie.com).
 

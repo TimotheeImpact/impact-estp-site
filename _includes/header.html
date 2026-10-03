@@ -17,9 +17,10 @@
         {%- endfor %}
       </ul>
     </nav>
-    <a class="profile-link" href="{{ '/mon-profil/' | relative_url }}"{% if page.url == '/mon-profil/' %} aria-current="page"{% endif %}>
+    <a class="group-link" href="{{ '/groupe-impact/' | relative_url }}"{% if page.url == '/groupe-impact/' %} aria-current="page"{% endif %}>Groupe Impact</a>
+    <a class="profile-link" aria-label="Mon profil" href="{{ '/mon-profil/' | relative_url }}"{% if page.url == '/mon-profil/' %} aria-current="page"{% endif %}>
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      <span>Mon profil</span>
+      <span class="pl-text">Mon profil</span>
     </a>
   </div>
 </header>

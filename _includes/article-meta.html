@@ -1,5 +1,7 @@
 {%- assign a = include.item -%}
+{%- assign rubrique = site.data.rubriques | where: "id", a.rubrique | first -%}
+{%- assign format = site.data.formats | where: "id", a.format | first -%}
 {%- assign theme = site.data.themes | where: "id", a.theme | first -%}
 {%- assign mots = a.content | strip_html | number_of_words -%}
 {%- assign minutes = mots | divided_by: 200 | plus: 1 -%}
-{%- if theme %}{{ theme.nom }} · {% endif %}{% include date-fr.html date=a.date %} · {{ minutes }} min de lecture
+{%- if rubrique %}{{ rubrique.nom }} · {% elsif theme %}{{ theme.nom }} · {% endif %}{% if format %}{{ format.nom }} · {% endif %}{% include date-fr.html date=a.date %} · {{ minutes }} min de lecture

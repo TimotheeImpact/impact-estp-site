@@ -1,0 +1,17 @@
+# Les quatre formats de la presse écrite, publiés à tour de rôle sur un cycle de 4 semaines.
+- id: decryptage
+  nom: Décryptage
+  principe: Un projet, une technologie ou une règle expliqués simplement.
+  exemple: Comment on pose un câble électrique sous-marin entre un parc éolien et la côte.
+- id: metier
+  nom: Métier
+  principe: Un métier raconté par quelqu'un qui le fait.
+  exemple: Une journée de conducteur de travaux sur un chantier de logements.
+- id: debat
+  nom: Enquête et débat
+  principe: Une question du secteur, plusieurs points de vue.
+  exemple: Le béton bas carbone est-il prêt pour les grands ouvrages ?
+- id: video
+  nom: Prolongement vidéo
+  principe: Les idées clés d'une interview Impact, avec les meilleurs extraits.
+  exemple: Les 5 idées à retenir de notre dernière interview.

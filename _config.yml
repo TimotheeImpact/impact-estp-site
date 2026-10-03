@@ -6,13 +6,14 @@
 
 title: "Impact ESTP"
 tagline: "Le média étudiant de la construction et de l'énergie"
+slogan: "Construis ton impact."    # affiché en bas à gauche, à côté du logo
 description: "Le média étudiant de la construction et de l'énergie. Chaque semaine, une interview vidéo avec un dirigeant, un ingénieur ou un entrepreneur du BTP et de l'énergie."
 lang: fr_FR
 
 # Adresse du site.
 # Tant que le nom de domaine n'est pas branché, le site vit à l'adresse
 #   https://<ton-pseudo-github>.github.io/impact-estp-site
-# Le jour où impactestp.fr est branché : url: "https://impactestp.fr" et baseurl: "https://timotheeimpact.github.io"
+# Le jour où impactestp.fr est branché : url: "https://impactestp.fr" et baseurl: ""
 url: "https://timotheeimpact.github.io"
 baseurl: "/impact-estp-site"
 
@@ -41,6 +42,20 @@ invites_entreprises:
   - Autodesk
   - Aecon
   - VNF
+
+# ── Presse écrite ────────────────────────────────────────────
+presse_rendezvous: "Chaque mardi à 18h"
+presse_premier_article: "Mardi 20 octobre 2026"   # vider cette ligne une fois le premier article publié
+presse_redaction:
+  - nom: "Emma"
+    role: "Rédactrice en chef, presse écrite"
+  - nom: "Timothée de Varax"
+    role: "Directeur de la publication"
+
+# ── Mesure d'audience (sans cookie) ──────────────────────────
+# Identifiant du site sur Umami (umami.is), au format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.
+# Tant que c'est vide, aucune mesure n'est faite.
+umami_id: ""
 
 # ── Formulaires ──────────────────────────────────────────────
 # Adresse d'envoi des formulaires (vivier de stages et candidatures à l'équipe).
