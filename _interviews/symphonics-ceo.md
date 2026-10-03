@@ -3,6 +3,7 @@ title: "Le CEO de Symphonics"
 invite: ""
 poste: "Chief Executive Officer"
 entreprise: "Symphonics"
+entreprise_id: symphonics
 theme: carrieres
 langue: fr
 youtube: ""

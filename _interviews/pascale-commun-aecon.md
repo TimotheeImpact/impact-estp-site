@@ -4,6 +4,7 @@ description: "BIM chez VINCI et Bouygues, aéroport de NEOM avec Jean Nouvel, RE
 invite: "Pascale Commun"
 poste: "Directrice technique"
 entreprise: "Aecon"
+entreprise_id: aecon
 theme: international
 langue: fr
 youtube: "https://youtu.be/Jf0WQWdaufA"

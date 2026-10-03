@@ -4,6 +4,7 @@ description: "Diplômé de l'ESTP, Emmanuel Bordignon a passé 25 ans dans l'inv
 invite: "Emmanuel Bordignon"
 poste: "CEO"
 entreprise: "Costruire Group"
+entreprise_id: costruire-group
 theme: international
 langue: fr
 youtube: "https://youtu.be/dcP2Kfd9Nf4"

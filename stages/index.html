@@ -78,6 +78,46 @@ description: "Rejoins le vivier Impact : les entreprises de la construction et d
   </form>
 </div>
 
+{%- assign offres = site.data.offres_stage %}
+<section class="block" aria-labelledby="t-offres">
+  <div class="head">
+    <div>
+      <p class="label">Offres des entreprises</p>
+      <h2 id="t-offres">Les offres de stage</h2>
+      <p>Stages, alternances et premiers emplois proposés par les entreprises de la construction et de l'énergie qui travaillent avec Impact.</p>
+    </div>
+  </div>
+  {%- if offres and offres.size > 0 %}
+  <div class="jobs">
+    {%- for o in offres %}
+    {% include offre-stage.html offre=o %}
+    {%- endfor %}
+  </div>
+  {%- else %}
+  <div class="empty">
+    <p class="label">Bientôt</p>
+    <p>Les premières offres seront publiées ici. Inscris-toi au vivier pour les recevoir en priorité{% if action == "" %}, dès son ouverture le 15 novembre 2026{% endif %}.</p>
+  </div>
+  {%- endif %}
+  <div class="contact-box">
+    <p><b>Vous recrutez ?</b> Envoyez-nous votre offre de stage, d'alternance ou d'emploi : nous la publions ici et la transmettons aux profils du vivier qui correspondent.</p>
+    <a class="btn" href="{{ '/contact/' | relative_url }}?objet={{ 'Proposer une offre de stage' | uri_escape }}">Proposer une offre</a>
+  </div>
+</section>
+
+{%- if site.entreprises.size > 0 %}
+<section class="block" aria-labelledby="t-entreprises">
+  <div class="head">
+    <div>
+      <p class="label">Avant de postuler</p>
+      <h2 id="t-entreprises">Découvre les entreprises</h2>
+      <p>Chaque fiche réunit nos interviews, nos articles et les offres de l'entreprise : de quoi arriver en entretien en sachant de quoi tu parles.</p>
+    </div>
+  </div>
+  {% include entreprises-grille.html %}
+</section>
+{%- endif %}
+
 <section class="block" aria-labelledby="t-faq">
   <div class="head"><div><p class="label">Questions</p><h2 id="t-faq">Questions fréquentes</h2></div></div>
   <div class="faq narrow">

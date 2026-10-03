@@ -37,7 +37,7 @@ description: "Toutes les interviews vidéo d'Impact ESTP avec les dirigeants, in
       <span class="label">Thème</span>
       <button type="button" aria-pressed="true" data-filter="all">Tous</button>
       {%- for t in site.data.themes %}
-      {%- assign n = interviews | where: "theme", t.id | size %}
+      {%- if t.id == "studio" %}{% assign n = interviews | where: "studio", true | size %}{% else %}{% assign n = interviews | where: "theme", t.id | size %}{% endif %}
       {%- if n > 0 %}
       <button type="button" aria-pressed="false" data-filter="{{ t.id }}">{{ t.nom }}</button>
       {%- endif %}

@@ -4,6 +4,7 @@ description: "Handball de haut niveau, 13 ans à la tête d'une entreprise du b�
 invite: "Aurélien Heilles"
 poste: "Expert en bâtiment et fondateur"
 entreprise: "Aulea Expertise"
+entreprise_id: aulea-expertise
 theme: carrieres
 langue: fr
 youtube: "https://youtu.be/VAD3QDADkAw"

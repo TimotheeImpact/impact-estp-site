@@ -4,6 +4,7 @@ description: "Fabio Vigitello dirige Villa e Palazzo Aminta à Stresa, seul hôt
 invite: "Fabio Vigitello"
 poste: "General Manager"
 entreprise: "Villa e Palazzo Aminta"
+entreprise_id: villa-palazzo-aminta
 theme: international
 langue: it
 youtube: "https://youtu.be/V_WF02RzGW0"

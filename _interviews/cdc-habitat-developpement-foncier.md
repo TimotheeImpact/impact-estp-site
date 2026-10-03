@@ -3,6 +3,7 @@ title: "Le directeur du développement foncier de CDC Habitat en Île-de-France"
 invite: ""
 poste: "Directeur du développement foncier Île-de-France"
 entreprise: "CDC Habitat"
+entreprise_id: cdc-habitat
 theme: grands-projets
 langue: fr
 youtube: ""

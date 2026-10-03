@@ -4,13 +4,10 @@
 {%- assign langue = i.langue | default: "fr" -%}
 {%- assign langue_info = site.data.langues | where: "id", langue | first -%}
 {%- if i.a_venir -%}{%- assign statut = "a-venir" -%}{%- assign statut_nom = "Tournage à venir" -%}{%- elsif i.post_prod -%}{%- assign statut = "post-prod" -%}{%- assign statut_nom = "En post-production" -%}{%- else -%}{%- assign statut = "publiee" -%}{%- assign statut_nom = "" -%}{%- endif -%}
-{%- capture meta -%}
-  {%- if i.invite and i.invite != "" -%}{{ i.invite }}{%- endif -%}
-  {%- if i.poste and i.poste != "" -%}{%- if i.invite and i.invite != "" %} · {% endif -%}{{ i.poste }}{%- if i.entreprise and i.entreprise != "" -%}, {{ i.entreprise }}{%- endif -%}
-  {%- elsif i.entreprise and i.entreprise != "" -%}{%- if i.invite and i.invite != "" %} · {% endif -%}{{ i.entreprise }}{%- endif -%}
-  {%- if i.duree and i.duree != "" %} · {{ i.duree }}{%- endif -%}
-{%- endcapture -%}
-<a class="card" href="{{ i.url | relative_url }}" data-theme-tag="{{ i.theme }}" data-langue="{{ langue }}" data-statut="{{ statut }}"{% if langue != "fr" %} lang="{{ langue }}"{% endif %}>
+{%- assign a_invite = false -%}{%- if i.invite and i.invite != "" -%}{%- assign a_invite = true -%}{%- endif -%}
+{%- assign a_poste = false -%}{%- if i.poste and i.poste != "" -%}{%- assign a_poste = true -%}{%- endif -%}
+{%- assign a_entreprise = false -%}{%- if i.entreprise and i.entreprise != "" -%}{%- assign a_entreprise = true -%}{%- endif -%}
+<a class="card" href="{{ i.url | relative_url }}" data-theme-tag="{{ i.theme }}{% if i.studio %} studio{% endif %}" data-langue="{{ langue }}" data-statut="{{ statut }}"{% if langue != "fr" %} lang="{{ langue }}"{% endif %}>
   <div class="thumb{% if statut != "publiee" %} upcoming{% endif %}">
     {%- if ytid != "" %}
     <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" onerror="this.remove()" alt="" loading="lazy" width="480" height="360">
@@ -28,15 +25,25 @@
     {%- endif %}
   </div>
   <div class="body">
-    <div class="tags">
-      {%- if statut != "publiee" %}<span class="tag soon">{{ i.quand | default: "Bientôt" }}</span>{% endif -%}
-      {%- if langue != "fr" and langue_info %}<span class="tag lang" lang="fr">{{ langue_info.nom }}</span>{% endif -%}
-      {%- if theme %}<span class="tag" lang="fr">{{ theme.nom }}</span>{% endif -%}
+    <h3>{{ i.title }}</h3>
+    {%- if a_invite or a_poste or a_entreprise %}
+    <p class="who">
+      {%- if a_invite %}<span class="who-name">{{ i.invite }}</span>{% endif -%}
+      {%- if a_poste or a_entreprise %}<span class="who-role">{{ i.poste }}{% if a_poste and a_entreprise %}, {% endif %}{{ i.entreprise }}</span>{% endif -%}
+    </p>
+    {%- endif %}
+    {%- if statut == "publiee" and i.duree and i.duree != "" %}
+    <p class="when" lang="fr"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="visually-hidden">Durée : </span>{{ i.duree }}</p>
+    {%- elsif statut != "publiee" %}
+    <p class="when soon" lang="fr"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.75" y="3" width="12.5" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.75 6.5h12.5M5 1.5v3M11 1.5v3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>{{ i.quand | default: "Bientôt" }}</p>
+    {%- endif %}
+    {%- if langue != "fr" or theme or i.studio or i.partenaire %}
+    <div class="tags" lang="fr">
+      {%- if langue != "fr" and langue_info %}<span class="tag lang" lang="{{ langue }}">{{ langue_info.nom }}</span>{% endif -%}
+      {%- if i.studio %}<span class="tag studio">En studio</span>{% endif -%}
+      {%- if theme %}<span class="tag">{{ theme.nom }}</span>{% endif -%}
       {%- if i.partenaire %}<span class="tag partner">Collaboration commerciale</span>{% endif -%}
     </div>
-    <h3>{{ i.title }}</h3>
-    {%- if meta != "" %}
-    <span class="meta">{{ meta }}</span>
     {%- endif %}
   </div>
 </a>

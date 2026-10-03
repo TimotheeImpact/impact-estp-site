@@ -3,6 +3,7 @@ title: "Le fondateur de l'Observatoire de l'immobilier connecté et responsable"
 invite: ""
 poste: "Fondateur"
 entreprise: "Observatoire de l'Immobilier Connecté et Responsable (OICR)"
+entreprise_id: oicr
 theme: innovation
 langue: fr
 youtube: ""

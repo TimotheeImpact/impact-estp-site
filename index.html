@@ -7,7 +7,7 @@ layout: default
 {%- assign tournages = interviews | where: "a_venir", true -%}
 {%- assign articles = site.posts -%}
 
-<div class="hero">
+<div class="hero{% if publiees.size > 0 %} with-teaser{% endif %}">
   <div>
     <p class="label">Le média étudiant de la construction et de l'énergie</p>
     <h1>Le métier d'ingénieur, raconté par <em>ceux qui le font.</em></h1>
@@ -17,20 +17,49 @@ layout: default
       <a class="btn" href="{{ '/stages/' | relative_url }}">Trouver un stage</a>
     </div>
   </div>
-  <div class="cartouche" aria-label="Impact ESTP en chiffres">
-    {%- for c in site.chiffres %}
-    <div><div class="num">{% if c.auto == "publiees" %}{{ publiees.size }}{% elsif c.auto == "montage" %}{{ montage.size }}{% else %}{{ c.valeur }}{% endif %}</div><div class="cap">{{ c.legende }}</div></div>
-    {%- endfor %}
-    <div class="full"><div class="cap">Créé en février 2026 par des étudiants de l'ESTP Paris</div></div>
-  </div>
+  {%- assign derniere = publiees.first %}
+  {%- if derniere %}
+  {%- capture ytid %}{% include youtube-id.html lien=derniere.youtube %}{% endcapture %}
+  <a class="teaser" href="{{ derniere.url | relative_url }}"{% if derniere.langue and derniere.langue != "fr" %} lang="{{ derniere.langue }}"{% endif %}>
+    <span class="teaser-flag" lang="fr">Nouvelle interview</span>
+    <span class="thumb">
+      <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" onerror="this.remove()" alt="" width="480" height="360">
+      <span class="play" aria-hidden="true"></span>
+    </span>
+    <span class="teaser-body">
+      <span class="teaser-t">{{ derniere.title }}</span>
+      {%- if derniere.invite != "" %}
+      <span class="teaser-who"><b>{{ derniere.invite }}</b>{% if derniere.poste != "" or derniere.entreprise != "" %}<br>{{ derniere.poste }}{% if derniere.poste != "" and derniere.entreprise != "" %}, {% endif %}{{ derniere.entreprise }}{% endif %}</span>
+      {%- endif %}
+      <span class="teaser-go" lang="fr">Regarder{% if derniere.duree != "" %} · {{ derniere.duree }}{% endif %}</span>
+    </span>
+  </a>
+  {%- endif %}
+</div>
+
+<div class="stats" aria-label="Impact ESTP en chiffres">
+  {%- for c in site.chiffres %}
+  <div><div class="num">{% if c.auto == "publiees" %}{{ publiees.size }}{% elsif c.auto == "montage" %}{{ montage.size }}{% elsif c.auto == "tournages" %}{{ tournages.size }}{% else %}{{ c.valeur }}{% endif %}</div><div class="cap">{{ c.legende }}</div></div>
+  {%- endfor %}
+  <div class="since"><div class="cap">Créé en mars 2026 par des étudiants de l'ESTP Paris</div></div>
 </div>
 
 {%- if site.invites_entreprises.size > 0 %}
 <div class="guests">
   <p class="label">Ils sont passés au micro</p>
-  <ul aria-label="Entreprises de nos invités">
+  <ul class="logo-strip" aria-label="Entreprises de nos invités">
     {%- for e in site.invites_entreprises %}
-    <li>{{ e }}</li>
+    {%- assign fiche = nil %}
+    {%- if e.fiche and e.fiche != "" %}{% assign fiche = site.entreprises | where: "slug", e.fiche | first %}{% endif %}
+    <li>
+      {%- if fiche %}<a href="{{ fiche.url | relative_url }}" title="{{ e.nom }}">{% endif -%}
+      {%- if e.logo and e.logo != "" -%}
+      <img src="{{ '/assets/img/logos/' | append: e.logo | relative_url }}" alt="{{ e.nom }}" loading="lazy">
+      {%- else -%}
+      <span class="logo-name">{{ e.nom }}</span>
+      {%- endif -%}
+      {%- if fiche %}</a>{% endif -%}
+    </li>
     {%- endfor %}
   </ul>
 </div>

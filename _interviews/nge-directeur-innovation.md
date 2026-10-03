@@ -3,6 +3,7 @@ title: "Le directeur innovation de NGE"
 invite: ""
 poste: "Directeur innovation"
 entreprise: "NGE"
+entreprise_id: nge
 theme: innovation
 langue: fr
 youtube: ""

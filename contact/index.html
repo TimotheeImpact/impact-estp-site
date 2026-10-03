@@ -1,0 +1,64 @@
+---
+layout: default
+title: Contact
+description: "Écris à Impact ESTP : proposer un sujet d'article, lancer Impact dans ton école, un partenariat entreprise ou une offre de stage."
+---
+{%- assign action = site.formulaire_contact -%}
+<div class="page-head">
+  <p class="label">Contact</p>
+  <h1>Écris-nous</h1>
+  <p class="intro">Une idée d'article, l'envie de lancer Impact dans ton école, un partenariat ou une offre de stage : on lit tout et on répond vite.</p>
+</div>
+
+<div class="pool">
+  <div class="why">
+    <p>Choisis l'objet de ton message pour qu'il arrive directement à la bonne personne de l'équipe.</p>
+    {%- if site.email != "" %}
+    <p>Tu préfères un e-mail ? Écris à <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+    {%- endif %}
+    <div class="actions" style="margin-top:4px">
+      {%- if site.linkedin != "" %}<a class="btn" href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
+      {%- if site.instagram != "" %}<a class="btn" href="{{ site.instagram }}">Instagram</a>{% endif %}
+    </div>
+  </div>
+
+  <form class="sheet js-form" id="form-contact" method="POST" accept-charset="UTF-8"{% if action != "" %} action="{{ action }}"{% endif %}>
+    {% include form-endpoint.html action=action texte="Le formulaire ouvre très bientôt. En attendant, écris-nous par e-mail." %}
+    <fieldset class="all"{% if action == "" %} disabled{% endif %}>
+      <legend class="visually-hidden">Ton message</legend>
+      <input type="hidden" name="formulaire" value="Contact">
+      {% include form-hidden.html sujet="Impact ESTP : nouveau message de contact" type="contact" %}
+      <div class="field">
+        <label for="c-nom">Prénom et nom</label>
+        <input type="text" id="c-nom" name="nom" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="c-mail">E-mail</label>
+        <input type="email" id="c-mail" name="email" autocomplete="email" required>
+      </div>
+      <div class="field full">
+        <label for="c-objet">Objet</label>
+        <select id="c-objet" name="objet" required>
+          <option value="" selected disabled>Choisis</option>
+          <option>Presse écrite - proposition de sujets</option>
+          <option>Lancer Impact dans mon école</option>
+          <option>Partenariat entreprise</option>
+          <option>Proposer une offre de stage</option>
+          <option>Proposer un invité pour une interview</option>
+          <option>Autre demande</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label for="c-structure">École ou entreprise (facultatif)</label>
+        <input type="text" id="c-structure" name="ecole_ou_entreprise" autocomplete="organization">
+      </div>
+      <div class="field full">
+        <label for="c-msg">Ton message</label>
+        <textarea id="c-msg" name="message" required></textarea>
+      </div>
+      <label class="consent full"><input type="checkbox" name="consentement" value="oui" required> <span>J'accepte qu'Impact ESTP utilise ces informations pour répondre à mon message (<a href="{{ '/confidentialite/' | relative_url }}">confidentialité</a>).</span></label>
+      <div class="full"><button class="btn primary" type="submit">Envoyer</button></div>
+    </fieldset>
+    <p class="form-note error" data-err hidden></p>
+  </form>
+</div>

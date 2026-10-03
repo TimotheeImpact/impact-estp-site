@@ -1,5 +1,6 @@
 # Thèmes des interviews et des articles.
 # « id » sert dans les fiches (theme: energie). « nom » est ce qui s'affiche sur le site.
+# « En studio » est un filtre à part : il regroupe les fiches qui ont studio: true, en plus de leur thème.
 - id: bas-carbone
   nom: Construction bas-carbone
 - id: energie
@@ -12,3 +13,5 @@
   nom: À l'international
 - id: innovation
   nom: Innovation et numérique
+- id: studio
+  nom: En studio

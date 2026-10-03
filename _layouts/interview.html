@@ -5,12 +5,25 @@ layout: default
 {%- assign theme = site.data.themes | where: "id", page.theme | first -%}
 {%- assign langue = page.langue | default: "fr" -%}
 {%- assign langue_info = site.data.langues | where: "id", langue | first -%}
+{%- assign fiche = nil -%}
+{%- if page.entreprise_id and page.entreprise_id != "" -%}{%- assign fiche = site.entreprises | where: "slug", page.entreprise_id | first -%}{%- endif -%}
+{%- comment -%} Chapitres : temps « mm:ss » ou « h:mm:ss » convertis en secondes {%- endcomment -%}
+{%- capture debuts -%}
+  {%- for c in page.chapitres -%}
+    {%- assign t = c.temps | append: "" | split: ":" -%}
+    {%- if t.size == 3 -%}{%- assign sec = t[0] | times: 3600 | plus: 0 -%}{%- assign m = t[1] | times: 60 -%}{%- assign sec = sec | plus: m | plus: t[2] -%}
+    {%- elsif t.size == 2 -%}{%- assign sec = t[0] | times: 60 | plus: t[1] -%}
+    {%- else -%}{%- assign sec = t[0] | plus: 0 -%}{%- endif -%}
+    {{- sec -}}{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign debuts = debuts | split: "," -%}
 
 <div class="page-head">
   <p class="label">Interview vidéo{% if theme %} · {{ theme.nom }}{% endif %}</p>
   <h1{% if langue != "fr" %} lang="{{ langue }}"{% endif %}>{{ page.title }}</h1>
   {%- if page.invite != "" %}
-  <p class="intro">{{ page.invite }}{% if page.poste != "" %} · {{ page.poste }}{% endif %}{% if page.entreprise != "" %}{% if page.poste != "" %}, {% else %} · {% endif %}{{ page.entreprise }}{% endif %}</p>
+  <p class="intro">{{ page.invite }}{% if page.poste != "" %} · {{ page.poste }}{% endif %}{% if page.entreprise != "" %}{% if page.poste != "" %}, {% else %} · {% endif %}{% if fiche %}<a href="{{ fiche.url | relative_url }}">{{ page.entreprise }}</a>{% else %}{{ page.entreprise }}{% endif %}{% endif %}</p>
   {%- endif %}
 </div>
 
@@ -21,13 +34,24 @@ layout: default
     {%- endif %}
 
     {%- if ytid != "" %}
-    <div class="player" data-youtube="{{ ytid }}">
+    <div class="player" data-youtube="{{ ytid }}" data-titre="{{ page.title | escape }}">
       <button type="button" aria-label="Lire la vidéo : {{ page.title | escape }}">
         <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" onerror="this.remove()" alt="" width="480" height="360">
         <span class="big-play" aria-hidden="true"></span>
       </button>
     </div>
     <p class="player-note">La vidéo se charge depuis YouTube quand tu cliques sur lecture. <a href="https://www.youtube.com/watch?v={{ ytid }}">Voir sur YouTube</a></p>
+    {%- if page.chapitres and page.chapitres.size > 0 %}
+    <nav class="chapters" aria-labelledby="t-chapitres">
+      <h2 id="t-chapitres">Chapitres</h2>
+      <ol>
+        {%- for c in page.chapitres %}
+        {%- assign sec = debuts[forloop.index0] %}
+        <li><a href="https://www.youtube.com/watch?v={{ ytid }}&amp;t={{ sec }}s" data-debut="{{ sec }}"><span class="t">{{ c.temps }}</span><span>{{ c.titre }}</span></a></li>
+        {%- endfor %}
+      </ol>
+    </nav>
+    {%- endif %}
     {%- else %}
     <div class="player soon">
       <div>
@@ -66,13 +90,57 @@ layout: default
   <aside class="facts" aria-label="Fiche de l'interview">
     {%- if page.invite != "" %}<div><p class="label">Invité</p><div class="v">{{ page.invite }}</div></div>{% endif %}
     {%- if page.poste != "" %}<div><p class="label">Poste</p><div class="v">{{ page.poste }}</div></div>{% endif %}
-    {%- if page.entreprise != "" %}<div><p class="label">Entreprise</p><div class="v">{{ page.entreprise }}</div></div>{% endif %}
+    {%- if page.entreprise != "" %}<div><p class="label">Entreprise</p><div class="v">{% if fiche %}<a href="{{ fiche.url | relative_url }}">{{ page.entreprise }}</a>{% else %}{{ page.entreprise }}{% endif %}</div></div>{% endif %}
     {%- if theme %}<div><p class="label">Thème</p><div class="v">{{ theme.nom }}</div></div>{% endif %}
+    {%- if page.studio %}<div><p class="label">Format</p><div class="v">En studio</div></div>{% endif %}
     {%- if langue_info %}<div><p class="label">Langue</p><div class="v">{% if langue == "fr" %}Français{% elsif langue == "it" %}Italien{% else %}{{ langue_info.nom }}{% endif %}</div></div>{% endif %}
     {%- if page.duree and page.duree != "" %}<div><p class="label">Durée</p><div class="v">{{ page.duree }}</div></div>{% endif %}
+    {%- if page.date_publication %}<div><p class="label">Publiée le</p><div class="v">{% include date-fr.html date=page.date_publication %}</div></div>{% endif %}
+    {%- if fiche %}<div><p class="label">L'entreprise</p><div class="v"><a href="{{ fiche.url | relative_url }}">Voir la fiche {{ fiche.nom }}</a></div></div>{% endif %}
     <div><p class="label">Tu cherches un stage ?</p><div class="v"><a href="{{ '/stages/' | relative_url }}">Rejoins le vivier Impact</a></div></div>
   </aside>
 </div>
+
+{%- comment -%} Données structurées pour Google (vidéo et chapitres), seulement quand la date de publication est renseignée. Avant « Autres interviews », dont les cartes réutilisent la variable ytid. {%- endcomment -%}
+{%- if ytid != "" and page.date_publication %}
+{%- assign d = page.duree | default: "" | split: " " | first | plus: 0 %}
+{%- if page.duree contains "h" %}{% assign d = 0 %}{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | default: site.description | jsonify }},
+  "thumbnailUrl": ["https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg"],
+  "uploadDate": "{{ page.date_publication | date: '%Y-%m-%d' }}",
+  {%- if d > 0 %}
+  "duration": "PT{{ d }}M",
+  {%- endif %}
+  "embedUrl": "https://www.youtube-nocookie.com/embed/{{ ytid }}",
+  "inLanguage": "{{ langue }}",
+  "publisher": { "@type": "Organization", "name": {{ site.title | jsonify }}, "logo": { "@type": "ImageObject", "url": "{{ '/assets/img/logo.png' | absolute_url }}" } }
+  {%- if page.chapitres and page.chapitres.size > 0 %},
+  "hasPart": [
+    {%- for c in page.chapitres %}
+    {%- assign debut = debuts[forloop.index0] | plus: 0 %}
+    {%- assign suivant = forloop.index %}
+    {
+      "@type": "Clip",
+      "name": {{ c.titre | jsonify }},
+      "startOffset": {{ debut }},
+      {%- if forloop.last == false %}
+      "endOffset": {{ debuts[suivant] | plus: 0 }},
+      {%- elsif d > 0 %}{% assign fin = d | times: 60 %}{% if fin > debut %}
+      "endOffset": {{ fin }},{% endif %}
+      {%- endif %}
+      "url": "{{ page.url | absolute_url }}?t={{ debut }}"
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+  {%- endif %}
+}
+</script>
+{%- endif %}
 
 {%- assign autres = site.interviews | where_exp: "i", "i.url != page.url" | sort: "numero" | reverse %}
 {%- if autres.size > 0 %}
@@ -91,3 +159,4 @@ layout: default
   </div>
 </section>
 {%- endif %}
+

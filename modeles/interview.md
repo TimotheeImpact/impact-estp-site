@@ -13,8 +13,10 @@ description: "Une phrase qui donne envie de regarder."
 invite: "Prénom Nom"
 poste: "Directeur technique"
 entreprise: "Nom de l'entreprise"
+# Nom du fichier de la fiche entreprise dans _entreprises, sans .md (laisser vide s'il n'y en a pas)
+entreprise_id: ""
 
-# Un thème parmi : bas-carbone, energie, grands-projets, carrieres, international
+# Un thème parmi : bas-carbone, energie, grands-projets, carrieres, international, innovation
 theme: carrieres
 
 # Langue de l'interview : fr (français) ou it (italien)
@@ -24,6 +26,19 @@ langue: fr
 youtube: "https://youtu.be/xxxxxxxxxxx"
 
 duree: "32 min"
+
+# Date de sortie sur YouTube (année-mois-jour) : aide Google à afficher la vidéo
+date_publication: 2026-10-20
+
+# Chapitres (repris de la description YouTube). Temps en minutes:secondes, ou heures:minutes:secondes
+chapitres:
+  - temps: "00:00"
+    titre: "Introduction et parcours"
+  - temps: "04:30"
+    titre: "Deuxième sujet"
+
+# Mets true si l'interview a été tournée en studio
+studio: false
 
 # Numéro de l'interview : le plus grand numéro s'affiche en premier
 numero: 10
@@ -38,6 +53,10 @@ Deux ou trois phrases pour présenter l'invité et son parcours (reprends la des
 - Premier sujet abordé
 - Deuxième sujet abordé
 - Ses conseils aux futurs ingénieurs
+
+## Résumé détaillé
+
+Trois à six paragraphes qui racontent l'interview, écrits à partir du transcript : les idées fortes, les chiffres, une ou deux citations relues par l'invité. C'est ce texte que Google lit pour proposer la page.
 
 ## Pour aller plus loin
 

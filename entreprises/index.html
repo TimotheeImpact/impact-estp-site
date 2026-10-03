@@ -63,11 +63,7 @@ description: "Marque employeur, séries tournées sur vos chantiers, stagiaires 
   </ol>
   <div class="contact-box">
     <p><b>Parlons de votre projet.</b> Dites-nous ce que vous cherchez, nous revenons vers vous rapidement.</p>
-    {%- if site.email != "" %}
-    <a class="btn primary" href="mailto:{{ site.email }}?subject=Partenariat%20Impact%20ESTP">Nous écrire</a>
-    {%- endif %}
-    {%- if site.linkedin != "" %}
-    <a class="btn{% if site.email == "" %} primary{% endif %}" href="{{ site.linkedin }}">{% if site.email == "" %}Nous contacter sur LinkedIn{% else %}Nous suivre sur LinkedIn{% endif %}</a>
-    {%- endif %}
+    <a class="btn primary" href="{{ '/contact/' | relative_url }}?objet={{ 'Partenariat entreprise' | uri_escape }}">Nous écrire</a>
+    <a class="btn" href="{{ '/contact/' | relative_url }}?objet={{ 'Proposer une offre de stage' | uri_escape }}">Proposer une offre de stage</a>
   </div>
 </section>

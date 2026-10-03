@@ -1,0 +1,14 @@
+# Offres de stage, d'alternance ou d'emploi proposées par les entreprises (page Stages).
+# Pour ajouter une offre : enlève les # devant le bloc d'exemple, remplis-le, et garde les espaces.
+# entreprise_id = nom du fichier de l'entreprise dans _entreprises (sans .md), pour afficher son logo et un lien vers sa fiche.
+# lien = page de l'offre chez l'entreprise ; si vide, le bouton propose de postuler via le vivier Impact.
+#
+# - titre: "Stage assistant conducteur de travaux"
+#   entreprise: "NGE"
+#   entreprise_id: "nge"
+#   type: "Stage"              # Stage, Alternance, CDI, VIE…
+#   lieu: "Île-de-France"
+#   duree: "6 mois"
+#   debut: "Février 2027"
+#   description: "Deux ou trois phrases sur les missions et le profil recherché."
+#   lien: ""

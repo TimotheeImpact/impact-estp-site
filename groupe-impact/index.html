@@ -15,11 +15,9 @@ description: "Le Groupe Impact développe le concept d'Impact ESTP dans d'autres
     <p class="hook-q">Tu as envie de faire l'interview de ton futur manager, mais tu ne sais pas comment t'y prendre ?</p>
     <p>Contacte-nous et créons ensemble le réseau Impact dans ton école : on te transmet la méthode, les outils et le réseau pour lancer ton média étudiant.</p>
     <div class="actions" style="margin-top:20px">
-      {%- if site.email != "" %}
-      <a class="btn primary" href="mailto:{{ site.email }}?subject=Groupe%20Impact%20dans%20mon%20%C3%A9cole">Lancer Impact dans mon école</a>
-      {%- endif %}
+      <a class="btn primary" href="{{ '/contact/' | relative_url }}?objet={{ 'Lancer Impact dans mon école' | uri_escape }}">Lancer Impact dans mon école</a>
       {%- if site.linkedin != "" %}
-      <a class="btn{% if site.email == "" %} primary{% endif %}" href="{{ site.linkedin }}">{% if site.email == "" %}Nous écrire sur LinkedIn{% else %}LinkedIn{% endif %}</a>
+      <a class="btn" href="{{ site.linkedin }}">LinkedIn</a>
       {%- endif %}
       {%- if site.instagram != "" %}
       <a class="btn" href="{{ site.instagram }}">Nous écrire sur Instagram</a>

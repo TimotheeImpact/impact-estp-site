@@ -26,19 +26,51 @@ chiffres:
     legende: "interviews publiées"
   - auto: montage                 # fiches avec post_prod: true
     legende: "en montage"
+  - auto: tournages               # fiches avec a_venir: true
+    legende: "tournages à venir"
   - valeur: "FR · IT"
     legende: "interviews en français et en italien"
-  - valeur: "1/sem."
-    legende: "nouvelle interview"
 
-# Entreprises dont viennent nos invités (bandeau de la page d'accueil)
+# Entreprises dont viennent nos invités (bandeau « Ils sont passés au micro » de l'accueil).
+# logo : image dans assets/img/logos (laisser vide pour afficher le nom) ;
+# fiche : nom du fichier dans _entreprises (sans .md) pour faire un lien vers la fiche.
 invites_entreprises:
-  - Bouygues
-  - Eiffage
-  - NGE
-  - Autodesk
-  - Aecon
-  - VNF
+  - nom: "Bouygues"
+    logo: ""
+    fiche: ""
+  - nom: "Eiffage"
+    logo: ""
+    fiche: ""
+  - nom: "NGE"
+    logo: "nge.png"
+    fiche: "nge"
+  - nom: "Autodesk"
+    logo: "autodesk.png"
+    fiche: "autodesk"
+  - nom: "Aecon"
+    logo: ""
+    fiche: "aecon"
+  - nom: "VNF"
+    logo: ""
+    fiche: "vnf"
+  - nom: "CDC Habitat"
+    logo: "cdc-habitat.png"
+    fiche: "cdc-habitat"
+  - nom: "Syndicat des énergies renouvelables"
+    logo: "ser.png"
+    fiche: "ser"
+  - nom: "Prosolia Energy"
+    logo: "prosolia-energy.png"
+    fiche: "prosolia-energy"
+  - nom: "S3D-SPAD"
+    logo: "s3d-spad.png"
+    fiche: "s3d-spad"
+  - nom: "Symphonics"
+    logo: "symphonics.png"
+    fiche: "symphonics"
+  - nom: "Bellivo"
+    logo: "bellivo.png"
+    fiche: "bellivo"
 
 # ── Presse écrite ────────────────────────────────────────────
 presse_rendezvous: "Chaque mardi à 18h"
@@ -46,8 +78,12 @@ presse_premier_article: "Mardi 20 octobre 2026"   # vider cette ligne une fois l
 presse_redaction:
   - nom: "Emma"
     role: "Rédactrice en chef, presse écrite"
-  - nom: "Timothée de Varax"
+  - nom: "Timothée"
     role: "Directeur de la publication"
+  - nom: "Lucas"
+    role: "Auditeur libre"
+  - nom: "Jules"
+    role: "Auditeur libre"
 
 # ── Mesure d'audience (sans cookie) ──────────────────────────
 # Jeton Cloudflare Web Analytics (une suite de lettres et chiffres, voir le guide).
@@ -60,6 +96,7 @@ cloudflare_analytics: ""
 # Tant que c'est vide, les formulaires affichent « Ouverture le 15 novembre ».
 formulaire_vivier: ""
 formulaire_equipe: "https://formsubmit.co/contact@impactestp.fr"
+formulaire_contact: "https://formsubmit.co/contact@impactestp.fr"
 
 # ── Mentions légales (obligatoires en France) ────────────────
 association: "IMPACT ESTP"
@@ -83,12 +120,17 @@ collections:
   interviews:
     output: true
     permalink: /interviews/:name/
+  entreprises:
+    output: true
+    permalink: /entreprises/:name/
 
 defaults:
   - scope: { path: "", type: posts }
     values: { layout: article }
   - scope: { path: "", type: interviews }
     values: { layout: interview }
+  - scope: { path: "", type: entreprises }
+    values: { layout: entreprise }
   - scope: { path: "" }
     values: { image: /assets/img/partage.png }
 

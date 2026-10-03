@@ -4,6 +4,7 @@ description: "Ingénieure des ponts, des eaux et des forêts, Stéphanie Peigney
 invite: "Stéphanie Peigney-Couderc"
 poste: "Directrice territoriale adjointe"
 entreprise: "VNF"
+entreprise_id: vnf
 theme: grands-projets
 langue: fr
 youtube: "https://youtu.be/t15wDsE-njU"

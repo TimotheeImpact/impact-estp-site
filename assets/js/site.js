@@ -14,7 +14,8 @@
         var n = 0;
         cards.forEach(function (c) {
           var show = Object.keys(choix).every(function (k) {
-            return choix[k] === 'all' || c.getAttribute(attr[k]) === choix[k];
+            // une carte peut avoir plusieurs thèmes séparés par des espaces (ex. « grands-projets studio »)
+            return choix[k] === 'all' || (' ' + (c.getAttribute(attr[k]) || '') + ' ').indexOf(' ' + choix[k] + ' ') !== -1;
           });
           c.hidden = !show;
           if (show) n++;
@@ -47,18 +48,61 @@
     });
   });
 
-  // Lecteur YouTube chargé seulement au clic
+  // Lecteur YouTube chargé seulement au clic, ou au clic sur un chapitre (démarre au bon moment)
+  var lancer = function (p, debut) {
+    var btn = p.querySelector('button');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + p.getAttribute('data-youtube') + '?autoplay=1&rel=0' + (debut ? '&start=' + debut : '');
+    f.title = (btn && btn.getAttribute('aria-label')) || p.getAttribute('data-titre') || 'Vidéo';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    p.innerHTML = '';
+    p.appendChild(f);
+  };
   document.querySelectorAll('.player[data-youtube]').forEach(function (p) {
     var btn = p.querySelector('button');
-    btn.addEventListener('click', function () {
-      var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + p.getAttribute('data-youtube') + '?autoplay=1&rel=0';
-      f.title = btn.getAttribute('aria-label') || 'Vidéo';
-      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-      f.allowFullscreen = true;
-      p.innerHTML = '';
-      p.appendChild(f);
+    // ?t=225 dans l'adresse (lien vers un chapitre depuis Google) : la vidéo démarre à ce moment-là
+    var depart = parseInt(params.get('t'), 10) || 0;
+    if (btn) btn.addEventListener('click', function () { lancer(p, depart); });
+  });
+  document.querySelectorAll('.chapters a[data-debut]').forEach(function (a) {
+    var p = document.querySelector('.player[data-youtube]');
+    if (!p) return;
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      lancer(p, parseInt(a.getAttribute('data-debut'), 10) || 0);
+      p.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
+  });
+
+  // Objet du message prérempli depuis l'adresse, par exemple /contact/?objet=Lancer%20Impact%20dans%20mon%20%C3%A9cole
+  var objet = document.getElementById('c-objet');
+  if (objet) {
+    var voulu = params.get('objet');
+    if (voulu) {
+      var trouve = Array.prototype.some.call(objet.options, function (o) {
+        if (o.value.toLowerCase() === voulu.toLowerCase()) { o.selected = true; return true; }
+        return false;
+      });
+      if (!trouve) {
+        var opt = new Option(voulu.slice(0, 120), voulu.slice(0, 120), true, true);
+        objet.add(opt, objet.options[1] || null);
+      }
+    }
+    var sujet = document.querySelector('#form-contact input[name="_subject"]');
+    var majSujet = function () { if (sujet && objet.value) sujet.value = 'Impact ESTP, contact : ' + objet.value; };
+    objet.addEventListener('change', majSujet);
+    majSujet();
+  }
+
+  // Liens vers d'autres sites (réseaux sociaux, YouTube, partenaires) ouverts dans un nouvel onglet
+  document.querySelectorAll('a[href^="http"]').forEach(function (a) {
+    if (a.hostname && a.hostname !== window.location.hostname) {
+      a.target = '_blank';
+      var rel = (a.getAttribute('rel') || '').split(' ').filter(Boolean);
+      if (rel.indexOf('noopener') === -1) rel.push('noopener');
+      a.setAttribute('rel', rel.join(' '));
+    }
   });
 
   // Champ « Si autre, laquelle ? » affiché seulement quand il sert

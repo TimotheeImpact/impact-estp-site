@@ -4,6 +4,7 @@ description: "25 ans de photovoltaïque et 600 MWc de centrales solaires : Grég
 invite: "Grégory Pons"
 poste: "CEO"
 entreprise: "AVEIL et LIMELO"
+entreprise_id: aveil-limelo
 theme: energie
 langue: fr
 youtube: "https://youtu.be/AxTO4wSasCE"

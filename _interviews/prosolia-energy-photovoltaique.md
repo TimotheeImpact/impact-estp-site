@@ -3,6 +3,7 @@ title: "Construire des centrales photovoltaïques chez Prosolia Energy"
 invite: ""
 poste: "Chef de projet construction photovoltaïque"
 entreprise: "Prosolia Energy"
+entreprise_id: prosolia-energy
 theme: energie
 langue: fr
 youtube: ""

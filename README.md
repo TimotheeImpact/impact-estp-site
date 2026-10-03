@@ -9,7 +9,10 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | Je veux changer… | Fichier ou dossier |
 |---|---|
 | Les chiffres de l'accueil, les liens LinkedIn et Instagram, l'adresse mail | `_config.yml` |
-| La liste des entreprises « Ils sont passés au micro » | `_config.yml` |
+| La liste des entreprises « Ils sont passés au micro » (nom, logo, fiche) | `_config.yml` |
+| Les fiches entreprises (une page par entreprise, pour Google) | dossier `_entreprises` |
+| Les offres de stage de la page Stages | `_data/offres_stage.yml` |
+| Les objets proposés dans le formulaire de contact | `contact/index.html` |
 | Ajouter ou modifier une interview | dossier `_interviews` |
 | Publier un article | dossier `_posts` |
 | La liste des écoles des formulaires | `_data/ecoles.yml` |
@@ -43,9 +46,31 @@ Une interview pas encore en ligne a deux statuts possibles :
 - pas encore tournée : `a_venir: true` (badge « Tournage à venir »).
 Le jour de la sortie, enlève cette ligne et colle le lien YouTube. Les chiffres de l'accueil se mettent à jour tout seuls.
 
-Lien direct vers une sélection : `/interviews/?langue=it`, `/interviews/?statut=post-prod`, `/interviews/?theme=energie`.
+Lien direct vers une sélection : `/interviews/?langue=it`, `/interviews/?statut=post-prod`, `/interviews/?theme=energie`, `/interviews/?theme=studio`.
+
+Lien direct vers le formulaire de contact avec l'objet déjà choisi : `/contact/?objet=Lancer Impact dans mon école`.
 
 Si l'entreprise a payé pour le contenu, mets `partenaire: true` : la mention « Collaboration commerciale » s'affiche, comme la loi l'exige.
+
+Interview tournée en studio : ajoute `studio: true`, elle apparaît aussi dans le filtre « En studio ».
+
+### Chapitres, résumé et Google
+
+- `entreprise_id: nge` relie l'interview à la fiche `_entreprises/nge.md` (lien dans la fiche de l'interview, et l'interview s'affiche sur la page de l'entreprise).
+- `date_publication: 2026-09-20` (date de sortie sur YouTube) : avec elle, Google comprend que la page contient une vidéo et peut l'afficher dans les résultats.
+- `chapitres:` : la liste des moments clés, comme dans la description YouTube. Sur le site, chaque chapitre est cliquable et lance la vidéo au bon moment ; Google peut aussi les afficher.
+- Le résumé détaillé s'écrit sous la présentation, dans une partie `## Résumé détaillé` (voir `modeles/interview.md`).
+
+## Ajouter une fiche entreprise
+
+1. Va dans le dossier `_entreprises`, ouvre une fiche existante (par exemple `nge.md`) et copie son contenu.
+2. Crée un nouveau fichier dans `_entreprises`, nommé en minuscules avec des tirets (`nom-entreprise.md`).
+3. Remplis le nom, le secteur, le site web, et le nom du fichier du logo (déposé dans `assets/img/logos`). Laisse vide ce que tu ne sais pas.
+4. Dans les interviews de cette entreprise, ajoute `entreprise_id: nom-entreprise`.
+
+## Ajouter une offre de stage
+
+Ouvre `_data/offres_stage.yml` : un exemple commenté montre les lignes à remplir (titre, entreprise, lieu, durée, début, lien). Enlève les `#` devant le bloc, remplis-le, enregistre. L'offre s'affiche sur la page Stages et sur la fiche de l'entreprise.
 
 ## Publier un article
 
@@ -58,9 +83,9 @@ Le site ne se reconstruit qu'à chaque enregistrement : pour une parution le mar
 
 ## Brancher les formulaires
 
-Les formulaires (vivier de stages, candidatures à l'équipe avec CV) passent par FormSubmit (formsubmit.co) : gratuit, sans compte, pièces jointes acceptées. Les réponses arrivent par mail, CV en pièce jointe.
+Les formulaires (vivier de stages, candidatures à l'équipe avec CV, contact) passent par FormSubmit (formsubmit.co) : gratuit, sans compte, pièces jointes acceptées. Les réponses arrivent par mail, CV en pièce jointe.
 
-1. Dans `_config.yml`, mets `https://formsubmit.co/` suivi de l'adresse qui doit recevoir les réponses, sur la ligne `formulaire_equipe` (et `formulaire_vivier` le jour de l'ouverture du vivier). Exemple : `formulaire_equipe: "https://formsubmit.co/contact@impactestp.fr"`.
+1. Dans `_config.yml`, mets `https://formsubmit.co/` suivi de l'adresse qui doit recevoir les réponses, sur les lignes `formulaire_equipe` et `formulaire_contact` (et `formulaire_vivier` le jour de l'ouverture du vivier). Exemple : `formulaire_equipe: "https://formsubmit.co/contact@impactestp.fr"`.
 2. Envoie une première réponse de test depuis le site. FormSubmit envoie un mail « Activate form » à cette adresse : clique sur le bouton pour activer.
 3. Dans ce mail, FormSubmit donne aussi un code secret qui remplace l'adresse (pour ne pas l'afficher dans le code du site). Remplace l'adresse par ce code : `https://formsubmit.co/le-code-recu`.
 

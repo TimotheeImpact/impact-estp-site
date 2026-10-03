@@ -17,6 +17,7 @@ sitemap: false
     var f = new URLSearchParams(location.search).get('formulaire');
     var t = document.getElementById('merci-texte');
     if (f === 'vivier') t.textContent = "Bienvenue dans le vivier Impact. On te contacte dès qu'une offre correspond à ta recherche.";
+    if (f === 'contact') t.textContent = "Ton message est bien arrivé. On te répond très vite à l'adresse que tu as indiquée.";
     if (f === 'equipe') t.textContent = "Ta candidature est bien arrivée. On te recontacte très vite pour en discuter.";
   })();
 </script>

@@ -4,6 +4,7 @@ description: "Docteur de l'École des Ponts, Maxime Gueguin a cofondé Simvia, u
 invite: "Maxime Gueguin"
 poste: "CTO et cofondateur"
 entreprise: "Simvia"
+entreprise_id: simvia
 theme: carrieres
 langue: fr
 youtube: "https://youtu.be/Ct5tnkT-XfQ"

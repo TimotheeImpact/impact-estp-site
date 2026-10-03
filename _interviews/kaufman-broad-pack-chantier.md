@@ -4,6 +4,7 @@ description: "Trois vidéos tournées sur un chantier de Kaufman & Broad en octo
 invite: ""
 poste: ""
 entreprise: "Kaufman & Broad"
+entreprise_id: kaufman-broad
 theme: carrieres
 langue: fr
 youtube: ""

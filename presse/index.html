@@ -92,16 +92,13 @@ description: "La presse écrite d'Impact ESTP : chaque mardi, un article pour co
       </ul>
       <div class="contact-box" style="margin-top:20px">
         <p><b>Écris pour Impact.</b> Étudiant, alumni ou enseignant : propose une tribune ou ton retour de stage, en France comme à l'étranger.</p>
-        {%- if site.email != "" %}
-        <a class="btn primary" href="mailto:{{ site.email }}?subject=Proposition%20d%27article">Proposer un sujet</a>
-        {%- elsif site.linkedin != "" %}
-        <a class="btn primary" href="{{ site.linkedin }}">Proposer un sujet sur LinkedIn</a>
-        {%- endif %}
+        <a class="btn primary" href="{{ '/contact/' | relative_url }}?objet={{ 'Presse écrite - proposition de sujets' | uri_escape }}">Proposer un sujet</a>
       </div>
     </div>
     <div class="charter">
       <p class="label">Notre charte</p>
       <ul>
+        <li><b>Zéro IA dans nos articles</b> : ils sont écrits et relus par des étudiants, sans aucun texte généré par intelligence artificielle.</li>
         <li><b>Chaque chiffre est sourcé</b>, avec un lien vers la source.</li>
         <li><b>Chaque citation est relue</b> par la personne qui l'a prononcée avant publication.</li>
         <li><b>Un ton clair</b> et pédagogique, sans jargon non expliqué.</li>

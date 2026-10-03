@@ -3,6 +3,7 @@ title: "Le directeur général de S3D-SPAD, les sociétés de développement du 
 invite: ""
 poste: "Directeur général"
 entreprise: "S3D-SPAD"
+entreprise_id: s3d-spad
 theme: grands-projets
 langue: fr
 youtube: ""
