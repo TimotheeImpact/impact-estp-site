@@ -14,9 +14,13 @@
     {%- if site.email != "" %}
     <p>{{ t.contact.email_texte }} <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
     {%- endif %}
-    <div class="actions" style="margin-top:4px">
-      {%- if site.linkedin != "" %}<a class="btn" href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
-      {%- if site.instagram != "" %}<a class="btn" href="{{ site.instagram }}">Instagram</a>{% endif %}
+    <div class="dm-box">
+      <p class="dm-t">{{ t.contact.reseaux_titre }}</p>
+      <p>{{ t.contact.reseaux_texte }}</p>
+      <div class="actions" style="margin-top:12px">
+        {%- if site.instagram != "" %}<a class="btn primary" href="{{ site.instagram }}">Instagram</a>{% endif %}
+        {%- if site.linkedin != "" %}<a class="btn" href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
+      </div>
     </div>
   </div>
 

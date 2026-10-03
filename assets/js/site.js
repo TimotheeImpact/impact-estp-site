@@ -222,4 +222,198 @@
     document.addEventListener('click', function (e) { if (menuLangue.open && !menuLangue.contains(e.target)) menuLangue.open = false; });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuLangue.open) { menuLangue.open = false; menuLangue.querySelector('summary').focus(); } });
   }
+
+  // Menu du téléphone : bouton « Menu » qui ouvre et ferme la liste des pages
+  var boutonMenu = document.querySelector('.menu-toggle');
+  var navPrincipale = document.getElementById('nav-principale');
+  if (boutonMenu && navPrincipale) {
+    var basculerMenu = function (ouvrir) {
+      navPrincipale.classList.toggle('ouvert', ouvrir);
+      boutonMenu.setAttribute('aria-expanded', ouvrir ? 'true' : 'false');
+      boutonMenu.setAttribute('aria-label', boutonMenu.getAttribute(ouvrir ? 'data-fermer' : 'data-ouvrir'));
+    };
+    boutonMenu.addEventListener('click', function () { basculerMenu(boutonMenu.getAttribute('aria-expanded') !== 'true'); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && boutonMenu.getAttribute('aria-expanded') === 'true') { basculerMenu(false); boutonMenu.focus(); }
+    });
+    window.addEventListener('resize', function () { if (window.innerWidth > 900) basculerMenu(false); });
+  }
+
+  // Petits menus « Ajouter à mon agenda » : se referment quand on clique ailleurs
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('details.add-cal[open]').forEach(function (d) { if (!d.contains(e.target)) d.open = false; });
+  });
+
+  // Agenda : dates du jour au format 2026-10-03, dans le fuseau du visiteur
+  var isoJour = function (d) {
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  };
+  var maintenant = new Date();
+  var jour = isoJour(maintenant);
+  var dansJours = function (n) { var d = new Date(maintenant); d.setDate(d.getDate() + n); return isoJour(d); };
+  var sansAccents = function (txt) { return (txt || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
+
+  // Marque les évènements en cours et passés (le site n'est reconstruit qu'à chaque modification)
+  document.querySelectorAll('.evt[data-fin]').forEach(function (li) {
+    var passe = li.getAttribute('data-fin') < jour;
+    var enCours = !passe && li.getAttribute('data-debut') <= jour;
+    li.classList.toggle('evt-passe', passe);
+    var tNow = li.querySelector('.evt-now');
+    var tPast = li.querySelector('.evt-past');
+    if (tNow) tNow.hidden = !enCours;
+    if (tPast) tPast.hidden = !passe;
+  });
+
+  // Accueil : les 3 prochains évènements seulement
+  document.querySelectorAll('.evts[data-limite]').forEach(function (liste) {
+    var max = parseInt(liste.getAttribute('data-limite'), 10) || 3;
+    var n = 0;
+    liste.querySelectorAll('.evt').forEach(function (li) {
+      var garder = !li.classList.contains('evt-passe') && n < max;
+      li.hidden = !garder;
+      if (garder) n++;
+    });
+    if (n === 0) { var bloc = liste.closest('section'); if (bloc) bloc.hidden = true; }
+  });
+
+  // Agenda : filtres par type, thème, ville, date, recherche
+  var agenda = document.getElementById('evt-liste');
+  if (agenda) {
+    var evts = agenda.querySelectorAll('.evt');
+    var compteEvt = document.getElementById('evt-count');
+    var filtresEvt = document.getElementById('evt-filtres');
+    var etat = { type: 'all', theme: 'all', ville: 'all', periode: 'all', q: '', etudiants: false, gratuit: false, passes: false };
+    var periodeOk = function (li) {
+      var d = li.getAttribute('data-debut'), f = li.getAttribute('data-fin'), p = etat.periode;
+      if (p === 'all') return true;
+      if (p === '30' || p === '90') return d <= dansJours(parseInt(p, 10)) && f >= jour;
+      return d.slice(0, 7) <= p && f.slice(0, 7) >= p;
+    };
+    var reinitialiser;
+    var appliquer = function (majAdresse) {
+      var n = 0, q = sansAccents(etat.q.trim());
+      evts.forEach(function (li) {
+        var passe = li.classList.contains('evt-passe');
+        var types = ' ' + li.getAttribute('data-type') + ' ';
+        var themes = ' ' + li.getAttribute('data-themes') + ' ';
+        var ok = (etat.type === 'all' || types.indexOf(' ' + etat.type + ' ') !== -1)
+          && (etat.theme === 'all' || themes.indexOf(' ' + etat.theme + ' ') !== -1)
+          && (etat.ville === 'all' || li.getAttribute('data-ville') === etat.ville)
+          && periodeOk(li)
+          && (!q || sansAccents(li.getAttribute('data-texte')).indexOf(q) !== -1)
+          && (!etat.etudiants || (li.getAttribute('data-public') !== 'professionnels' && li.getAttribute('data-entree') !== 'reserve-ecole'))
+          && (!etat.gratuit || li.getAttribute('data-entree') === 'gratuit' || li.getAttribute('data-entree') === 'sur-inscription')
+          && (etat.passes || !passe);
+        li.hidden = !ok;
+        if (ok && !passe) n++;
+      });
+      agenda.querySelectorAll('.evt-mois').forEach(function (m) {
+        m.hidden = !m.querySelector('.evt:not([hidden])');
+      });
+      if (compteEvt) {
+        compteEvt.textContent = '';
+        var visibles = agenda.querySelectorAll('.evt:not([hidden])').length;
+        if (visibles > 0) {
+          compteEvt.textContent = n + ' ' + (n > 1 ? compteEvt.getAttribute('data-plusieurs') : compteEvt.getAttribute('data-un'));
+        } else {
+          compteEvt.appendChild(document.createTextNode(compteEvt.getAttribute('data-aucun') + ' '));
+          var r = document.createElement('button');
+          r.type = 'button';
+          r.className = 'count-reset';
+          r.textContent = compteEvt.getAttribute('data-reset');
+          r.addEventListener('click', function () { reinitialiser(); });
+          compteEvt.appendChild(r);
+        }
+      }
+      if (majAdresse && window.history && window.history.replaceState) {
+        var u = new URLSearchParams();
+        ['type', 'theme', 'ville', 'periode'].forEach(function (k) { if (etat[k] !== 'all') u.set(k, etat[k]); });
+        if (etat.q) u.set('q', etat.q);
+        var qs = u.toString();
+        window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+      }
+    };
+    var boutonsType = filtresEvt.querySelectorAll('[data-evt="type"] button');
+    var choisirType = function (v) {
+      etat.type = v;
+      boutonsType.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-filter') === v ? 'true' : 'false'); });
+    };
+    boutonsType.forEach(function (b) {
+      b.addEventListener('click', function () { choisirType(b.getAttribute('data-filter')); appliquer(true); });
+    });
+    filtresEvt.querySelectorAll('select[data-evt]').forEach(function (s) {
+      s.addEventListener('change', function () { etat[s.getAttribute('data-evt')] = s.value; appliquer(true); });
+    });
+    var champQ = filtresEvt.querySelector('input[data-evt="q"]');
+    if (champQ) champQ.addEventListener('input', function () { etat.q = champQ.value; appliquer(true); });
+    filtresEvt.querySelectorAll('input[type="checkbox"][data-evt]').forEach(function (c) {
+      c.addEventListener('change', function () { etat[c.getAttribute('data-evt')] = c.checked; appliquer(false); });
+    });
+    reinitialiser = function () {
+      choisirType('all');
+      ['theme', 'ville', 'periode'].forEach(function (k) { etat[k] = 'all'; var s = filtresEvt.querySelector('select[data-evt="' + k + '"]'); if (s) s.value = 'all'; });
+      etat.q = ''; if (champQ) champQ.value = '';
+      ['etudiants', 'gratuit'].forEach(function (k) { etat[k] = false; var c = filtresEvt.querySelector('input[data-evt="' + k + '"]'); if (c) c.checked = false; });
+      appliquer(true);
+    };
+    // Mois déjà passés retirés de la liste « Quand »
+    filtresEvt.querySelectorAll('select[data-evt="periode"] option').forEach(function (o) {
+      if (/^\d{4}-\d{2}$/.test(o.value) && o.value < jour.slice(0, 7)) o.remove();
+    });
+    // Filtres choisis dans l'adresse, par exemple /evenements/?type=forum-etudiant&ville=paris
+    var pa = new URLSearchParams(window.location.search);
+    if (pa.get('type') && filtresEvt.querySelector('[data-evt="type"] button[data-filter="' + pa.get('type').replace(/[^a-z0-9-]/gi, '') + '"]')) choisirType(pa.get('type'));
+    ['theme', 'ville', 'periode'].forEach(function (k) {
+      var v = pa.get(k), s = filtresEvt.querySelector('select[data-evt="' + k + '"]');
+      if (v && s && Array.prototype.some.call(s.options, function (o) { return o.value === v; })) { s.value = v; etat[k] = v; }
+    });
+    if (pa.get('q') && champQ) { champQ.value = pa.get('q').slice(0, 60); etat.q = champQ.value; }
+    // Un lien vers un évènement passé (#evt-…) l'affiche quand même
+    var cibleEvt = window.location.hash && document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+    if (cibleEvt && cibleEvt.classList.contains('evt-passe')) {
+      etat.passes = true;
+      var cp = filtresEvt.querySelector('input[data-evt="passes"]'); if (cp) cp.checked = true;
+    }
+    appliquer(false);
+    // Nombre d'évènements à venir dans le titre de la partie
+    var nAVenir = agenda.querySelectorAll('.evt:not(.evt-passe)').length;
+    var pastille = document.querySelector('#agenda .fold-n');
+    if (pastille) pastille.textContent = nAVenir;
+    if (cibleEvt && cibleEvt.classList.contains('evt')) cibleEvt.scrollIntoView({ block: 'center' });
+  }
+
+  // Bouton « Apple, Outlook (.ics) » : fichier d'agenda créé dans le navigateur
+  var echapperIcs = function (txt) { return (txt || '').replace(/\\/g, '\\\\').replace(/;/g, '\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n'); };
+  document.querySelectorAll('.ics-link').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var li = a.closest('.evt');
+      var d = li.getAttribute('data-debut'), f = li.getAttribute('data-fin');
+      var fin = new Date(f + 'T12:00:00'); fin.setDate(fin.getDate() + 1);
+      var stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
+      var lignes = [
+        'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Impact ESTP//Agenda//FR', 'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        'UID:' + (a.getAttribute('data-uid') || d) + '@impactestp.fr',
+        'DTSTAMP:' + stamp,
+        'DTSTART;VALUE=DATE:' + d.replace(/-/g, ''),
+        'DTEND;VALUE=DATE:' + isoJour(fin).replace(/-/g, ''),
+        'SUMMARY:' + echapperIcs(a.getAttribute('data-titre')),
+        'LOCATION:' + echapperIcs(a.getAttribute('data-lieu')),
+        'DESCRIPTION:' + echapperIcs(a.getAttribute('data-desc') + (a.getAttribute('data-lien') ? ' ' + a.getAttribute('data-lien') : ''))
+      ];
+      if (a.getAttribute('data-lien')) lignes.push('URL:' + a.getAttribute('data-lien'));
+      lignes.push('END:VEVENT', 'END:VCALENDAR');
+      var blob = new Blob([lignes.join('\r\n') + '\r\n'], { type: 'text/calendar;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var lien = document.createElement('a');
+      lien.href = url;
+      lien.download = (a.getAttribute('data-uid') || 'evenement') + '.ics';
+      document.body.appendChild(lien);
+      lien.click();
+      lien.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+      var det = a.closest('details'); if (det) det.open = false;
+    });
+  });
 })();

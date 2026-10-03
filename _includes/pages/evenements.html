@@ -1,0 +1,152 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
+{%- assign te = t.evenements -%}
+{%- assign evts = site.data.evenements | sort: "debut" -%}
+{%- assign evts_impact = evts | where: "impact", true -%}
+{%- assign evts_secteur = evts | where_exp: "e", "e.impact != true" -%}
+{%- assign _mois = t.commun.mois | split: "," -%}
+{%- capture _villes %}{% for e in evts %}{{ e.ville }}{% unless forloop.last %}|{% endunless %}{% endfor %}{% endcapture -%}
+{%- assign villes = _villes | split: "|" | uniq | sort -%}
+{%- capture _types %}{% for e in evts %}{{ e.type }}{% unless forloop.last %}|{% endunless %}{% endfor %}{% endcapture -%}
+{%- assign types_presents = _types | split: "|" | uniq -%}
+{%- capture _themes %}{% for e in evts %}{{ e.themes | join: "|" }}{% unless forloop.last %}|{% endunless %}{% endfor %}{% endcapture -%}
+{%- assign themes_presents = _themes | split: "|" | uniq -%}
+{%- assign groupes = evts | group_by_exp: "e", "e.debut | date: '%Y-%m'" -%}
+<div class="page-head">
+  <p class="label">{{ te.label }}</p>
+  <h1>{{ te.titre }}</h1>
+  <p class="intro">{{ te.intro }}</p>
+</div>
+
+<div class="folds">
+{% include fold-ouvre.html id="agenda" label=te.agenda_label titre=te.agenda_titre ouvert=true compte=evts_secteur.size %}
+  <div class="evt-filters" id="evt-filtres" role="search" aria-label="{{ te.filtres_aria }}">
+    <div class="filters" data-evt="type" role="group" aria-label="{{ te.filtre_type }}">
+      <span class="label">{{ te.filtre_type }}</span>
+      <button type="button" data-filter="all" aria-pressed="true">{{ te.tous }}</button>
+      {%- for k in te.types_pluriel %}
+      {%- assign ty = k[0] %}
+      {%- if types_presents contains ty %}<button type="button" data-filter="{{ ty }}" aria-pressed="false">{{ k[1] }}</button>{% endif %}
+      {%- endfor %}
+      {%- if evts_impact.size > 0 %}<button type="button" data-filter="impact" aria-pressed="false">{{ te.organises_impact }}</button>{% endif %}
+    </div>
+    <div class="evt-selects">
+      <div class="field">
+        <label for="evt-theme">{{ te.filtre_theme }}</label>
+        <select id="evt-theme" data-evt="theme">
+          <option value="all">{{ te.tous_themes }}</option>
+          {%- for k in te.themes %}
+          {%- if themes_presents contains k[0] %}<option value="{{ k[0] }}">{{ k[1] }}</option>{% endif %}
+          {%- endfor %}
+        </select>
+      </div>
+      <div class="field">
+        <label for="evt-ville">{{ te.filtre_ville }}</label>
+        <select id="evt-ville" data-evt="ville">
+          <option value="all">{{ te.toutes_villes }}</option>
+          {%- for v in villes %}
+          <option value="{{ v | slugify }}">{{ v }}</option>
+          {%- endfor %}
+        </select>
+      </div>
+      <div class="field">
+        <label for="evt-periode">{{ te.filtre_periode }}</label>
+        <select id="evt-periode" data-evt="periode">
+          <option value="all">{{ te.toute_periode }}</option>
+          <option value="30">{{ te.periode_30 }}</option>
+          <option value="90">{{ te.periode_90 }}</option>
+          {%- for g in groupes %}
+          {%- assign _m = g.name | split: "-" | last | plus: 0 | minus: 1 %}
+          <option value="{{ g.name }}">{{ _mois[_m] }} {{ g.name | split: "-" | first }}</option>
+          {%- endfor %}
+        </select>
+      </div>
+      <div class="field">
+        <label for="evt-q">{{ te.filtre_recherche }}</label>
+        <input type="search" id="evt-q" data-evt="q" placeholder="{{ te.recherche_placeholder }}" autocomplete="off">
+      </div>
+    </div>
+    <div class="evt-toggles">
+      <label class="chip"><input type="checkbox" data-evt="etudiants"><span>{{ te.etudiants_seulement }}</span></label>
+      <label class="chip"><input type="checkbox" data-evt="gratuit"><span>{{ te.gratuit_seulement }}</span></label>
+      <label class="chip"><input type="checkbox" data-evt="passes"><span>{{ te.passes_voir }}</span></label>
+    </div>
+  </div>
+
+  <p class="count" id="evt-count" aria-live="polite" data-un="{{ te.evt_1 }}" data-plusieurs="{{ te.evt_n }}" data-aucun="{{ te.aucun }}" data-reset="{{ te.reinitialiser }}">{{ evts.size }} {% if evts.size > 1 %}{{ te.evt_n }}{% else %}{{ te.evt_1 }}{% endif %}</p>
+
+  <div class="evt-liste" id="evt-liste">
+    {%- for g in groupes %}
+    {%- assign _m = g.name | split: "-" | last | plus: 0 | minus: 1 %}
+    <section class="evt-mois" data-mois="{{ g.name }}">
+      <h3 class="evt-mois-t">{{ _mois[_m] }} {{ g.name | split: "-" | first }}</h3>
+      <ol class="evts">
+        {%- for e in g.items %}
+        {% include evenement.html e=e %}
+        {%- endfor %}
+      </ol>
+    </section>
+    {%- endfor %}
+  </div>
+  {%- capture date_maj %}{% include date-fr.html date=site.evenements_verifies %}{% endcapture %}
+  {%- if site.evenements_verifies %}<p class="hint evt-avert">{{ te.avertissement | replace: "%date%", date_maj }}</p>{% endif %}
+</div></details>
+
+{% include fold-ouvre.html id="nos-evenements" label=te.impact_label titre=te.impact_titre compte=evts_impact.size %}
+  {%- if evts_impact.size > 0 %}
+  <ol class="evts">
+    {%- for e in evts_impact %}
+    {% include evenement.html e=e %}
+    {%- endfor %}
+  </ol>
+  <div class="contact-box">
+    <p>{{ te.impact_cta }}</p>
+    <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Organiser un évènement avec Impact' | uri_escape }}">{{ te.impact_proposer }}</a>
+  </div>
+  {%- else %}
+  <div class="empty">
+    <p class="label">{{ t.commun.bientot }}</p>
+    <p>{{ te.impact_vide }}</p>
+    <div class="actions" style="margin-top:14px"><a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Organiser un évènement avec Impact' | uri_escape }}">{{ te.impact_proposer }}</a></div>
+  </div>
+  {%- endif %}
+</div></details>
+
+{% include fold-ouvre.html id="proposer" label=te.ajouter_label titre=te.ajouter_titre %}
+  <div class="contact-box" style="margin-top:0">
+    <p>{{ te.ajouter_texte }}</p>
+    <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Proposer un évènement' | uri_escape }}">{{ te.ajouter_bouton }}</a>
+  </div>
+</div></details>
+</div>
+
+{%- comment %} Données structurées pour Google (évènements à venir au moment de la publication) {% endcomment %}
+{%- assign aujourdhui = site.time | date: "%Y-%m-%d" %}
+<script type="application/ld+json">
+[
+{%- assign _premier = true -%}
+{%- for e in evts -%}
+{%- assign _f = e.fin | default: e.debut | date: "%Y-%m-%d" -%}
+{%- if _f >= aujourdhui -%}
+{%- capture e_titre %}{% include tr.html o=e k="titre" %}{% endcapture -%}
+{%- capture e_desc %}{% include tr.html o=e k="description" %}{% endcapture -%}
+{%- unless _premier %},{% endunless %}{%- assign _premier = false %}
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": {{ e_titre | jsonify }},
+    "startDate": "{{ e.debut | date: '%Y-%m-%d' }}",
+    "endDate": "{{ _f }}",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": { "@type": "Place", "name": {{ e.lieu | default: e.ville | jsonify }}, "address": { "@type": "PostalAddress", "addressLocality": {{ e.ville | jsonify }}, "addressRegion": {{ e.region | default: "" | jsonify }}, "addressCountry": "FR" } },
+    {%- if e.organisateur and e.organisateur != "" %}
+    "organizer": { "@type": "Organization", "name": {{ e.organisateur | jsonify }}{% if e.lien %}, "url": {{ e.lien | jsonify }}{% endif %} },
+    {%- endif %}
+    "description": {{ e_desc | jsonify }},
+    "url": {{ e.lien | default: page.url | jsonify }}
+  }
+{%- endif -%}
+{%- endfor %}
+]
+</script>

@@ -114,6 +114,26 @@
 </div>
 {%- endif %}
 
+{%- assign _auj = site.time | date: "%Y-%m-%d" %}
+{%- assign evts_a_venir = site.data.evenements | where_exp: "e", "e.fin >= _auj" | sort: "debut" %}
+{%- if evts_a_venir.size > 0 %}
+<section class="block reveal" aria-labelledby="t-agenda">
+  <div class="head">
+    <div>
+      <p class="label">{{ t.evenements.accueil_label }}</p>
+      <h2 id="t-agenda">{{ t.evenements.accueil_titre }}</h2>
+      <p>{{ t.evenements.accueil_intro }}</p>
+    </div>
+    <a href="{{ p | append: '/evenements/' | relative_url }}">{{ t.evenements.accueil_tout }}</a>
+  </div>
+  <ol class="evts evts-compact" data-limite="3">
+    {%- for e in evts_a_venir limit: 8 %}
+    {% include evenement.html e=e compact=true %}
+    {%- endfor %}
+  </ol>
+</section>
+{%- endif %}
+
 <section class="block reveal" aria-labelledby="t-presse">
   <div class="head">
     <div>

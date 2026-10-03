@@ -8,6 +8,8 @@ commun:
   nav_principale: "Main navigation"
   groupe_impact: "Groupe Impact"
   mon_profil: "My profile"
+  menu: "Menu"
+  menu_fermer: "Close the menu"
   langue: "Language"
   langue_choisir: "Change language"
   langues:
@@ -31,6 +33,7 @@ commun:
   articles_en_francais: "Our articles are written in French."
   mois: "January,February,March,April,May,June,July,August,September,October,November,December"
   premier_du_mois: "1"
+  mois_courts: "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
 
 pied:
   cartouche: "Title block"
@@ -45,7 +48,7 @@ pied:
   mentions: "Legal notice"
   confidentialite: "Privacy"
   qr_alt: "QR code for the impact.estp Instagram account"
-  qr_texte: "Scan to follow us on Instagram"
+  qr_texte: "Fancy a DM? Scan it, we reply even at 4 a.m."
 
 carte:
   a_venir: "Filming soon"
@@ -275,6 +278,8 @@ formulaire:
     - { v: "Stage", l: "Internship" }
     - { v: "Proposer une offre de stage", l: "Submit an internship offer" }
     - { v: "Proposer un invité pour une interview", l: "Suggest a guest for an interview" }
+    - { v: "Proposer un évènement", l: "Suggest an event for the calendar" }
+    - { v: "Organiser un évènement avec Impact", l: "Organise an event with Impact" }
     - { v: "Autre demande", l: "Other request" }
   structure: "School or company (optional)"
   consent_contact: "I agree that Impact ESTP may use this information to reply to my message (<a href=\"%lien%\">privacy</a>)."
@@ -368,7 +373,7 @@ groupe:
   hook_q: "Want to interview your future manager, but don't know how to go about it?"
   hook_texte: "Get in touch and let's build the Impact network at your school together: we'll give you the method, the tools and the network to launch your student media."
   lancer: "Launch Impact at my school"
-  instagram: "Message us on Instagram"
+  instagram: "Slide into our Instagram DMs"
   apport_label: "What we bring you"
   apport_titre: "Everything you need to launch your media"
   apports:
@@ -432,6 +437,8 @@ contact:
   intro: "An article idea, a wish to launch Impact at your school, a partnership or an internship offer: we read everything and reply quickly."
   choisis_objet: "Choose the subject of your message so it goes straight to the right person on the team."
   email_texte: "Prefer email? Write to"
+  reseaux_titre: "Fancy sliding into our DMs?"
+  reseaux_texte: "Here's our Insta: we read our messages even at 4 a.m. More of a suit-and-tie person? We're on LinkedIn too."
 
 profil:
   label: "Members' area · Coming soon"
@@ -469,3 +476,87 @@ erreur:
   label: "Error 404"
   titre: "This page doesn't exist (or no longer does)"
   intro: "The link may be out of date. You're sure to find something you like among our interviews."
+
+evenements:
+  label: "Calendar"
+  titre: "Construction and energy events"
+  intro: "Trade fairs, student career fairs, conferences: the sector's key dates in France to meet recruiters, see innovations up close and land your internship."
+  agenda_label: "Sector calendar"
+  agenda_titre: "Upcoming events"
+  impact_label: "Organised by Impact"
+  impact_titre: "Our events"
+  impact_vide: "Our first events are on their way: career talks, interview screenings and meetups with our guests. Got an idea, or a room you could lend us?"
+  impact_proposer: "Organise an event with us"
+  impact_cta: "Want to co-organise a talk, a screening or a site visit with us?"
+  ajouter_label: "Missing an event?"
+  ajouter_titre: "Are you organising an event?"
+  ajouter_texte: "Career fair, trade show, conference, site visit: if it's about construction or energy, write to us and we'll add it to the calendar."
+  ajouter_bouton: "Suggest an event"
+  filtres_aria: "Filter events"
+  filtre_type: "Type"
+  filtre_theme: "Topic"
+  filtre_ville: "City"
+  filtre_periode: "When"
+  filtre_recherche: "Search"
+  recherche_placeholder: "Name, city, organiser…"
+  tous: "All"
+  tous_themes: "All topics"
+  toutes_villes: "All cities"
+  toute_periode: "Any date"
+  periode_30: "In the next 30 days"
+  periode_90: "In the next 3 months"
+  etudiants_seulement: "Open to students"
+  gratuit_seulement: "Free entry"
+  organises_impact: "Organised by Impact"
+  types:
+    salon: "Trade fair"
+    conference: "Conference"
+    forum-etudiant: "Career fair"
+    concours: "Competition"
+    job-dating: "Job dating"
+    portes-ouvertes: "Open day"
+  types_pluriel:
+    salon: "Trade fairs"
+    conference: "Conferences"
+    forum-etudiant: "Career fairs"
+    concours: "Competitions"
+    job-dating: "Job datings"
+    portes-ouvertes: "Open days"
+  themes:
+    construction: "Construction"
+    travaux-publics: "Public works"
+    energie: "Energy"
+    immobilier: "Real estate"
+    ville-durable: "Sustainable cities"
+    architecture: "Architecture"
+  publics:
+    etudiants: "For students"
+    professionnels: "Professionals"
+    tous: "Open to all"
+  entrees:
+    gratuit: "Free"
+    payant: "Paid"
+    sur-inscription: "Free with registration"
+    variable: "Price depends on profile"
+    reserve-ecole: "School students only"
+  evt_1: "upcoming event"
+  evt_n: "upcoming events"
+  aucun: "No events match this choice."
+  reinitialiser: "Clear filters"
+  site_officiel: "Official website"
+  ajouter_agenda: "Add to my calendar"
+  google_agenda: "Google Calendar"
+  ics: "Apple, Outlook (.ics)"
+  pour_toi: "For you:"
+  organise_par: "Organised by"
+  passes_voir: "Also show past events"
+  passe: "Past"
+  en_cours: "On now"
+  impact_badge: "Impact"
+  avertissement: "Calendar checked on %date%. Dates can change: always check the official website before you go."
+  du_au: "from %debut% to %fin%"
+  le: "on %date%"
+  accueil_label: "Calendar"
+  accueil_titre: "Upcoming events"
+  accueil_intro: "Construction and energy trade fairs, career fairs and conferences, to meet recruiters in person."
+  accueil_tout: "Full calendar"

@@ -7,7 +7,11 @@
         <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="{{ t.commun.accueil_alt }}" width="252" height="120">
       </picture>
     </a>
-    <nav aria-label="{{ t.commun.nav_principale }}">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principale" data-ouvrir="{{ t.commun.menu }}" data-fermer="{{ t.commun.menu_fermer }}">
+      <span class="menu-icone" aria-hidden="true"><span></span></span>
+      <span class="menu-texte">{{ t.commun.menu }}</span>
+    </button>
+    <nav id="nav-principale" aria-label="{{ t.commun.nav_principale }}">
       <ul>
         {%- assign _coll = page.collection | default: "" | split: "_" | first %}
         {%- for item in site.data.navigation %}
@@ -19,6 +23,8 @@
         {%- if item.lien == '/presse/' and page.collection == 'posts' -%}{%- assign actif = true -%}{%- endif %}
         <li><a href="{{ lien | relative_url }}"{% if actif %} aria-current="page"{% endif %}>{% include tr.html o=item k="titre" %}</a></li>
         {%- endfor %}
+        {%- assign lien = p | append: '/groupe-impact/' %}
+        <li class="nav-groupe"><a href="{{ lien | relative_url }}"{% if page.url == lien %} aria-current="page"{% endif %}>{{ t.commun.groupe_impact }}</a></li>
       </ul>
     </nav>
     {%- assign lien = p | append: '/groupe-impact/' %}

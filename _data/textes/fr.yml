@@ -8,6 +8,8 @@ commun:
   nav_principale: "Navigation principale"
   groupe_impact: "Groupe Impact"
   mon_profil: "Mon profil"
+  menu: "Menu"
+  menu_fermer: "Fermer le menu"
   langue: "Langue"
   langue_choisir: "Changer de langue"
   langues:
@@ -31,6 +33,7 @@ commun:
   articles_en_francais: ""
   mois: "janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre"
   premier_du_mois: "1er"
+  mois_courts: "janv.,févr.,mars,avr.,mai,juin,juil.,août,sept.,oct.,nov.,déc."
 
 pied:
   cartouche: "Cartouche"
@@ -45,7 +48,7 @@ pied:
   mentions: "Mentions légales"
   confidentialite: "Confidentialité"
   qr_alt: "QR code du compte Instagram impact.estp"
-  qr_texte: "Scanne pour nous suivre sur Instagram"
+  qr_texte: "Un petit DM ? Scanne, on répond même à 4h du mat'."
 
 carte:
   a_venir: "Tournage à venir"
@@ -275,6 +278,8 @@ formulaire:
     - { v: "Stage", l: "Stage" }
     - { v: "Proposer une offre de stage", l: "Proposer une offre de stage" }
     - { v: "Proposer un invité pour une interview", l: "Proposer un invité pour une interview" }
+    - { v: "Proposer un évènement", l: "Proposer un évènement pour l'agenda" }
+    - { v: "Organiser un évènement avec Impact", l: "Organiser un évènement avec Impact" }
     - { v: "Autre demande", l: "Autre demande" }
   structure: "École ou entreprise (facultatif)"
   consent_contact: "J'accepte qu'Impact ESTP utilise ces informations pour répondre à mon message (<a href=\"%lien%\">confidentialité</a>)."
@@ -358,7 +363,7 @@ groupe:
   hook_q: "Tu as envie de faire l'interview de ton futur manager, mais tu ne sais pas comment t'y prendre ?"
   hook_texte: "Contacte-nous et créons ensemble le réseau Impact dans ton école : on te transmet la méthode, les outils et le réseau pour lancer ton média étudiant."
   lancer: "Lancer Impact dans mon école"
-  instagram: "Nous écrire sur Instagram"
+  instagram: "Glisse dans nos DM Instagram"
   apport_label: "Ce qu'on t'apporte"
   apport_titre: "Tout pour lancer ton média"
   apports:
@@ -422,6 +427,8 @@ contact:
   intro: "Une idée d'article, l'envie de lancer Impact dans ton école, un partenariat ou une offre de stage : on lit tout et on répond vite."
   choisis_objet: "Choisis l'objet de ton message pour qu'il arrive directement à la bonne personne de l'équipe."
   email_texte: "Tu préfères un e-mail ? Écris à"
+  reseaux_titre: "Envie d'un petit DM ?"
+  reseaux_texte: "On te laisse notre Insta : on lit nos messages même à 4h du mat'. Plutôt costard-cravate ? On est aussi sur LinkedIn."
 
 profil:
   label: "Espace membre · Bientôt"
@@ -459,3 +466,87 @@ erreur:
   label: "Erreur 404"
   titre: "Cette page n'existe pas (ou plus)"
   intro: "Le lien est peut-être ancien. Tu trouveras sûrement ton bonheur parmi nos interviews."
+
+evenements:
+  label: "Agenda"
+  titre: "Les évènements de la construction et de l'énergie"
+  intro: "Salons, forums étudiants, conférences : les rendez-vous du secteur en France pour rencontrer des recruteurs, voir les innovations de près et décrocher ton stage."
+  agenda_label: "Agenda du secteur"
+  agenda_titre: "Les prochains rendez-vous"
+  impact_label: "Organisés par Impact"
+  impact_titre: "Nos évènements"
+  impact_vide: "Nos premiers évènements arrivent : conférences métiers, projections d'interviews et rencontres avec nos invités. Tu as une idée, ou une salle à nous prêter ?"
+  impact_proposer: "Organiser un évènement avec nous"
+  impact_cta: "Tu veux co-organiser une conférence, une projection ou une visite de chantier avec nous ?"
+  ajouter_label: "Il manque un évènement ?"
+  ajouter_titre: "Tu organises un évènement ?"
+  ajouter_texte: "Forum, salon, conférence, visite de chantier : si c'est lié à la construction ou à l'énergie, écris-nous et on l'ajoute à l'agenda."
+  ajouter_bouton: "Proposer un évènement"
+  filtres_aria: "Filtrer les évènements"
+  filtre_type: "Type"
+  filtre_theme: "Thème"
+  filtre_ville: "Ville"
+  filtre_periode: "Quand"
+  filtre_recherche: "Rechercher"
+  recherche_placeholder: "Nom, ville, organisateur…"
+  tous: "Tous"
+  tous_themes: "Tous les thèmes"
+  toutes_villes: "Toutes les villes"
+  toute_periode: "Toutes les dates"
+  periode_30: "Dans les 30 prochains jours"
+  periode_90: "Dans les 3 prochains mois"
+  etudiants_seulement: "Ouverts aux étudiants"
+  gratuit_seulement: "Entrée gratuite"
+  organises_impact: "Organisés par Impact"
+  types:
+    salon: "Salon"
+    conference: "Conférence"
+    forum-etudiant: "Forum étudiants"
+    concours: "Concours"
+    job-dating: "Job dating"
+    portes-ouvertes: "Portes ouvertes"
+  types_pluriel:
+    salon: "Salons"
+    conference: "Conférences"
+    forum-etudiant: "Forums étudiants"
+    concours: "Concours"
+    job-dating: "Job datings"
+    portes-ouvertes: "Portes ouvertes"
+  themes:
+    construction: "Construction"
+    travaux-publics: "Travaux publics"
+    energie: "Énergie"
+    immobilier: "Immobilier"
+    ville-durable: "Ville durable"
+    architecture: "Architecture"
+  publics:
+    etudiants: "Pour les étudiants"
+    professionnels: "Professionnels"
+    tous: "Tout public"
+  entrees:
+    gratuit: "Gratuit"
+    payant: "Payant"
+    sur-inscription: "Gratuit sur inscription"
+    variable: "Tarif selon le profil"
+    reserve-ecole: "Réservé aux élèves de l'école"
+  evt_1: "évènement à venir"
+  evt_n: "évènements à venir"
+  aucun: "Aucun évènement pour ce choix."
+  reinitialiser: "Effacer les filtres"
+  site_officiel: "Site officiel"
+  ajouter_agenda: "Ajouter à mon agenda"
+  google_agenda: "Google Agenda"
+  ics: "Apple, Outlook (.ics)"
+  pour_toi: "Pour toi :"
+  organise_par: "Organisé par"
+  passes_voir: "Voir aussi les évènements passés"
+  passe: "Passé"
+  en_cours: "En ce moment"
+  impact_badge: "Impact"
+  avertissement: "Agenda vérifié le %date%. Les dates peuvent changer : vérifie toujours sur le site officiel avant de te déplacer."
+  du_au: "du %debut% au %fin%"
+  le: "le %date%"
+  accueil_label: "Agenda"
+  accueil_titre: "Les prochains évènements"
+  accueil_intro: "Salons, forums et conférences de la construction et de l'énergie, pour rencontrer les recruteurs en vrai."
+  accueil_tout: "Tout l'agenda"

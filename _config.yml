@@ -12,6 +12,8 @@ slogan_it: "Costruisci il tuo impatto."
 # Petite vidéo muette qui tourne en boucle dans l'encadré « Nouvelle interview » de l'accueil
 # (fichier .mp4 de 10 à 15 secondes, moins de 3 Mo, déposé dans assets/video). Laisser vide pour afficher la vignette YouTube.
 accueil_clip: ""
+# Date de la dernière vérification de l'agenda des évènements (_data/evenements.yml)
+evenements_verifies: 2026-10-03
 description: "Le média étudiant de la construction et de l'énergie. Chaque semaine, une interview vidéo avec un dirigeant, un ingénieur ou un entrepreneur du BTP et de l'énergie."
 lang: fr_FR
 

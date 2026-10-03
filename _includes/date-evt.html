@@ -1,0 +1,23 @@
+{%- comment -%}
+  Dates d'un évènement dans la langue de la page : « 5 – 8 oct. 2026 », « 12 nov. 2026 », « 30 sept. – 2 oct. 2026 ».
+  Usage : {% include date-evt.html debut=e.debut fin=e.fin %}
+{%- endcomment -%}
+{%- assign _t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign _mc = _t.commun.mois_courts | split: "," -%}
+{%- assign _d = include.debut | date: "%Y-%m-%d" -%}
+{%- assign _f = include.fin | default: include.debut | date: "%Y-%m-%d" -%}
+{%- assign _md = include.debut | date: "%-m" | minus: 1 -%}
+{%- assign _mf = include.fin | default: include.debut | date: "%-m" | minus: 1 -%}
+{%- assign _yd = include.debut | date: "%Y" -%}
+{%- assign _yf = include.fin | default: include.debut | date: "%Y" -%}
+{%- assign _jd = include.debut | date: "%-d" -%}
+{%- assign _jf = include.fin | default: include.debut | date: "%-d" -%}
+{%- if _d == _f -%}
+{{ _jd }} {{ _mc[_md] }} {{ _yd }}
+{%- elsif _md == _mf and _yd == _yf -%}
+{{ _jd }} – {{ _jf }} {{ _mc[_mf] }} {{ _yf }}
+{%- elsif _yd == _yf -%}
+{{ _jd }} {{ _mc[_md] }} – {{ _jf }} {{ _mc[_mf] }} {{ _yf }}
+{%- else -%}
+{{ _jd }} {{ _mc[_md] }} {{ _yd }} – {{ _jf }} {{ _mc[_mf] }} {{ _yf }}
+{%- endif -%}

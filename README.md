@@ -12,6 +12,7 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | La liste des entreprises « Ils sont passés au micro » (nom, logo, fiche) | `_config.yml` |
 | Les fiches entreprises (une page par entreprise, pour Google) | dossier `_entreprises` |
 | Les offres de stage de la page Stages | `_data/offres_stage.yml` |
+| L'agenda des évènements (page Évènements et accueil) | `_data/evenements.yml` |
 | Les objets proposés dans le formulaire de contact | `_data/textes/fr.yml` (partie `objets`, et la même dans `en.yml` et `it.yml`) |
 | Ajouter ou modifier une interview | dossier `_interviews` |
 | Publier un article | dossier `_posts` |
@@ -90,13 +91,28 @@ Ouvre `_data/offres_stage.yml` : un exemple commenté montre les lignes à rempl
 
 Pour le lien, trois possibilités : un lien vers l'annonce de l'entreprise (`https://...`), un lien vers le formulaire de contact avec l'objet déjà choisi (`/contact/?objet=Stage&offre=Nom de l'offre`, comme l'offre de Toits Temporaires Urbains), ou rien (le bouton renvoie alors vers le vivier).
 
+## L'agenda des évènements
+
+La page Évènements (`/evenements/`) liste les salons, forums étudiants et conférences de la construction et de l'énergie, avec des filtres par type, thème, ville, date et une recherche. Les trois prochains s'affichent aussi sur l'accueil.
+
+- Pour ajouter un évènement, ouvre `_data/evenements.yml` : le modèle commenté en haut montre les lignes à remplir. Les dates s'écrivent `année-mois-jour`.
+- Un évènement organisé par Impact : ajoute `impact: true`. Il apparaît aussi dans la partie « Nos évènements », avec un badge vert.
+- Les évènements passés se masquent tout seuls (le visiteur peut les revoir avec « Voir aussi les évènements passés »).
+- Chaque évènement a un bouton « Ajouter à mon agenda » (Google Agenda, ou fichier pour Apple et Outlook).
+- Quand tu vérifies l'agenda, change la date `evenements_verifies` dans `_config.yml` : elle s'affiche sous la liste.
+- Lien direct vers une sélection : `/evenements/?type=forum-etudiant`, `/evenements/?ville=lyon`, `/evenements/?theme=energie`.
+
+## Sur téléphone
+
+Sur téléphone et tablette, les pages sont rangées derrière le bouton « Menu » en haut à droite. Le site peut aussi s'installer comme une application : dans le navigateur du téléphone, « Ajouter à l'écran d'accueil » pose l'icône Impact (fichier `manifest.webmanifest`, icônes `assets/img/icon-*.png`).
+
 ## Animation de l'accueil et parties dépliables
 
 À l'arrivée sur l'accueil, le titre et la dernière interview apparaissent en glissant, les chiffres défilent jusqu'à leur valeur et les logos des invités défilent en continu (pause au survol). Rien ne bouge pour les personnes qui ont réglé leur appareil sur « réduire les animations ».
 
-Pour mettre un court extrait vidéo muet en boucle à la place de la vignette de la dernière interview : dépose un fichier `.mp4` de 10 à 15 secondes (moins de 4 Mo) dans `assets/video/` et mets son chemin sur la ligne `accueil_clip` de `_config.yml`, par exemple `accueil_clip: "/assets/video/extrait.mp4"`. La vidéo YouTube, elle, ne se lance pas toute seule : elle déposerait des cookies, et le site devrait alors afficher un bandeau de consentement.
+Pour mettre un court extrait vidéo muet en boucle à la place de la vignette de la dernière interview : dépose un fichier `.mp4` de 10 à 15 secondes (moins de 3 Mo) dans `assets/video/` et mets son chemin sur la ligne `accueil_clip` de `_config.yml`, par exemple `accueil_clip: "/assets/video/extrait.mp4"`. La vidéo YouTube, elle, ne se lance pas toute seule : elle déposerait des cookies, et le site devrait alors afficher un bandeau de consentement.
 
-Sur les pages Stages, Presse, Entreprises, Groupe Impact et À propos, chaque partie s'ouvre et se referme en cliquant sur la flèche. La première est ouverte au chargement. Un lien vers une partie (par exemple `/stages/#offres`) l'ouvre directement.
+Sur les pages Stages, Évènements, Presse, Entreprises, Groupe Impact et À propos, chaque partie s'ouvre et se referme en cliquant sur la flèche. La première est ouverte au chargement. Un lien vers une partie (par exemple `/stages/#offres`) l'ouvre directement.
 
 ## Publier un article
 

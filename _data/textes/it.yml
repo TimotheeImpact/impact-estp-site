@@ -8,6 +8,8 @@ commun:
   nav_principale: "Navigazione principale"
   groupe_impact: "Groupe Impact"
   mon_profil: "Il mio profilo"
+  menu: "Menu"
+  menu_fermer: "Chiudi il menu"
   langue: "Lingua"
   langue_choisir: "Cambia lingua"
   langues:
@@ -31,6 +33,7 @@ commun:
   articles_en_francais: "I nostri articoli sono scritti in francese."
   mois: "gennaio,febbraio,marzo,aprile,maggio,giugno,luglio,agosto,settembre,ottobre,novembre,dicembre"
   premier_du_mois: "1"
+  mois_courts: "gen,feb,mar,apr,mag,giu,lug,ago,set,ott,nov,dic"
 
 pied:
   cartouche: "Cartiglio"
@@ -45,7 +48,7 @@ pied:
   mentions: "Note legali"
   confidentialite: "Privacy"
   qr_alt: "Codice QR dell'account Instagram impact.estp"
-  qr_texte: "Inquadra il codice per seguirci su Instagram"
+  qr_texte: "Voglia di un DM? Inquadra, rispondiamo anche alle 4 di notte."
 
 carte:
   a_venir: "Riprese in arrivo"
@@ -275,6 +278,8 @@ formulaire:
     - { v: "Stage", l: "Stage" }
     - { v: "Proposer une offre de stage", l: "Proporre un'offerta di stage" }
     - { v: "Proposer un invité pour une interview", l: "Proporre un ospite per un'intervista" }
+    - { v: "Proposer un évènement", l: "Proporre un evento per l'agenda" }
+    - { v: "Organiser un évènement avec Impact", l: "Organizzare un evento con Impact" }
     - { v: "Autre demande", l: "Altra richiesta" }
   structure: "Scuola o azienda (facoltativo)"
   consent_contact: "Accetto che Impact ESTP utilizzi questi dati per rispondere al mio messaggio (<a href=\"%lien%\">privacy</a>)."
@@ -368,7 +373,7 @@ groupe:
   hook_q: "Hai voglia di intervistare il tuo futuro manager, ma non sai come fare?"
   hook_texte: "Contattaci e creiamo insieme la rete Impact nella tua scuola: ti passiamo il metodo, gli strumenti e la rete per lanciare il tuo media studentesco."
   lancer: "Lanciare Impact nella mia scuola"
-  instagram: "Scrivici su Instagram"
+  instagram: "Scrivici in DM su Instagram"
   apport_label: "Cosa ti offriamo"
   apport_titre: "Tutto per lanciare il tuo media"
   apports:
@@ -432,6 +437,8 @@ contact:
   intro: "Un'idea per un articolo, la voglia di lanciare Impact nella tua scuola, una partnership o un'offerta di stage: leggiamo tutto e rispondiamo in fretta."
   choisis_objet: "Scegli l'oggetto del tuo messaggio, così arriva direttamente alla persona giusta del team."
   email_texte: "Preferisci un'e-mail? Scrivi a"
+  reseaux_titre: "Voglia di un DM?"
+  reseaux_texte: "Ti lasciamo il nostro Insta: leggiamo i messaggi anche alle 4 di notte. Più tipo giacca e cravatta? Siamo anche su LinkedIn."
 
 profil:
   label: "Area membri · Prossimamente"
@@ -469,3 +476,87 @@ erreur:
   label: "Errore 404"
   titre: "Questa pagina non esiste (o non esiste più)"
   intro: "Forse il link è vecchio. Troverai sicuramente qualcosa di interessante tra le nostre interviste."
+
+evenements:
+  label: "Agenda"
+  titre: "Gli eventi delle costruzioni e dell'energia"
+  intro: "Fiere, forum per studenti, conferenze: gli appuntamenti del settore in Francia per incontrare i recruiter, vedere da vicino le innovazioni e trovare il tuo stage."
+  agenda_label: "Agenda del settore"
+  agenda_titre: "I prossimi appuntamenti"
+  impact_label: "Organizzati da Impact"
+  impact_titre: "I nostri eventi"
+  impact_vide: "I nostri primi eventi stanno arrivando: incontri sui mestieri, proiezioni di interviste e incontri con i nostri ospiti. Hai un'idea, o una sala da prestarci?"
+  impact_proposer: "Organizzare un evento con noi"
+  impact_cta: "Vuoi co-organizzare con noi una conferenza, una proiezione o una visita di cantiere?"
+  ajouter_label: "Manca un evento?"
+  ajouter_titre: "Organizzi un evento?"
+  ajouter_texte: "Forum, fiera, conferenza, visita di cantiere: se riguarda le costruzioni o l'energia, scrivici e lo aggiungiamo all'agenda."
+  ajouter_bouton: "Proponi un evento"
+  filtres_aria: "Filtra gli eventi"
+  filtre_type: "Tipo"
+  filtre_theme: "Tema"
+  filtre_ville: "Città"
+  filtre_periode: "Quando"
+  filtre_recherche: "Cerca"
+  recherche_placeholder: "Nome, città, organizzatore…"
+  tous: "Tutti"
+  tous_themes: "Tutti i temi"
+  toutes_villes: "Tutte le città"
+  toute_periode: "Tutte le date"
+  periode_30: "Nei prossimi 30 giorni"
+  periode_90: "Nei prossimi 3 mesi"
+  etudiants_seulement: "Aperti agli studenti"
+  gratuit_seulement: "Ingresso gratuito"
+  organises_impact: "Organizzati da Impact"
+  types:
+    salon: "Fiera"
+    conference: "Conferenza"
+    forum-etudiant: "Forum studenti"
+    concours: "Concorso"
+    job-dating: "Job dating"
+    portes-ouvertes: "Porte aperte"
+  types_pluriel:
+    salon: "Fiere"
+    conference: "Conferenze"
+    forum-etudiant: "Forum studenti"
+    concours: "Concorsi"
+    job-dating: "Job dating"
+    portes-ouvertes: "Porte aperte"
+  themes:
+    construction: "Costruzioni"
+    travaux-publics: "Lavori pubblici"
+    energie: "Energia"
+    immobilier: "Immobiliare"
+    ville-durable: "Città sostenibile"
+    architecture: "Architettura"
+  publics:
+    etudiants: "Per gli studenti"
+    professionnels: "Professionisti"
+    tous: "Aperto a tutti"
+  entrees:
+    gratuit: "Gratuito"
+    payant: "A pagamento"
+    sur-inscription: "Gratuito su iscrizione"
+    variable: "Prezzo secondo il profilo"
+    reserve-ecole: "Riservato agli studenti della scuola"
+  evt_1: "evento in arrivo"
+  evt_n: "eventi in arrivo"
+  aucun: "Nessun evento per questa scelta."
+  reinitialiser: "Cancella i filtri"
+  site_officiel: "Sito ufficiale"
+  ajouter_agenda: "Aggiungi al mio calendario"
+  google_agenda: "Google Calendar"
+  ics: "Apple, Outlook (.ics)"
+  pour_toi: "Per te:"
+  organise_par: "Organizzato da"
+  passes_voir: "Mostra anche gli eventi passati"
+  passe: "Passato"
+  en_cours: "In corso"
+  impact_badge: "Impact"
+  avertissement: "Agenda verificata il %date%. Le date possono cambiare: controlla sempre sul sito ufficiale prima di andare."
+  du_au: "dal %debut% al %fin%"
+  le: "il %date%"
+  accueil_label: "Agenda"
+  accueil_titre: "I prossimi eventi"
+  accueil_intro: "Fiere, forum e conferenze delle costruzioni e dell'energia, per incontrare i recruiter dal vivo."
+  accueil_tout: "Tutta l'agenda"

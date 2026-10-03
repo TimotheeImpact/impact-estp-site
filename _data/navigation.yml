@@ -12,6 +12,10 @@
   titre_en: "Internships"
   titre_it: "Stage"
   lien: /stages/
+- titre: Évènements
+  titre_en: "Events"
+  titre_it: "Eventi"
+  lien: /evenements/
 - titre: Entreprises
   titre_en: "Companies"
   titre_it: "Aziende"

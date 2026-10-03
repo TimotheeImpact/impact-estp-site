@@ -1,0 +1,60 @@
+{%- comment -%}
+  Un évènement de l'agenda (données dans _data/evenements.yml).
+  Usage : {% include evenement.html e=e %} ; compact=true pour l'accueil.
+{%- endcomment -%}
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign te = t.evenements -%}
+{%- assign e = include.e -%}
+{%- assign e_fin = e.fin | default: e.debut -%}
+{%- assign _mc = t.commun.mois_courts | split: "," -%}
+{%- assign _m = e.debut | date: "%-m" | minus: 1 -%}
+{%- capture e_titre %}{% include tr.html o=e k="titre" %}{% endcapture -%}
+{%- capture e_desc %}{% include tr.html o=e k="description" %}{% endcapture -%}
+{%- capture e_toi %}{% include tr.html o=e k="etudiants" %}{% endcapture -%}
+{%- capture e_dates %}{% include date-evt.html debut=e.debut fin=e_fin %}{% endcapture -%}
+{%- capture e_lieu %}{{ e.ville }}{% if e.lieu and e.lieu != "" and e.lieu != e.ville %} · {{ e.lieu }}{% endif %}{% endcapture -%}
+{%- capture e_cherche %}{{ e_titre }} {{ e.titre }} {{ e.ville }} {{ e.lieu }} {{ e.region }} {{ e.organisateur }}{% endcapture -%}
+{%- assign e_type = e.type -%}
+{%- if e.impact -%}{%- assign e_type = e.type | append: " impact" -%}{%- endif -%}
+<li class="evt{% if e.impact %} evt-impact{% endif %}"{% unless include.compact %} id="evt-{{ e.id }}"{% endunless %} data-type="{{ e_type }}" data-themes="{{ e.themes | join: ' ' }}" data-ville="{{ e.ville | slugify }}" data-debut="{{ e.debut | date: '%Y-%m-%d' }}" data-fin="{{ e_fin | date: '%Y-%m-%d' }}" data-public="{{ e.public }}" data-entree="{{ e.entree }}" data-texte="{{ e_cherche | downcase | strip_newlines | escape }}">
+  <div class="evt-date" aria-hidden="true">
+    <span class="evt-j">{{ e.debut | date: "%-d" }}</span>
+    <span class="evt-m">{{ _mc[_m] }}</span>
+  </div>
+  <div class="evt-main">
+    <div class="tags">
+      {%- if e.impact %}<span class="tag tag-impact">{{ te.impact_badge }}</span>{% endif %}
+      <span class="tag soon">{{ te.types[e.type] | default: e.type }}</span>
+      {%- unless include.compact %}
+      {%- if e.entree and te.entrees[e.entree] %}<span class="tag">{{ te.entrees[e.entree] }}</span>{% endif %}
+      {%- if e.public == "etudiants" %}<span class="tag tag-etu">{{ te.publics.etudiants }}</span>{% endif %}
+      {%- endunless %}
+      <span class="tag evt-now" hidden>{{ te.en_cours }}</span>
+      <span class="tag evt-past" hidden>{{ te.passe }}</span>
+    </div>
+    {%- if include.compact %}
+    {%- assign _p = page.prefixe | default: "" %}
+    <h3 class="evt-t"><a href="{{ _p | append: '/evenements/' | relative_url }}#evt-{{ e.id }}">{{ e_titre }}</a></h3>
+    {%- else %}
+    <h3 class="evt-t">{{ e_titre }}</h3>
+    {%- endif %}
+    <p class="evt-quand"><b>{{ e_dates }}</b> · {{ e_lieu }}</p>
+    {%- unless include.compact %}
+    {%- if e_desc != "" %}<p class="evt-desc">{{ e_desc }}</p>{% endif %}
+    {%- if e_toi != "" %}<p class="evt-toi"><b>{{ te.pour_toi }}</b> {{ e_toi }}</p>{% endif %}
+    {%- if e.organisateur and e.organisateur != "" %}<p class="evt-orga">{{ te.organise_par }} {{ e.organisateur }}</p>{% endif %}
+    <div class="evt-actions">
+      {%- if e.lien and e.lien != "" %}<a class="btn small" href="{{ e.lien }}">{{ te.site_officiel }}</a>{% endif %}
+      {%- capture g_details %}{{ e_desc }} {{ e.lien }}{% endcapture %}
+      {%- assign g_fin = e_fin | date: "%s" | plus: 86400 | date: "%Y%m%d" %}
+      <details class="add-cal">
+        <summary class="btn small ghost">{{ te.ajouter_agenda }}</summary>
+        <ul>
+          <li><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text={{ e_titre | uri_escape }}&amp;dates={{ e.debut | date: '%Y%m%d' }}/{{ g_fin }}&amp;location={{ e_lieu | uri_escape }}&amp;details={{ g_details | strip | uri_escape }}">{{ te.google_agenda }}</a></li>
+          <li><a href="#" class="ics-link" data-titre="{{ e_titre | escape }}" data-lieu="{{ e_lieu | escape }}" data-lien="{{ e.lien }}" data-desc="{{ e_desc | escape }}" data-uid="{{ e.id }}">{{ te.ics }}</a></li>
+        </ul>
+      </details>
+    </div>
+    {%- endunless %}
+  </div>
+</li>
