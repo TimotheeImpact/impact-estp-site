@@ -1,0 +1,13 @@
+# Témoignages affichés sur la page Entreprises.
+# Pour en ajouter un : copier un bloc, garder les guillemets.
+# « interview » = nom du fichier dans _interviews (sans .md), pour mettre un lien vers la vidéo. Laisser vide sinon.
+- citation: "Je serai très heureuse si cette vidéo suscite des vocations dans la construction. Merci de m'avoir ainsi interviewée. D'ailleurs, je trouve que tu es un remarquable animateur, avec beaucoup de fluidité."
+  nom: "Pascale Commun"
+  poste: "Directrice technique"
+  entreprise: "Aecon"
+  interview: "pascale-commun-aecon"
+- citation: "L'échange fut aussi passionnant pour moi et je vous remercie à nouveau pour cette opportunité. Merci aussi pour la vidéo très intéressante et fort bien réalisée."
+  nom: "Emmanuel Di Giacomo"
+  poste: "Senior EMEA BIM Ecosystem Business Development Executive"
+  entreprise: "Autodesk"
+  interview: ""

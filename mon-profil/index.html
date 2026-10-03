@@ -1,0 +1,60 @@
+---
+layout: default
+title: Mon profil
+description: "Bientôt, ton espace Impact ESTP : ton profil pour le vivier de stages, tes rapports de stage et tes avis anonymes sur les entreprises."
+---
+<div class="page-head">
+  <p class="label">Espace membre · Bientôt</p>
+  <h1>Ton espace Impact arrive bientôt</h1>
+  <p class="intro">Chaque étudiant et chaque entreprise pourra créer son compte pour retrouver son profil, ses candidatures et ses contenus au même endroit.</p>
+</div>
+
+<div class="pool">
+  <div class="why">
+    <div class="profile-cards">
+      <div class="profile-card">
+        <p class="label">Étudiant</p>
+        <h2>Ton profil étudiant</h2>
+        <ul>
+          <li>Ton profil pour le vivier : école, année, spécialité, CV.</li>
+          <li>Les offres de stage et d'emploi qui te correspondent.</li>
+          <li>Tes rapports de stage, à partager avec les autres étudiants.</li>
+          <li>Ton avis anonyme sur les entreprises où tu es passé.</li>
+        </ul>
+      </div>
+      <div class="profile-card">
+        <p class="label">Entreprise</p>
+        <h2>Votre espace entreprise</h2>
+        <ul>
+          <li>Vos offres de stage et d'emploi, diffusées aux étudiants.</li>
+          <li>Les profils présélectionnés du vivier Impact.</li>
+          <li>Vos interviews et contenus réalisés avec Impact.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <form class="sheet" aria-labelledby="t-connexion" onsubmit="return false">
+    <p class="form-closed">Les comptes ne sont pas encore ouverts.</p>
+    <fieldset class="all" disabled>
+      <legend class="visually-hidden">Connexion</legend>
+      <h2 class="full sheet-title" id="t-connexion">Se connecter</h2>
+      <div class="field full">
+        <label for="p-mail">E-mail</label>
+        <input type="email" id="p-mail" autocomplete="email">
+      </div>
+      <div class="field full">
+        <label for="p-mdp">Mot de passe</label>
+        <input type="password" id="p-mdp" autocomplete="current-password">
+      </div>
+      <div class="full actions" style="margin-top:4px">
+        <button type="submit" class="btn primary">Se connecter</button>
+        <button type="button" class="btn">Créer un compte</button>
+      </div>
+    </fieldset>
+    <div class="profile-wait">
+      <p><b>En attendant</b>, laisse ton profil dans le vivier : il sera repris dans ton futur compte.</p>
+      <a class="btn" href="{{ '/stages/' | relative_url }}">Rejoindre le vivier</a>
+    </div>
+  </form>
+</div>

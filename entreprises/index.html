@@ -30,6 +30,27 @@ description: "Marque employeur, séries tournées sur vos chantiers, stagiaires 
   </div>
 </section>
 
+{%- if site.data.temoignages.size > 0 %}
+<section class="block" aria-labelledby="t-avis">
+  <div class="head"><div><p class="label">Témoignages</p><h2 id="t-avis">Ce qu'en disent nos invités</h2></div></div>
+  <div class="quotes">
+    {%- for t in site.data.temoignages %}
+    <figure class="quote">
+      <blockquote><p>{{ t.citation }}</p></blockquote>
+      <figcaption>
+        <b>{{ t.nom }}</b>
+        <span>{{ t.poste }}{% if t.poste != "" and t.entreprise != "" %}, {% endif %}{{ t.entreprise }}</span>
+        {%- if t.interview and t.interview != "" %}
+        {%- assign iv = site.interviews | where: "slug", t.interview | first %}
+        {%- if iv %}<a href="{{ iv.url | relative_url }}">Voir son interview</a>{% endif %}
+        {%- endif %}
+      </figcaption>
+    </figure>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+
 <section class="block" aria-labelledby="t-comment">
   <div class="head"><div><p class="label">Méthode</p><h2 id="t-comment">Comment ça se passe</h2></div></div>
   <ol class="steps">

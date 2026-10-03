@@ -14,6 +14,8 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | Publier un article | dossier `_posts` |
 | La liste des écoles des formulaires | `_data/ecoles.yml` |
 | Les offres de la page Entreprises | `_data/offres.yml` |
+| Les témoignages de la page Entreprises | `_data/temoignages.yml` |
+| La page « Mon profil » (espace membre, pas encore ouvert) | `mon-profil/index.html` |
 | Les thèmes (bas-carbone, énergie…) | `_data/themes.yml` |
 | Le logo | `assets/img/logo.png` (et `logo-sombre.png` pour le mode sombre) |
 
