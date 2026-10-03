@@ -10,24 +10,21 @@ slogan: "Construis ton impact."    # affiché en bas à gauche, à côté du log
 description: "Le média étudiant de la construction et de l'énergie. Chaque semaine, une interview vidéo avec un dirigeant, un ingénieur ou un entrepreneur du BTP et de l'énergie."
 lang: fr_FR
 
-# Adresse du site.
-# Tant que le nom de domaine n'est pas branché, le site vit à l'adresse
-#   https://<ton-pseudo-github>.github.io/impact-estp-site
-# Le jour où impactestp.fr est branché : url: "https://impactestp.fr" et baseurl: ""
-url: "https://timotheeimpact.github.io"
-baseurl: "/impact-estp-site"
+# Adresse du site (le fichier CNAME à la racine du dépôt doit contenir la même adresse, sans https://).
+url: "https://impactestp.fr"
+baseurl: ""
 
 # ── Coordonnées ──────────────────────────────────────────────
-email: ""                         # adresse de contact affichée sur le site, par exemple contact@impactestp.fr une fois créée
+email: "contact@impactestp.fr"     # adresse de contact affichée sur le site
 youtube: "https://www.youtube.com/@ImpactESTP"
 linkedin: "https://www.linkedin.com/company/impact-estp"
 instagram: "https://www.instagram.com/impact.estp/"
 
 # ── Chiffres affichés sur la page d'accueil ──────────────────
 chiffres:
-  - valeur: "8"
+  - auto: publiees                # calculé tout seul à partir des fiches interviews
     legende: "interviews publiées"
-  - valeur: "10"
+  - auto: montage                 # fiches avec post_prod: true
     legende: "en montage"
   - valeur: "FR · IT"
     legende: "interviews en français et en italien"
@@ -53,16 +50,16 @@ presse_redaction:
     role: "Directeur de la publication"
 
 # ── Mesure d'audience (sans cookie) ──────────────────────────
-# Identifiant du site sur Umami (umami.is), au format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.
+# Jeton Cloudflare Web Analytics (une suite de lettres et chiffres, voir le guide).
 # Tant que c'est vide, aucune mesure n'est faite.
-umami_id: ""
+cloudflare_analytics: ""
 
 # ── Formulaires ──────────────────────────────────────────────
 # Adresse d'envoi des formulaires (vivier de stages et candidatures à l'équipe).
 # Voir le mode d'emploi dans README.md, partie « Brancher les formulaires ».
 # Tant que c'est vide, les formulaires affichent « Ouverture le 15 novembre ».
 formulaire_vivier: ""
-formulaire_equipe: ""
+formulaire_equipe: "https://formsubmit.co/contact@impactestp.fr"
 
 # ── Mentions légales (obligatoires en France) ────────────────
 association: "IMPACT ESTP"

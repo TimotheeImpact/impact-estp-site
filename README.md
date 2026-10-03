@@ -38,6 +38,13 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 
 La vignette de la vidéo s'affiche toute seule à partir du lien YouTube.
 
+Une interview pas encore en ligne a deux statuts possibles :
+- tournée mais en montage : `post_prod: true` (badge « En post-production ») ;
+- pas encore tournée : `a_venir: true` (badge « Tournage à venir »).
+Le jour de la sortie, enlève cette ligne et colle le lien YouTube. Les chiffres de l'accueil se mettent à jour tout seuls.
+
+Lien direct vers une sélection : `/interviews/?langue=it`, `/interviews/?statut=post-prod`, `/interviews/?theme=energie`.
+
 Si l'entreprise a payé pour le contenu, mets `partenaire: true` : la mention « Collaboration commerciale » s'affiche, comme la loi l'exige.
 
 ## Publier un article
@@ -59,12 +66,9 @@ Les formulaires (vivier de stages, candidatures à l'équipe avec CV) passent pa
 
 Tant qu'une ligne est vide, le formulaire correspondant reste fermé avec un message d'attente.
 
-## Brancher le nom de domaine impactestp.fr
+## Le nom de domaine impactestp.fr
 
-1. Dans `_config.yml`, mets `url: "https://impactestp.fr"` et `baseurl: ""`.
-2. Dans ce dépôt, va dans Settings, puis Pages, et écris `impactestp.fr` dans « Custom domain ».
-3. Chez le vendeur du nom de domaine, ajoute les enregistrements DNS indiqués par GitHub (4 lignes de type A et une ligne CNAME pour `www`).
-4. Une fois le domaine vérifié, coche « Enforce HTTPS ».
+Branché le 3 octobre 2026 : le fichier `CNAME` du dépôt contient `impactestp.fr`, et `_config.yml` a `url: "https://impactestp.fr"` et `baseurl: ""`. Chez OVH, la zone DNS a 4 lignes A sans sous-domaine (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153) et une ligne CNAME `www` vers `timotheeimpact.github.io.`. Ne supprime pas les lignes MX, SPF et DKIM : elles servent aux e-mails.
 
 ## Si quelque chose casse
 

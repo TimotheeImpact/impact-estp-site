@@ -41,8 +41,8 @@ Si tu estimes que tes droits ne sont pas respectés, tu peux adresser une récla
 ## Cookies et services extérieurs
 
 Ce site ne dépose **aucun cookie**.
-{% if site.umami_id != "" %}
-Pour savoir combien de personnes lisent le site et quelles pages les intéressent, nous utilisons **Umami**, un outil de mesure d'audience sans cookie. Il ne collecte aucune donnée permettant de t'identifier et ne te suit pas d'un site à l'autre : nous voyons seulement des chiffres globaux (nombre de visites, pages vues, pays, site d'origine).
+{% if site.cloudflare_analytics != "" %}
+Pour savoir combien de personnes lisent le site et quelles pages les intéressent, nous utilisons **Cloudflare Web Analytics**, un outil de mesure d'audience sans cookie. Il ne collecte aucune donnée permettant de t'identifier et ne te suit pas d'un site à l'autre : nous voyons seulement des chiffres globaux (nombre de visites, pages vues, pays, site d'origine). Cloudflare, Inc. peut traiter ces données aux États-Unis, dans le cadre du Data Privacy Framework UE-États-Unis.
 {% else %}
 Il n'utilise aucun outil de mesure d'audience.
 {% endif %}

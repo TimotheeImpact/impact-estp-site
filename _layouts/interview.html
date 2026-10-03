@@ -33,10 +33,12 @@ layout: default
       <div>
         {%- if page.logo %}
         <span class="plate big"><img src="{{ page.logo | relative_url }}" alt="{{ page.entreprise }}"></span>
+        {%- elsif page.vignette %}
+        <span class="plate big plate-text">{{ page.vignette }}</span>
         {%- else %}
-        <div class="no">{{ page.vignette | default: "BIENTÔT" }}</div>
+        <div class="no">BIENTÔT</div>
         {%- endif %}
-        <p><span class="stamp static">À venir</span> {{ page.quand | default: "Bientôt en ligne" }}</p>
+        <p><span class="stamp static{% if page.post_prod %} prod{% endif %}">{% if page.post_prod %}En post-production{% else %}Tournage à venir{% endif %}</span> {{ page.quand | default: "Bientôt en ligne" }}</p>
       </div>
     </div>
     {%- endif %}

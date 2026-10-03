@@ -24,6 +24,15 @@
     });
   });
 
+  // Filtres choisis dans l'adresse, par exemple /interviews/?langue=it ou ?statut=post-prod
+  var params = new URLSearchParams(window.location.search);
+  Object.keys(choix).forEach(function (g) {
+    var v = params.get(g);
+    if (!v) return;
+    var b = document.querySelector('.filters[data-group="' + g + '"] button[data-filter="' + v.replace(/[^a-z0-9-]/gi, '') + '"]');
+    if (b) b.click();
+  });
+
   // Filtre simple d'une liste (rubriques de la presse écrite)
   document.querySelectorAll('.filters[data-target]').forEach(function (group) {
     var g = group.getAttribute('data-group');
