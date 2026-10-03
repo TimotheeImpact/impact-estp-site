@@ -1,6 +1,7 @@
 ---
 title: "Le BIM et l'écosystème AEC chez Autodesk"
 invite: ""
+linkedin: ""
 poste: "EMEA BIM & AEC Ecosystem Development Manager"
 entreprise: "Autodesk"
 entreprise_id: autodesk

@@ -1,17 +1,42 @@
+# Les champs _en et _it sont les traductions anglaise et italienne (facultatives : sans elles, le texte français s'affiche).
 # Les quatre formats de la presse écrite, publiés à tour de rôle sur un cycle de 4 semaines.
 - id: decryptage
   nom: Décryptage
+  nom_en: "Explainer"
+  nom_it: "Approfondimento"
   principe: Un projet, une technologie ou une règle expliqués simplement.
+  principe_en: "A project, a technology or a rule explained simply."
+  principe_it: "Un progetto, una tecnologia o una norma spiegati in modo semplice."
   exemple: Comment on pose un câble électrique sous-marin entre un parc éolien et la côte.
+  exemple_en: "How a subsea power cable is laid between a wind farm and the coast."
+  exemple_it: "Come si posa un cavo elettrico sottomarino tra un parco eolico e la costa."
 - id: metier
   nom: Métier
+  nom_en: "Career"
+  nom_it: "Mestiere"
   principe: Un métier raconté par quelqu'un qui le fait.
+  principe_en: "A job described by someone who does it."
+  principe_it: "Un mestiere raccontato da chi lo fa."
   exemple: Une journée de conducteur de travaux sur un chantier de logements.
+  exemple_en: "A day as a site manager on a housing project."
+  exemple_it: "Una giornata da direttore di cantiere nella costruzione di alloggi."
 - id: debat
   nom: Enquête et débat
+  nom_en: "Investigation and debate"
+  nom_it: "Inchiesta e dibattito"
   principe: Une question du secteur, plusieurs points de vue.
+  principe_en: "One question about the sector, several points of view."
+  principe_it: "Una questione del settore, diversi punti di vista."
   exemple: Le béton bas carbone est-il prêt pour les grands ouvrages ?
+  exemple_en: "Is low-carbon concrete ready for major structures?"
+  exemple_it: "Il calcestruzzo a basse emissioni è pronto per le grandi opere?"
 - id: video
   nom: Prolongement vidéo
+  nom_en: "Video follow-up"
+  nom_it: "Seguito video"
   principe: Les idées clés d'une interview Impact, avec les meilleurs extraits.
+  principe_en: "The key ideas from an Impact interview, with the best clips."
+  principe_it: "Le idee chiave di un'intervista Impact, con i migliori estratti."
   exemple: Les 5 idées à retenir de notre dernière interview.
+  exemple_en: "5 key takeaways from our latest interview."
+  exemple_it: "Le 5 idee da ricordare della nostra ultima intervista."

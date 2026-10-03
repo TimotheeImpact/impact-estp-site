@@ -1,0 +1,185 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
+{%- assign interviews = site.interviews | sort: "numero" | reverse -%}
+{%- assign publiees = interviews | where_exp: "i", "i.youtube != ''" -%}
+{%- assign montage = interviews | where: "post_prod", true -%}
+{%- assign tournages = interviews | where: "a_venir", true -%}
+{%- assign articles = site.posts -%}
+
+<div class="hero{% if publiees.size > 0 %} with-teaser{% endif %}">
+  <div class="hero-text">
+    <p class="label rise">{{ t.accueil.label }}</p>
+    <h1 class="rise" style="--d:.08s">{{ t.accueil.titre }}</h1>
+    <p class="lede rise" style="--d:.2s">{{ t.accueil.lede }}</p>
+    <div class="actions rise" style="--d:.3s">
+      <a class="btn primary" href="{{ p | append: '/interviews/' | relative_url }}">{{ t.commun.voir_interviews }}</a>
+      <a class="btn" href="{{ p | append: '/stages/' | relative_url }}">{{ t.accueil.btn_stage }}</a>
+    </div>
+  </div>
+  {%- assign derniere = publiees.first %}
+  {%- if derniere %}
+  {%- include trad.html doc=derniere %}
+  {%- capture ytid %}{% include youtube-id.html lien=derniere.youtube %}{% endcapture %}
+  {%- assign d_poste = tr.poste | default: derniere.poste %}
+  <a class="teaser" href="{{ tr.url | relative_url }}">
+    <span class="teaser-flag">{{ t.accueil.nouvelle }}</span>
+    <span class="thumb">
+      {%- if site.accueil_clip and site.accueil_clip != "" %}
+      <video src="{{ site.accueil_clip | relative_url }}" poster="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      {%- else %}
+      <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" onerror="this.remove()" alt="" width="480" height="360">
+      {%- endif %}
+      <span class="play" aria-hidden="true"></span>
+    </span>
+    <span class="teaser-body">
+      <span class="teaser-t"{% if derniere.langue == "it" and page.lang != "it" %} lang="it"{% endif %}>{{ tr.title }}</span>
+      {%- if derniere.invite != "" %}
+      <span class="teaser-who"><b>{{ derniere.invite }}</b>{% if d_poste != "" or derniere.entreprise != "" %}<br>{{ d_poste }}{% if d_poste != "" and derniere.entreprise != "" %}, {% endif %}{{ derniere.entreprise }}{% endif %}</span>
+      {%- endif %}
+      <span class="teaser-go">{{ t.accueil.regarder }}{% if derniere.duree != "" %} · {{ derniere.duree }}{% endif %}</span>
+    </span>
+  </a>
+  {%- endif %}
+</div>
+
+<div class="stats" aria-label="{{ t.accueil.chiffres_aria }}">
+  {%- for c in site.chiffres %}
+  {%- assign n = nil %}
+  {%- if c.auto == "publiees" %}{% assign n = publiees.size %}{% elsif c.auto == "montage" %}{% assign n = montage.size %}{% elsif c.auto == "tournages" %}{% assign n = tournages.size %}{% endif %}
+  <div><div class="num"{% if n %} data-count="{{ n }}"{% endif %}>{% if n %}{{ n }}{% else %}{{ c.valeur }}{% endif %}</div><div class="cap">{% include tr.html o=c k="legende" %}</div></div>
+  {%- endfor %}
+  <div class="since"><div class="cap">{{ t.accueil.depuis }}</div></div>
+</div>
+
+{%- if site.invites_entreprises.size > 0 %}
+{%- capture logos %}
+    {%- for e in site.invites_entreprises %}
+    {%- assign fiche = nil %}
+    {%- if e.fiche and e.fiche != "" %}{% assign fiche_fr = site.entreprises | where: "slug", e.fiche | first %}{% if fiche_fr %}{% include trad.html doc=fiche_fr %}{% assign fiche = tr %}{% endif %}{% endif %}
+    <li>
+      {%- if fiche %}<a href="{{ fiche.url | relative_url }}" title="{{ e.nom }}">{% endif -%}
+      {%- if e.logo and e.logo != "" -%}
+      <img src="{{ '/assets/img/logos/' | append: e.logo | relative_url }}" alt="{{ e.nom }}">
+      {%- else -%}
+      <span class="logo-name">{{ e.nom }}</span>
+      {%- endif -%}
+      {%- if fiche %}</a>{% endif -%}
+    </li>
+    {%- endfor %}
+{%- endcapture %}
+<div class="guests">
+  <p class="label">{{ t.accueil.micro }}</p>
+  <div class="marquee">
+    <ul class="logo-strip" aria-label="{{ t.accueil.micro_aria }}">{{ logos }}
+    </ul>
+    <ul class="logo-strip logo-strip-copy" aria-hidden="true" inert>{{ logos }}
+    </ul>
+  </div>
+</div>
+{%- endif %}
+
+<section class="block reveal" aria-labelledby="t-interviews">
+  <div class="head">
+    <div>
+      <p class="label">{{ t.accueil.dernieres_label }}</p>
+      <h2 id="t-interviews">{{ t.accueil.dernieres_titre }}</h2>
+      <p>{{ t.accueil.dernieres_texte }}</p>
+    </div>
+    <a href="{{ p | append: '/interviews/' | relative_url }}">{{ t.commun.toutes_interviews }}</a>
+  </div>
+  <div class="grid">
+    {%- for i in publiees limit: 6 %}
+    {% include interview-card.html item=i %}
+    {%- endfor %}
+    {%- if publiees.size < 6 and site.youtube != "" %}
+    <a class="card more" href="{{ site.youtube }}">
+      <p class="label">YouTube</p>
+      <p>{{ t.accueil.youtube_texte }}</p>
+      <span class="go">{{ t.accueil.youtube_go }}</span>
+    </a>
+    {%- endif %}
+  </div>
+</section>
+
+{%- if montage.size > 0 or tournages.size > 0 %}
+<div class="soon-strip reveal">
+  <div>
+    <p class="label">{{ t.accueil.bientot_label }}</p>
+    <p class="soon-strip-t">{% if montage.size > 0 %}{{ montage.size }} {% if montage.size > 1 %}{{ t.accueil.bientot_prod_n }}{% else %}{{ t.accueil.bientot_prod_1 }}{% endif %}{% endif %}{% if montage.size > 0 and tournages.size > 0 %} {{ t.commun.et }} {% endif %}{% if tournages.size > 0 %}{{ tournages.size }} {% if tournages.size > 1 %}{{ t.accueil.bientot_venir_n }}{% else %}{{ t.accueil.bientot_venir_1 }}{% endif %}{% endif %}</p>
+  </div>
+  <div class="actions" style="margin-top:0">
+    {%- if montage.size > 0 %}<a class="btn" href="{{ p | append: '/interviews/' | relative_url }}?statut=post-prod">{{ t.accueil.voir_montage }}</a>{% endif %}
+    {%- if tournages.size > 0 %}<a class="btn" href="{{ p | append: '/interviews/' | relative_url }}?statut=a-venir">{{ t.accueil.voir_venir }}</a>{% endif %}
+  </div>
+</div>
+{%- endif %}
+
+<section class="block reveal" aria-labelledby="t-presse">
+  <div class="head">
+    <div>
+      <p class="label">{{ t.accueil.presse_label }}</p>
+      <h2 id="t-presse">{{ t.accueil.presse_titre }}</h2>
+      <p>{% include tr.html o=site k="presse_rendezvous" %}, {{ t.accueil.presse_texte }}</p>
+    </div>
+    <a href="{{ p | append: '/presse/' | relative_url }}">{% if articles.size > 0 %}{{ t.accueil.presse_tous }}{% else %}{{ t.accueil.presse_decouvrir }}{% endif %}</a>
+  </div>
+  {%- if articles.size > 0 %}
+  {%- assign une = articles.first %}
+  <div class="press">
+    <a class="lead-article" href="{{ une.url | relative_url }}" lang="fr">
+      <p class="label">{% include article-meta.html item=une %}</p>
+      <h3>{{ une.title }}</h3>
+      {%- if une.chapeau %}
+      <p>{{ une.chapeau }}</p>
+      {%- endif %}
+      <p class="label">{{ t.commun.par }} {{ une.auteur | default: t.commun.la_redaction }}</p>
+    </a>
+    <div>
+      {%- if t.commun.articles_en_francais != "" %}<p class="count">{{ t.commun.articles_en_francais }}</p>{% endif %}
+      {%- if articles.size > 1 %}
+      <ul class="article-list">
+        {%- for a in articles offset: 1 limit: 3 %}
+        <li><a href="{{ a.url | relative_url }}" lang="fr"><span class="label">{% include article-meta.html item=a %}</span><h3>{{ a.title }}</h3></a></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+      <p class="rules">{{ t.commun.nos_regles }}</p>
+    </div>
+  </div>
+  {%- else %}
+  <div class="empty">
+    <p class="label">{{ t.commun.bientot }}</p>
+    {%- capture date_presse %}{% include tr.html o=site k="presse_premier_article" %}{% endcapture %}
+    <p>{{ t.accueil.presse_bientot | replace: "%date%", date_presse }}</p>
+  </div>
+  {%- endif %}
+</section>
+
+<section class="block reveal" aria-labelledby="t-portes">
+  <div class="head">
+    <div>
+      <p class="label">{{ t.accueil.portes_label }}</p>
+      <h2 id="t-portes">{{ t.accueil.portes_titre }}</h2>
+    </div>
+  </div>
+  <div class="doors">
+    <a class="door" href="{{ p | append: '/stages/' | relative_url }}">
+      <p class="label">{{ t.accueil.porte1_label }}</p>
+      <h3>{{ t.accueil.porte1_titre }}</h3>
+      <p>{{ t.accueil.porte1_texte }}</p>
+      <span class="go">{{ t.accueil.porte1_go }}</span>
+    </a>
+    <a class="door" href="{{ p | append: '/entreprises/' | relative_url }}">
+      <p class="label">{{ t.accueil.porte2_label }}</p>
+      <h3>{{ t.accueil.porte2_titre }}</h3>
+      <p>{{ t.accueil.porte2_texte }}</p>
+      <span class="go">{{ t.accueil.porte2_go }}</span>
+    </a>
+    <a class="door" href="{{ p | append: '/a-propos/#equipe' | relative_url }}">
+      <p class="label">{{ t.accueil.porte3_label }}</p>
+      <h3>{{ t.accueil.porte3_titre }}</h3>
+      <p>{{ t.accueil.porte3_texte }}</p>
+      <span class="go">{{ t.accueil.porte3_go }}</span>
+    </a>
+  </div>
+</section>

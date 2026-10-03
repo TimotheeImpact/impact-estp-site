@@ -1,14 +1,15 @@
 {%- comment -%}
-  Grille des fiches entreprises (dossier _entreprises), avec logo et nombre d'interviews.
+  Grille des fiches entreprises (dossier _entreprises), avec logo et secteur.
 {%- endcomment -%}
 {%- assign fiches = site.entreprises | sort: "nom" -%}
 <ul class="co-grid">
   {%- for e in fiches %}
-  {%- assign n = site.interviews | where: "entreprise_id", e.slug | size %}
-  <li><a href="{{ e.url | relative_url }}">
+  {%- include trad.html doc=e %}
+  {%- assign e_secteur = tr.secteur | default: e.secteur %}
+  <li><a href="{{ tr.url | relative_url }}">
     <span class="plate{% if e.logo == "" %} plate-text{% endif %}">{% if e.logo != "" %}<img src="{{ '/assets/img/logos/' | append: e.logo | relative_url }}" alt="" loading="lazy">{% else %}{{ e.nom }}{% endif %}</span>
     <span class="co-name">{{ e.nom }}</span>
-    {%- if e.secteur != "" %}<span class="co-sector">{{ e.secteur }}</span>{% endif %}
+    {%- if e_secteur != "" %}<span class="co-sector">{{ e_secteur }}</span>{% endif %}
   </a></li>
   {%- endfor %}
 </ul>

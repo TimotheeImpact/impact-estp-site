@@ -2,6 +2,7 @@
 title: "Pack Chantier : trois vidéos sur un chantier Kaufman & Broad"
 description: "Trois vidéos tournées sur un chantier de Kaufman & Broad en octobre et novembre 2026, pour montrer le métier tel qu'il est."
 invite: ""
+linkedin: ""
 poste: ""
 entreprise: "Kaufman & Broad"
 entreprise_id: kaufman-broad

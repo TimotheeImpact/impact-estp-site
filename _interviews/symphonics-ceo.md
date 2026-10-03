@@ -1,6 +1,7 @@
 ---
 title: "Le CEO de Symphonics"
 invite: ""
+linkedin: ""
 poste: "Chief Executive Officer"
 entreprise: "Symphonics"
 entreprise_id: symphonics

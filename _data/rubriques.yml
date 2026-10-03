@@ -1,16 +1,37 @@
+# Les champs _en et _it sont les traductions anglaise et italienne (facultatives : sans elles, le texte français s'affiche).
 # Rubriques de la presse écrite. « id » sert dans les articles (rubrique: energie), « nom » s'affiche sur le site.
 - id: grands-projets
   nom: Grands projets
+  nom_en: "Major projects"
+  nom_it: "Grandi progetti"
   sujets: Grand Paris Express, nouveau nucléaire EPR2, éolien en mer, rénovation des ponts et ouvrages d'art.
+  sujets_en: "Grand Paris Express, new EPR2 nuclear reactors, offshore wind, renovation of bridges and civil engineering structures."
+  sujets_it: "Grand Paris Express, nuovo nucleare EPR2, eolico offshore, ristrutturazione di ponti e opere d'arte."
 - id: energie
   nom: Énergie
+  nom_en: "Energy"
+  nom_it: "Energia"
   sujets: Hydrogène vert, stockage par batteries, réseaux électriques, navires câbliers, géothermie.
+  sujets_en: "Green hydrogen, battery storage, power grids, cable-laying ships, geothermal energy."
+  sujets_it: "Idrogeno verde, accumulo a batterie, reti elettriche, navi posacavi, geotermia."
 - id: batiment-durable
   nom: Bâtiment durable
+  nom_en: "Sustainable building"
+  nom_it: "Edilizia sostenibile"
   sujets: La RE2020 expliquée, réemploi des matériaux, construction bois en hauteur, rénovation énergétique.
+  sujets_en: "The RE2020 regulation explained, reuse of materials, high-rise timber construction, energy renovation."
+  sujets_it: "La normativa RE2020 spiegata, riuso dei materiali, edifici alti in legno, riqualificazione energetica."
 - id: innovation
   nom: Innovation
+  nom_en: "Innovation"
+  nom_it: "Innovazione"
   sujets: BIM, jumeaux numériques, IA et drones sur chantier, start-up du béton bas carbone.
+  sujets_en: "BIM, digital twins, AI and drones on construction sites, low-carbon concrete start-ups."
+  sujets_it: "BIM, gemelli digitali, IA e droni in cantiere, start-up del calcestruzzo a basse emissioni."
 - id: metiers
   nom: Métiers et carrière
+  nom_en: "Jobs and careers"
+  nom_it: "Mestieri e carriera"
   sujets: Retours de stage, double diplôme, bureau d'études ou travaux, salaires d'entrée, alternance, portraits d'entreprises.
+  sujets_en: "Internship stories, double degrees, design office or site work, starting salaries, work-study placements, company profiles."
+  sujets_it: "Racconti di stage, doppio titolo, ufficio tecnico o cantiere, stipendi d'ingresso, apprendistato, ritratti di aziende."

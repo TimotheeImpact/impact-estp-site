@@ -7,5 +7,6 @@ secteur: "Immobilier connecté et responsable"
 pays: "France"
 site_web: ""
 logo: "oicr.png"
+wikipedia: ""
 presentation: ""
 ---

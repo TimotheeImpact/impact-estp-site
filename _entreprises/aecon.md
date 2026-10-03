@@ -6,6 +6,7 @@ nom_complet: ""
 secteur: "Construction et infrastructures"
 pays: "Canada"
 site_web: "https://www.aecon.com"
-logo: ""
+logo: "aecon.png"
+wikipedia: "https://en.wikipedia.org/wiki/Aecon"
 presentation: "Groupe canadien de construction et d'infrastructures. Pascale Commun y est directrice technique, à Montréal."
 ---

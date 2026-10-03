@@ -2,30 +2,46 @@
   Une offre de stage (données dans _data/offres_stage.yml).
   Usage : {% include offre-stage.html offre=o %} ; sans_logo=true sur la fiche de l'entreprise.
 {%- endcomment -%}
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
 {%- assign o = include.offre -%}
 {%- assign fiche = nil -%}
-{%- if o.entreprise_id and o.entreprise_id != "" -%}{%- assign fiche = site.entreprises | where: "slug", o.entreprise_id | first -%}{%- endif -%}
-<article class="job">
+{%- if o.entreprise_id and o.entreprise_id != "" -%}
+  {%- assign fiche_fr = site.entreprises | where: "slug", o.entreprise_id | first -%}
+  {%- if fiche_fr -%}{%- include trad.html doc=fiche_fr -%}{%- assign fiche = tr -%}{%- endif -%}
+{%- endif -%}
+{%- capture o_titre %}{% include tr.html o=o k="titre" %}{% endcapture -%}
+{%- capture o_type %}{% include tr.html o=o k="type" %}{% endcapture -%}
+{%- capture o_duree %}{% include tr.html o=o k="duree" %}{% endcapture -%}
+{%- capture o_debut %}{% include tr.html o=o k="debut" %}{% endcapture -%}
+{%- capture o_lieu %}{% include tr.html o=o k="lieu" %}{% endcapture -%}
+{%- capture o_desc %}{% include tr.html o=o k="description" %}{% endcapture -%}
+<article class="job{% if include.sans_logo %} job-sans-logo{% endif %}">
   {%- unless include.sans_logo %}
-  <span class="plate job-plate{% unless fiche and fiche.logo != "" %} plate-text{% endunless %}">
-    {%- if fiche and fiche.logo != "" %}<img src="{{ '/assets/img/logos/' | append: fiche.logo | relative_url }}" alt="{{ o.entreprise }}" loading="lazy">{% else %}{{ o.entreprise }}{% endif -%}
+  <span class="plate job-plate{% unless fiche and fiche_fr.logo != "" %} plate-text{% endunless %}">
+    {%- if fiche and fiche_fr.logo != "" %}<img src="{{ '/assets/img/logos/' | append: fiche_fr.logo | relative_url }}" alt="{{ o.entreprise }}" loading="lazy">{% else %}{{ o.entreprise }}{% endif -%}
   </span>
   {%- endunless %}
   <div class="job-main">
-    <div class="tags">
-      {%- if o.type and o.type != "" %}<span class="tag soon">{{ o.type }}</span>{% endif -%}
-    </div>
-    <h3>{{ o.titre }}</h3>
+    {%- if o_type != "" %}
+    <div class="tags"><span class="tag soon">{{ o_type }}</span></div>
+    {%- endif %}
+    <h3>{{ o_titre }}</h3>
     <p class="job-co">{% if fiche %}<a href="{{ fiche.url | relative_url }}">{{ o.entreprise }}</a>{% else %}{{ o.entreprise }}{% endif %}</p>
-    {%- capture infos -%}{% if o.lieu and o.lieu != "" %}{{ o.lieu }}{% endif %}{% if o.duree and o.duree != "" %}{% if o.lieu and o.lieu != "" %} · {% endif %}{{ o.duree }}{% endif %}{% if o.debut and o.debut != "" %} · Début : {{ o.debut }}{% endif %}{%- endcapture -%}
+    {%- capture infos -%}{% if o_lieu != "" %}{{ o_lieu }}{% endif %}{% if o_duree != "" %}{% if o_lieu != "" %} · {% endif %}{{ o_duree }}{% endif %}{% if o_debut != "" %} · {{ t.offre.debut }} {{ o_debut }}{% endif %}{%- endcapture -%}
     {%- if infos != "" %}<p class="job-facts">{{ infos }}</p>{% endif %}
-    {%- if o.description and o.description != "" %}<p class="job-desc">{{ o.description }}</p>{% endif %}
+    {%- if o_desc != "" %}<p class="job-desc">{{ o_desc }}</p>{% endif %}
   </div>
   <div class="job-go">
     {%- if o.lien and o.lien != "" %}
-    <a class="btn primary" href="{{ o.lien }}">Voir l'offre</a>
+    {%- assign premier = o.lien | slice: 0 %}
+    {%- if premier == "/" %}
+    <a class="btn primary" href="{{ p | append: o.lien | relative_url }}">{{ t.offre.postuler }}</a>
     {%- else %}
-    <a class="btn primary" href="{{ '/stages/' | relative_url }}#form-vivier">Postuler via le vivier</a>
+    <a class="btn primary" href="{{ o.lien }}">{{ t.offre.voir }}</a>
+    {%- endif %}
+    {%- else %}
+    <a class="btn primary" href="{{ p | append: '/stages/' | relative_url }}#form-vivier">{{ t.offre.postuler_vivier }}</a>
     {%- endif %}
   </div>
 </article>

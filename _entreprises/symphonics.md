@@ -7,5 +7,6 @@ secteur: ""
 pays: ""
 site_web: ""
 logo: "symphonics.png"
+wikipedia: ""
 presentation: ""
 ---

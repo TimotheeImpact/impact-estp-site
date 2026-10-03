@@ -1,0 +1,10 @@
+{%- comment -%}
+  Cherche la traduction d'une fiche (interview ou entreprise) dans la langue de la page.
+  Usage : {% include trad.html doc=i %} puis utiliser « tr » (la fiche traduite, ou la fiche française s'il n'y a pas de traduction).
+{%- endcomment -%}
+{%- assign tr = include.doc -%}
+{%- if page.lang and page.lang != "fr" -%}
+  {%- assign _col = include.doc.collection | append: "_" | append: page.lang -%}
+  {%- assign _t = site[_col] | where: "slug", include.doc.slug | first -%}
+  {%- if _t -%}{%- assign tr = _t -%}{%- endif -%}
+{%- endif -%}

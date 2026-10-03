@@ -7,5 +7,6 @@ secteur: "Énergies renouvelables"
 pays: "France"
 site_web: ""
 logo: "ser.png"
+wikipedia: "https://fr.wikipedia.org/wiki/Syndicat_des_%C3%A9nergies_renouvelables"
 presentation: "Organisation professionnelle qui rassemble les acteurs des énergies renouvelables en France."
 ---

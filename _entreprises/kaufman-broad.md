@@ -7,5 +7,6 @@ secteur: "Promotion immobilière"
 pays: "France"
 site_web: "https://www.kaufmanbroad.fr"
 logo: "kaufman-broad.jpg"
+wikipedia: "https://fr.wikipedia.org/wiki/Kaufman_%26_Broad"
 presentation: "Promoteur immobilier français."
 ---

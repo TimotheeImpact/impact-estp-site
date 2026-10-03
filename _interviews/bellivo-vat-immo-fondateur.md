@@ -1,6 +1,7 @@
 ---
 title: "Le fondateur associé de Bellivo Immo et VAT IMMO"
 invite: ""
+linkedin: ""
 poste: "Fondateur associé"
 entreprise: "Bellivo Immo et VAT IMMO"
 entreprise_id: bellivo

@@ -1,0 +1,52 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign interviews = site.interviews | sort: "numero" | reverse -%}
+<div class="page-head">
+  <p class="label">{{ t.interviews.label }}</p>
+  <h1>{{ t.interviews.titre }}</h1>
+  <p class="intro">{{ t.interviews.intro }}</p>
+</div>
+
+<section class="block" style="padding-top:32px" aria-label="{{ t.interviews.liste_aria }}">
+  <div class="filter-rows">
+    {%- assign nb_venir = interviews | where: "a_venir", true | size %}
+    {%- assign nb_prod = interviews | where: "post_prod", true | size %}
+    {%- if nb_venir > 0 or nb_prod > 0 %}
+    <div class="filters" role="group" aria-label="{{ t.interviews.statut_aria }}" data-group="statut">
+      <span class="label">{{ t.interviews.statut }}</span>
+      <button type="button" aria-pressed="true" data-filter="all">{{ t.interviews.toutes }}</button>
+      <button type="button" aria-pressed="false" data-filter="publiee">{{ t.interviews.publiees }}</button>
+      {%- if nb_prod > 0 %}<button type="button" aria-pressed="false" data-filter="post-prod">{{ t.carte.post_prod }}</button>{% endif %}
+      {%- if nb_venir > 0 %}<button type="button" aria-pressed="false" data-filter="a-venir">{{ t.carte.a_venir }}</button>{% endif %}
+    </div>
+    {%- endif %}
+    <div class="filters" role="group" aria-label="{{ t.interviews.langue_aria }}" data-group="langue">
+      <span class="label">{{ t.interviews.langue }}</span>
+      <button type="button" aria-pressed="true" data-filter="all">{{ t.interviews.toutes }}</button>
+      {%- for l in site.data.langues %}
+      {%- assign n = interviews | where: "langue", l.id | size %}
+      {%- if n > 0 %}
+      <button type="button" aria-pressed="false" data-filter="{{ l.id }}">{% include tr.html o=l k="nom" %}</button>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+    <div class="filters" role="group" aria-label="{{ t.interviews.theme_aria }}" data-group="theme">
+      <span class="label">{{ t.interviews.theme }}</span>
+      <button type="button" aria-pressed="true" data-filter="all">{{ t.interviews.tous }}</button>
+      {%- for th in site.data.themes %}
+      {%- if th.id == "studio" %}{% assign n = interviews | where: "studio", true | size %}{% else %}{% assign n = interviews | where: "theme", th.id | size %}{% endif %}
+      {%- if n > 0 %}
+      <button type="button" aria-pressed="false" data-filter="{{ th.id }}">{% include tr.html o=th k="nom" %}</button>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+  </div>
+  <p class="count" id="count" aria-live="polite" data-un="{{ t.interviews.interview_1 }}" data-plusieurs="{{ t.interviews.interview_n }}" data-aucune="{{ t.interviews.aucune }}" data-tous-statuts="{{ t.interviews.tous_statuts }}">{{ interviews.size }} {% if interviews.size > 1 %}{{ t.interviews.interview_n }}{% else %}{{ t.interviews.interview_1 }}{% endif %}</p>
+  <div class="grid" id="cards">
+    {%- for i in interviews %}
+    {% include interview-card.html item=i %}
+    {%- endfor %}
+  </div>
+  {%- if site.youtube != "" %}
+  <p style="margin-top:28px"><a class="btn" href="{{ site.youtube }}">{{ t.interviews.youtube_btn }}</a></p>
+  {%- endif %}
+</section>

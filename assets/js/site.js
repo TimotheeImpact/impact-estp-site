@@ -1,4 +1,6 @@
 (function () {
+  var langue = (document.documentElement.getAttribute('lang') || 'fr').slice(0, 2);
+
   // Filtres par langue et par thème (page Interviews), combinés
   var cards = document.querySelectorAll('#cards .card');
   var count = document.getElementById('count');
@@ -20,19 +22,46 @@
           c.hidden = !show;
           if (show) n++;
         });
-        if (count) count.textContent = n === 0 ? 'Aucune interview pour ce choix' : n + (n > 1 ? ' interviews' : ' interview');
+        afficherCompte(n);
       });
     });
   });
 
+  // Nombre d'interviews affichées, dans la langue de la page (textes lus sur la balise #count)
+  function afficherCompte(n) {
+    if (!count) return;
+    count.textContent = '';
+    if (n > 0) {
+      count.textContent = n + ' ' + (n > 1 ? count.getAttribute('data-plusieurs') : count.getAttribute('data-un'));
+      return;
+    }
+    count.appendChild(document.createTextNode((count.getAttribute('data-aucune') || '') + ' '));
+    // Aucun résultat avec le filtre « Publiées » : un bouton remet tous les statuts
+    var tous = document.querySelector('.filters[data-group="statut"] button[data-filter="all"]');
+    if (tous && choix.statut !== 'all') {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'count-reset';
+      b.textContent = count.getAttribute('data-tous-statuts') || 'Voir tous les statuts';
+      b.addEventListener('click', function () { tous.click(); });
+      count.appendChild(b);
+    }
+  }
+
   // Filtres choisis dans l'adresse, par exemple /interviews/?langue=it ou ?statut=post-prod
   var params = new URLSearchParams(window.location.search);
+  var filtreDansAdresse = false;
   Object.keys(choix).forEach(function (g) {
     var v = params.get(g);
     if (!v) return;
     var b = document.querySelector('.filters[data-group="' + g + '"] button[data-filter="' + v.replace(/[^a-z0-9-]/gi, '') + '"]');
-    if (b) b.click();
+    if (b) { b.click(); filtreDansAdresse = true; }
   });
+  // Sans filtre dans l'adresse, la page Interviews s'ouvre sur les interviews publiées
+  if (!filtreDansAdresse) {
+    var publiees = document.querySelector('.filters[data-group="statut"] button[data-filter="publiee"]');
+    if (publiees) publiees.click();
+  }
 
   // Filtre simple d'une liste (rubriques de la presse écrite)
   document.querySelectorAll('.filters[data-target]').forEach(function (group) {
@@ -89,8 +118,12 @@
         objet.add(opt, objet.options[1] || null);
       }
     }
+    // ?offre=… (bouton « Postuler » d'une offre de stage) : l'offre est ajoutée au message et à l'objet du mail
+    var offre = document.getElementById('c-offre');
+    var offreVoulue = (params.get('offre') || '').slice(0, 160);
+    if (offre && offreVoulue) offre.value = offreVoulue;
     var sujet = document.querySelector('#form-contact input[name="_subject"]');
-    var majSujet = function () { if (sujet && objet.value) sujet.value = 'Impact ESTP, contact : ' + objet.value; };
+    var majSujet = function () { if (sujet && objet.value) sujet.value = 'Impact ESTP, contact : ' + objet.value + (offreVoulue ? ' (' + offreVoulue + ')' : '') + (langue !== 'fr' ? ' (' + langue.toUpperCase() + ')' : ''); };
     objet.addEventListener('change', majSujet);
     majSujet();
   }
@@ -127,10 +160,66 @@
       });
       if (trop.length && err) {
         e.preventDefault();
-        err.textContent = 'Un fichier dépasse 5 Mo. Enregistre-le en PDF plus léger et réessaie.';
+        err.textContent = form.getAttribute('data-err-fichier') || 'Un fichier dépasse 5 Mo. Enregistre-le en PDF plus léger et réessaie.';
         err.hidden = false;
         trop[0].focus();
       }
     });
   });
+
+  // Parties dépliables : un lien vers #offres (ou un titre à l'intérieur) ouvre la bonne partie
+  var ouvrirDepuisAdresse = function () {
+    var id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+    var cible = document.getElementById(id);
+    if (!cible) return;
+    var fold = cible.closest('details.fold');
+    if (fold && !fold.open) {
+      fold.open = true;
+      cible.scrollIntoView({ block: 'start' });
+    }
+  };
+  ouvrirDepuisAdresse();
+  window.addEventListener('hashchange', ouvrirDepuisAdresse);
+
+  var calme = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Chiffres de l'accueil qui défilent jusqu'à leur valeur
+  if (!calme) {
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var fin = parseInt(el.getAttribute('data-count'), 10);
+      if (!fin || fin < 2) return;
+      var texte = el.textContent;
+      var debut = null;
+      var duree = 1200;
+      el.textContent = texte.replace(String(fin), '0');
+      var pas = function (ts) {
+        if (debut === null) debut = ts;
+        var k = Math.min(1, (ts - debut) / duree);
+        var v = Math.round(fin * (1 - Math.pow(1 - k, 3)));
+        el.textContent = texte.replace(String(fin), String(v));
+        if (k < 1) window.requestAnimationFrame(pas);
+      };
+      window.setTimeout(function () { window.requestAnimationFrame(pas); }, 450);
+    });
+  }
+
+  // Sections de l'accueil qui apparaissent quand on fait défiler la page
+  var aReveler = document.querySelectorAll('.reveal');
+  if (!calme && aReveler.length && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('js-reveal');
+    var obs = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('vu'); obs.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    aReveler.forEach(function (el) { obs.observe(el); });
+  }
+
+  // Menu des langues : se referme avec Échap ou en cliquant ailleurs
+  var menuLangue = document.querySelector('.lang-menu');
+  if (menuLangue) {
+    document.addEventListener('click', function (e) { if (menuLangue.open && !menuLangue.contains(e.target)) menuLangue.open = false; });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuLangue.open) { menuLangue.open = false; menuLangue.querySelector('summary').focus(); } });
+  }
 })();

@@ -1,0 +1,7 @@
+{%- comment -%}
+  Texte d'une donnée dans la langue de la page, avec repli sur le français.
+  Usage : {% include tr.html o=theme k="nom" %} affiche theme.nom_en sur une page anglaise s'il existe, sinon theme.nom.
+{%- endcomment -%}
+{%- assign _k = include.k | append: "_" | append: page.lang -%}
+{%- assign _v = include.o[_k] -%}
+{%- if page.lang == "fr" or _v == nil or _v == "" -%}{{ include.o[include.k] }}{%- else -%}{{ _v }}{%- endif -%}

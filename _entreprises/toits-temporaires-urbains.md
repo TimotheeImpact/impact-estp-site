@@ -7,5 +7,6 @@ secteur: ""
 pays: "France"
 site_web: ""
 logo: "toits-temporaires-urbains.jpg"
+wikipedia: ""
 presentation: ""
 ---

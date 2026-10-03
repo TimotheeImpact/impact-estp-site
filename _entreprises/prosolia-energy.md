@@ -7,5 +7,6 @@ secteur: "Énergie solaire photovoltaïque"
 pays: ""
 site_web: ""
 logo: "prosolia-energy.png"
+wikipedia: ""
 presentation: "Entreprise spécialisée dans les centrales photovoltaïques."
 ---

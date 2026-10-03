@@ -1,0 +1,110 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
+{%- assign f = t.formulaire -%}
+{%- assign action = site.formulaire_equipe -%}
+<div class="page-head">
+  <p class="label">{{ t.apropos.label }}</p>
+  <h1>{{ t.apropos.titre }}</h1>
+  <p class="intro">{{ t.apropos.intro }}</p>
+</div>
+
+<div class="folds">
+{% include fold-ouvre.html id="pourquoi" titre=t.apropos.pourquoi_titre ouvert=true %}
+  <div class="split" style="padding-top:0">
+    <div class="prose">
+      {%- for para in t.apropos.pourquoi %}
+      <p>{{ para }}</p>
+      {%- endfor %}
+    </div>
+    <aside class="facts" aria-label="{{ t.apropos.bref_aria }}">
+      <div><p class="label">{{ t.apropos.cree_en }}</p><div class="v">{{ t.apropos.cree_en_v }}</div></div>
+      <div><p class="label">{{ t.apropos.structure }}</p><div class="v">{{ t.apropos.structure_v }} {{ site.association }}</div></div>
+      <div><p class="label">{{ t.apropos.ecole }}</p><div class="v">{{ t.apropos.ecole_v }}</div></div>
+      <div><p class="label">{{ t.apropos.fondateur }}</p><div class="v">{{ site.directeur_publication }}</div></div>
+      {%- if site.instagram != "" or site.linkedin != "" %}
+      <div><p class="label">{{ t.apropos.suivre }}</p><div class="v">
+        {%- if site.youtube != "" %}<a href="{{ site.youtube }}">YouTube</a>{% endif %}
+        {%- if site.linkedin != "" %} · <a href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
+        {%- if site.instagram != "" %} · <a href="{{ site.instagram }}">Instagram</a>{% endif -%}
+      </div></div>
+      {%- endif %}
+    </aside>
+  </div>
+</div></details>
+
+{% include fold-ouvre.html id="vision" titre=t.apropos.vision_titre %}
+  <div class="prose">
+    <p>{{ t.apropos.vision_intro }}</p>
+    <ul>
+      {%- for v in t.apropos.vision %}
+      <li>{{ v }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</div></details>
+
+{% include fold-ouvre.html id="equipe" label=t.apropos.equipe_label titre=t.apropos.equipe_titre %}
+  <p class="fold-intro">{{ t.apropos.equipe_intro }}</p>
+  <div class="pool" style="padding-top:0">
+    <div class="why">
+      <p>{{ t.apropos.equipe_faire }}</p>
+      <ul style="margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px">
+        {%- for r in t.apropos.equipe_roles %}
+        <li>{{ r }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+    <form class="sheet js-form" id="form-equipe" method="POST" enctype="multipart/form-data" accept-charset="UTF-8"{% if action != "" %} action="{{ action }}"{% endif %} data-err-fichier="{{ f.fichier_trop_gros }}">
+      {% include form-endpoint.html action=action texte=f.candidatures_bientot %}
+      <fieldset class="all"{% if action == "" %} disabled{% endif %}>
+        <legend class="visually-hidden">{{ f.ta_candidature }}</legend>
+        <input type="hidden" name="formulaire" value="Candidature équipe">
+        <input type="hidden" name="langue_du_site" value="{{ page.lang }}">
+        {% include form-hidden.html sujet="Impact ESTP : nouvelle candidature pour l'équipe" type="equipe" %}
+        <div class="field">
+          <label for="e-prenom">{{ f.nom }}</label>
+          <input type="text" id="e-prenom" name="nom" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="e-mail">{{ f.email }}</label>
+          <input type="email" id="e-mail" name="email" autocomplete="email" required>
+        </div>
+        <div class="full">{% include select-ecole.html id="e-ecole" %}</div>
+        <div class="field full">
+          <label for="e-annee">{{ f.annee }}</label>
+          <select id="e-annee" name="annee" required>
+            <option value="" selected disabled>{{ f.choisis }}</option>
+            {%- for o in f.annees_equipe %}
+            <option value="{{ o.v }}">{{ o.l }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <fieldset class="chips full">
+          <legend>{{ f.envies }}</legend>
+          {%- for o in f.envies_liste %}
+          <label class="chip"><input type="checkbox" name="envies" value="{{ o.v }}"><span>{{ o.l }}</span></label>
+          {%- endfor %}
+        </fieldset>
+        <div class="field full">
+          <label for="e-msg">{{ f.un_mot }}</label>
+          <textarea id="e-msg" name="message"></textarea>
+        </div>
+        <div class="field">
+          <label for="e-cv">{{ f.cv }}</label>
+          <input type="file" id="e-cv" name="cv" accept=".pdf,.doc,.docx,.odt" data-max-mo="5">
+        </div>
+        <div class="field">
+          <label for="e-lettre">{{ f.lettre }}</label>
+          <input type="file" id="e-lettre" name="lettre_motivation" accept=".pdf,.doc,.docx,.odt" data-max-mo="5">
+        </div>
+        <p class="hint full">{{ f.fichiers }}</p>
+        {%- capture lien_conf %}{{ p | append: '/confidentialite/' | relative_url }}{% endcapture %}
+        <label class="consent full"><input type="checkbox" name="consentement" value="oui" required> <span>{{ f.consent_equipe | replace: "%lien%", lien_conf }}</span></label>
+        <div class="full"><button class="btn primary" type="submit">{{ f.envoyer_candidature }}</button></div>
+      </fieldset>
+      <p class="form-note error" data-err hidden></p>
+    </form>
+  </div>
+</div></details>
+</div>

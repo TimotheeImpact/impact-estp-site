@@ -2,6 +2,7 @@
 title: "Far vivere una dimora di lusso sul Lago Maggiore"
 description: "Fabio Vigitello dirige Villa e Palazzo Aminta à Stresa, seul hôtel du lac Majeur italien membre de The Leading Hotels of the World. Interview en italien."
 invite: "Fabio Vigitello"
+linkedin: ""
 poste: "General Manager"
 entreprise: "Villa e Palazzo Aminta"
 entreprise_id: villa-palazzo-aminta

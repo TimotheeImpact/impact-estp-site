@@ -1,9 +1,13 @@
+# Les champs _en et _it sont les traductions anglaise et italienne (facultatives : sans elles, le texte français s'affiche).
 # Offres de stage, d'alternance ou d'emploi proposées par les entreprises (page Stages).
 # Pour ajouter une offre : enlève les # devant le bloc d'exemple, remplis-le, et garde les espaces.
 # entreprise_id = nom du fichier de l'entreprise dans _entreprises (sans .md), pour afficher son logo et un lien vers sa fiche.
-# lien = page de l'offre chez l'entreprise ; si vide, le bouton propose de postuler via le vivier Impact.
+# lien = page de l'offre chez l'entreprise, ou le formulaire de contact (/contact/?objet=Stage&offre=Nom de l'offre) ;
+#        si vide, le bouton propose de postuler via le vivier Impact.
 #
 # - titre: "Stage assistant conducteur de travaux"
+#   titre_en: "Assistant site manager internship"
+#   titre_it: "Stage come assistente direttore di cantiere"
 #   entreprise: "NGE"
 #   entreprise_id: "nge"
 #   type: "Stage"              # Stage, Alternance, CDI, VIE…
@@ -12,3 +16,21 @@
 #   debut: "Février 2027"
 #   description: "Deux ou trois phrases sur les missions et le profil recherché."
 #   lien: ""
+
+- titre: "Stage de fin d'études, avec possibilité d'embauche"
+  titre_en: "Final-year internship, with possible hiring"
+  titre_it: "Stage di fine studi, con possibilità di assunzione"
+  entreprise: "Toits Temporaires Urbains"
+  entreprise_id: "toits-temporaires-urbains"
+  type: "Stage"
+  type_en: "Internship"
+  type_it: "Stage"
+  lieu: ""
+  duree: "6 mois"
+  duree_en: "6 months"
+  duree_it: "6 mesi"
+  debut: ""
+  description: "Stage de fin d'études de 6 mois, avec possibilité de recrutement à l'issue du stage."
+  description_en: "6-month final-year internship, with the possibility of being hired at the end."
+  description_it: "Stage di fine studi di 6 mesi, con possibilità di assunzione al termine dello stage."
+  lien: "/contact/?objet=Stage&offre=Stage de fin d'études chez Toits Temporaires Urbains"

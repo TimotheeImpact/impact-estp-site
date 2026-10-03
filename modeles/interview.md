@@ -11,6 +11,8 @@ title: "Titre de la vidéo, sans le nom de l'invité"
 description: "Une phrase qui donne envie de regarder."
 
 invite: "Prénom Nom"
+# Lien du profil LinkedIn de l'invité (affiché sur la fiche de l'interview et sur la fiche entreprise ; laisser vide sinon)
+linkedin: ""
 poste: "Directeur technique"
 entreprise: "Nom de l'entreprise"
 # Nom du fichier de la fiche entreprise dans _entreprises, sans .md (laisser vide s'il n'y en a pas)

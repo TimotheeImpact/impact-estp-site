@@ -50,7 +50,7 @@ Lorsqu'un contenu est réalisé dans le cadre d'un partenariat rémunéré, il p
 
 ## Données personnelles et cookies
 
-Ce site ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience. Les informations envoyées par les formulaires sont traitées comme expliqué dans notre [politique de confidentialité]({{ '/confidentialite/' | relative_url }}).
+Ce site ne dépose aucun cookie{% if site.cloudflare_analytics != "" %} ; il mesure son audience avec un outil sans cookie qui ne permet pas de t'identifier{% else %} et n'utilise aucun outil de mesure d'audience{% endif %}. Les informations envoyées par les formulaires sont traitées comme expliqué dans notre [politique de confidentialité]({{ '/confidentialite/' | relative_url }}).
 
 ## Crédits
 

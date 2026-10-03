@@ -1,11 +1,22 @@
+# Les champs _en et _it sont les traductions anglaise et italienne (facultatives : sans elles, le texte français s'affiche).
 # Menu en haut du site
 - titre: Interviews
+  titre_en: "Interviews"
+  titre_it: "Interviste"
   lien: /interviews/
 - titre: Presse
+  titre_en: "Press"
+  titre_it: "Stampa"
   lien: /presse/
 - titre: Stages
+  titre_en: "Internships"
+  titre_it: "Stage"
   lien: /stages/
 - titre: Entreprises
+  titre_en: "Companies"
+  titre_it: "Aziende"
   lien: /entreprises/
 - titre: À propos
+  titre_en: "About"
+  titre_it: "Chi siamo"
   lien: /a-propos/

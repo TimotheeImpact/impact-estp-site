@@ -7,5 +7,6 @@ secteur: "Logement social et intermédiaire"
 pays: "France"
 site_web: "https://www.cdc-habitat.fr"
 logo: "cdc-habitat.png"
+wikipedia: "https://fr.wikipedia.org/wiki/CDC_Habitat"
 presentation: "Filiale immobilière de la Caisse des Dépôts, bailleur de logements sociaux et intermédiaires."
 ---

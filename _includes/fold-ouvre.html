@@ -1,0 +1,13 @@
+{%- comment -%}
+  Début d'une partie dépliable (à refermer avec </div></details>).
+  Usage : {% include fold-ouvre.html id="offres" label="Offres" titre="Les offres de stage" ouvert=true compte=3 %}
+{%- endcomment -%}
+<details class="fold" id="{{ include.id }}"{% if include.ouvert %} open{% endif %}>
+  <summary>
+    <span class="fold-t">
+      {%- if include.label and include.label != "" %}<span class="label">{{ include.label }}</span>{% endif %}
+      <h2 id="t-{{ include.id }}">{{ include.titre }}{% if include.compte and include.compte > 0 %} <span class="fold-n">{{ include.compte }}</span>{% endif %}</h2>
+    </span>
+    <span class="fold-arrow" aria-hidden="true"></span>
+  </summary>
+  <div class="fold-body">

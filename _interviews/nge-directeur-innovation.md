@@ -1,6 +1,7 @@
 ---
 title: "Le directeur innovation de NGE"
 invite: ""
+linkedin: ""
 poste: "Directeur innovation"
 entreprise: "NGE"
 entreprise_id: nge

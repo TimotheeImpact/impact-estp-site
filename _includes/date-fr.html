@@ -1,12 +1,15 @@
 {%- comment -%}
-  Date en français. Usage : {% include date-fr.html date=page.date %}
+  Date dans la langue de la page. Usage : {% include date-fr.html date=page.date %}
   Ajoute format="mois" pour n'afficher que « novembre 2026 ».
 {%- endcomment -%}
-{%- assign mois_fr = "janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre" | split: "," -%}
+{%- assign _t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign _mois = _t.commun.mois | split: "," -%}
 {%- assign m = include.date | date: "%-m" | minus: 1 -%}
 {%- assign j = include.date | date: "%-d" -%}
 {%- if include.format == "mois" -%}
-{{ mois_fr[m] }} {{ include.date | date: "%Y" }}
+{{ _mois[m] }} {{ include.date | date: "%Y" }}
+{%- elsif page.lang == "en" -%}
+{{ j }} {{ _mois[m] }} {{ include.date | date: "%Y" }}
 {%- else -%}
-{%- if j == "1" -%}1er{%- else -%}{{ j }}{%- endif %} {{ mois_fr[m] }} {{ include.date | date: "%Y" }}
+{%- if j == "1" -%}{{ _t.commun.premier_du_mois }}{%- else -%}{{ j }}{%- endif %} {{ _mois[m] }} {{ include.date | date: "%Y" }}
 {%- endif -%}

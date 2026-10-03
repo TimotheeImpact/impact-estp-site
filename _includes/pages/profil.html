@@ -1,0 +1,56 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
+<div class="page-head">
+  <p class="label">{{ t.profil.label }}</p>
+  <h1>{{ t.profil.titre }}</h1>
+  <p class="intro">{{ t.profil.intro }}</p>
+</div>
+
+<div class="pool">
+  <div class="why">
+    <div class="profile-cards">
+      <div class="profile-card">
+        <p class="label">{{ t.profil.etudiant_label }}</p>
+        <h2>{{ t.profil.etudiant_titre }}</h2>
+        <ul>
+          {%- for l in t.profil.etudiant %}
+          <li>{{ l }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div class="profile-card">
+        <p class="label">{{ t.profil.entreprise_label }}</p>
+        <h2>{{ t.profil.entreprise_titre }}</h2>
+        <ul>
+          {%- for l in t.profil.entreprise %}
+          <li>{{ l }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <form class="sheet" aria-labelledby="t-connexion" onsubmit="return false">
+    <p class="form-closed">{{ t.profil.pas_ouverts }}</p>
+    <fieldset class="all" disabled>
+      <legend class="visually-hidden">{{ t.profil.connexion }}</legend>
+      <h2 class="full sheet-title" id="t-connexion">{{ t.profil.se_connecter }}</h2>
+      <div class="field full">
+        <label for="p-mail">{{ t.formulaire.email }}</label>
+        <input type="email" id="p-mail" autocomplete="email">
+      </div>
+      <div class="field full">
+        <label for="p-mdp">{{ t.profil.mot_de_passe }}</label>
+        <input type="password" id="p-mdp" autocomplete="current-password">
+      </div>
+      <div class="full actions" style="margin-top:4px">
+        <button type="submit" class="btn primary">{{ t.profil.se_connecter }}</button>
+        <button type="button" class="btn">{{ t.profil.creer }}</button>
+      </div>
+    </fieldset>
+    <div class="profile-wait">
+      <p>{{ t.profil.attente }}</p>
+      <a class="btn" href="{{ p | append: '/stages/' | relative_url }}">{{ t.commun.rejoindre_vivier }}</a>
+    </div>
+  </form>
+</div>

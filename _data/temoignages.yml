@@ -1,12 +1,19 @@
+# Les champs _en et _it sont les traductions anglaise et italienne (facultatives : sans elles, le texte français s'affiche).
 # Témoignages affichés sur la page Entreprises.
 # Pour en ajouter un : copier un bloc, garder les guillemets.
 # « interview » = nom du fichier dans _interviews (sans .md), pour mettre un lien vers la vidéo. Laisser vide sinon.
 - citation: "Je serai très heureuse si cette vidéo suscite des vocations dans la construction. Merci de m'avoir ainsi interviewée. D'ailleurs, je trouve que tu es un remarquable animateur, avec beaucoup de fluidité."
+  citation_en: "I'd be very happy if this video inspires people to go into construction. Thank you for interviewing me like this. And I must say, you're a remarkable host, with great ease."
+  citation_it: "Sarò molto felice se questo video farà nascere delle vocazioni nelle costruzioni. Grazie per avermi intervistata così. Tra l'altro, trovo che tu sia un conduttore notevole, con grande scioltezza."
   nom: "Pascale Commun"
   poste: "Directrice technique"
+  poste_en: "Technical Director"
+  poste_it: "Direttrice tecnica"
   entreprise: "Aecon"
   interview: "pascale-commun-aecon"
 - citation: "L'échange fut aussi passionnant pour moi et je vous remercie à nouveau pour cette opportunité. Merci aussi pour la vidéo très intéressante et fort bien réalisée."
+  citation_en: "The conversation was just as fascinating for me, and thank you again for this opportunity. Thank you also for the very interesting and very well-made video."
+  citation_it: "Lo scambio è stato appassionante anche per me e vi ringrazio ancora per questa opportunità. Grazie anche per il video, molto interessante e realizzato davvero bene."
   nom: "Emmanuel Di Giacomo"
   poste: "EMEA BIM & AEC Ecosystem Development Manager"
   entreprise: "Autodesk"

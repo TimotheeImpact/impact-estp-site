@@ -7,5 +7,8 @@ secteur: "Construction et entretien de routes"
 pays: "France"
 site_web: ""
 logo: "eiffage-route.jpg"
+wikipedia: "https://fr.wikipedia.org/wiki/Eiffage"
+wikipedia_en: "https://en.wikipedia.org/wiki/Eiffage"
+wikipedia_it: "https://it.wikipedia.org/wiki/Eiffage"
 presentation: "Branche routière du groupe Eiffage."
 ---

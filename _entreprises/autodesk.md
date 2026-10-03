@@ -7,5 +7,8 @@ secteur: "Logiciels de conception et BIM"
 pays: "International"
 site_web: "https://www.autodesk.com"
 logo: "autodesk.png"
+wikipedia: "https://fr.wikipedia.org/wiki/Autodesk"
+wikipedia_en: "https://en.wikipedia.org/wiki/Autodesk"
+wikipedia_it: "https://it.wikipedia.org/wiki/Autodesk"
 presentation: "Éditeur de logiciels de conception, dont AutoCAD et Revit, très utilisés pour le BIM dans la construction."
 ---

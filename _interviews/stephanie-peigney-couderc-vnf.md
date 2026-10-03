@@ -2,6 +2,7 @@
 title: "VNF et le potentiel insoupçonné du transport fluvial"
 description: "Ingénieure des ponts, des eaux et des forêts, Stéphanie Peigney-Couderc gère 1 500 km de voies navigables chez VNF pour faire du fleuve un outil de décarbonation et de logistique."
 invite: "Stéphanie Peigney-Couderc"
+linkedin: "https://www.linkedin.com/in/stephanie-peigney-couderc"
 poste: "Directrice territoriale adjointe"
 entreprise: "VNF"
 entreprise_id: vnf

@@ -1,0 +1,54 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
+<div class="page-head">
+  <p class="label">{{ t.groupe.label }}</p>
+  <h1>{{ t.groupe.titre }}</h1>
+  <p class="intro">{{ t.groupe.intro }}</p>
+</div>
+
+<section class="block" style="padding-top:32px" aria-label="{{ t.groupe.projet_aria }}">
+  <div class="hook">
+    <p class="label">{{ t.groupe.hook_label }}</p>
+    <p class="hook-q">{{ t.groupe.hook_q }}</p>
+    <p>{{ t.groupe.hook_texte }}</p>
+    <div class="actions" style="margin-top:20px">
+      <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Lancer Impact dans mon école' | uri_escape }}">{{ t.groupe.lancer }}</a>
+      {%- if site.linkedin != "" %}
+      <a class="btn" href="{{ site.linkedin }}">LinkedIn</a>
+      {%- endif %}
+      {%- if site.instagram != "" %}
+      <a class="btn" href="{{ site.instagram }}">{{ t.groupe.instagram }}</a>
+      {%- endif %}
+    </div>
+  </div>
+</section>
+
+<div class="folds">
+{% include fold-ouvre.html id="apport" label=t.groupe.apport_label titre=t.groupe.apport_titre ouvert=true %}
+  <div class="offers">
+    {%- for a in t.groupe.apports %}
+    <div class="offer">
+      <p class="label">{{ a.l }}</p>
+      <h3>{{ a.t }}</h3>
+      <p>{{ a.p }}</p>
+    </div>
+    {%- endfor %}
+  </div>
+</div></details>
+
+{% include fold-ouvre.html id="etapes" label=t.groupe.etapes_label titre=t.groupe.etapes_titre %}
+  <ol class="steps">
+    {%- for e in t.groupe.etapes %}
+    <li><b>{{ e.t }}</b><p>{{ e.p }}</p></li>
+    {%- endfor %}
+  </ol>
+</div></details>
+
+{% include fold-ouvre.html id="reseau" label=t.groupe.reseau_label titre=t.groupe.reseau_titre %}
+  <div class="network">
+    <div class="node on"><b>Impact ESTP</b><span>{{ t.groupe.estp_lieu }}</span></div>
+    <a class="node on" href="{{ p | append: '/interviews/' | relative_url }}?langue=it"><b>Impact Italia <svg class="flag" viewBox="0 0 3 2" width="21" height="14" role="img" aria-label="{{ t.groupe.drapeau_italien }}"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#ffffff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg></b><span>{{ t.groupe.italia_texte }}</span><span class="node-go">{{ t.groupe.italia_go }}</span></a>
+    <a class="node" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Lancer Impact dans mon école' | uri_escape }}"><b>{{ t.groupe.ton_ecole }}</b><span>{{ t.groupe.ton_ecole_texte }}</span></a>
+  </div>
+</div></details>
+</div>

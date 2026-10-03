@@ -2,6 +2,7 @@
 title: "Un decennio di evoluzione nel turismo di lusso"
 description: "Maldives, Dubaï, Bahamas, lac Majeur : Ivan Quaglia raconte 20 ans d'hôtellerie de luxe et de tourisme expérientiel. Interview en italien."
 invite: "Ivan Quaglia"
+linkedin: ""
 poste: "Expert en hôtellerie de luxe"
 entreprise: ""
 theme: international

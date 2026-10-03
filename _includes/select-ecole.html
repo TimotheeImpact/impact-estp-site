@@ -1,18 +1,20 @@
-{%- comment -%} Liste des écoles, modifiable dans _data/ecoles.yml {%- endcomment -%}
+{%- comment -%} Liste des écoles, modifiable dans _data/ecoles.yml. Les valeurs envoyées restent en français. {%- endcomment -%}
+{%- assign _tf = site.data.textes[page.lang].formulaire | default: site.data.textes.fr.formulaire -%}
 <div class="field">
-  <label for="{{ include.id }}">École</label>
+  <label for="{{ include.id }}">{{ _tf.ecole }}</label>
   <select id="{{ include.id }}" name="ecole" data-autre="{{ include.id }}-autre" required>
-    <option value="" selected disabled>Choisis ton école</option>
+    <option value="" selected disabled>{{ _tf.choisis_ecole }}</option>
     {%- for g in site.data.ecoles %}
-    <optgroup label="{{ g.groupe }}">
+    <optgroup label="{{ _tf.ecoles_groupes[g.groupe] | default: g.groupe }}">
       {%- for e in g.ecoles %}
-      <option>{{ e }}</option>
+      {%- assign _lib = _tf.ecoles_libelles[e] %}
+      {%- if _lib %}<option value="{{ e }}">{{ _lib }}</option>{% else %}<option>{{ e }}</option>{% endif %}
       {%- endfor %}
     </optgroup>
     {%- endfor %}
   </select>
 </div>
 <div class="field" id="{{ include.id }}-autre-champ">
-  <label for="{{ include.id }}-autre">Si autre, laquelle ?</label>
+  <label for="{{ include.id }}-autre">{{ _tf.si_autre }}</label>
   <input type="text" id="{{ include.id }}-autre" name="ecole_autre" autocomplete="organization">
 </div>

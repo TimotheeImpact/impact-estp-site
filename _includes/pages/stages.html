@@ -1,0 +1,112 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
+{%- assign f = t.formulaire -%}
+{%- assign action = site.formulaire_vivier -%}
+{%- assign offres = site.data.offres_stage -%}
+<div class="page-head">
+  <p class="label">{{ t.stages.label }}</p>
+  <h1>{{ t.stages.titre }}</h1>
+  <p class="intro">{{ t.stages.intro }}</p>
+</div>
+
+<div class="folds">
+{% include fold-ouvre.html id="vivier" label=t.stages.vivier_label titre=t.stages.vivier_titre ouvert=true %}
+  <p class="fold-intro">{{ t.stages.vivier_intro }}</p>
+  <div class="pool">
+    <div class="why">
+      <ol>
+        <li>{{ t.stages.etape1 }}</li>
+        <li>{{ t.stages.etape2 }}</li>
+        <li>{{ t.stages.etape3 }}</li>
+      </ol>
+      <div class="soon-box">
+        <p class="label">{{ t.commun.bientot }}</p>
+        <p>{{ t.stages.bientot_espace }}</p>
+      </div>
+    </div>
+
+    <form class="sheet js-form" id="form-vivier" method="POST" accept-charset="UTF-8"{% if action != "" %} action="{{ action }}"{% endif %}>
+      {% include form-endpoint.html action=action texte=t.stages.ouverture %}
+      <fieldset class="all"{% if action == "" %} disabled{% endif %}>
+        <legend class="visually-hidden">{{ f.ton_profil }}</legend>
+        <input type="hidden" name="formulaire" value="Vivier de stages">
+        <input type="hidden" name="langue_du_site" value="{{ page.lang }}">
+        {% include form-hidden.html sujet="Impact ESTP : nouvelle inscription au vivier" type="vivier" %}
+        <div class="full">{% include select-ecole.html id="v-ecole" %}</div>
+        <div class="field">
+          <label for="v-annee">{{ f.annee }}</label>
+          <select id="v-annee" name="annee" required>
+            <option value="" selected disabled>{{ f.choisis }}</option>
+            {%- for o in f.annees %}
+            <option value="{{ o.v }}">{{ o.l }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <div class="field">
+          <label for="v-spe">{{ f.specialite }}</label>
+          <select id="v-spe" name="specialite">
+            {%- for o in f.specialites %}
+            <option value="{{ o.v }}">{{ o.l }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <fieldset class="chips full">
+          <legend>{{ f.je_cherche }}</legend>
+          {%- for o in f.recherches %}
+          <label class="chip"><input type="checkbox" name="recherche" value="{{ o.v }}"{% if forloop.first %} checked{% endif %}><span>{{ o.l }}</span></label>
+          {%- endfor %}
+        </fieldset>
+        <div class="field">
+          <label for="v-dispo">{{ f.dispo }}</label>
+          <input type="text" id="v-dispo" name="disponibilite" placeholder="{{ f.dispo_exemple }}">
+        </div>
+        <div class="field">
+          <label for="v-mail">{{ f.email }}</label>
+          <input type="email" id="v-mail" name="email" placeholder="{{ f.email_exemple }}" autocomplete="email" required>
+        </div>
+        {%- capture lien_conf %}{{ p | append: '/confidentialite/' | relative_url }}{% endcapture %}
+        <label class="consent full"><input type="checkbox" name="consentement" value="oui" required> <span>{{ f.consent_vivier | replace: "%lien%", lien_conf }}</span></label>
+        <div class="full"><button class="btn primary" type="submit">{{ t.commun.rejoindre_vivier }}</button></div>
+      </fieldset>
+    </form>
+  </div>
+</div></details>
+
+{% include fold-ouvre.html id="offres" label=t.stages.offres_label titre=t.stages.offres_titre compte=offres.size %}
+  <p class="fold-intro">{{ t.stages.offres_intro }}</p>
+  {%- if offres and offres.size > 0 %}
+  <div class="jobs">
+    {%- for o in offres %}
+    {% include offre-stage.html offre=o %}
+    {%- endfor %}
+  </div>
+  {%- else %}
+  <div class="empty">
+    <p class="label">{{ t.commun.bientot }}</p>
+    <p>{{ t.stages.offres_vide }}{% if action == "" %}{{ t.stages.offres_vide_date }}{% endif %}.</p>
+  </div>
+  {%- endif %}
+  <div class="contact-box">
+    <p>{{ t.stages.recrutez }}</p>
+    <a class="btn" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Proposer une offre de stage' | uri_escape }}">{{ t.stages.proposer_offre }}</a>
+  </div>
+</div></details>
+
+{%- if site.entreprises.size > 0 %}
+{% include fold-ouvre.html id="entreprises" label=t.stages.entreprises_label titre=t.stages.entreprises_titre compte=site.entreprises.size %}
+  <p class="fold-intro">{{ t.stages.entreprises_intro }}</p>
+  {% include entreprises-grille.html %}
+</div></details>
+{%- endif %}
+
+{% include fold-ouvre.html id="faq" label=t.stages.faq_label titre=t.stages.faq_titre %}
+  <div class="faq narrow">
+    {%- for q in t.stages.faq %}
+    <details>
+      <summary>{{ q.q }}</summary>
+      <p>{{ q.r | replace: "%email%", site.email }}</p>
+    </details>
+    {%- endfor %}
+  </div>
+</div></details>
+</div>

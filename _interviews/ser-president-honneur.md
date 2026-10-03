@@ -1,6 +1,7 @@
 ---
 title: "Le président d'honneur du Syndicat des énergies renouvelables"
 invite: ""
+linkedin: ""
 poste: "Président d'honneur"
 entreprise: "Syndicat des énergies renouvelables (SER)"
 entreprise_id: ser

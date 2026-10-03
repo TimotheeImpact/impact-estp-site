@@ -7,5 +7,6 @@ secteur: "Promotion immobilière"
 pays: "France"
 site_web: "https://www.bouygues-immobilier.com"
 logo: "bouygues-immobilier.jpg"
+wikipedia: "https://fr.wikipedia.org/wiki/Bouygues_Immobilier"
 presentation: "Promoteur immobilier du groupe Bouygues."
 ---

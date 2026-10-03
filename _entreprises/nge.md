@@ -7,5 +7,6 @@ secteur: "Travaux publics et bâtiment"
 pays: "France"
 site_web: "https://www.nge.fr"
 logo: "nge.png"
+wikipedia: "https://fr.wikipedia.org/wiki/Groupe_NGE"
 presentation: "Groupe français indépendant de travaux publics et de bâtiment."
 ---

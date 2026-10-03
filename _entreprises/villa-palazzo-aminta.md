@@ -6,6 +6,7 @@ nom_complet: ""
 secteur: "Hôtellerie de luxe"
 pays: "Italie (Stresa)"
 site_web: ""
-logo: ""
+logo: "villa-palazzo-aminta.jpg"
+wikipedia: ""
 presentation: "Hôtel cinq étoiles de Stresa, seul hôtel du lac Majeur italien membre de The Leading Hotels of the World, dans une demeure historique de plus de cent ans."
 ---

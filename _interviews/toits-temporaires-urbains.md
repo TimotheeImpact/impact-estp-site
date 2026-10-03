@@ -1,6 +1,7 @@
 ---
 title: "La directrice générale de Toits Temporaires Urbains"
 invite: ""
+linkedin: ""
 poste: "Directrice générale"
 entreprise: "Toits Temporaires Urbains"
 entreprise_id: toits-temporaires-urbains

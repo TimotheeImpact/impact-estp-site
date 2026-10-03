@@ -1,31 +1,32 @@
+{%- assign p = page.prefixe | default: "" -%}
 <footer>
   <div class="wrap">
-    <div class="titleblock" aria-label="Cartouche">
+    <div class="titleblock" aria-label="{{ t.pied.cartouche }}">
       <div class="tb-logo">
         <picture>
           <source srcset="{{ '/assets/img/logo-sombre.png' | relative_url }}" media="(prefers-color-scheme: dark)">
           <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Impact ESTP" width="252" height="120" loading="lazy">
         </picture>
-        <p class="tb-slogan">{{ site.slogan }}</p>
+        <p class="tb-slogan">{% include tr.html o=site k="slogan" %}</p>
       </div>
-      <div><p class="label">École</p><div class="v">ESTP Paris</div></div>
-      <div><p class="label">Format</p><div class="v">1 interview / semaine</div></div>
-      <div><p class="label">Indice</p><div class="v">Mis à jour le {% include date-fr.html date=site.time %}</div></div>
+      <div><p class="label">{{ t.pied.ecole }}</p><div class="v">{{ t.pied.ecole_v }}</div></div>
+      <div><p class="label">{{ t.pied.format }}</p><div class="v">{{ t.pied.format_v }}</div></div>
+      <div><p class="label">{{ t.pied.indice }}</p><div class="v">{{ t.pied.maj }} {% include date-fr.html date=site.time %}</div></div>
     </div>
     <div class="foot">
       <div class="foot-links">
         {% if site.youtube != "" %}<a href="{{ site.youtube }}" rel="me">YouTube</a>{% endif %}
         {% if site.linkedin != "" %}<a href="{{ site.linkedin }}" rel="me">LinkedIn</a>{% endif %}
         {% if site.instagram != "" %}<a href="{{ site.instagram }}" rel="me">Instagram</a>{% endif %}
-        <a href="{{ '/contact/' | relative_url }}">Contact</a>
-        <a href="{{ '/presse/flux.xml' | relative_url }}">Flux RSS</a>
-        <a href="{{ '/mentions-legales/' | relative_url }}">Mentions légales</a>
-        <a href="{{ '/confidentialite/' | relative_url }}">Confidentialité</a>
+        <a href="{{ p | append: '/contact/' | relative_url }}">{{ t.pied.contact }}</a>
+        <a href="{{ '/presse/flux.xml' | relative_url }}">{{ t.pied.flux }}</a>
+        <a href="{{ p | append: '/mentions-legales/' | relative_url }}">{{ t.pied.mentions }}</a>
+        <a href="{{ p | append: '/confidentialite/' | relative_url }}">{{ t.pied.confidentialite }}</a>
       </div>
       {%- if site.instagram != "" %}
       <a class="qr" href="{{ site.instagram }}">
-        <img src="{{ '/assets/img/instagram-qr.png' | relative_url }}" alt="QR code du compte Instagram impact.estp" width="96" height="110" loading="lazy">
-        <span>Scanne pour nous suivre sur Instagram</span>
+        <img src="{{ '/assets/img/instagram-qr.png' | relative_url }}" alt="{{ t.pied.qr_alt }}" width="96" height="110" loading="lazy">
+        <span>{{ t.pied.qr_texte }}</span>
       </a>
       {%- endif %}
     </div>

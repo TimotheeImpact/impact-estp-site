@@ -1,0 +1,471 @@
+# Textes du site en italien. Mêmes clés que fr.yml (le fichier de référence), traduites.
+# Tu peux modifier le texte entre guillemets. Ne change pas les mots avant les deux-points.
+# Les balises <b>…</b> mettent un mot en gras.
+
+commun:
+  aller_contenu: "Vai al contenuto"
+  accueil_alt: "Impact ESTP, home"
+  nav_principale: "Navigazione principale"
+  groupe_impact: "Groupe Impact"
+  mon_profil: "Il mio profilo"
+  langue: "Lingua"
+  langue_choisir: "Cambia lingua"
+  langues:
+    fr: "Français"
+    en: "English"
+    it: "Italiano"
+  voir_interviews: "Guarda le interviste"
+  toutes_interviews: "Tutte le interviste"
+  retour_accueil: "Torna alla home"
+  rejoindre_vivier: "Entra nel bacino di talenti"
+  rejoins_vivier: "Entra nel bacino di talenti Impact"
+  tu_cherches_stage: "Cerchi uno stage?"
+  bientot: "Prossimamente"
+  bientot_majuscules: "PROSSIMAMENTE"
+  afficher_masquer: "Mostra o nascondi questa sezione"
+  et: "e"
+  par: "Di"
+  la_redaction: "Redazione"
+  min_lecture: "min di lettura"
+  nos_regles: "<b>Le nostre regole.</b> Ogni cifra è documentata con la sua fonte, ogni citazione è riletta dalla persona intervistata e ogni contenuto finanziato da un'azienda è segnalato come tale."
+  articles_en_francais: "I nostri articoli sono scritti in francese."
+  mois: "gennaio,febbraio,marzo,aprile,maggio,giugno,luglio,agosto,settembre,ottobre,novembre,dicembre"
+  premier_du_mois: "1"
+
+pied:
+  cartouche: "Cartiglio"
+  ecole: "Scuola"
+  ecole_v: "ESTP Paris"
+  format: "Formato"
+  format_v: "1 intervista / settimana"
+  indice: "Revisione"
+  maj: "Aggiornato il"
+  contact: "Contatti"
+  flux: "Feed RSS"
+  mentions: "Note legali"
+  confidentialite: "Privacy"
+  qr_alt: "Codice QR dell'account Instagram impact.estp"
+  qr_texte: "Inquadra il codice per seguirci su Instagram"
+
+carte:
+  a_venir: "Riprese in arrivo"
+  post_prod: "In post-produzione"
+  duree: "Durata:"
+  en_studio: "In studio"
+  partenaire: "Collaborazione commerciale"
+  francais: "Francese"
+  italien: "Italiano"
+
+accueil:
+  label: "Il media studentesco delle costruzioni e dell'energia"
+  titre: "Il mestiere dell'ingegnere, raccontato da <em>chi lo fa.</em>"
+  lede: "Ogni settimana, un'intervista video con un dirigente, un ingegnere o un imprenditore delle costruzioni e dell'energia. Per scegliere il tuo stage e il tuo mestiere sapendo davvero come sono."
+  btn_stage: "Trova uno stage"
+  nouvelle: "Nuova intervista"
+  regarder: "Guarda"
+  chiffres_aria: "Impact ESTP in cifre"
+  depuis: "Creato a marzo 2026 da studenti dell'ESTP Paris"
+  micro: "Sono passati dal nostro microfono"
+  micro_aria: "Le aziende dei nostri ospiti"
+  dernieres_label: "Interviste video"
+  dernieres_titre: "Le ultime interviste"
+  dernieres_texte: "Dai 25 ai 50 minuti di conversazione senza filtri: il percorso, i progetti concreti e cosa direbbe l'ospite a uno studente indeciso."
+  youtube_texte: "Tutte le interviste già pubblicate sono sul canale Impact ESTP."
+  youtube_go: "Apri il canale"
+  bientot_label: "Prossimamente su Impact"
+  bientot_prod_1: "intervista in post-produzione"
+  bientot_prod_n: "interviste in post-produzione"
+  bientot_venir_1: "ripresa in arrivo"
+  bientot_venir_n: "riprese in arrivo"
+  voir_montage: "Vedi le interviste in montaggio"
+  voir_venir: "Vedi le prossime riprese"
+  presse_label: "Stampa scritta"
+  presse_titre: "Capire il settore"
+  presse_texte: "un articolo per capire i cantieri e l'energia che costruiscono il domani, scritto da studenti di ingegneria."
+  presse_tous: "Tutti gli articoli"
+  presse_decouvrir: "Scopri i nostri articoli"
+  presse_bientot: "Il primo articolo esce %date% alle 18: approfondimenti, mestieri, dibattiti e seguiti delle nostre interviste."
+  portes_label: "Con Impact"
+  portes_titre: "Tre modi per unirsi a noi"
+  porte1_label: "Studente o neolaureato"
+  porte1_titre: "Entra nel bacino di talenti per gli stage"
+  porte1_texte: "Le aziende che intervistiamo assumono. Lascia il tuo profilo, ti inoltriamo le offerte adatte a te."
+  porte1_go: "Lascia il mio profilo"
+  porte2_label: "Azienda"
+  porte2_titre: "Parlate ai futuri ingegneri"
+  porte2_texte: "Interviste, serie girate nei vostri cantieri, stagisti preselezionati: lavoriamo insieme."
+  porte2_go: "Scoprite le nostre offerte"
+  porte3_label: "Studente dell'ESTP"
+  porte3_titre: "Entra nella squadra"
+  porte3_texte: "Montaggio, riprese, scrittura, social, contatti con le aziende: cerchiamo studenti del primo anno motivati."
+  porte3_go: "Candidati"
+
+interviews:
+  label: "Interviste video"
+  titre: "Le persone che fanno le costruzioni e l'energia"
+  intro: "Dai 25 ai 50 minuti di conversazione senza filtri: il percorso, i progetti concreti e cosa direbbe l'ospite a uno studente indeciso."
+  liste_aria: "Elenco delle interviste"
+  statut: "Stato"
+  statut_aria: "Filtra per stato"
+  toutes: "Tutte"
+  publiees: "Pubblicate"
+  langue: "Lingua"
+  langue_aria: "Filtra per lingua"
+  theme: "Tema"
+  theme_aria: "Filtra per tema"
+  tous: "Tutti"
+  interview_1: "intervista"
+  interview_n: "interviste"
+  aucune: "Nessuna intervista per questa scelta"
+  tous_statuts: "Mostra anche le interviste in arrivo"
+  youtube_btn: "Tutti i video e gli Shorts su YouTube"
+
+interview:
+  label: "Intervista video"
+  partenaire: "<b>Collaborazione commerciale.</b> Questo contenuto è stato realizzato nell'ambito di una partnership retribuita con %entreprise%."
+  une_entreprise: "un'azienda"
+  lire: "Riproduci il video:"
+  note_lecteur: "Il video viene caricato da YouTube quando premi play."
+  voir_youtube: "Guarda su YouTube"
+  chapitres: "Capitoli"
+  bientot_en_ligne: "Presto online"
+  a_lire: "Da leggere"
+  fiche_aria: "Scheda dell'intervista"
+  invite: "Ospite"
+  linkedin: "Profilo LinkedIn"
+  poste: "Ruolo"
+  entreprise: "Azienda"
+  theme: "Tema"
+  format: "Formato"
+  langue: "Lingua"
+  duree: "Durata"
+  publiee_le: "Pubblicata il"
+  l_entreprise: "L'azienda"
+  voir_fiche: "Vedi la scheda"
+  autres_label: "Da vedere anche"
+  autres_titre: "Altre interviste"
+
+entreprise:
+  label: "Azienda"
+  l_interview: "L'intervista"
+  les_interviews: "Le interviste"
+  a_lire: "Da leggere"
+  stages: "Stage e lavoro"
+  pas_offre: "Nessuna offerta pubblicata al momento da %nom%. Entra nel bacino di talenti Impact: quando un'offerta corrisponde alla tua ricerca, te la inoltriamo in via prioritaria."
+  fiche_aria: "Scheda dell'azienda"
+  secteur: "Settore"
+  ou: "Dove"
+  site_web: "Sito web"
+  wikipedia: "Wikipedia"
+  lire_wikipedia: "Leggi la pagina Wikipedia"
+  invites_linkedin: "I nostri ospiti su LinkedIn"
+  sur_impact: "Su Impact"
+  interview_1: "intervista"
+  interview_n: "interviste"
+  article_1: "articolo"
+  article_n: "articoli"
+  offre_1: "offerta"
+  offre_n: "offerte"
+
+offre:
+  postuler: "Candidati"
+  voir: "Vedi l'offerta"
+  postuler_vivier: "Candidati tramite il bacino di talenti"
+  debut: "Inizio:"
+
+stages:
+  label: "Stage e primo impiego"
+  titre: "Il tuo stage nelle costruzioni e nell'energia"
+  intro: "Entra nel bacino di talenti, scopri le offerte delle aziende e prepara le tue candidature con le nostre schede aziendali."
+  vivier_label: "Il bacino di talenti"
+  vivier_titre: "Entra nel bacino di talenti Impact"
+  vivier_intro: "Le aziende che intervistiamo cercano stagisti e giovani ingegneri. Lasciaci il tuo profilo: quando un'offerta corrisponde, te la inoltriamo in via prioritaria."
+  etape1: "Compili il modulo in un minuto. È gratis."
+  etape2: "Ti contattiamo quando un'offerta di stage, apprendistato o lavoro corrisponde alla tua ricerca."
+  etape3: "Sei tu a scegliere se il tuo profilo viene presentato all'azienda. Nulla viene trasmesso senza il tuo consenso."
+  bientot_espace: "I resoconti di stage e le recensioni anonime sulle aziende, condivisi dagli studenti in un'area riservata ai membri."
+  ouverture: "Iscrizioni aperte dal 15 novembre 2026."
+  offres_label: "Offerte delle aziende"
+  offres_titre: "Le offerte di stage"
+  offres_intro: "Stage, apprendistati e primi impieghi proposti dalle aziende delle costruzioni e dell'energia che lavorano con Impact."
+  offres_vide: "Le prime offerte saranno pubblicate qui. Iscriviti al bacino di talenti per riceverle in anteprima"
+  offres_vide_date: ", dalla sua apertura il 15 novembre 2026"
+  recrutez: "<b>State assumendo?</b> Inviateci la vostra offerta di stage, apprendistato o lavoro: la pubblichiamo qui e la inoltriamo ai profili del bacino di talenti più adatti."
+  proposer_offre: "Proponete un'offerta"
+  entreprises_label: "Prima di candidarti"
+  entreprises_titre: "Scopri le aziende"
+  entreprises_intro: "Ogni scheda riunisce le nostre interviste, i nostri articoli e le offerte dell'azienda: tutto il necessario per arrivare al colloquio sapendo di cosa parli."
+  faq_label: "Domande"
+  faq_titre: "Domande frequenti"
+  faq:
+    - q: "È a pagamento?"
+      r: "No. Il bacino di talenti è gratuito per studenti e neolaureati, e lo resterà."
+    - q: "Chi vede i miei dati?"
+      r: "Solo il team di Impact ESTP. Un'azienda riceve il tuo profilo solo se hai detto sì per quell'offerta specifica."
+    - q: "Non sono all'ESTP, posso iscrivermi?"
+      r: "Sì. Il bacino di talenti è aperto a tutti gli studenti che puntano alle costruzioni, ai lavori pubblici o all'energia, qualunque sia la loro scuola."
+    - q: "Come faccio a cancellarmi?"
+      r: "Scrivici a %email% e cancelliamo i tuoi dati."
+
+formulaire:
+  ton_profil: "Il tuo profilo"
+  ecole: "Scuola"
+  choisis_ecole: "Scegli la tua scuola"
+  si_autre: "Se altro, quale?"
+  annee: "Anno"
+  choisis: "Scegli"
+  annees:
+    - { v: "1re année", l: "1° anno" }
+    - { v: "2e année", l: "2° anno" }
+    - { v: "3e année", l: "3° anno" }
+    - { v: "4e année", l: "4° anno" }
+    - { v: "5e année", l: "5° anno" }
+    - { v: "Césure", l: "Anno di pausa" }
+    - { v: "Jeune diplômé", l: "Neolaureato" }
+  annees_equipe:
+    - { v: "1re année", l: "1° anno" }
+    - { v: "2e année", l: "2° anno" }
+    - { v: "3e année", l: "3° anno" }
+    - { v: "4e année ou plus", l: "4° anno o oltre" }
+  specialite: "Specializzazione"
+  specialites:
+    - { v: "Bâtiment", l: "Edilizia" }
+    - { v: "Travaux publics", l: "Lavori pubblici" }
+    - { v: "Génie civil", l: "Ingegneria civile" }
+    - { v: "Énergie", l: "Energia" }
+    - { v: "Génie mécanique et électrique", l: "Ingegneria meccanica ed elettrica" }
+    - { v: "Topographie et géomatique", l: "Topografia e geomatica" }
+    - { v: "Architecture", l: "Architettura" }
+    - { v: "Urbanisme et aménagement", l: "Urbanistica e pianificazione territoriale" }
+    - { v: "Autre", l: "Altro" }
+  je_cherche: "Cerco"
+  recherches:
+    - { v: "Stage", l: "Uno stage" }
+    - { v: "Alternance", l: "Un apprendistato" }
+    - { v: "Premier emploi", l: "Un primo impiego" }
+    - { v: "Être informé", l: "Solo restare aggiornato" }
+  dispo: "Disponibile da"
+  dispo_exemple: "Giugno 2027"
+  email: "E-mail"
+  email_exemple: "nome.cognome@universita.it"
+  consent_vivier: "Accetto che Impact ESTP conservi questi dati per propormi delle offerte, come spiegato nell'<a href=\"%lien%\">informativa sulla privacy</a>. Posso chiederne la cancellazione in qualsiasi momento."
+  nom: "Nome e cognome"
+  ta_candidature: "La tua candidatura"
+  envies: "Cosa mi interessa"
+  envies_liste:
+    - { v: "Montage vidéo", l: "Montaggio video" }
+    - { v: "Tournage", l: "Riprese" }
+    - { v: "Écriture", l: "Scrittura" }
+    - { v: "Réseaux sociaux", l: "Social media" }
+    - { v: "Partenariats", l: "Partnership" }
+  un_mot: "Qualche parola su di te (facoltativo)"
+  cv: "CV (facoltativo)"
+  lettre: "Lettera di motivazione (facoltativa)"
+  fichiers: "PDF o Word, massimo 5 MB per file."
+  consent_equipe: "Accetto che Impact ESTP utilizzi questi dati per rispondere alla mia candidatura (<a href=\"%lien%\">privacy</a>)."
+  envoyer_candidature: "Invia la mia candidatura"
+  candidatures_bientot: "Le candidature apriranno molto presto."
+  fichier_trop_gros: "Un file supera i 5 MB. Salvalo in un PDF più leggero e riprova."
+  ton_message: "Il tuo messaggio"
+  objet: "Oggetto"
+  objets:
+    - { v: "Presse écrite - proposition de sujets", l: "Stampa scritta - proposta di argomenti" }
+    - { v: "Lancer Impact dans mon école", l: "Lanciare Impact nella mia scuola" }
+    - { v: "Partenariat entreprise", l: "Partnership aziendale" }
+    - { v: "Stage", l: "Stage" }
+    - { v: "Proposer une offre de stage", l: "Proporre un'offerta di stage" }
+    - { v: "Proposer un invité pour une interview", l: "Proporre un ospite per un'intervista" }
+    - { v: "Autre demande", l: "Altra richiesta" }
+  structure: "Scuola o azienda (facoltativo)"
+  consent_contact: "Accetto che Impact ESTP utilizzi questi dati per rispondere al mio messaggio (<a href=\"%lien%\">privacy</a>)."
+  envoyer: "Invia"
+  contact_ferme: "Il modulo apre molto presto. Nel frattempo, scrivici via e-mail."
+  # Libellés des choix « autre » de la liste des écoles (la valeur envoyée reste en français)
+  ecoles_libelles:
+    "Autre INSA": "Altro INSA"
+    "Université de technologie (UTC, UTT, UTBM)": "Università di tecnologia (UTC, UTT, UTBM)"
+    "Université (licence, master)": "Università (laurea triennale, magistrale)"
+    "École à l'étranger": "Scuola all'estero"
+    "Autre école": "Altra scuola"
+  # Noms des groupes de la liste des écoles
+  ecoles_groupes:
+    "Construction, génie civil et architecture": "Costruzioni, ingegneria civile e architettura"
+    "Énergie et environnement": "Energia e ambiente"
+    "Écoles d'ingénieurs généralistes": "Scuole di ingegneria generalista"
+    "Université et formations techniques": "Università e formazione tecnica"
+    "Autres": "Altre"
+
+presse:
+  label: "Stampa scritta"
+  titre: "Capire i cantieri e l'energia che costruiscono il domani"
+  intro: "Scritto da studenti di ingegneria. Oltre alle interviste, spieghiamo e mettiamo in discussione il settore: grandi progetti, energia, edilizia sostenibile, innovazione e mestieri."
+  bref_aria: "La stampa scritta in breve"
+  rendezvous: "Appuntamento"
+  premier: "Primo articolo"
+  format: "Formato"
+  format_v: "Da 600 a 1.000 parole"
+  rubriques: "Rubriche"
+  rubriques_v: "%n% temi, 4 formati"
+  articles_label: "Da leggere"
+  articles_titre: "Gli articoli"
+  rubrique: "Rubrica"
+  rubrique_aria: "Filtra per rubrica"
+  toutes: "Tutte"
+  vide: "Il primo articolo esce %date% alle 18. Poi, un nuovo articolo ogni martedì. Nel frattempo, tutte le nostre interviste sono <a href=\"%lien%\">in video</a>."
+  formats_label: "Quattro formati"
+  formats_titre: "Un ciclo di quattro settimane"
+  formats_intro: "Ogni articolo risponde a una domanda semplice: cosa impara uno studente di ingegneria leggendolo?"
+  semaine: "Settimana"
+  rubriques_label: "I nostri temi"
+  rubriques_titre: "Cinque rubriche"
+  redaction_label: "La redazione"
+  redaction_titre: "Studenti che scrivono per studenti"
+  ecris: "<b>Scrivi per Impact.</b> Studente, ex studente o docente: proponi un editoriale o il racconto del tuo stage, in Francia come all'estero."
+  proposer: "Proponi un argomento"
+  charte: "La nostra carta editoriale"
+  charte_points:
+    - "<b>Zero IA nei nostri articoli</b>: sono scritti e riletti da studenti, senza alcun testo generato dall'intelligenza artificiale."
+    - "<b>Ogni cifra è documentata</b>, con un link alla fonte."
+    - "<b>Ogni citazione è riletta</b> da chi l'ha pronunciata prima della pubblicazione."
+    - "<b>Un tono chiaro</b> e didattico, senza gergo non spiegato."
+    - "<b>Nessun contenuto pagato nascosto</b>: un articolo finanziato da un partner riporta la dicitura «Partnership»."
+    - "<b>Immagini libere da diritti</b> o fornite dall'azienda, sempre con i crediti."
+
+article:
+  partenaire: "<b>Partnership.</b> Questo articolo è stato realizzato nell'ambito di una partnership retribuita"
+  avec: "con"
+  vivier: "<b>Cerchi uno stage in questo settore?</b> Lascia il tuo profilo nel bacino di talenti Impact: ti inoltriamo le offerte adatte a te."
+  vivier_aria: "Bacino di talenti per gli stage"
+  video: "L'intervista video"
+
+entreprises:
+  label: "Per le aziende"
+  titre: "Parlate alla prossima generazione di ingegneri"
+  intro: "I nostri spettatori sono gli studenti che cercate di assumere. Tre modi per lavorare insieme."
+  offres_label: "Le nostre offerte"
+  offres_titre: "Lavorare con Impact"
+  confiance: "<b>Si fidano di noi.</b> Kaufman &amp; Broad ci ha affidato un Pack Chantier di 3 video su uno dei suoi cantieri, girati a ottobre e novembre 2026. Eiffage Route ci ha affidato l'intervista in studio del suo direttore tecnico, a inizio novembre."
+  avis_label: "Testimonianze"
+  avis_titre: "Cosa dicono i nostri ospiti"
+  voir_son_interview: "Guarda la sua intervista"
+  citation_traduite: "Testimonianza tradotta dal francese."
+  methode_label: "Metodo"
+  methode_titre: "Come funziona"
+  etapes:
+    - { t: "Un primo scambio", p: "15 minuti per capire cosa volete mostrare e chi cercate di assumere." }
+    - { t: "Una proposta chiara", p: "Formato, calendario e prezzo su preventivo, adattati alle vostre esigenze." }
+    - { t: "Le riprese e la diffusione", p: "Giriamo, montiamo e diffondiamo su YouTube, LinkedIn e sul sito." }
+  parlons: "<b>Parliamo del vostro progetto.</b> Diteci cosa cercate, vi ricontatteremo rapidamente."
+  ecrire: "Scriveteci"
+  proposer_offre: "Proponete un'offerta di stage"
+
+groupe:
+  label: "Groupe Impact · Rete nazionale"
+  titre: "Impact arriva nella tua scuola"
+  intro: "Nato all'ESTP Paris, Impact vuole diventare una rete nazionale. Con il Groupe Impact sviluppiamo il progetto in altre scuole e università e aiutiamo ogni squadra a lanciare le proprie interviste e i propri podcast."
+  projet_aria: "Il tuo progetto"
+  hook_label: "E se fossi tu?"
+  hook_q: "Hai voglia di intervistare il tuo futuro manager, ma non sai come fare?"
+  hook_texte: "Contattaci e creiamo insieme la rete Impact nella tua scuola: ti passiamo il metodo, gli strumenti e la rete per lanciare il tuo media studentesco."
+  lancer: "Lanciare Impact nella mia scuola"
+  instagram: "Scrivici su Instagram"
+  apport_label: "Cosa ti offriamo"
+  apport_titre: "Tutto per lanciare il tuo media"
+  apports:
+    - { l: "Il metodo", t: "Trovare e convincere gli ospiti", p: "Come individuare i profili giusti, scrivere loro, preparare le domande e condurre un'intervista autentica." }
+    - { l: "Video e podcast", t: "Lanciare i vostri podcast", p: "Attrezzatura, riprese, audio e montaggio: ti aiutiamo a creare il podcast o il canale della tua scuola, senza budget iniziale." }
+    - { l: "La rete", t: "Un marchio e una rete nazionale", p: "Il marchio Impact, una diffusione comune, ospiti e aziende partner condivisi tra le scuole." }
+  etapes_label: "Come funziona"
+  etapes_titre: "Tre passi per iniziare"
+  etapes:
+    - { t: "Ne parliamo", p: "Un primo scambio di 15 minuti in videochiamata per conoscere la tua scuola e il tuo progetto." }
+    - { t: "Formi la tua squadra", p: "Bastano due o tre studenti motivati. Vi formiamo al metodo Impact." }
+    - { t: "Prima intervista", p: "Prepariamo e lanciamo insieme il vostro primo episodio, poi camminate con le vostre gambe." }
+  reseau_label: "Già nel Groupe Impact"
+  reseau_titre: "La rete oggi"
+  estp_lieu: "ESTP Paris, campus di Cachan"
+  drapeau_italien: "bandiera italiana"
+  italia_texte: "Interviste in italiano, lago Maggiore"
+  italia_go: "Guarda le interviste in italiano"
+  ton_ecole: "La tua scuola?"
+  ton_ecole_texte: "Scrivici per lanciare Impact nella tua scuola"
+
+apropos:
+  label: "Chi siamo"
+  titre: "Mostrare il settore così com'è, attraverso chi lo fa"
+  intro: "Impact ESTP è il primo media studentesco dedicato alle costruzioni e all'energia."
+  pourquoi_titre: "Perché Impact"
+  pourquoi:
+    - "Si chiede agli studenti di impegnarsi in un settore che conoscono poco, mostrandone un solo volto. Eppure i mestieri delle costruzioni e dell'energia sono di una varietà immensa."
+    - "A marzo 2026, alcuni studenti dell'ESTP Paris hanno lanciato Impact per cambiare le cose: interviste video senza filtri, dai 25 ai 50 minuti, con i dirigenti, gli ingegneri e gli imprenditori che fanno il settore. Non una brochure, ma una vera conversazione, con le domande che uno studente si pone davvero."
+    - "Da allora, ospiti di realtà come NGE, VNF, Autodesk o Aecon sono passati dal nostro microfono, in Francia come all'estero, con interviste in francese e in italiano."
+  vision_titre: "La nostra visione"
+  vision_intro: "Impact vuole diventare il luogo dove una generazione di ingegneri si forma un'opinione sulle costruzioni e sull'energia."
+  vision:
+    - "<b>Mostrare tutti i volti del settore</b>: dal cantiere all'ufficio tecnico, dalla start-up al grande gruppo, in Francia come all'estero."
+    - "<b>Aiutare ogni studente a scegliere</b> il proprio stage e il proprio mestiere con cognizione di causa, e poi a ottenerlo grazie al bacino di talenti Impact."
+    - "<b>Dare la parola agli studenti</b>: presto potranno condividere i loro resoconti di stage e valutare le aziende in forma anonima."
+    - "<b>Crescere con le altre scuole</b>: una rete di media studenteschi nelle scuole di ingegneria, con podcast e conferenze."
+  bref_aria: "Impact ESTP in breve"
+  cree_en: "Fondato"
+  cree_en_v: "Marzo 2026"
+  structure: "Forma giuridica"
+  structure_v: "Associazione senza scopo di lucro (legge francese del 1901)"
+  ecole: "Scuola"
+  ecole_v: "ESTP Paris, campus di Cachan"
+  fondateur: "Fondatore"
+  suivre: "Seguici"
+  equipe_label: "Cerchiamo nuovi membri"
+  equipe_titre: "Entra nella squadra"
+  equipe_intro: "Sei all'ESTP e vuoi imparare facendo? Entra nella redazione. Non serve esperienza, solo voglia e un po' di tempo ogni settimana."
+  equipe_faire: "Cosa puoi fare in Impact:"
+  equipe_roles:
+    - "<b>Montaggio video</b> delle interviste e degli Shorts."
+    - "<b>Riprese</b> in studio e nei cantieri."
+    - "<b>Scrittura</b> degli articoli che accompagnano ogni intervista."
+    - "<b>Social media</b>: LinkedIn, Instagram, YouTube."
+    - "<b>Partnership</b>: trovare gli ospiti e le aziende partner."
+
+contact:
+  label: "Contatti"
+  titre: "Scrivici"
+  intro: "Un'idea per un articolo, la voglia di lanciare Impact nella tua scuola, una partnership o un'offerta di stage: leggiamo tutto e rispondiamo in fretta."
+  choisis_objet: "Scegli l'oggetto del tuo messaggio, così arriva direttamente alla persona giusta del team."
+  email_texte: "Preferisci un'e-mail? Scrivi a"
+
+profil:
+  label: "Area membri · Prossimamente"
+  titre: "Il tuo spazio Impact arriva presto"
+  intro: "Ogni studente e ogni azienda potrà creare un account per ritrovare il proprio profilo, le proprie candidature e i propri contenuti in un unico posto."
+  etudiant_label: "Studente"
+  etudiant_titre: "Il tuo profilo studente"
+  etudiant:
+    - "Il tuo profilo per il bacino di talenti: scuola, anno, specializzazione, CV."
+    - "Le offerte di stage e di lavoro adatte a te."
+    - "I tuoi resoconti di stage, da condividere con gli altri studenti."
+    - "La tua recensione anonima sulle aziende in cui hai lavorato."
+  entreprise_label: "Azienda"
+  entreprise_titre: "Il vostro spazio aziendale"
+  entreprise:
+    - "Le vostre offerte di stage e di lavoro, diffuse agli studenti."
+    - "I profili preselezionati del bacino di talenti Impact."
+    - "Le vostre interviste e i contenuti realizzati con Impact."
+  pas_ouverts: "Gli account non sono ancora attivi."
+  connexion: "Accesso"
+  se_connecter: "Accedi"
+  mot_de_passe: "Password"
+  creer: "Crea un account"
+  attente: "<b>Nel frattempo</b>, lascia il tuo profilo nel bacino di talenti: verrà ripreso nel tuo futuro account."
+
+merci:
+  label: "Inviato"
+  titre: "Grazie, abbiamo ricevuto il tuo messaggio"
+  intro: "Il team di Impact ESTP ti risponderà molto presto."
+  vivier: "Ti diamo il benvenuto nel bacino di talenti Impact. Ti contatteremo appena un'offerta corrisponde alla tua ricerca."
+  equipe: "La tua candidatura è arrivata. Ti ricontatteremo molto presto per parlarne."
+  contact: "Il tuo messaggio è arrivato. Ti risponderemo molto presto all'indirizzo che hai indicato."
+
+erreur:
+  label: "Errore 404"
+  titre: "Questa pagina non esiste (o non esiste più)"
+  intro: "Forse il link è vecchio. Troverai sicuramente qualcosa di interessante tra le nostre interviste."

@@ -2,6 +2,7 @@
 title: "Du labo à la startup deeptech : il révolutionne la simulation numérique"
 description: "Docteur de l'École des Ponts, Maxime Gueguin a cofondé Simvia, une startup deeptech qui démocratise la simulation numérique open source pour les ingénieurs."
 invite: "Maxime Gueguin"
+linkedin: "https://www.linkedin.com/in/maxime-gueguin-461b23107"
 poste: "CTO et cofondateur"
 entreprise: "Simvia"
 entreprise_id: simvia

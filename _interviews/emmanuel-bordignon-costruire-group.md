@@ -2,6 +2,7 @@
 title: "L'investissement immobilier sans filtre"
 description: "Diplômé de l'ESTP, Emmanuel Bordignon a passé 25 ans dans l'investissement immobilier entre Paris, Londres et Milan avant de reprendre Costruire Group sur le lac Majeur."
 invite: "Emmanuel Bordignon"
+linkedin: "https://www.linkedin.com/in/emmanuel-bordignon-5535a3102"
 poste: "CEO"
 entreprise: "Costruire Group"
 entreprise_id: costruire-group

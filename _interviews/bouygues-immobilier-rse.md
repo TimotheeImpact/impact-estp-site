@@ -1,6 +1,7 @@
 ---
 title: "La directrice RSE de Bouygues Immobilier"
 invite: ""
+linkedin: ""
 poste: "Directrice RSE"
 entreprise: "Bouygues Immobilier"
 entreprise_id: bouygues-immobilier

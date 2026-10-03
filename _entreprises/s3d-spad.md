@@ -7,5 +7,6 @@ secteur: "Aménagement et développement urbain"
 pays: "France (Dunkerque)"
 site_web: ""
 logo: "s3d-spad.png"
+wikipedia: ""
 presentation: "Les sociétés de développement du Dunkerquois."
 ---

@@ -2,6 +2,7 @@
 title: "Pathologies du bâtiment, expertise indépendante et entrepreneuriat"
 description: "Handball de haut niveau, 13 ans à la tête d'une entreprise du bâtiment, puis expert indépendant : Aurélien Heilles raconte les pathologies du bâtiment et un parcours 100 % terrain."
 invite: "Aurélien Heilles"
+linkedin: ""
 poste: "Expert en bâtiment et fondateur"
 entreprise: "Aulea Expertise"
 entreprise_id: aulea-expertise

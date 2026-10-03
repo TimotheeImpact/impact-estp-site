@@ -2,6 +2,7 @@
 title: "35 ans de grands projets à travers le monde"
 description: "BIM chez VINCI et Bouygues, aéroport de NEOM avec Jean Nouvel, REM de Montréal : Pascale Commun, directrice technique chez Aecon, revient sur 35 ans de grands projets."
 invite: "Pascale Commun"
+linkedin: ""
 poste: "Directrice technique"
 entreprise: "Aecon"
 entreprise_id: aecon

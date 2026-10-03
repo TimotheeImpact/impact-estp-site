@@ -6,6 +6,7 @@ nom_complet: ""
 secteur: "Expertise du bâtiment"
 pays: "France (Nouvelle-Aquitaine)"
 site_web: ""
-logo: ""
+logo: "aulea-expertise.jpg"
+wikipedia: ""
 presentation: "Cabinet d'expertise en bâtiment fondé par Aurélien Heilles en Nouvelle-Aquitaine."
 ---

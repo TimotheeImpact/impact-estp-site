@@ -1,0 +1,72 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
+<div class="page-head">
+  <p class="label">{{ t.entreprises.label }}</p>
+  <h1>{{ t.entreprises.titre }}</h1>
+  <p class="intro">{{ t.entreprises.intro }}</p>
+</div>
+
+<div class="folds">
+{% include fold-ouvre.html id="offres" label=t.entreprises.offres_label titre=t.entreprises.offres_titre ouvert=true %}
+  <div class="offers">
+    {%- for o in site.data.offres %}
+    {%- assign _kp = "points_" | append: page.lang %}
+    {%- assign points = o[_kp] | default: o.points %}
+    <div class="offer">
+      <p class="label">{% include tr.html o=o k="etiquette" %}</p>
+      <h3>{% include tr.html o=o k="titre" %}</h3>
+      <p>{% include tr.html o=o k="texte" %}</p>
+      <ul>
+        {%- for pt in points %}
+        <li>{{ pt }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endfor %}
+  </div>
+  <div class="case">
+    <div class="case-logos">
+      <span class="plate"><img src="{{ '/assets/img/logos/kaufman-broad.jpg' | relative_url }}" alt="Kaufman &amp; Broad" width="424" height="141" loading="lazy"></span>
+      <span class="plate"><img src="{{ '/assets/img/logos/eiffage-route.jpg' | relative_url }}" alt="Eiffage Route" width="373" height="109" loading="lazy"></span>
+    </div>
+    <p>{{ t.entreprises.confiance }}</p>
+  </div>
+</div></details>
+
+{%- if site.data.temoignages.size > 0 %}
+{% include fold-ouvre.html id="temoignages" label=t.entreprises.avis_label titre=t.entreprises.avis_titre compte=site.data.temoignages.size %}
+  <div class="quotes">
+    {%- for q in site.data.temoignages %}
+    {%- assign _kc = "citation_" | append: page.lang %}
+    <figure class="quote">
+      <blockquote><p>{% include tr.html o=q k="citation" %}</p></blockquote>
+      <figcaption>
+        <b>{{ q.nom }}</b>
+        {%- capture q_poste %}{% include tr.html o=q k="poste" %}{% endcapture %}
+        <span>{{ q_poste }}{% if q_poste != "" and q.entreprise != "" %}, {% endif %}{{ q.entreprise }}</span>
+        {%- if q.interview and q.interview != "" %}
+        {%- assign iv = site.interviews | where: "slug", q.interview | first %}
+        {%- if iv %}{% include trad.html doc=iv %}<a href="{{ tr.url | relative_url }}">{{ t.entreprises.voir_son_interview }}</a>{% endif %}
+        {%- endif %}
+        {%- if q[_kc] and t.entreprises.citation_traduite != "" %}<small class="quote-note">{{ t.entreprises.citation_traduite }}</small>{% endif %}
+      </figcaption>
+    </figure>
+    {%- endfor %}
+  </div>
+</div></details>
+{%- endif %}
+
+{% include fold-ouvre.html id="methode" label=t.entreprises.methode_label titre=t.entreprises.methode_titre %}
+  <ol class="steps">
+    {%- for e in t.entreprises.etapes %}
+    <li><b>{{ e.t }}</b><p>{{ e.p }}</p></li>
+    {%- endfor %}
+  </ol>
+</div></details>
+</div>
+
+<div class="contact-box">
+  <p>{{ t.entreprises.parlons }}</p>
+  <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Partenariat entreprise' | uri_escape }}">{{ t.entreprises.ecrire }}</a>
+  <a class="btn" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Proposer une offre de stage' | uri_escape }}">{{ t.entreprises.proposer_offre }}</a>
+</div>

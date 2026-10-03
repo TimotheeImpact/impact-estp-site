@@ -12,7 +12,7 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | La liste des entreprises « Ils sont passés au micro » (nom, logo, fiche) | `_config.yml` |
 | Les fiches entreprises (une page par entreprise, pour Google) | dossier `_entreprises` |
 | Les offres de stage de la page Stages | `_data/offres_stage.yml` |
-| Les objets proposés dans le formulaire de contact | `contact/index.html` |
+| Les objets proposés dans le formulaire de contact | `_data/textes/fr.yml` (partie `objets`, et la même dans `en.yml` et `it.yml`) |
 | Ajouter ou modifier une interview | dossier `_interviews` |
 | Publier un article | dossier `_posts` |
 | La liste des écoles des formulaires | `_data/ecoles.yml` |
@@ -23,6 +23,18 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | La page « Mon profil » (espace membre, pas encore ouvert) | `mon-profil/index.html` |
 | Les thèmes (bas-carbone, énergie…) | `_data/themes.yml` |
 | Le logo | `assets/img/logo.png` (et `logo-sombre.png` pour le mode sombre) |
+| Les textes des menus, boutons et pages, en français, anglais et italien | `_data/textes/fr.yml`, `en.yml`, `it.yml` |
+| Les traductions des interviews et des fiches entreprises | dossiers `_interviews_en`, `_interviews_it`, `_entreprises_en`, `_entreprises_it` |
+
+## Le site en trois langues
+
+Le site existe en français (`impactestp.fr`), en anglais (`impactestp.fr/en/`) et en italien (`impactestp.fr/it/`). Le petit drapeau en haut à droite permet de changer de langue sur la même page.
+
+- Les textes des menus, boutons et pages sont dans `_data/textes/fr.yml`, `en.yml` et `it.yml`. Ces trois fichiers ont exactement les mêmes lignes : si tu changes une phrase en français, change la même ligne dans les deux autres.
+- Dans les autres fichiers de `_data` et dans `_config.yml`, une ligne qui finit par `_en` ou `_it` est la traduction de la ligne du même nom. Si elle est vide ou absente, le texte français s'affiche.
+- Une interview ou une fiche entreprise se traduit dans un fichier du même nom, dans `_interviews_en` / `_interviews_it` (ou `_entreprises_en` / `_entreprises_it`). Ce fichier ne contient que les lignes traduites (titre, poste, présentation, chapitres…). Le reste (lien YouTube, logo, LinkedIn) est repris de la version française. Sans traduction, la page anglaise ou italienne affiche la version française.
+- Les articles de la presse écrite restent en français.
+- Les réponses aux formulaires envoyées depuis la version anglaise ou italienne arrivent avec « (EN) » ou « (IT) » à la fin de l'objet du mail.
 
 ## Modifier un fichier
 
@@ -54,6 +66,10 @@ Si l'entreprise a payé pour le contenu, mets `partenaire: true` : la mention «
 
 Interview tournée en studio : ajoute `studio: true`, elle apparaît aussi dans le filtre « En studio ».
 
+`linkedin: "https://www.linkedin.com/in/..."` : le profil LinkedIn de l'invité s'affiche sur la fiche de l'interview et sur la fiche de son entreprise.
+
+La page Interviews s'ouvre sur les interviews publiées. Pour ouvrir directement toutes les interviews : `/interviews/?statut=all`.
+
 ### Chapitres, résumé et Google
 
 - `entreprise_id: nge` relie l'interview à la fiche `_entreprises/nge.md` (lien dans la fiche de l'interview, et l'interview s'affiche sur la page de l'entreprise).
@@ -65,12 +81,22 @@ Interview tournée en studio : ajoute `studio: true`, elle apparaît aussi dans 
 
 1. Va dans le dossier `_entreprises`, ouvre une fiche existante (par exemple `nge.md`) et copie son contenu.
 2. Crée un nouveau fichier dans `_entreprises`, nommé en minuscules avec des tirets (`nom-entreprise.md`).
-3. Remplis le nom, le secteur, le site web, et le nom du fichier du logo (déposé dans `assets/img/logos`). Laisse vide ce que tu ne sais pas.
+3. Remplis le nom, le secteur, le site web, la page Wikipédia (`wikipedia:`, avec si besoin `wikipedia_en:` et `wikipedia_it:` pour les versions anglaise et italienne) et le nom du fichier du logo (déposé dans `assets/img/logos`). Laisse vide ce que tu ne sais pas.
 4. Dans les interviews de cette entreprise, ajoute `entreprise_id: nom-entreprise`.
 
 ## Ajouter une offre de stage
 
 Ouvre `_data/offres_stage.yml` : un exemple commenté montre les lignes à remplir (titre, entreprise, lieu, durée, début, lien). Enlève les `#` devant le bloc, remplis-le, enregistre. L'offre s'affiche sur la page Stages et sur la fiche de l'entreprise.
+
+Pour le lien, trois possibilités : un lien vers l'annonce de l'entreprise (`https://...`), un lien vers le formulaire de contact avec l'objet déjà choisi (`/contact/?objet=Stage&offre=Nom de l'offre`, comme l'offre de Toits Temporaires Urbains), ou rien (le bouton renvoie alors vers le vivier).
+
+## Animation de l'accueil et parties dépliables
+
+À l'arrivée sur l'accueil, le titre et la dernière interview apparaissent en glissant, les chiffres défilent jusqu'à leur valeur et les logos des invités défilent en continu (pause au survol). Rien ne bouge pour les personnes qui ont réglé leur appareil sur « réduire les animations ».
+
+Pour mettre un court extrait vidéo muet en boucle à la place de la vignette de la dernière interview : dépose un fichier `.mp4` de 10 à 15 secondes (moins de 4 Mo) dans `assets/video/` et mets son chemin sur la ligne `accueil_clip` de `_config.yml`, par exemple `accueil_clip: "/assets/video/extrait.mp4"`. La vidéo YouTube, elle, ne se lance pas toute seule : elle déposerait des cookies, et le site devrait alors afficher un bandeau de consentement.
+
+Sur les pages Stages, Presse, Entreprises, Groupe Impact et À propos, chaque partie s'ouvre et se referme en cliquant sur la flèche. La première est ouverte au chargement. Un lien vers une partie (par exemple `/stages/#offres`) l'ouvre directement.
 
 ## Publier un article
 

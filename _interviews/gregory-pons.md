@@ -2,6 +2,7 @@
 title: "Il veut décentraliser l'énergie en France"
 description: "25 ans de photovoltaïque et 600 MWc de centrales solaires : Grégory Pons, CEO d'AVEIL et de LIMELO, milite pour une énergie décentralisée, locale et souveraine."
 invite: "Grégory Pons"
+linkedin: "https://www.linkedin.com/in/gregorypons"
 poste: "CEO"
 entreprise: "AVEIL et LIMELO"
 entreprise_id: aveil-limelo

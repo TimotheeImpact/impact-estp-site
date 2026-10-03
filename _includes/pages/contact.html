@@ -1,0 +1,62 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
+{%- assign f = t.formulaire -%}
+{%- assign action = site.formulaire_contact -%}
+<div class="page-head">
+  <p class="label">{{ t.contact.label }}</p>
+  <h1>{{ t.contact.titre }}</h1>
+  <p class="intro">{{ t.contact.intro }}</p>
+</div>
+
+<div class="pool">
+  <div class="why">
+    <p>{{ t.contact.choisis_objet }}</p>
+    {%- if site.email != "" %}
+    <p>{{ t.contact.email_texte }} <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+    {%- endif %}
+    <div class="actions" style="margin-top:4px">
+      {%- if site.linkedin != "" %}<a class="btn" href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
+      {%- if site.instagram != "" %}<a class="btn" href="{{ site.instagram }}">Instagram</a>{% endif %}
+    </div>
+  </div>
+
+  <form class="sheet js-form" id="form-contact" method="POST" accept-charset="UTF-8"{% if action != "" %} action="{{ action }}"{% endif %}>
+    {% include form-endpoint.html action=action texte=f.contact_ferme %}
+    <fieldset class="all"{% if action == "" %} disabled{% endif %}>
+      <legend class="visually-hidden">{{ f.ton_message }}</legend>
+      <input type="hidden" name="formulaire" value="Contact">
+      <input type="hidden" name="langue_du_site" value="{{ page.lang }}">
+      {% include form-hidden.html sujet="Impact ESTP : nouveau message de contact" type="contact" %}
+      <input type="hidden" name="offre" id="c-offre" value="">
+      <div class="field">
+        <label for="c-nom">{{ f.nom }}</label>
+        <input type="text" id="c-nom" name="nom" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="c-mail">{{ f.email }}</label>
+        <input type="email" id="c-mail" name="email" autocomplete="email" required>
+      </div>
+      <div class="field full">
+        <label for="c-objet">{{ f.objet }}</label>
+        <select id="c-objet" name="objet" required>
+          <option value="" selected disabled>{{ f.choisis }}</option>
+          {%- for o in f.objets %}
+          <option value="{{ o.v }}">{{ o.l }}</option>
+          {%- endfor %}
+        </select>
+      </div>
+      <div class="field full">
+        <label for="c-structure">{{ f.structure }}</label>
+        <input type="text" id="c-structure" name="ecole_ou_entreprise" autocomplete="organization">
+      </div>
+      <div class="field full">
+        <label for="c-msg">{{ f.ton_message }}</label>
+        <textarea id="c-msg" name="message" required></textarea>
+      </div>
+      {%- capture lien_conf %}{{ p | append: '/confidentialite/' | relative_url }}{% endcapture %}
+      <label class="consent full"><input type="checkbox" name="consentement" value="oui" required> <span>{{ f.consent_contact | replace: "%lien%", lien_conf }}</span></label>
+      <div class="full"><button class="btn primary" type="submit">{{ f.envoyer }}</button></div>
+    </fieldset>
+    <p class="form-note error" data-err hidden></p>
+  </form>
+</div>

@@ -1,24 +1,32 @@
 ---
 layout: default
 ---
-{%- assign interviews = site.interviews | where: "entreprise_id", page.slug | sort: "numero" | reverse -%}
-{%- assign articles = site.posts | where: "entreprise_id", page.slug -%}
-{%- assign offres = site.data.offres_stage | where: "entreprise_id", page.slug -%}
-{%- capture site_court -%}{{ page.site_web | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}{%- endcapture -%}
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
+{%- comment -%} « src » = la fiche française (nom, logo, liens). « page » = la version affichée (secteur, présentation traduits). {%- endcomment -%}
+{%- if page.collection == "entreprises" -%}{%- assign src = page -%}{%- else -%}{%- assign src = site.entreprises | where: "slug", page.slug | first -%}{%- endif -%}
+{%- assign secteur = page.secteur | default: src.secteur -%}
+{%- assign pays = page.pays | default: src.pays -%}
+{%- assign presentation = page.presentation | default: src.presentation -%}
+{%- assign interviews = site.interviews | where: "entreprise_id", src.slug | sort: "numero" | reverse -%}
+{%- assign articles = site.posts | where: "entreprise_id", src.slug -%}
+{%- assign offres = site.data.offres_stage | where: "entreprise_id", src.slug -%}
+{%- assign avec_linkedin = interviews | where_exp: "i", "i.linkedin != ''" | where_exp: "i", "i.linkedin" | where_exp: "i", "i.invite != ''" -%}
+{%- capture site_court -%}{{ src.site_web | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}{%- endcapture -%}
 
 <div class="page-head co-head">
   <div>
-    <p class="label">Entreprise{% if page.secteur != "" %} · {{ page.secteur }}{% endif %}</p>
-    <h1>{{ page.nom }}</h1>
-    {%- if page.nom_complet != "" %}
-    <p class="co-full">{{ page.nom_complet }}</p>
+    <p class="label">{{ t.entreprise.label }}{% if secteur != "" %} · {{ secteur }}{% endif %}</p>
+    <h1>{{ src.nom }}</h1>
+    {%- if src.nom_complet != "" %}
+    <p class="co-full" lang="fr">{{ src.nom_complet }}</p>
     {%- endif %}
-    {%- if page.presentation != "" %}
-    <p class="intro">{{ page.presentation }}</p>
+    {%- if presentation != "" %}
+    <p class="intro">{{ presentation }}</p>
     {%- endif %}
   </div>
-  <span class="plate big co-plate{% if page.logo == "" %} plate-text{% endif %}">
-    {%- if page.logo != "" %}<img src="{{ '/assets/img/logos/' | append: page.logo | relative_url }}" alt="{{ page.nom }}">{% else %}{{ page.nom }}{% endif -%}
+  <span class="plate big co-plate{% if src.logo == "" %} plate-text{% endif %}">
+    {%- if src.logo != "" %}<img src="{{ '/assets/img/logos/' | append: src.logo | relative_url }}" alt="{{ src.nom }}">{% else %}{{ src.nom }}{% endif -%}
   </span>
 </div>
 
@@ -31,7 +39,7 @@ layout: default
 
     {%- if interviews.size > 0 %}
     <section class="co-section" aria-labelledby="t-co-interviews">
-      <h2 id="t-co-interviews">{% if interviews.size > 1 %}Les interviews{% else %}L'interview{% endif %}</h2>
+      <h2 id="t-co-interviews">{% if interviews.size > 1 %}{{ t.entreprise.les_interviews }}{% else %}{{ t.entreprise.l_interview }}{% endif %}</h2>
       <div class="grid two">
         {%- for i in interviews %}
         {% include interview-card.html item=i %}
@@ -42,17 +50,18 @@ layout: default
 
     {%- if articles.size > 0 %}
     <section class="co-section" aria-labelledby="t-co-articles">
-      <h2 id="t-co-articles">À lire</h2>
+      <h2 id="t-co-articles">{{ t.entreprise.a_lire }}</h2>
+      {%- if t.commun.articles_en_francais != "" %}<p class="count">{{ t.commun.articles_en_francais }}</p>{% endif %}
       <ul class="article-list">
         {%- for a in articles %}
-        <li><a href="{{ a.url | relative_url }}"><span class="label">{% include article-meta.html item=a %}</span><h3>{{ a.title }}</h3></a></li>
+        <li><a href="{{ a.url | relative_url }}" lang="fr"><span class="label">{% include article-meta.html item=a %}</span><h3>{{ a.title }}</h3></a></li>
         {%- endfor %}
       </ul>
     </section>
     {%- endif %}
 
     <section class="co-section" aria-labelledby="t-co-offres">
-      <h2 id="t-co-offres">Stages et emplois</h2>
+      <h2 id="t-co-offres">{{ t.entreprise.stages }}</h2>
       {%- if offres.size > 0 %}
       <div class="jobs">
         {%- for o in offres %}
@@ -61,19 +70,23 @@ layout: default
       </div>
       {%- else %}
       <div class="empty">
-        <p>Pas d'offre publiée en ce moment chez {{ page.nom }}. Rejoins le vivier Impact : quand une offre correspond à ta recherche, on te la transmet en priorité.</p>
-        <p style="margin-top:14px"><a class="btn" href="{{ '/stages/' | relative_url }}">Rejoindre le vivier</a></p>
+        <p>{{ t.entreprise.pas_offre | replace: "%nom%", src.nom }}</p>
+        <p style="margin-top:14px"><a class="btn" href="{{ p | append: '/stages/' | relative_url }}">{{ t.commun.rejoindre_vivier }}</a></p>
       </div>
       {%- endif %}
     </section>
   </div>
 
-  <aside class="facts" aria-label="Fiche de l'entreprise">
-    <div><p class="label">Entreprise</p><div class="v">{{ page.nom_complet | default: page.nom }}</div></div>
-    {%- if page.secteur != "" %}<div><p class="label">Secteur</p><div class="v">{{ page.secteur }}</div></div>{% endif %}
-    {%- if page.pays != "" %}<div><p class="label">Où</p><div class="v">{{ page.pays }}</div></div>{% endif %}
-    {%- if page.site_web != "" %}<div><p class="label">Site web</p><div class="v"><a href="{{ page.site_web }}">{{ site_court }}</a></div></div>{% endif %}
-    <div><p class="label">Sur Impact</p><div class="v">{{ interviews.size }} interview{% if interviews.size > 1 %}s{% endif %}{% if articles.size > 0 %}, {{ articles.size }} article{% if articles.size > 1 %}s{% endif %}{% endif %}{% if offres.size > 0 %}, {{ offres.size }} offre{% if offres.size > 1 %}s{% endif %}{% endif %}</div></div>
-    <div><p class="label">Tu cherches un stage ?</p><div class="v"><a href="{{ '/stages/' | relative_url }}">Rejoins le vivier Impact</a></div></div>
+  <aside class="facts" aria-label="{{ t.entreprise.fiche_aria }}">
+    <div><p class="label">{{ t.entreprise.label }}</p><div class="v">{{ src.nom_complet | default: src.nom }}</div></div>
+    {%- if secteur != "" %}<div><p class="label">{{ t.entreprise.secteur }}</p><div class="v">{{ secteur }}</div></div>{% endif %}
+    {%- if pays != "" %}<div><p class="label">{{ t.entreprise.ou }}</p><div class="v">{{ pays }}</div></div>{% endif %}
+    {%- if src.site_web != "" %}<div><p class="label">{{ t.entreprise.site_web }}</p><div class="v"><a href="{{ src.site_web }}">{{ site_court }}</a></div></div>{% endif %}
+    {%- assign _kw = "wikipedia_" | append: page.lang %}
+    {%- assign wiki = src[_kw] | default: src.wikipedia %}
+    {%- if wiki and wiki != "" %}<div><p class="label">{{ t.entreprise.wikipedia }}</p><div class="v"><a href="{{ wiki }}">{{ t.entreprise.lire_wikipedia }}</a></div></div>{% endif %}
+    {%- if avec_linkedin.size > 0 %}<div><p class="label">{{ t.entreprise.invites_linkedin }}</p><div class="v">{% for i in avec_linkedin %}<a href="{{ i.linkedin }}">{{ i.invite }}</a>{% unless forloop.last %}<br>{% endunless %}{% endfor %}</div></div>{% endif %}
+    <div><p class="label">{{ t.entreprise.sur_impact }}</p><div class="v">{{ interviews.size }} {% if interviews.size > 1 %}{{ t.entreprise.interview_n }}{% else %}{{ t.entreprise.interview_1 }}{% endif %}{% if articles.size > 0 %}, {{ articles.size }} {% if articles.size > 1 %}{{ t.entreprise.article_n }}{% else %}{{ t.entreprise.article_1 }}{% endif %}{% endif %}{% if offres.size > 0 %}, {{ offres.size }} {% if offres.size > 1 %}{{ t.entreprise.offre_n }}{% else %}{{ t.entreprise.offre_1 }}{% endif %}{% endif %}</div></div>
+    <div><p class="label">{{ t.commun.tu_cherches_stage }}</p><div class="v"><a href="{{ p | append: '/stages/' | relative_url }}">{{ t.commun.rejoins_vivier }}</a></div></div>
   </aside>
 </div>

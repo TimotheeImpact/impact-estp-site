@@ -7,6 +7,11 @@
 title: "Impact ESTP"
 tagline: "Le média étudiant de la construction et de l'énergie"
 slogan: "Construis ton impact."    # affiché en bas à gauche, à côté du logo
+slogan_en: "Build your impact."
+slogan_it: "Costruisci il tuo impatto."
+# Petite vidéo muette qui tourne en boucle dans l'encadré « Nouvelle interview » de l'accueil
+# (fichier .mp4 de 10 à 15 secondes, moins de 3 Mo, déposé dans assets/video). Laisser vide pour afficher la vignette YouTube.
+accueil_clip: ""
 description: "Le média étudiant de la construction et de l'énergie. Chaque semaine, une interview vidéo avec un dirigeant, un ingénieur ou un entrepreneur du BTP et de l'énergie."
 lang: fr_FR
 
@@ -24,35 +29,52 @@ instagram: "https://www.instagram.com/impact.estp/"
 chiffres:
   - auto: publiees                # calculé tout seul à partir des fiches interviews
     legende: "interviews publiées"
+    legende_en: "interviews published"
+    legende_it: "interviste pubblicate"
   - auto: montage                 # fiches avec post_prod: true
     legende: "en montage"
+    legende_en: "in editing"
+    legende_it: "in montaggio"
   - auto: tournages               # fiches avec a_venir: true
     legende: "tournages à venir"
+    legende_en: "shoots coming up"
+    legende_it: "riprese in arrivo"
   - valeur: "FR · IT"
     legende: "interviews en français et en italien"
+    legende_en: "interviews in French and Italian"
+    legende_it: "interviste in francese e in italiano"
 
 # Entreprises dont viennent nos invités (bandeau « Ils sont passés au micro » de l'accueil).
 # logo : image dans assets/img/logos (laisser vide pour afficher le nom) ;
 # fiche : nom du fichier dans _entreprises (sans .md) pour faire un lien vers la fiche.
 invites_entreprises:
-  - nom: "Bouygues"
-    logo: ""
-    fiche: ""
-  - nom: "Eiffage"
-    logo: ""
-    fiche: ""
+  - nom: "Aecon"
+    logo: "aecon.png"
+    fiche: "aecon"
+  - nom: "VNF"
+    logo: "vnf.png"
+    fiche: "vnf"
+  - nom: "Simvia"
+    logo: "simvia.png"
+    fiche: "simvia"
+  - nom: "AVEIL"
+    logo: "aveil.png"
+    fiche: "aveil-limelo"
+  - nom: "Aulea Expertise"
+    logo: "aulea-expertise.jpg"
+    fiche: "aulea-expertise"
+  - nom: "Costruire Group"
+    logo: "costruire-group.png"
+    fiche: "costruire-group"
+  - nom: "Villa e Palazzo Aminta"
+    logo: "villa-palazzo-aminta.jpg"
+    fiche: "villa-palazzo-aminta"
   - nom: "NGE"
     logo: "nge.png"
     fiche: "nge"
   - nom: "Autodesk"
     logo: "autodesk.png"
     fiche: "autodesk"
-  - nom: "Aecon"
-    logo: ""
-    fiche: "aecon"
-  - nom: "VNF"
-    logo: ""
-    fiche: "vnf"
   - nom: "CDC Habitat"
     logo: "cdc-habitat.png"
     fiche: "cdc-habitat"
@@ -74,16 +96,28 @@ invites_entreprises:
 
 # ── Presse écrite ────────────────────────────────────────────
 presse_rendezvous: "Chaque mardi à 18h"
-presse_premier_article: "Mardi 20 octobre 2026"   # vider cette ligne une fois le premier article publié
+presse_rendezvous_en: "Every Tuesday at 6 pm"
+presse_rendezvous_it: "Ogni martedì alle 18"
+presse_premier_article: "mardi 20 octobre 2026"   # vider cette ligne (et ses traductions) une fois le premier article publié
+presse_premier_article_en: "Tuesday 20 October 2026"
+presse_premier_article_it: "martedì 20 ottobre 2026"
 presse_redaction:
   - nom: "Emma"
     role: "Rédactrice en chef, presse écrite"
+    role_en: "Editor-in-chief, written press"
+    role_it: "Caporedattrice, stampa scritta"
   - nom: "Timothée"
     role: "Directeur de la publication"
+    role_en: "Publication director"
+    role_it: "Direttore della pubblicazione"
   - nom: "Lucas"
     role: "Auditeur libre"
+    role_en: "Auditor"
+    role_it: "Uditore"
   - nom: "Jules"
     role: "Auditeur libre"
+    role_en: "Auditor"
+    role_it: "Uditore"
 
 # ── Mesure d'audience (sans cookie) ──────────────────────────
 # Jeton Cloudflare Web Analytics (une suite de lettres et chiffres, voir le guide).
@@ -106,6 +140,8 @@ telephone: "06 95 99 05 01"
 rna: "W943012233"                 # numéro du récépissé de la sous-préfecture
 directeur_publication: "Timothée de Varax"
 role_directeur: "président fondateur de l'association"
+role_directeur_en: "founding president of the association"
+role_directeur_it: "presidente fondatore dell'associazione"
 
 # ─────────────────────────────────────────────────────────────
 #  Réglages techniques : pas besoin d'y toucher
@@ -116,6 +152,8 @@ kramdown:
   input: GFM
 permalink: /presse/:title/
 
+# Fiches : en français dans _interviews et _entreprises ; traductions dans les dossiers _en et _it
+# (même nom de fichier, seulement le titre, le poste et le texte traduits).
 collections:
   interviews:
     output: true
@@ -123,16 +161,41 @@ collections:
   entreprises:
     output: true
     permalink: /entreprises/:name/
+  interviews_en:
+    output: true
+    permalink: /en/interviews/:name/
+  interviews_it:
+    output: true
+    permalink: /it/interviews/:name/
+  entreprises_en:
+    output: true
+    permalink: /en/entreprises/:name/
+  entreprises_it:
+    output: true
+    permalink: /it/entreprises/:name/
 
+# Langue de chaque page : français par défaut, anglais dans le dossier en/, italien dans it/.
 defaults:
+  - scope: { path: "" }
+    values: { image: /assets/img/partage.png, lang: fr, prefixe: "", locale: fr_FR }
+  - scope: { path: "en" }
+    values: { lang: en, prefixe: "/en", locale: en_GB }
+  - scope: { path: "it" }
+    values: { lang: it, prefixe: "/it", locale: it_IT }
   - scope: { path: "", type: posts }
-    values: { layout: article }
+    values: { layout: article, sans_traduction: true }
   - scope: { path: "", type: interviews }
     values: { layout: interview }
   - scope: { path: "", type: entreprises }
     values: { layout: entreprise }
-  - scope: { path: "" }
-    values: { image: /assets/img/partage.png }
+  - scope: { path: "", type: interviews_en }
+    values: { layout: interview, lang: en, prefixe: "/en", locale: en_GB }
+  - scope: { path: "", type: interviews_it }
+    values: { layout: interview, lang: it, prefixe: "/it", locale: it_IT }
+  - scope: { path: "", type: entreprises_en }
+    values: { layout: entreprise, lang: en, prefixe: "/en", locale: en_GB }
+  - scope: { path: "", type: entreprises_it }
+    values: { layout: entreprise, lang: it, prefixe: "/it", locale: it_IT }
 
 plugins:
   - jekyll-seo-tag

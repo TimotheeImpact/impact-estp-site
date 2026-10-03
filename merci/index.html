@@ -1,23 +1,6 @@
 ---
 layout: default
-title: Merci
+title: "Merci"
 sitemap: false
 ---
-<div class="page-head">
-  <p class="label">C'est envoyé</p>
-  <h1>Merci, on a bien reçu ton message</h1>
-  <p class="intro" id="merci-texte">L'équipe d'Impact ESTP revient vers toi très vite.</p>
-  <div class="actions">
-    <a class="btn primary" href="{{ '/interviews/' | relative_url }}">Voir les interviews</a>
-    <a class="btn" href="{{ '/' | relative_url }}">Retour à l'accueil</a>
-  </div>
-</div>
-<script>
-  (function () {
-    var f = new URLSearchParams(location.search).get('formulaire');
-    var t = document.getElementById('merci-texte');
-    if (f === 'vivier') t.textContent = "Bienvenue dans le vivier Impact. On te contacte dès qu'une offre correspond à ta recherche.";
-    if (f === 'contact') t.textContent = "Ton message est bien arrivé. On te répond très vite à l'adresse que tu as indiquée.";
-    if (f === 'equipe') t.textContent = "Ta candidature est bien arrivée. On te recontacte très vite pour en discuter.";
-  })();
-</script>
+{% include pages/merci.html %}
