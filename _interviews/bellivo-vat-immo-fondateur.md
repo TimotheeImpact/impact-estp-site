@@ -9,6 +9,7 @@ youtube: ""
 numero: 12
 post_prod: true
 quand: "Montage en cours"
+logo: /assets/img/logos/bellivo.png
 vignette: "Bellivo Immo"
 ---
 Interview tournée, en cours de montage. La vidéo sera publiée ici dès sa sortie.

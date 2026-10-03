@@ -9,6 +9,7 @@ youtube: ""
 numero: 14
 post_prod: true
 quand: "Montage en cours"
+logo: /assets/img/logos/nge.png
 vignette: "NGE"
 ---
 Interview tournée, en cours de montage. La vidéo sera publiée ici dès sa sortie.

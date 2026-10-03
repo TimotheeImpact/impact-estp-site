@@ -9,6 +9,7 @@ youtube: ""
 numero: 9
 post_prod: true
 quand: "Montage en cours"
+logo: /assets/img/logos/ser.png
 vignette: "SER"
 ---
 Interview tournée, en cours de montage. La vidéo sera publiée ici dès sa sortie.

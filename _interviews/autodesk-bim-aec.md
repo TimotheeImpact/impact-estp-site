@@ -9,6 +9,7 @@ youtube: ""
 numero: 11
 post_prod: true
 quand: "Montage en cours"
+logo: /assets/img/logos/autodesk.png
 vignette: "Autodesk"
 ---
 Interview tournée, en cours de montage. La vidéo sera publiée ici dès sa sortie.
