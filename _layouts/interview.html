@@ -1,0 +1,84 @@
+---
+layout: default
+---
+{%- capture ytid -%}{%- if page.youtube and page.youtube != "" -%}{%- include youtube-id.html lien=page.youtube -%}{%- endif -%}{%- endcapture -%}
+{%- assign theme = site.data.themes | where: "id", page.theme | first -%}
+
+<div class="page-head">
+  <p class="label">Interview vidéo{% if theme %} · {{ theme.nom }}{% endif %}</p>
+  <h1>{{ page.title }}</h1>
+  {%- if page.invite != "" or page.entreprise != "" %}
+  <p class="intro">{{ page.invite }}{% if page.invite != "" and page.entreprise != "" %}, {% endif %}{% if page.poste != "" %}{{ page.poste | downcase }} {% if page.entreprise != "" %}chez {% endif %}{% endif %}{{ page.entreprise }}</p>
+  {%- endif %}
+</div>
+
+<div class="split">
+  <div>
+    {%- if page.partenaire %}
+    <p class="disclosure"><b>Collaboration commerciale.</b> Ce contenu a été réalisé dans le cadre d'un partenariat rémunéré avec {{ page.entreprise | default: "une entreprise" }}.</p>
+    {%- endif %}
+
+    {%- if ytid != "" %}
+    <div class="player" data-youtube="{{ ytid }}">
+      <button type="button" aria-label="Lire la vidéo : {{ page.title | escape }}">
+        <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" onerror="this.remove()" alt="" width="480" height="360">
+        <span class="big-play" aria-hidden="true"></span>
+      </button>
+    </div>
+    <p class="player-note">La vidéo se charge depuis YouTube quand tu cliques sur lecture. <a href="https://www.youtube.com/watch?v={{ ytid }}">Voir sur YouTube</a></p>
+    {%- else %}
+    <div class="player soon">
+      <div>
+        <div class="no">{{ page.vignette | default: "BIENTÔT" }}</div>
+        <p>{{ page.quand | default: "Bientôt en ligne" }}</p>
+      </div>
+    </div>
+    {%- endif %}
+
+    {%- assign texte = content | strip %}
+    {%- if texte != "" %}
+    <div class="prose" style="margin-top:28px">
+      {{ content }}
+    </div>
+    {%- endif %}
+
+    {%- assign articles = site.posts | where: "interview", page.slug %}
+    {%- if articles.size > 0 %}
+    <div class="related">
+      <h2>À lire</h2>
+      <ul class="article-list">
+        {%- for a in articles %}
+        <li><a href="{{ a.url | relative_url }}"><span class="label">{% include article-meta.html item=a %}</span><h3>{{ a.title }}</h3></a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endif %}
+  </div>
+
+  <aside class="facts" aria-label="Fiche de l'interview">
+    {%- if page.invite != "" %}<div><p class="label">Invité</p><div class="v">{{ page.invite }}</div></div>{% endif %}
+    {%- if page.poste != "" %}<div><p class="label">Poste</p><div class="v">{{ page.poste }}</div></div>{% endif %}
+    {%- if page.entreprise != "" %}<div><p class="label">Entreprise</p><div class="v">{{ page.entreprise }}</div></div>{% endif %}
+    {%- if theme %}<div><p class="label">Thème</p><div class="v">{{ theme.nom }}</div></div>{% endif %}
+    {%- if page.duree and page.duree != "" %}<div><p class="label">Durée</p><div class="v">{{ page.duree }}</div></div>{% endif %}
+    <div><p class="label">Tu cherches un stage ?</p><div class="v"><a href="{{ '/stages/' | relative_url }}">Rejoins le vivier Impact</a></div></div>
+  </aside>
+</div>
+
+{%- assign autres = site.interviews | where_exp: "i", "i.url != page.url" | sort: "numero" | reverse %}
+{%- if autres.size > 0 %}
+<section class="block" aria-labelledby="t-autres">
+  <div class="head">
+    <div>
+      <p class="label">À voir aussi</p>
+      <h2 id="t-autres">Autres interviews</h2>
+    </div>
+    <a href="{{ '/interviews/' | relative_url }}">Toutes les interviews</a>
+  </div>
+  <div class="grid">
+    {%- for i in autres limit: 3 %}
+    {% include interview-card.html item=i %}
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}

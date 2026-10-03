@@ -1,0 +1,55 @@
+# Écoles proposées dans les formulaires (vivier et équipe).
+# Pour ajouter une école, ajoute une ligne « - Nom de l'école » dans le bon groupe.
+- groupe: Construction, génie civil et architecture
+  ecoles:
+    - ESTP (Cachan, Dijon, Orléans, Troyes)
+    - École des Ponts (ENPC)
+    - ENTPE (Lyon)
+    - EIVP (Paris)
+    - Builders École d'ingénieurs (Caen)
+    - ESITC Metz
+    - ESITC Paris
+    - INSA Lyon
+    - INSA Rennes
+    - INSA Strasbourg
+    - INSA Toulouse
+    - Autre INSA
+    - Polytech (réseau)
+    - CESI École d'ingénieurs
+    - ISBA TP (Marseille)
+    - ISA BTP (Anglet)
+    - ECAM
+    - Junia HEI
+    - IMT Mines Alès
+    - ESB, École supérieure du bois (Nantes)
+    - ENSTIB (Épinal)
+    - ESGT, géomètres-topographes (Le Mans)
+    - École nationale supérieure d'architecture (ENSA)
+- groupe: Énergie et environnement
+  ecoles:
+    - Mines Paris – PSL
+    - Grenoble INP – Ense3
+    - Toulouse INP – ENSEEIHT
+    - IMT Atlantique
+    - IFP School
+    - ENSEM (Nancy)
+    - ENSIP (Poitiers)
+- groupe: Écoles d'ingénieurs généralistes
+  ecoles:
+    - Arts et Métiers
+    - École centrale (Lyon, Marseille, Nantes, Lille)
+    - CentraleSupélec
+    - École polytechnique
+    - Université de technologie (UTC, UTT, UTBM)
+    - EPF
+    - ESILV
+- groupe: Université et formations techniques
+  ecoles:
+    - Université (licence, master)
+    - BUT Génie civil – construction durable (IUT)
+    - BTS bâtiment, travaux publics ou fluides-énergies
+- groupe: Autres
+  ecoles:
+    - École de commerce
+    - École à l'étranger
+    - Autre école

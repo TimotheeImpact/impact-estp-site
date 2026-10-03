@@ -1,0 +1,103 @@
+---
+layout: default
+title: Stages et vivier
+description: "Rejoins le vivier Impact : les entreprises de la construction et de l'énergie que nous interviewons recrutent des stagiaires et des jeunes ingénieurs."
+---
+{%- assign action = site.formulaire_vivier -%}
+<div class="page-head">
+  <p class="label">Stages et premier emploi</p>
+  <h1>Rejoins le vivier Impact</h1>
+  <p class="intro">Les entreprises que nous interviewons cherchent des stagiaires et des jeunes ingénieurs. Laisse-nous ton profil : quand une offre correspond, on te la transmet en priorité.</p>
+</div>
+
+<div class="pool">
+  <div class="why">
+    <ol>
+      <li>Tu remplis le formulaire en une minute. C'est gratuit.</li>
+      <li>On te contacte quand une offre de stage, d'alternance ou d'emploi correspond à ta recherche.</li>
+      <li>Tu choisis si ton profil est présenté à l'entreprise. Rien n'est transmis sans ton accord.</li>
+    </ol>
+    <div class="soon-box">
+      <p class="label">Bientôt</p>
+      <p>Les rapports de stage et les avis anonymes sur les entreprises, partagés par les étudiants dans un espace membre.</p>
+    </div>
+  </div>
+
+  <form class="sheet js-form" id="form-vivier" method="POST"{% if action != "" %} action="{{ action }}"{% endif %}>
+    {% include form-endpoint.html action=action %}
+    <fieldset class="all"{% if action == "" %} disabled{% endif %}>
+      <legend class="visually-hidden">Ton profil</legend>
+      <input type="hidden" name="formulaire" value="Vivier de stages">
+      <div class="full">{% include select-ecole.html id="v-ecole" %}</div>
+      <div class="field">
+        <label for="v-annee">Année</label>
+        <select id="v-annee" name="annee" required>
+          <option value="" selected disabled>Choisis</option>
+          <option>1re année</option>
+          <option>2e année</option>
+          <option>3e année</option>
+          <option>4e année</option>
+          <option>5e année</option>
+          <option>Césure</option>
+          <option>Jeune diplômé</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="v-spe">Spécialité</label>
+        <select id="v-spe" name="specialite">
+          <option>Bâtiment</option>
+          <option>Travaux publics</option>
+          <option>Génie civil</option>
+          <option>Énergie</option>
+          <option>Génie mécanique et électrique</option>
+          <option>Topographie et géomatique</option>
+          <option>Architecture</option>
+          <option>Urbanisme et aménagement</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <fieldset class="chips full">
+        <legend>Je cherche</legend>
+        <label class="chip"><input type="checkbox" name="recherche" value="Stage" checked><span>Un stage</span></label>
+        <label class="chip"><input type="checkbox" name="recherche" value="Alternance"><span>Une alternance</span></label>
+        <label class="chip"><input type="checkbox" name="recherche" value="Premier emploi"><span>Un premier emploi</span></label>
+        <label class="chip"><input type="checkbox" name="recherche" value="Être informé"><span>Juste être informé</span></label>
+      </fieldset>
+      <div class="field">
+        <label for="v-dispo">Disponible à partir de</label>
+        <input type="text" id="v-dispo" name="disponibilite" placeholder="Juin 2027">
+      </div>
+      <div class="field">
+        <label for="v-mail">E-mail</label>
+        <input type="email" id="v-mail" name="email" placeholder="prenom.nom@ecole.fr" autocomplete="email" required>
+      </div>
+      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="consent full"><input type="checkbox" name="consentement" value="oui" required> <span>J'accepte qu'Impact ESTP conserve ces informations pour me proposer des offres, comme expliqué dans la <a href="{{ '/confidentialite/' | relative_url }}">politique de confidentialité</a>. Je peux demander leur suppression à tout moment.</span></label>
+      <div class="full"><button class="btn primary" type="submit">Rejoindre le vivier</button></div>
+    </fieldset>
+    <p class="form-note" data-ok hidden>C'est noté, bienvenue dans le vivier. On revient vers toi dès qu'une offre correspond à ta recherche.</p>
+    <p class="form-note error" data-err hidden>L'envoi n'a pas marché. Réessaie dans un instant{% if site.email != "" %} ou écris-nous à {{ site.email }}{% endif %}.</p>
+  </form>
+</div>
+
+<section class="block" aria-labelledby="t-faq">
+  <div class="head"><div><p class="label">Questions</p><h2 id="t-faq">Questions fréquentes</h2></div></div>
+  <div class="faq narrow">
+    <details>
+      <summary>Est-ce que c'est payant ?</summary>
+      <p>Non. Le vivier est gratuit pour les étudiants et les jeunes diplômés, et le restera.</p>
+    </details>
+    <details>
+      <summary>Qui voit mes informations ?</summary>
+      <p>Seule l'équipe d'Impact ESTP. Une entreprise ne reçoit ton profil que si tu as dit oui pour cette offre précise.</p>
+    </details>
+    <details>
+      <summary>Je ne suis pas à l'ESTP, je peux m'inscrire ?</summary>
+      <p>Oui. Le vivier est ouvert à tous les étudiants qui visent la construction, les travaux publics ou l'énergie, quelle que soit leur école.</p>
+    </details>
+    <details>
+      <summary>Comment me désinscrire ?</summary>
+      <p>Écris-nous{% if site.email != "" %} à {{ site.email }}{% endif %} et nous supprimons tes informations.</p>
+    </details>
+  </div>
+</section>

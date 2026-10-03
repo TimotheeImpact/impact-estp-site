@@ -1,0 +1,32 @@
+---
+layout: default
+title: Interviews
+description: "Toutes les interviews vidéo d'Impact ESTP avec les dirigeants, ingénieurs et entrepreneurs de la construction et de l'énergie."
+---
+{%- assign interviews = site.interviews | sort: "numero" | reverse -%}
+<div class="page-head">
+  <p class="label">Interviews vidéo</p>
+  <h1>Ceux qui font la construction et l'énergie</h1>
+  <p class="intro">20 à 40 minutes de conversation sans filtre : le parcours, les projets concrets, et ce que l'invité dirait à un étudiant qui hésite.</p>
+</div>
+
+<section class="block" style="padding-top:32px" aria-label="Liste des interviews">
+  <div class="filters" role="group" aria-label="Filtrer par thème">
+    <button type="button" aria-pressed="true" data-filter="all">Tout</button>
+    {%- for t in site.data.themes %}
+    {%- assign n = interviews | where: "theme", t.id | size %}
+    {%- if n > 0 %}
+    <button type="button" aria-pressed="false" data-filter="{{ t.id }}">{{ t.nom }}</button>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+  <p class="count" id="count" aria-live="polite">{{ interviews.size }} interview{% if interviews.size > 1 %}s{% endif %}</p>
+  <div class="grid" id="cards">
+    {%- for i in interviews %}
+    {% include interview-card.html item=i %}
+    {%- endfor %}
+  </div>
+  {%- if site.youtube != "" %}
+  <p style="margin-top:28px"><a class="btn" href="{{ site.youtube }}">Toutes les vidéos et les shorts sur YouTube</a></p>
+  {%- endif %}
+</section>

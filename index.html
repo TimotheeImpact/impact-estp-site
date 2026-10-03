@@ -1,0 +1,127 @@
+---
+layout: default
+---
+{%- assign interviews = site.interviews | sort: "numero" | reverse -%}
+{%- assign articles = site.posts -%}
+
+<div class="hero">
+  <div>
+    <p class="label">Le média étudiant de la construction et de l'énergie</p>
+    <h1>Le métier d'ingénieur, raconté par <em>ceux qui le font.</em></h1>
+    <p class="lede">Chaque semaine, une interview vidéo avec un dirigeant, un ingénieur ou un entrepreneur du BTP et de l'énergie. Pour choisir ton stage et ton métier en sachant vraiment à quoi ils ressemblent.</p>
+    <div class="actions">
+      <a class="btn primary" href="{{ '/interviews/' | relative_url }}">Voir les interviews</a>
+      <a class="btn" href="{{ '/stages/' | relative_url }}">Trouver un stage</a>
+    </div>
+  </div>
+  <div class="cartouche" aria-label="Impact ESTP en chiffres">
+    {%- for c in site.chiffres %}
+    <div><div class="num">{{ c.valeur }}</div><div class="cap">{{ c.legende }}</div></div>
+    {%- endfor %}
+    <div class="full"><div class="cap">Créé en février 2026 par des étudiants de l'ESTP Paris</div></div>
+  </div>
+</div>
+
+{%- if site.invites_entreprises.size > 0 %}
+<div class="guests">
+  <p class="label">Ils sont passés au micro</p>
+  <ul aria-label="Entreprises de nos invités">
+    {%- for e in site.invites_entreprises %}
+    <li>{{ e }}</li>
+    {%- endfor %}
+  </ul>
+</div>
+{%- endif %}
+
+<section class="block" aria-labelledby="t-interviews">
+  <div class="head">
+    <div>
+      <p class="label">Interviews vidéo</p>
+      <h2 id="t-interviews">Les dernières interviews</h2>
+      <p>20 à 40 minutes de conversation sans filtre : le parcours, les projets concrets, et ce que l'invité dirait à un étudiant qui hésite.</p>
+    </div>
+    <a href="{{ '/interviews/' | relative_url }}">Toutes les interviews</a>
+  </div>
+  <div class="grid">
+    {%- for i in interviews limit: 6 %}
+    {% include interview-card.html item=i %}
+    {%- endfor %}
+    {%- if interviews.size < 6 and site.youtube != "" %}
+    <a class="card more" href="{{ site.youtube }}">
+      <p class="label">YouTube</p>
+      <p>Toutes nos interviews déjà publiées sont sur la chaîne Impact ESTP.</p>
+      <span class="go">Ouvrir la chaîne</span>
+    </a>
+    {%- endif %}
+  </div>
+</section>
+
+<section class="block" aria-labelledby="t-presse">
+  <div class="head">
+    <div>
+      <p class="label">Presse écrite</p>
+      <h2 id="t-presse">À lire en cinq minutes</h2>
+      <p>Chaque interview devient un article : l'essentiel, les chiffres, et les citations à retenir.</p>
+    </div>
+    {%- if articles.size > 0 %}
+    <a href="{{ '/presse/' | relative_url }}">Tous les articles</a>
+    {%- endif %}
+  </div>
+  {%- if articles.size > 0 %}
+  {%- assign une = articles.first %}
+  <div class="press">
+    <a class="lead-article" href="{{ une.url | relative_url }}">
+      <p class="label">{% include article-meta.html item=une %}</p>
+      <h3>{{ une.title }}</h3>
+      {%- if une.chapeau %}
+      <p>{{ une.chapeau }}</p>
+      {%- endif %}
+      <p class="label">Par {{ une.auteur | default: "la rédaction" }}</p>
+    </a>
+    <div>
+      {%- if articles.size > 1 %}
+      <ul class="article-list">
+        {%- for a in articles offset: 1 limit: 3 %}
+        <li><a href="{{ a.url | relative_url }}"><span class="label">{% include article-meta.html item=a %}</span><h3>{{ a.title }}</h3></a></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+      <p class="rules"><b>Nos règles.</b> Une interview n'est jamais achetée. Les contenus réalisés avec une entreprise partenaire portent la mention « Collaboration commerciale ».</p>
+    </div>
+  </div>
+  {%- else %}
+  <div class="empty">
+    <p class="label">Bientôt</p>
+    <p>Les premiers articles de la rédaction arrivent avec les prochaines interviews.</p>
+  </div>
+  {%- endif %}
+</section>
+
+<section class="block" aria-labelledby="t-portes">
+  <div class="head">
+    <div>
+      <p class="label">Avec Impact</p>
+      <h2 id="t-portes">Trois façons de nous rejoindre</h2>
+    </div>
+  </div>
+  <div class="doors">
+    <a class="door" href="{{ '/stages/' | relative_url }}">
+      <p class="label">Étudiant ou jeune diplômé</p>
+      <h3>Rejoins le vivier de stages</h3>
+      <p>Les entreprises que nous interviewons recrutent. Laisse ton profil, on te transmet les offres qui te correspondent.</p>
+      <span class="go">Laisser mon profil</span>
+    </a>
+    <a class="door" href="{{ '/entreprises/' | relative_url }}">
+      <p class="label">Entreprise</p>
+      <h3>Parlez aux futurs ingénieurs</h3>
+      <p>Interviews, séries tournées sur vos chantiers, stagiaires présélectionnés : travaillons ensemble.</p>
+      <span class="go">Voir nos offres</span>
+    </a>
+    <a class="door" href="{{ '/a-propos/#equipe' | relative_url }}">
+      <p class="label">Étudiant de l'ESTP</p>
+      <h3>Entre dans l'équipe</h3>
+      <p>Montage, tournage, écriture, réseaux, démarchage : on recrute des premières années motivés.</p>
+      <span class="go">Candidater</span>
+    </a>
+  </div>
+</section>

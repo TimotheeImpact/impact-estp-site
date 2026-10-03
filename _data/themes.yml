@@ -1,0 +1,12 @@
+# Thèmes des interviews et des articles.
+# « id » sert dans les fiches (theme: energie). « nom » est ce qui s'affiche sur le site.
+- id: bas-carbone
+  nom: Construction bas-carbone
+- id: energie
+  nom: Transition énergétique
+- id: grands-projets
+  nom: Grands projets
+- id: carrieres
+  nom: Métiers et carrières
+- id: international
+  nom: À l'international

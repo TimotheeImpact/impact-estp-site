@@ -1,0 +1,18 @@
+{%- comment -%} Liste des écoles, modifiable dans _data/ecoles.yml {%- endcomment -%}
+<div class="field">
+  <label for="{{ include.id }}">École</label>
+  <select id="{{ include.id }}" name="ecole" data-autre="{{ include.id }}-autre" required>
+    <option value="" selected disabled>Choisis ton école</option>
+    {%- for g in site.data.ecoles %}
+    <optgroup label="{{ g.groupe }}">
+      {%- for e in g.ecoles %}
+      <option>{{ e }}</option>
+      {%- endfor %}
+    </optgroup>
+    {%- endfor %}
+  </select>
+</div>
+<div class="field" id="{{ include.id }}-autre-champ">
+  <label for="{{ include.id }}-autre">Si autre, laquelle ?</label>
+  <input type="text" id="{{ include.id }}-autre" name="ecole_autre" autocomplete="organization">
+</div>

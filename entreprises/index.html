@@ -1,0 +1,49 @@
+---
+layout: default
+title: Entreprises
+description: "Marque employeur, séries tournées sur vos chantiers, stagiaires présélectionnés : parlez à la prochaine génération d'ingénieurs avec Impact ESTP."
+---
+<div class="page-head">
+  <p class="label">Pour les entreprises</p>
+  <h1>Parlez à la prochaine génération d'ingénieurs</h1>
+  <p class="intro">Nos spectateurs sont les étudiants que vous cherchez à recruter. Trois façons de travailler ensemble.</p>
+</div>
+
+<section class="block" style="padding-top:32px" aria-label="Nos offres">
+  <div class="offers">
+    {%- for o in site.data.offres %}
+    <div class="offer">
+      <p class="label">{{ o.etiquette }}</p>
+      <h3>{{ o.titre }}</h3>
+      <p>{{ o.texte }}</p>
+      <ul>
+        {%- for p in o.points %}
+        <li>{{ p }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endfor %}
+  </div>
+  <div class="case">
+    <div class="big">K&amp;B</div>
+    <p><b>Ils nous ont fait confiance.</b> Kaufman &amp; Broad nous a confié 3 vidéos sur l'un de ses chantiers, et Eiffage Route une interview en studio de son directeur technique.</p>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="t-comment">
+  <div class="head"><div><p class="label">Méthode</p><h2 id="t-comment">Comment ça se passe</h2></div></div>
+  <ol class="steps">
+    <li><b>Un premier échange</b><p>15 minutes pour comprendre ce que vous voulez montrer et qui vous cherchez à recruter.</p></li>
+    <li><b>Une proposition claire</b><p>Format, calendrier et prix sur devis, adaptés à votre besoin.</p></li>
+    <li><b>Le tournage et la diffusion</b><p>Nous tournons, montons et diffusons sur YouTube, LinkedIn et le site.</p></li>
+  </ol>
+  <div class="contact-box">
+    <p><b>Parlons de votre projet.</b> Dites-nous ce que vous cherchez, nous revenons vers vous rapidement.</p>
+    {%- if site.email != "" %}
+    <a class="btn primary" href="mailto:{{ site.email }}?subject=Partenariat%20Impact%20ESTP">Nous écrire</a>
+    {%- endif %}
+    {%- if site.linkedin != "" %}
+    <a class="btn{% if site.email == "" %} primary{% endif %}" href="{{ site.linkedin }}">{% if site.email == "" %}Nous contacter sur LinkedIn{% else %}Nous suivre sur LinkedIn{% endif %}</a>
+    {%- endif %}
+  </div>
+</section>

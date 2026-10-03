@@ -1,0 +1,21 @@
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <picture>
+        <source srcset="{{ '/assets/img/logo-sombre.png' | relative_url }}" media="(prefers-color-scheme: dark)">
+        <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Impact ESTP, accueil" width="252" height="120">
+      </picture>
+    </a>
+    <nav aria-label="Navigation principale">
+      <ul>
+        {%- for item in site.data.navigation %}
+        {%- assign actif = false -%}
+        {%- if page.url == item.lien -%}{%- assign actif = true -%}{%- endif -%}
+        {%- if item.lien == '/interviews/' and page.collection == 'interviews' -%}{%- assign actif = true -%}{%- endif -%}
+        {%- if item.lien == '/presse/' and page.collection == 'posts' -%}{%- assign actif = true -%}{%- endif %}
+        <li><a href="{{ item.lien | relative_url }}"{% if actif %} aria-current="page"{% endif %}>{{ item.titre }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

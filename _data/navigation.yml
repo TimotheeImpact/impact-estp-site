@@ -1,0 +1,11 @@
+# Menu en haut du site
+- titre: Interviews
+  lien: /interviews/
+- titre: Presse
+  lien: /presse/
+- titre: Stages
+  lien: /stages/
+- titre: Entreprises
+  lien: /entreprises/
+- titre: À propos
+  lien: /a-propos/

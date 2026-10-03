@@ -1,0 +1,9 @@
+{%- comment -%}
+  Accepte un lien YouTube complet (watch?v=, youtu.be/, shorts/, live/) ou l'identifiant seul,
+  et renvoie l'identifiant de la vidéo.
+{%- endcomment -%}
+{%- assign yt = include.lien | strip -%}
+{%- if yt contains "v=" -%}{%- assign yt = yt | split: "v=" | last -%}{%- endif -%}
+{%- assign yt = yt | split: "&" | first | split: "?" | first | split: "#" | first -%}
+{%- assign yt = yt | split: "/" | last -%}
+{{- yt -}}

@@ -1,0 +1,5 @@
+{%- assign a = include.item -%}
+{%- assign theme = site.data.themes | where: "id", a.theme | first -%}
+{%- assign mots = a.content | strip_html | number_of_words -%}
+{%- assign minutes = mots | divided_by: 200 | plus: 1 -%}
+{%- if theme %}{{ theme.nom }} · {% endif %}{% include date-fr.html date=a.date %} · {{ minutes }} min de lecture

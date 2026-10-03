@@ -1,0 +1,26 @@
+<footer>
+  <div class="wrap">
+    <div class="titleblock" aria-label="Cartouche">
+      <div><p class="label">Projet</p><div class="name">IMPACT ESTP</div><p class="label" style="margin-top:6px">Média étudiant</p></div>
+      <div><p class="label">École</p><div class="v">ESTP Paris</div></div>
+      <div><p class="label">Format</p><div class="v">1 interview / semaine</div></div>
+      <div><p class="label">Indice</p><div class="v">Mis à jour le {% include date-fr.html date=site.time %}</div></div>
+    </div>
+    <div class="foot">
+      <div class="foot-links">
+        {% if site.youtube != "" %}<a href="{{ site.youtube }}" rel="me">YouTube</a>{% endif %}
+        {% if site.linkedin != "" %}<a href="{{ site.linkedin }}" rel="me">LinkedIn</a>{% endif %}
+        {% if site.instagram != "" %}<a href="{{ site.instagram }}" rel="me">Instagram</a>{% endif %}
+        <a href="{{ '/presse/flux.xml' | relative_url }}">Flux RSS</a>
+        <a href="{{ '/mentions-legales/' | relative_url }}">Mentions légales</a>
+        <a href="{{ '/confidentialite/' | relative_url }}">Confidentialité</a>
+      </div>
+      {%- if site.instagram != "" %}
+      <a class="qr" href="{{ site.instagram }}">
+        <img src="{{ '/assets/img/instagram-qr.png' | relative_url }}" alt="QR code du compte Instagram impact.estp" width="96" height="110" loading="lazy">
+        <span>Scanne pour nous suivre sur Instagram</span>
+      </a>
+      {%- endif %}
+    </div>
+  </div>
+</footer>

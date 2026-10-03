@@ -1,0 +1,12 @@
+{%- comment -%}
+  Date en français. Usage : {% include date-fr.html date=page.date %}
+  Ajoute format="mois" pour n'afficher que « novembre 2026 ».
+{%- endcomment -%}
+{%- assign mois_fr = "janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre" | split: "," -%}
+{%- assign m = include.date | date: "%-m" | minus: 1 -%}
+{%- assign j = include.date | date: "%-d" -%}
+{%- if include.format == "mois" -%}
+{{ mois_fr[m] }} {{ include.date | date: "%Y" }}
+{%- else -%}
+{%- if j == "1" -%}1er{%- else -%}{{ j }}{%- endif %} {{ mois_fr[m] }} {{ include.date | date: "%Y" }}
+{%- endif -%}

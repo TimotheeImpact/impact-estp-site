@@ -1,0 +1,7 @@
+{%- comment -%}
+  Affiche un avertissement tant que l'adresse du formulaire n'est pas réglée dans _config.yml.
+  Usage : {% include form-endpoint.html action=site.formulaire_vivier %}
+{%- endcomment -%}
+{%- if include.action == nil or include.action == "" %}
+<p class="form-closed">Ouverture des inscriptions le 15 novembre 2026.</p>
+{%- endif %}

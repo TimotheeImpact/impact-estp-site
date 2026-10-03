@@ -1,0 +1,105 @@
+---
+layout: default
+title: À propos
+description: "Impact ESTP est le premier média étudiant dédié à la construction et à l'énergie, créé en février 2026 par des étudiants de l'ESTP Paris."
+---
+{%- assign action = site.formulaire_equipe -%}
+<div class="page-head">
+  <p class="label">À propos</p>
+  <h1>Montrer le secteur tel qu'il est, par ceux qui le font</h1>
+  <p class="intro">Impact ESTP est le premier média étudiant dédié à la construction et à l'énergie.</p>
+</div>
+
+<div class="split">
+  <div class="prose">
+    <h2 style="margin-top:0">Pourquoi Impact</h2>
+    <p>On demande aux étudiants de s'engager dans un secteur qu'ils connaissent mal, en ne leur montrant qu'un seul visage. Pourtant, les métiers de la construction et de l'énergie sont d'une diversité immense.</p>
+    <p>En février 2026, des étudiants de l'ESTP Paris ont lancé Impact pour changer ça : des interviews vidéo sans filtre, de 20 à 40 minutes, avec les dirigeants, ingénieurs et entrepreneurs qui font le secteur. Pas une plaquette, une vraie conversation, avec les questions qu'un étudiant se pose vraiment.</p>
+    <p>En quelques mois, plus de 275 professionnels ont été contactés un par un, et des invités de VINCI, RTE, Egis, NGE, Autodesk ou Aecon sont passés au micro, en France comme à l'international.</p>
+    <h2>Nos règles</h2>
+    <ul>
+      <li>Une interview n'est jamais achetée : nos invités sont choisis pour ce qu'ils ont à raconter.</li>
+      <li>Les contenus réalisés avec une entreprise partenaire portent la mention « Collaboration commerciale ».</li>
+      <li>Chaque article est relu, et les noms, postes et chiffres sont vérifiés avant publication.</li>
+    </ul>
+  </div>
+  <aside class="facts" aria-label="Impact ESTP en bref">
+    <div><p class="label">Créé en</p><div class="v">Février 2026</div></div>
+    <div><p class="label">Structure</p><div class="v">Association loi 1901 {{ site.association }}</div></div>
+    <div><p class="label">École</p><div class="v">ESTP Paris, campus de Cachan</div></div>
+    <div><p class="label">Fondateur</p><div class="v">{{ site.directeur_publication }}</div></div>
+    {%- if site.instagram != "" or site.linkedin != "" %}
+    <div><p class="label">Nous suivre</p><div class="v">
+      {%- if site.youtube != "" %}<a href="{{ site.youtube }}">YouTube</a>{% endif %}
+      {%- if site.linkedin != "" %} · <a href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
+      {%- if site.instagram != "" %} · <a href="{{ site.instagram }}">Instagram</a>{% endif -%}
+    </div></div>
+    {%- endif %}
+  </aside>
+</div>
+
+<section class="block" id="equipe" aria-labelledby="t-equipe">
+  <div class="head">
+    <div>
+      <p class="label">On recrute</p>
+      <h2 id="t-equipe">Entre dans l'équipe</h2>
+      <p>Tu es à l'ESTP et tu veux apprendre en faisant ? Rejoins la rédaction. Pas besoin d'expérience, juste d'envie et d'un peu de temps chaque semaine.</p>
+    </div>
+  </div>
+  <div class="pool" style="padding-top:0">
+    <div class="why">
+      <p>Ce que tu peux faire chez Impact :</p>
+      <ul style="margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px">
+        <li><b>Montage vidéo</b> des interviews et des shorts.</li>
+        <li><b>Tournage</b> en studio et sur les chantiers.</li>
+        <li><b>Écriture</b> des articles qui accompagnent chaque interview.</li>
+        <li><b>Réseaux sociaux</b> : LinkedIn, Instagram, YouTube.</li>
+        <li><b>Partenariats</b> : trouver les invités et les entreprises partenaires.</li>
+      </ul>
+    </div>
+
+    <form class="sheet js-form" id="form-equipe" method="POST"{% if action != "" %} action="{{ action }}"{% endif %}>
+      {% include form-endpoint.html action=action %}
+      <fieldset class="all"{% if action == "" %} disabled{% endif %}>
+        <legend class="visually-hidden">Ta candidature</legend>
+        <input type="hidden" name="formulaire" value="Candidature équipe">
+        <div class="field">
+          <label for="e-prenom">Prénom et nom</label>
+          <input type="text" id="e-prenom" name="nom" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="e-mail">E-mail</label>
+          <input type="email" id="e-mail" name="email" autocomplete="email" required>
+        </div>
+        <div class="full">{% include select-ecole.html id="e-ecole" %}</div>
+        <div class="field full">
+          <label for="e-annee">Année</label>
+          <select id="e-annee" name="annee" required>
+            <option value="" selected disabled>Choisis</option>
+            <option>1re année</option>
+            <option>2e année</option>
+            <option>3e année</option>
+            <option>4e année ou plus</option>
+          </select>
+        </div>
+        <fieldset class="chips full">
+          <legend>Ce qui me tente</legend>
+          <label class="chip"><input type="checkbox" name="envies" value="Montage vidéo"><span>Montage vidéo</span></label>
+          <label class="chip"><input type="checkbox" name="envies" value="Tournage"><span>Tournage</span></label>
+          <label class="chip"><input type="checkbox" name="envies" value="Écriture"><span>Écriture</span></label>
+          <label class="chip"><input type="checkbox" name="envies" value="Réseaux sociaux"><span>Réseaux sociaux</span></label>
+          <label class="chip"><input type="checkbox" name="envies" value="Partenariats"><span>Partenariats</span></label>
+        </fieldset>
+        <div class="field full">
+          <label for="e-msg">Un mot sur toi (facultatif)</label>
+          <textarea id="e-msg" name="message"></textarea>
+        </div>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="consent full"><input type="checkbox" name="consentement" value="oui" required> <span>J'accepte qu'Impact ESTP utilise ces informations pour répondre à ma candidature (<a href="{{ '/confidentialite/' | relative_url }}">confidentialité</a>).</span></label>
+        <div class="full"><button class="btn primary" type="submit">Envoyer ma candidature</button></div>
+      </fieldset>
+      <p class="form-note" data-ok hidden>Merci, ta candidature est bien arrivée. On te recontacte très vite.</p>
+      <p class="form-note error" data-err hidden>L'envoi n'a pas marché. Réessaie dans un instant{% if site.email != "" %} ou écris-nous à {{ site.email }}{% endif %}.</p>
+    </form>
+  </div>
+</section>

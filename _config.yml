@@ -1,0 +1,98 @@
+# ─────────────────────────────────────────────────────────────
+#  Réglages du site Impact ESTP
+#  Tu peux modifier les textes entre guillemets sans risque.
+#  Après une modification, le site se met à jour tout seul en 1 à 2 minutes.
+# ─────────────────────────────────────────────────────────────
+
+title: "Impact ESTP"
+tagline: "Le média étudiant de la construction et de l'énergie"
+description: "Le média étudiant de la construction et de l'énergie. Chaque semaine, une interview vidéo avec un dirigeant, un ingénieur ou un entrepreneur du BTP et de l'énergie."
+lang: fr_FR
+
+# Adresse du site.
+# Tant que le nom de domaine n'est pas branché, le site vit à l'adresse
+#   https://<ton-pseudo-github>.github.io/impact-estp-site
+# Le jour où impactestp.fr est branché : url: "https://impactestp.fr" et baseurl: ""
+url: ""
+baseurl: "/impact-estp-site"
+
+# ── Coordonnées ──────────────────────────────────────────────
+email: ""                         # adresse de contact affichée sur le site, par exemple contact@impactestp.fr une fois créée
+youtube: "https://www.youtube.com/@ImpactESTP"
+linkedin: "https://www.linkedin.com/company/impact-estp"
+instagram: "https://www.instagram.com/impact.estp/"
+
+# ── Chiffres affichés sur la page d'accueil ──────────────────
+chiffres:
+  - valeur: "8"
+    legende: "interviews publiées"
+  - valeur: "10"
+    legende: "en montage"
+  - valeur: "275+"
+    legende: "professionnels contactés"
+  - valeur: "1/sem."
+    legende: "nouvelle interview"
+
+# Entreprises dont viennent nos invités (bandeau de la page d'accueil)
+invites_entreprises:
+  - VINCI
+  - Bouygues
+  - Eiffage
+  - RTE
+  - Egis
+  - NGE
+  - Autodesk
+  - Aecon
+  - VNF
+
+# ── Formulaires ──────────────────────────────────────────────
+# Adresse d'envoi des formulaires (vivier de stages et candidatures à l'équipe).
+# Voir le mode d'emploi dans README.md, partie « Brancher les formulaires ».
+# Tant que c'est vide, les formulaires affichent « Ouverture le 15 novembre ».
+formulaire_vivier: ""
+formulaire_equipe: ""
+
+# ── Mentions légales (obligatoires en France) ────────────────
+association: "IMPACT ESTP"
+siren: "106 074 297"
+siege: "Cachan (94230)"            # mets l'adresse complète du siège, comme dans les statuts
+telephone: ""                     # numéro de contact de l'association (demandé par la loi)
+directeur_publication: "Timothée de Varax"
+role_directeur: "président de l'association"
+
+# ─────────────────────────────────────────────────────────────
+#  Réglages techniques : pas besoin d'y toucher
+# ─────────────────────────────────────────────────────────────
+timezone: Europe/Paris
+markdown: kramdown
+kramdown:
+  input: GFM
+permalink: /presse/:title/
+
+collections:
+  interviews:
+    output: true
+    permalink: /interviews/:name/
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: article }
+  - scope: { path: "", type: interviews }
+    values: { layout: interview }
+  - scope: { path: "" }
+    values: { image: /assets/img/partage.png }
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+feed:
+  path: presse/flux.xml
+
+exclude:
+  - README.md
+  - modeles/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/

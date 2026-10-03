@@ -1,0 +1,30 @@
+{%- assign i = include.item -%}
+{%- capture ytid -%}{%- if i.youtube and i.youtube != "" -%}{%- include youtube-id.html lien=i.youtube -%}{%- endif -%}{%- endcapture -%}
+{%- assign theme = site.data.themes | where: "id", i.theme | first -%}
+{%- capture meta -%}
+  {%- if i.invite and i.invite != "" -%}{{ i.invite }}{%- endif -%}
+  {%- if i.poste and i.poste != "" -%}{%- if i.invite and i.invite != "" %} · {% endif -%}{{ i.poste }}{%- if i.entreprise and i.entreprise != "" -%}, {{ i.entreprise }}{%- endif -%}
+  {%- elsif i.entreprise and i.entreprise != "" -%}{%- if i.invite and i.invite != "" %} · {% endif -%}{{ i.entreprise }}{%- endif -%}
+  {%- if i.duree and i.duree != "" %} · {{ i.duree }}{%- endif -%}
+{%- endcapture -%}
+<a class="card" href="{{ i.url | relative_url }}" data-theme-tag="{{ i.theme }}">
+  <div class="thumb">
+    {%- if ytid != "" %}
+    <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" onerror="this.remove()" alt="" loading="lazy" width="480" height="360">
+    {%- else %}
+    <span class="no">{{ i.vignette | default: "BIENTÔT" }}</span>
+    {%- endif %}
+    <span class="play" aria-hidden="true"></span>
+  </div>
+  <div class="body">
+    <div class="tags">
+      {%- if i.a_venir %}<span class="tag soon">{{ i.quand | default: "Bientôt" }}</span>{% endif -%}
+      {%- if theme %}<span class="tag">{{ theme.nom }}</span>{% endif -%}
+      {%- if i.partenaire %}<span class="tag partner">Collaboration commerciale</span>{% endif -%}
+    </div>
+    <h3>{{ i.title }}</h3>
+    {%- if meta != "" %}
+    <span class="meta">{{ meta }}</span>
+    {%- endif %}
+  </div>
+</a>

@@ -1,0 +1,30 @@
+---
+layout: default
+title: Presse
+description: "Les articles d'Impact ESTP : l'essentiel de chaque interview, les chiffres et les citations à retenir."
+---
+<div class="page-head">
+  <p class="label">Presse écrite</p>
+  <h1>À lire en cinq minutes</h1>
+  <p class="intro">Chaque interview devient un article : l'essentiel, les chiffres, et les citations à retenir.</p>
+</div>
+
+<section class="block" style="padding-top:32px" aria-label="Liste des articles">
+  {%- if site.posts.size > 0 %}
+  <ul class="article-list narrow">
+    {%- for a in site.posts %}
+    <li><a href="{{ a.url | relative_url }}">
+      <span class="label">{% include article-meta.html item=a %}</span>
+      <h3>{{ a.title }}</h3>
+      {%- if a.chapeau %}<span style="color:var(--ink-soft)">{{ a.chapeau }}</span>{% endif %}
+    </a></li>
+    {%- endfor %}
+  </ul>
+  {%- else %}
+  <div class="empty narrow">
+    <p class="label">Bientôt</p>
+    <p>Les premiers articles de la rédaction arrivent avec les prochaines interviews. En attendant, toutes nos interviews sont <a href="{{ '/interviews/' | relative_url }}">en vidéo</a>.</p>
+  </div>
+  {%- endif %}
+  <p class="rules narrow"><b>Nos règles.</b> Une interview n'est jamais achetée. Les contenus réalisés avec une entreprise partenaire portent la mention « Collaboration commerciale ».</p>
+</section>
