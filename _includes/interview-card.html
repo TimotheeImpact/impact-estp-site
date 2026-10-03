@@ -9,14 +9,20 @@
   {%- elsif i.entreprise and i.entreprise != "" -%}{%- if i.invite and i.invite != "" %} · {% endif -%}{{ i.entreprise }}{%- endif -%}
   {%- if i.duree and i.duree != "" %} · {{ i.duree }}{%- endif -%}
 {%- endcapture -%}
-<a class="card" href="{{ i.url | relative_url }}" data-theme-tag="{{ i.theme }}" data-langue="{{ langue }}"{% if langue != "fr" %} lang="{{ langue }}"{% endif %}>
-  <div class="thumb">
+<a class="card" href="{{ i.url | relative_url }}" data-theme-tag="{{ i.theme }}" data-langue="{{ langue }}" data-statut="{% if i.a_venir %}a-venir{% else %}publiee{% endif %}"{% if langue != "fr" %} lang="{{ langue }}"{% endif %}>
+  <div class="thumb{% if i.a_venir %} upcoming{% endif %}">
     {%- if ytid != "" %}
     <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" onerror="this.remove()" alt="" loading="lazy" width="480" height="360">
+    {%- elsif i.logo %}
+    <span class="plate"><img src="{{ i.logo | relative_url }}" alt="{{ i.entreprise }}" loading="lazy"></span>
     {%- else %}
     <span class="no">{{ i.vignette | default: "BIENTÔT" }}</span>
     {%- endif %}
+    {%- if i.a_venir %}
+    <span class="stamp" lang="fr">À venir</span>
+    {%- else %}
     <span class="play" aria-hidden="true"></span>
+    {%- endif %}
   </div>
   <div class="body">
     <div class="tags">

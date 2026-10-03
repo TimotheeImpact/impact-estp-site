@@ -2,8 +2,8 @@
   // Filtres par langue et par thème (page Interviews), combinés
   var cards = document.querySelectorAll('#cards .card');
   var count = document.getElementById('count');
-  var choix = { langue: 'all', theme: 'all' };
-  var attr = { langue: 'data-langue', theme: 'data-theme-tag' };
+  var choix = { statut: 'all', langue: 'all', theme: 'all' };
+  var attr = { statut: 'data-statut', langue: 'data-langue', theme: 'data-theme-tag' };
   document.querySelectorAll('.filters[data-group]').forEach(function (group) {
     var g = group.getAttribute('data-group');
     var buttons = group.querySelectorAll('button');
@@ -50,25 +50,20 @@
     maj();
   });
 
-  // Envoi des formulaires sans quitter la page
+  // Vérification de la taille des pièces jointes avant l'envoi
   document.querySelectorAll('form.js-form').forEach(function (form) {
     form.addEventListener('submit', function (e) {
-      var action = form.getAttribute('action');
-      if (!action || !window.fetch) return;
-      e.preventDefault();
-      var ok = form.querySelector('[data-ok]');
       var err = form.querySelector('[data-err]');
-      var btn = form.querySelector('button[type="submit"]');
-      ok.hidden = true; err.hidden = true; btn.disabled = true;
-      fetch(action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-        .then(function (r) {
-          if (!r.ok) throw new Error(r.status);
-          form.querySelector('fieldset.all').hidden = true;
-          ok.hidden = false;
-          ok.setAttribute('tabindex', '-1');
-          ok.focus();
-        })
-        .catch(function () { err.hidden = false; btn.disabled = false; });
+      var trop = Array.prototype.filter.call(form.querySelectorAll('input[type="file"]'), function (input) {
+        var max = parseFloat(input.getAttribute('data-max-mo') || '5') * 1024 * 1024;
+        return input.files && input.files[0] && input.files[0].size > max;
+      });
+      if (trop.length && err) {
+        e.preventDefault();
+        err.textContent = 'Un fichier dépasse 5 Mo. Enregistre-le en PDF plus léger et réessaie.';
+        err.hidden = false;
+        trop[0].focus();
+      }
     });
   });
 })();

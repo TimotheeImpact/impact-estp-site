@@ -9,8 +9,8 @@ layout: default
 <div class="page-head">
   <p class="label">Interview vidéo{% if theme %} · {{ theme.nom }}{% endif %}</p>
   <h1{% if langue != "fr" %} lang="{{ langue }}"{% endif %}>{{ page.title }}</h1>
-  {%- if page.invite != "" or page.entreprise != "" %}
-  <p class="intro">{{ page.invite }}{% if page.invite != "" and page.entreprise != "" %}, {% endif %}{% if page.poste != "" %}{{ page.poste | downcase }} {% if page.entreprise != "" %}chez {% endif %}{% endif %}{{ page.entreprise }}</p>
+  {%- if page.invite != "" %}
+  <p class="intro">{{ page.invite }}{% if page.poste != "" %} · {{ page.poste }}{% endif %}{% if page.entreprise != "" %}{% if page.poste != "" %}, {% else %} · {% endif %}{{ page.entreprise }}{% endif %}</p>
   {%- endif %}
 </div>
 
@@ -31,8 +31,12 @@ layout: default
     {%- else %}
     <div class="player soon">
       <div>
+        {%- if page.logo %}
+        <span class="plate big"><img src="{{ page.logo | relative_url }}" alt="{{ page.entreprise }}"></span>
+        {%- else %}
         <div class="no">{{ page.vignette | default: "BIENTÔT" }}</div>
-        <p>{{ page.quand | default: "Bientôt en ligne" }}</p>
+        {%- endif %}
+        <p><span class="stamp static">À venir</span> {{ page.quand | default: "Bientôt en ligne" }}</p>
       </div>
     </div>
     {%- endif %}

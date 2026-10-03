@@ -15,19 +15,21 @@ description: "Impact ESTP est le premier média étudiant dédié à la construc
     <h2 style="margin-top:0">Pourquoi Impact</h2>
     <p>On demande aux étudiants de s'engager dans un secteur qu'ils connaissent mal, en ne leur montrant qu'un seul visage. Pourtant, les métiers de la construction et de l'énergie sont d'une diversité immense.</p>
     <p>En février 2026, des étudiants de l'ESTP Paris ont lancé Impact pour changer ça : des interviews vidéo sans filtre, de 25 à 50 minutes, avec les dirigeants, ingénieurs et entrepreneurs qui font le secteur. Pas une plaquette, une vraie conversation, avec les questions qu'un étudiant se pose vraiment.</p>
-    <p>Depuis, des invités de VINCI, RTE, Egis, NGE, VNF, Autodesk ou Aecon sont passés au micro, en France comme à l'international, avec des interviews en français et en italien.</p>
-    <h2>Nos règles</h2>
+    <p>Depuis, des invités de NGE, VNF, Autodesk ou Aecon sont passés au micro, en France comme à l'international, avec des interviews en français et en italien.</p>
+    <h2>Notre vision</h2>
+    <p>Impact veut devenir le lieu où une génération d'ingénieurs se forge son opinion sur la construction et l'énergie.</p>
     <ul>
-      <li>Une interview n'est jamais achetée : nos invités sont choisis pour ce qu'ils ont à raconter.</li>
-      <li>Les contenus réalisés avec une entreprise partenaire portent la mention « Collaboration commerciale ».</li>
-      <li>Chaque article est relu, et les noms, postes et chiffres sont vérifiés avant publication.</li>
+      <li><b>Montrer tous les visages du secteur</b> : du chantier au bureau d'études, de la start-up au grand groupe, en France comme à l'étranger.</li>
+      <li><b>Aider chaque étudiant à choisir</b> son stage et son métier en connaissance de cause, puis à le décrocher grâce au vivier Impact.</li>
+      <li><b>Donner la parole aux étudiants</b> : bientôt, ils pourront partager leurs rapports de stage et noter les entreprises, de façon anonyme.</li>
+      <li><b>Grandir avec les autres écoles</b> : un réseau de médias étudiants dans les écoles d'ingénieurs, avec des podcasts et des conférences.</li>
     </ul>
   </div>
   <aside class="facts" aria-label="Impact ESTP en bref">
     <div><p class="label">Créé en</p><div class="v">Février 2026</div></div>
     <div><p class="label">Structure</p><div class="v">Association loi 1901 {{ site.association }}</div></div>
     <div><p class="label">École</p><div class="v">ESTP Paris, campus de Cachan</div></div>
-    <div><p class="label">Fondateur</p><div class="v">{{ site.fondateur | default: site.directeur_publication }}</div></div>
+    <div><p class="label">Fondateur</p><div class="v">{{ site.directeur_publication }}</div></div>
     {%- if site.instagram != "" or site.linkedin != "" %}
     <div><p class="label">Nous suivre</p><div class="v">
       {%- if site.youtube != "" %}<a href="{{ site.youtube }}">YouTube</a>{% endif %}
@@ -58,11 +60,12 @@ description: "Impact ESTP est le premier média étudiant dédié à la construc
       </ul>
     </div>
 
-    <form class="sheet js-form" id="form-equipe" method="POST"{% if action != "" %} action="{{ action }}"{% endif %}>
-      {% include form-endpoint.html action=action %}
+    <form class="sheet js-form" id="form-equipe" method="POST" enctype="multipart/form-data" accept-charset="UTF-8"{% if action != "" %} action="{{ action }}"{% endif %}>
+      {% include form-endpoint.html action=action texte="Les candidatures ouvrent très bientôt." %}
       <fieldset class="all"{% if action == "" %} disabled{% endif %}>
         <legend class="visually-hidden">Ta candidature</legend>
         <input type="hidden" name="formulaire" value="Candidature équipe">
+        {% include form-hidden.html sujet="Impact ESTP : nouvelle candidature pour l'équipe" type="equipe" %}
         <div class="field">
           <label for="e-prenom">Prénom et nom</label>
           <input type="text" id="e-prenom" name="nom" autocomplete="name" required>
@@ -94,12 +97,19 @@ description: "Impact ESTP est le premier média étudiant dédié à la construc
           <label for="e-msg">Un mot sur toi (facultatif)</label>
           <textarea id="e-msg" name="message"></textarea>
         </div>
-        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="field">
+          <label for="e-cv">CV (facultatif)</label>
+          <input type="file" id="e-cv" name="cv" accept=".pdf,.doc,.docx,.odt" data-max-mo="5">
+        </div>
+        <div class="field">
+          <label for="e-lettre">Lettre de motivation (facultatif)</label>
+          <input type="file" id="e-lettre" name="lettre_motivation" accept=".pdf,.doc,.docx,.odt" data-max-mo="5">
+        </div>
+        <p class="hint full">PDF ou Word, 5 Mo maximum par fichier.</p>
         <label class="consent full"><input type="checkbox" name="consentement" value="oui" required> <span>J'accepte qu'Impact ESTP utilise ces informations pour répondre à ma candidature (<a href="{{ '/confidentialite/' | relative_url }}">confidentialité</a>).</span></label>
         <div class="full"><button class="btn primary" type="submit">Envoyer ma candidature</button></div>
       </fieldset>
-      <p class="form-note" data-ok hidden>Merci, ta candidature est bien arrivée. On te recontacte très vite.</p>
-      <p class="form-note error" data-err hidden>L'envoi n'a pas marché. Réessaie dans un instant{% if site.email != "" %} ou écris-nous à {{ site.email }}{% endif %}.</p>
+      <p class="form-note error" data-err hidden></p>
     </form>
   </div>
 </section>

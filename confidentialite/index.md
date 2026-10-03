@@ -17,7 +17,7 @@ Pour toute question ou demande : {% if site.email != "" %}[{{ site.email }}](mai
 | Formulaire | Informations | À quoi elles servent |
 |---|---|---|
 | Vivier de stages | École, année, spécialité, type de recherche, disponibilité, e-mail | Te proposer des offres de stage, d'alternance ou d'emploi qui correspondent à ta recherche |
-| Candidature à l'équipe | Nom, e-mail, école, année, centres d'intérêt, message | Répondre à ta candidature et organiser l'équipe |
+| Candidature à l'équipe | Nom, e-mail, école, année, centres d'intérêt, message, CV et lettre de motivation si tu les joins | Répondre à ta candidature et organiser l'équipe |
 
 Ces traitements reposent sur ton **consentement**, que tu donnes en cochant la case du formulaire. Tu peux le retirer à tout moment.
 
@@ -25,7 +25,7 @@ Ces traitements reposent sur ton **consentement**, que tu donnes en cochant la c
 
 Uniquement les membres du bureau de l'association. Pour le vivier, une entreprise ne reçoit ton profil **que si tu as donné ton accord pour cette offre précise**. Nous ne vendons ni ne louons jamais tes données.
 
-Les formulaires passent par un prestataire technique d'envoi de formulaires, qui stocke les réponses pour notre compte. Le site est hébergé par GitHub, Inc. Certains de ces prestataires peuvent traiter des données aux États-Unis, dans le cadre du Data Privacy Framework UE-États-Unis ou de clauses contractuelles types de la Commission européenne.
+Les formulaires passent par le service FormSubmit (formsubmit.co), qui nous transmet les réponses par e-mail. Le site est hébergé par GitHub, Inc. Certains de ces prestataires peuvent traiter des données aux États-Unis, dans le cadre du Data Privacy Framework UE-États-Unis ou de clauses contractuelles types de la Commission européenne.
 
 ## Combien de temps nous les gardons
 

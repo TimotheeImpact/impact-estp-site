@@ -23,11 +23,12 @@ description: "Rejoins le vivier Impact : les entreprises de la construction et d
     </div>
   </div>
 
-  <form class="sheet js-form" id="form-vivier" method="POST"{% if action != "" %} action="{{ action }}"{% endif %}>
+  <form class="sheet js-form" id="form-vivier" method="POST" accept-charset="UTF-8"{% if action != "" %} action="{{ action }}"{% endif %}>
     {% include form-endpoint.html action=action %}
     <fieldset class="all"{% if action == "" %} disabled{% endif %}>
       <legend class="visually-hidden">Ton profil</legend>
       <input type="hidden" name="formulaire" value="Vivier de stages">
+      {% include form-hidden.html sujet="Impact ESTP : nouvelle inscription au vivier" type="vivier" %}
       <div class="full">{% include select-ecole.html id="v-ecole" %}</div>
       <div class="field">
         <label for="v-annee">Année</label>
@@ -71,12 +72,9 @@ description: "Rejoins le vivier Impact : les entreprises de la construction et d
         <label for="v-mail">E-mail</label>
         <input type="email" id="v-mail" name="email" placeholder="prenom.nom@ecole.fr" autocomplete="email" required>
       </div>
-      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label class="consent full"><input type="checkbox" name="consentement" value="oui" required> <span>J'accepte qu'Impact ESTP conserve ces informations pour me proposer des offres, comme expliqué dans la <a href="{{ '/confidentialite/' | relative_url }}">politique de confidentialité</a>. Je peux demander leur suppression à tout moment.</span></label>
       <div class="full"><button class="btn primary" type="submit">Rejoindre le vivier</button></div>
     </fieldset>
-    <p class="form-note" data-ok hidden>C'est noté, bienvenue dans le vivier. On revient vers toi dès qu'une offre correspond à ta recherche.</p>
-    <p class="form-note error" data-err hidden>L'envoi n'a pas marché. Réessaie dans un instant{% if site.email != "" %} ou écris-nous à {{ site.email }}{% endif %}.</p>
   </form>
 </div>
 

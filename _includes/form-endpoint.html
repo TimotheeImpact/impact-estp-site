@@ -1,7 +1,7 @@
 {%- comment -%}
   Affiche un avertissement tant que l'adresse du formulaire n'est pas réglée dans _config.yml.
-  Usage : {% include form-endpoint.html action=site.formulaire_vivier %}
+  Usage : {% include form-endpoint.html action=site.formulaire_vivier texte="Message affiché tant que c'est fermé" %}
 {%- endcomment -%}
 {%- if include.action == nil or include.action == "" %}
-<p class="form-closed">Ouverture des inscriptions le 15 novembre 2026.</p>
+<p class="form-closed">{{ include.texte | default: "Ouverture des inscriptions le 15 novembre 2026." }}</p>
 {%- endif %}

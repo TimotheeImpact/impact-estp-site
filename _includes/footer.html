@@ -1,7 +1,13 @@
 <footer>
   <div class="wrap">
     <div class="titleblock" aria-label="Cartouche">
-      <div><p class="label">Projet</p><div class="name">IMPACT ESTP</div><p class="label" style="margin-top:6px">Média étudiant</p></div>
+      <div class="tb-logo">
+        <picture>
+          <source srcset="{{ '/assets/img/logo-sombre.png' | relative_url }}" media="(prefers-color-scheme: dark)">
+          <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Impact ESTP" width="252" height="120" loading="lazy">
+        </picture>
+        <p class="label">Média étudiant</p>
+      </div>
       <div><p class="label">École</p><div class="v">ESTP Paris</div></div>
       <div><p class="label">Format</p><div class="v">1 interview / semaine</div></div>
       <div><p class="label">Indice</p><div class="v">Mis à jour le {% include date-fr.html date=site.time %}</div></div>

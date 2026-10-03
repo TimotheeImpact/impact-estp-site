@@ -12,8 +12,8 @@ lang: fr_FR
 # Adresse du site.
 # Tant que le nom de domaine n'est pas branché, le site vit à l'adresse
 #   https://<ton-pseudo-github>.github.io/impact-estp-site
-# Le jour où impactestp.fr est branché : url: "https://impactestp.fr" et baseurl: ""
-url: ""
+# Le jour où impactestp.fr est branché : url: "https://impactestp.fr" et baseurl: "https://timotheeimpact.github.io"
+url: "https://timotheeimpact.github.io"
 baseurl: "/impact-estp-site"
 
 # ── Coordonnées ──────────────────────────────────────────────
@@ -35,11 +35,8 @@ chiffres:
 
 # Entreprises dont viennent nos invités (bandeau de la page d'accueil)
 invites_entreprises:
-  - VINCI
   - Bouygues
   - Eiffage
-  - RTE
-  - Egis
   - NGE
   - Autodesk
   - Aecon
@@ -58,9 +55,8 @@ siren: "106 074 297"
 siege: "28 avenue du Président Wilson, 94230 Cachan"
 telephone: "06 95 99 05 01"
 rna: "W943012233"                 # numéro du récépissé de la sous-préfecture
-directeur_publication: "Timothée Riverieulx de Varax"
+directeur_publication: "Timothée de Varax"
 role_directeur: "président fondateur de l'association"
-fondateur: "Timothée de Varax"     # nom affiché sur la page À propos
 
 # ─────────────────────────────────────────────────────────────
 #  Réglages techniques : pas besoin d'y toucher

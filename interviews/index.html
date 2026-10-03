@@ -12,6 +12,15 @@ description: "Toutes les interviews vidéo d'Impact ESTP avec les dirigeants, in
 
 <section class="block" style="padding-top:32px" aria-label="Liste des interviews">
   <div class="filter-rows">
+    {%- assign nb_venir = interviews | where: "a_venir", true | size %}
+    {%- if nb_venir > 0 %}
+    <div class="filters" role="group" aria-label="Filtrer par statut" data-group="statut">
+      <span class="label">Statut</span>
+      <button type="button" aria-pressed="true" data-filter="all">Toutes</button>
+      <button type="button" aria-pressed="false" data-filter="publiee">Publiées</button>
+      <button type="button" aria-pressed="false" data-filter="a-venir">À venir</button>
+    </div>
+    {%- endif %}
     <div class="filters" role="group" aria-label="Filtrer par langue" data-group="langue">
       <span class="label">Langue</span>
       <button type="button" aria-pressed="true" data-filter="all">Toutes</button>

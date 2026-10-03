@@ -6,10 +6,10 @@ entreprise: "Eiffage Route"
 theme: grands-projets
 langue: fr
 youtube: ""
-numero: 9
+numero: 11
 a_venir: true
-quand: "Novembre 2026"
-vignette: "STUDIO"
+quand: "Début novembre 2026"
+logo: /assets/img/logos/eiffage-route.jpg
 partenaire: true
 ---
 Interview tournée en studio début novembre 2026. La vidéo sera publiée ici dès sa sortie.

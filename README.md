@@ -45,16 +45,13 @@ Si l'entreprise a payé pour le contenu, mets `partenaire: true` : la mention «
 
 ## Brancher les formulaires
 
-Les formulaires (vivier de stages, candidatures à l'équipe) ont besoin d'un service qui reçoit les réponses. Tant que ce n'est pas fait, ils affichent « Ouverture des inscriptions le 15 novembre 2026 ».
+Les formulaires (vivier de stages, candidatures à l'équipe avec CV) passent par FormSubmit (formsubmit.co) : gratuit, sans compte, pièces jointes acceptées. Les réponses arrivent par mail, CV en pièce jointe.
 
-Avec Formspree (gratuit jusqu'à 50 réponses par mois) :
+1. Dans `_config.yml`, mets `https://formsubmit.co/` suivi de l'adresse qui doit recevoir les réponses, sur la ligne `formulaire_equipe` (et `formulaire_vivier` le jour de l'ouverture du vivier). Exemple : `formulaire_equipe: "https://formsubmit.co/contact@impactestp.fr"`.
+2. Envoie une première réponse de test depuis le site. FormSubmit envoie un mail « Activate form » à cette adresse : clique sur le bouton pour activer.
+3. Dans ce mail, FormSubmit donne aussi un code secret qui remplace l'adresse (pour ne pas l'afficher dans le code du site). Remplace l'adresse par ce code : `https://formsubmit.co/le-code-recu`.
 
-1. Crée un compte sur formspree.io avec l'adresse de l'association.
-2. Clique sur « New form », nomme-le « Impact ESTP ».
-3. Copie l'adresse du formulaire, qui ressemble à `https://formspree.io/f/abcdwxyz`.
-4. Colle-la dans `_config.yml`, sur les lignes `formulaire_vivier` et `formulaire_equipe` (la même adresse convient pour les deux : chaque réponse indique de quel formulaire elle vient).
-
-Les réponses arrivent par mail et dans le tableau de bord Formspree, d'où tu peux les exporter vers Excel.
+Tant qu'une ligne est vide, le formulaire correspondant reste fermé avec un message d'attente.
 
 ## Brancher le nom de domaine impactestp.fr
 
