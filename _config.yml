@@ -28,8 +28,8 @@ chiffres:
     legende: "interviews publiées"
   - valeur: "10"
     legende: "en montage"
-  - valeur: "275+"
-    legende: "professionnels contactés"
+  - valeur: "FR · IT"
+    legende: "interviews en français et en italien"
   - valeur: "1/sem."
     legende: "nouvelle interview"
 
@@ -55,10 +55,12 @@ formulaire_equipe: ""
 # ── Mentions légales (obligatoires en France) ────────────────
 association: "IMPACT ESTP"
 siren: "106 074 297"
-siege: "Cachan (94230)"            # mets l'adresse complète du siège, comme dans les statuts
-telephone: ""                     # numéro de contact de l'association (demandé par la loi)
-directeur_publication: "Timothée de Varax"
-role_directeur: "président de l'association"
+siege: "28 avenue du Président Wilson, 94230 Cachan"
+telephone: "06 95 99 05 01"
+rna: "W943012233"                 # numéro du récépissé de la sous-préfecture
+directeur_publication: "Timothée Riverieulx de Varax"
+role_directeur: "président fondateur de l'association"
+fondateur: "Timothée de Varax"     # nom affiché sur la page À propos
 
 # ─────────────────────────────────────────────────────────────
 #  Réglages techniques : pas besoin d'y toucher

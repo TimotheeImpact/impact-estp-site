@@ -4,6 +4,7 @@ invite: ""
 poste: "Directeur technique"
 entreprise: "Eiffage Route"
 theme: grands-projets
+langue: fr
 youtube: ""
 numero: 9
 a_venir: true

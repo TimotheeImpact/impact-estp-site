@@ -4,6 +4,8 @@ invite: "Grégory Pons"
 poste: ""
 entreprise: ""
 theme: energie
+langue: fr
 youtube: "https://youtu.be/AxTO4wSasCE"
-numero: 3
+duree: "25 min"
+numero: 6
 ---

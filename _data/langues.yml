@@ -1,0 +1,7 @@
+# Langues des interviews. « id » sert dans les fiches (langue: it).
+- id: fr
+  nom: En français
+  court: FR
+- id: it
+  nom: In italiano
+  court: IT

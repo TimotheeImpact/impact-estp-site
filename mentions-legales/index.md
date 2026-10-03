@@ -13,6 +13,9 @@ Le site est édité par l'association **{{ site.association }}**, association r�
 
 - Siège social : {{ site.siege }}
 - Numéro SIREN : {{ site.siren }}
+{%- if site.rna != "" %}
+- Numéro RNA : {{ site.rna }} (déclarée à la sous-préfecture de L'Haÿ-les-Roses le 21 mai 2026)
+{%- endif %}
 {%- if site.telephone != "" %}
 - Téléphone : {{ site.telephone }}
 {%- endif %}

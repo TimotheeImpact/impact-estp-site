@@ -14,8 +14,8 @@ description: "Impact ESTP est le premier média étudiant dédié à la construc
   <div class="prose">
     <h2 style="margin-top:0">Pourquoi Impact</h2>
     <p>On demande aux étudiants de s'engager dans un secteur qu'ils connaissent mal, en ne leur montrant qu'un seul visage. Pourtant, les métiers de la construction et de l'énergie sont d'une diversité immense.</p>
-    <p>En février 2026, des étudiants de l'ESTP Paris ont lancé Impact pour changer ça : des interviews vidéo sans filtre, de 20 à 40 minutes, avec les dirigeants, ingénieurs et entrepreneurs qui font le secteur. Pas une plaquette, une vraie conversation, avec les questions qu'un étudiant se pose vraiment.</p>
-    <p>En quelques mois, plus de 275 professionnels ont été contactés un par un, et des invités de VINCI, RTE, Egis, NGE, Autodesk ou Aecon sont passés au micro, en France comme à l'international.</p>
+    <p>En février 2026, des étudiants de l'ESTP Paris ont lancé Impact pour changer ça : des interviews vidéo sans filtre, de 25 à 50 minutes, avec les dirigeants, ingénieurs et entrepreneurs qui font le secteur. Pas une plaquette, une vraie conversation, avec les questions qu'un étudiant se pose vraiment.</p>
+    <p>Depuis, des invités de VINCI, RTE, Egis, NGE, VNF, Autodesk ou Aecon sont passés au micro, en France comme à l'international, avec des interviews en français et en italien.</p>
     <h2>Nos règles</h2>
     <ul>
       <li>Une interview n'est jamais achetée : nos invités sont choisis pour ce qu'ils ont à raconter.</li>
@@ -27,7 +27,7 @@ description: "Impact ESTP est le premier média étudiant dédié à la construc
     <div><p class="label">Créé en</p><div class="v">Février 2026</div></div>
     <div><p class="label">Structure</p><div class="v">Association loi 1901 {{ site.association }}</div></div>
     <div><p class="label">École</p><div class="v">ESTP Paris, campus de Cachan</div></div>
-    <div><p class="label">Fondateur</p><div class="v">{{ site.directeur_publication }}</div></div>
+    <div><p class="label">Fondateur</p><div class="v">{{ site.fondateur | default: site.directeur_publication }}</div></div>
     {%- if site.instagram != "" or site.linkedin != "" %}
     <div><p class="label">Nous suivre</p><div class="v">
       {%- if site.youtube != "" %}<a href="{{ site.youtube }}">YouTube</a>{% endif %}

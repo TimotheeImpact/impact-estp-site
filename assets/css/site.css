@@ -157,7 +157,9 @@ section.block { padding-block: 64px 24px; }
 .page-head .intro { font-size: var(--step-1); color: var(--ink-soft); max-width: 46ch; margin: 16px 0 0; }
 
 /* Filtres */
-.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.filter-rows { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.filters .label { min-width: 72px; }
 .filters button {
   font-family: var(--font-mono); font-size: var(--step--1); padding: 6px 10px; border-radius: 999px;
   border: 1px solid var(--line); background: var(--sheet); color: var(--ink-soft); cursor: pointer;
@@ -188,6 +190,7 @@ a.card:hover { border-color: var(--ink); }
 .tag { display: inline-block; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-soft); }
 .tag.soon { border-color: var(--leaf-ink); color: var(--leaf-ink); }
 .tag.partner { border-color: var(--brand); color: var(--brand); }
+.tag.lang { background: var(--brand-tint); border-color: var(--brand-tint); color: var(--brand); }
 .card.more { justify-content: center; align-items: flex-start; padding: 22px; gap: 10px; border-style: dashed; }
 .card.more p { margin: 0; color: var(--ink-soft); }
 .card.more .go { font-family: var(--font-display); font-weight: 700; color: var(--brand); }

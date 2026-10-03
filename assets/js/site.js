@@ -1,19 +1,26 @@
 (function () {
-  // Filtres par thème (page Interviews)
-  var buttons = document.querySelectorAll('.filters button');
+  // Filtres par langue et par thème (page Interviews), combinés
   var cards = document.querySelectorAll('#cards .card');
   var count = document.getElementById('count');
-  buttons.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var f = b.getAttribute('data-filter');
-      var n = 0;
-      buttons.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
-      cards.forEach(function (c) {
-        var show = f === 'all' || c.getAttribute('data-theme-tag') === f;
-        c.hidden = !show;
-        if (show) n++;
+  var choix = { langue: 'all', theme: 'all' };
+  var attr = { langue: 'data-langue', theme: 'data-theme-tag' };
+  document.querySelectorAll('.filters[data-group]').forEach(function (group) {
+    var g = group.getAttribute('data-group');
+    var buttons = group.querySelectorAll('button');
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        choix[g] = b.getAttribute('data-filter');
+        buttons.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+        var n = 0;
+        cards.forEach(function (c) {
+          var show = Object.keys(choix).every(function (k) {
+            return choix[k] === 'all' || c.getAttribute(attr[k]) === choix[k];
+          });
+          c.hidden = !show;
+          if (show) n++;
+        });
+        if (count) count.textContent = n === 0 ? 'Aucune interview pour ce choix' : n + (n > 1 ? ' interviews' : ' interview');
       });
-      if (count) count.textContent = n + (n > 1 ? ' interviews' : ' interview');
     });
   });
 

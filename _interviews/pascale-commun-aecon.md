@@ -4,6 +4,8 @@ invite: "Pascale Commun"
 poste: ""
 entreprise: "Aecon"
 theme: international
+langue: fr
 youtube: "https://youtu.be/Jf0WQWdaufA"
-numero: 8
+duree: "48 min"
+numero: 1
 ---
