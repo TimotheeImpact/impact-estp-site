@@ -153,7 +153,7 @@ formulaire_contact: "https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf"
 # Copie automatique des inscriptions au vivier dans un Google Sheets privé (accord écrit de Timo le 2026-10-04).
 # Coller ici l'adresse « /exec » de l'application Apps Script (mode d'emploi : README, partie « Le vivier dans Google Sheets »).
 # Tant que c'est vide, rien n'est envoyé vers Google et la phrase sur Google Sheets n'apparaît pas dans la page Confidentialité.
-vivier_sheets: ""
+vivier_sheets: "https://script.google.com/macros/s/AKfycbz45vOcY6g0rkB1wZaoQwD6f1o99M_1SFPcMPl1ZhU6kj1bmBS6wtLb3d8sDF4jR028/exec"
 
 # ── Mentions légales (obligatoires en France) ────────────────
 association: "IMPACT ESTP"

@@ -11,7 +11,7 @@
     Politique de sécurité (CSP) : le navigateur refuse tout ce qui ne vient pas du site ou des quelques services listés ici.
     Aucun script ni style écrit dans les pages. Si on ajoute un service (vidéo, carte, formulaire…), il faut l'ajouter ici.
   {%- endcomment %}
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' https://i.ytimg.com; font-src 'self'; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self' https://cloudflareinsights.com https://script.google.com; form-action 'self' https://formsubmit.co; manifest-src 'self'; base-uri 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' https://i.ytimg.com; font-src 'self'; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self' https://cloudflareinsights.com https://script.google.com https://script.googleusercontent.com; form-action 'self' https://formsubmit.co; manifest-src 'self'; base-uri 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <script src="{{ '/assets/js/debut.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
   <link rel="preload" href="{{ '/assets/fonts/archivo-latin-wdth-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
