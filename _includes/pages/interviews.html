@@ -6,7 +6,7 @@
   <p class="intro">{{ t.interviews.intro }}</p>
 </div>
 
-<section class="block" style="padding-top:32px" aria-label="{{ t.interviews.liste_aria }}">
+<section class="block pt-32" aria-label="{{ t.interviews.liste_aria }}">
   <div class="filter-rows">
     {%- assign nb_venir = interviews | where: "a_venir", true | size %}
     {%- assign nb_prod = interviews | where: "post_prod", true | size %}
@@ -47,6 +47,6 @@
     {%- endfor %}
   </div>
   {%- if site.youtube != "" %}
-  <p style="margin-top:28px"><a class="btn" href="{{ site.youtube }}">{{ t.interviews.youtube_btn }}</a></p>
+  <p class="mt-28"><a class="btn" href="{{ site.youtube }}">{{ t.interviews.youtube_btn }}</a></p>
   {%- endif %}
 </section>

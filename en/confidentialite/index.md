@@ -19,7 +19,7 @@ For any question or request: {% if site.email != "" %}[{{ site.email }}](mailto:
 |---|---|---|
 | Internship talent pool | School, year, specialisation, type of opportunity sought, availability, email | Offering you internships, work-study placements or jobs that match what you are looking for |
 | Application to join the team | Name, email, school, year, interests, message, CV and cover letter if you attach them | Replying to your application and organising the team |
-| Contact | Name, email, subject, school or company if you provide it, message | Replying to your message |
+| Contact | Name, email, subject, school or company if you provide it, message, attachments if you add any (2 at most) | Replying to your message |
 
 This processing is based on your **consent**, which you give by ticking the box on the form. You can withdraw it at any time.
 
@@ -28,6 +28,10 @@ This processing is based on your **consent**, which you give by ticking the box 
 Only the members of the association's board. For the talent pool, a company receives your profile **only if you have given your agreement for that specific offer**. We never sell or rent out your data.
 
 The forms go through the FormSubmit service (formsubmit.co), which forwards the responses to us by email. The website is hosted by GitHub, Inc. Some of these providers may process data in the United States, under the EU-US Data Privacy Framework or the European Commission's standard contractual clauses.
+{% if site.vivier_sheets != "" %}
+
+Talent pool sign-ups are also saved automatically in a private **Google Sheets** spreadsheet that only the association's board can open. Google (Google Ireland Limited, and Google LLC in the United States under the EU-US Data Privacy Framework) hosts this spreadsheet on our behalf and does not use your data for its own purposes.
+{% endif %}
 
 ## How long we keep it
 

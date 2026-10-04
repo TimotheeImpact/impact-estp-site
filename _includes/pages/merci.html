@@ -9,10 +9,3 @@
     <a class="btn" href="{{ p | append: '/' | relative_url }}">{{ t.commun.retour_accueil }}</a>
   </div>
 </div>
-<script>
-  (function () {
-    var f = new URLSearchParams(location.search).get('formulaire');
-    var el = document.getElementById('merci-texte');
-    if (f && /^[a-z]+$/.test(f) && el.getAttribute('data-' + f)) el.textContent = el.getAttribute('data-' + f);
-  })();
-</script>

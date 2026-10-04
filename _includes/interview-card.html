@@ -12,7 +12,7 @@
 <a class="card" href="{{ tr.url | relative_url }}" data-theme-tag="{{ i.theme }}{% if i.studio %} studio{% endif %}" data-langue="{{ langue }}" data-statut="{{ statut }}">
   <div class="thumb{% if statut != "publiee" %} upcoming{% endif %}">
     {%- if ytid != "" %}
-    <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" onerror="this.remove()" alt="" loading="lazy" width="480" height="360">
+    <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" data-retirer-si-erreur alt="" loading="lazy" width="480" height="360">
     {%- elsif i.logo %}
     <span class="plate"><img src="{{ i.logo | relative_url }}" alt="{{ i.entreprise }}" loading="lazy"></span>
     {%- elsif i.vignette %}

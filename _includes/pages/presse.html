@@ -35,7 +35,7 @@
     <li data-rubrique="{{ a.rubrique }}"><a href="{{ a.url | relative_url }}" lang="fr">
       <span class="label">{% include article-meta.html item=a %}</span>
       <h3>{{ a.title }}</h3>
-      {%- if a.chapeau %}<span style="color:var(--ink-soft)">{{ a.chapeau }}</span>{% endif %}
+      {%- if a.chapeau %}<span class="texte-doux">{{ a.chapeau }}</span>{% endif %}
     </a></li>
     {%- endfor %}
   </ul>
@@ -81,7 +81,7 @@
         <li><b>{{ m.nom }}</b><span>{% include tr.html o=m k="role" %}</span></li>
         {%- endfor %}
       </ul>
-      <div class="contact-box" style="margin-top:20px">
+      <div class="contact-box mt-20">
         <p>{{ t.presse.ecris }}</p>
         <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Presse écrite - proposition de sujets' | uri_escape }}">{{ t.presse.proposer }}</a>
       </div>

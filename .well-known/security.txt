@@ -1,0 +1,5 @@
+# Signaler une faille de sécurité sur impactestp.fr / Report a security issue on impactestp.fr
+Contact: mailto:contact@impactestp.fr
+Expires: 2027-10-01T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://impactestp.fr/.well-known/security.txt

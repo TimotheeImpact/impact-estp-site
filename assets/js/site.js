@@ -79,6 +79,7 @@
 
   // Lecteur YouTube chargé seulement au clic, ou au clic sur un chapitre (démarre au bon moment)
   var lancer = function (p, debut) {
+    if (!/^[A-Za-z0-9_-]{6,20}$/.test(p.getAttribute('data-youtube') || '')) return;
     var btn = p.querySelector('button');
     var f = document.createElement('iframe');
     f.src = 'https://www.youtube-nocookie.com/embed/' + p.getAttribute('data-youtube') + '?autoplay=1&rel=0' + (debut ? '&start=' + debut : '');
@@ -128,6 +129,13 @@
     majSujet();
   }
 
+  // Page « Merci » : texte adapté au formulaire envoyé (?formulaire=vivier, equipe ou contact)
+  var merci = document.getElementById('merci-texte');
+  if (merci) {
+    var envoye = params.get('formulaire');
+    if (envoye && /^[a-z]+$/.test(envoye) && merci.getAttribute('data-' + envoye)) merci.textContent = merci.getAttribute('data-' + envoye);
+  }
+
   // Liens vers d'autres sites (réseaux sociaux, YouTube, partenaires) ouverts dans un nouvel onglet
   document.querySelectorAll('a[href^="http"]').forEach(function (a) {
     if (a.hostname && a.hostname !== window.location.hostname) {
@@ -163,6 +171,16 @@
         err.textContent = form.getAttribute('data-err-fichier') || 'Un fichier dépasse 5 Mo. Enregistre-le en PDF plus léger et réessaie.';
         err.hidden = false;
         trop[0].focus();
+        return;
+      }
+      // Vivier : copie de l'inscription dans le Google Sheets privé de l'association (adresse « vivier_sheets » de _config.yml)
+      var sheets = form.getAttribute('data-sheets');
+      if (sheets && /^https:\/\/script\.google\.com\//.test(sheets) && navigator.sendBeacon) {
+        var champs = new URLSearchParams();
+        new FormData(form).forEach(function (v, k) {
+          if (typeof v === 'string' && (k.charAt(0) !== '_' || k === '_honey')) champs.append(k, v);
+        });
+        try { navigator.sendBeacon(sheets, champs); } catch (x) {}
       }
     });
   });
@@ -223,6 +241,21 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuLangue.open) { menuLangue.open = false; menuLangue.querySelector('summary').focus(); } });
   }
 
+  // Bouton clair / sombre : le thème clair est celui par défaut, le choix est retenu dans ce navigateur
+  var boutonTheme = document.querySelector('.theme-toggle');
+  if (boutonTheme) {
+    var racine = document.documentElement;
+    boutonTheme.setAttribute('aria-pressed', racine.getAttribute('data-theme') === 'sombre' ? 'true' : 'false');
+    boutonTheme.addEventListener('click', function () {
+      var sombre = boutonTheme.getAttribute('aria-pressed') !== 'true';
+      if (sombre) racine.setAttribute('data-theme', 'sombre'); else racine.removeAttribute('data-theme');
+      boutonTheme.setAttribute('aria-pressed', sombre ? 'true' : 'false');
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', sombre ? '#0b1a1f' : '#f3f6f4');
+      try { window.localStorage.setItem('theme', sombre ? 'sombre' : 'clair'); } catch (e) {}
+    });
+  }
+
   // Menu du téléphone : bouton « Menu » qui ouvre et ferme la liste des pages
   var boutonMenu = document.querySelector('.menu-toggle');
   var navPrincipale = document.getElementById('nav-principale');
@@ -237,6 +270,18 @@
       if (e.key === 'Escape' && boutonMenu.getAttribute('aria-expanded') === 'true') { basculerMenu(false); boutonMenu.focus(); }
     });
     window.addEventListener('resize', function () { if (window.innerWidth > 900) basculerMenu(false); });
+  }
+
+  // Fiches entreprises : les flèches du clavier passent à la fiche précédente ou suivante
+  var ficheNav = document.querySelector('.co-nav');
+  if (ficheNav) {
+    document.addEventListener('keydown', function (e) {
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+      var cible = e.target;
+      if (cible && (cible.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(cible.tagName))) return;
+      var lien = e.key === 'ArrowLeft' ? ficheNav.querySelector('[rel="prev"]') : e.key === 'ArrowRight' ? ficheNav.querySelector('[rel="next"]') : null;
+      if (lien) window.location.href = lien.href;
+    });
   }
 
   // Petits menus « Ajouter à mon agenda » : se referment quand on clique ailleurs

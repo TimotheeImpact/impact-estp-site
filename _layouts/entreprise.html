@@ -12,7 +12,21 @@ layout: default
 {%- assign articles = site.posts | where: "entreprise_id", src.slug -%}
 {%- assign offres = site.data.offres_stage | where: "entreprise_id", src.slug -%}
 {%- assign avec_linkedin = interviews | where_exp: "i", "i.linkedin != ''" | where_exp: "i", "i.linkedin" | where_exp: "i", "i.invite != ''" -%}
+{%- comment -%} Flèches : fiche précédente et suivante dans l'ordre alphabétique de l'annuaire (on boucle au bout). {%- endcomment -%}
+{%- assign fiches = site.entreprises | sort_natural: "nom" -%}
+{%- assign idx = 0 -%}
+{%- for f in fiches -%}{%- if f.slug == src.slug -%}{%- assign idx = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+{%- assign i_prec = idx | minus: 1 -%}{%- if i_prec < 0 -%}{%- assign i_prec = fiches.size | minus: 1 -%}{%- endif -%}
+{%- assign i_suiv = idx | plus: 1 | modulo: fiches.size -%}
+{%- assign f_prec = fiches[i_prec] -%}{%- assign f_suiv = fiches[i_suiv] -%}
+{%- include trad.html doc=f_prec -%}{%- assign u_prec = tr.url -%}
+{%- include trad.html doc=f_suiv -%}{%- assign u_suiv = tr.url -%}
 {%- capture site_court -%}{{ src.site_web | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}{%- endcapture -%}
+
+<nav class="co-nav" aria-label="{{ t.entreprise.nav_aria }}">
+  <a class="co-nav-prec" href="{{ u_prec | relative_url }}" rel="prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="co-nav-txt"><span class="co-nav-lab">{{ t.entreprise.precedente }}</span> <span class="co-nav-nom">{{ f_prec.nom }}</span></span></a>
+  <a class="co-nav-suiv" href="{{ u_suiv | relative_url }}" rel="next"><span class="co-nav-txt"><span class="co-nav-lab">{{ t.entreprise.suivante }}</span> <span class="co-nav-nom">{{ f_suiv.nom }}</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</nav>
 
 <div class="page-head co-head">
   <div>
@@ -71,7 +85,7 @@ layout: default
       {%- else %}
       <div class="empty">
         <p>{{ t.entreprise.pas_offre | replace: "%nom%", src.nom }}</p>
-        <p style="margin-top:14px"><a class="btn" href="{{ p | append: '/stages/' | relative_url }}">{{ t.commun.rejoindre_vivier }}</a></p>
+        <p class="mt-14"><a class="btn" href="{{ p | append: '/stages/' | relative_url }}">{{ t.commun.rejoindre_vivier }}</a></p>
       </div>
       {%- endif %}
     </section>

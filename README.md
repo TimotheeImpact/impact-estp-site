@@ -23,7 +23,7 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | Les témoignages de la page Entreprises | `_data/temoignages.yml` |
 | La page « Mon profil » (espace membre, pas encore ouvert) | `mon-profil/index.html` |
 | Les thèmes (bas-carbone, énergie…) | `_data/themes.yml` |
-| Le logo | `assets/img/logo.png` (et `logo-sombre.png` pour le mode sombre) |
+| Le logo | `assets/img/logo.png` (et `logo-sombre.png` pour le mode sombre, que le visiteur choisit avec le bouton lune en haut à droite ; le site s'ouvre toujours en clair) |
 | Les textes des menus, boutons et pages, en français, anglais, italien et allemand | `_data/textes/fr.yml`, `en.yml`, `it.yml`, `de.yml` |
 | Les traductions des interviews et des fiches entreprises | dossiers `_interviews_en`, `_interviews_it`, `_interviews_de`, `_entreprises_en`, `_entreprises_it`, `_entreprises_de` |
 
@@ -126,13 +126,25 @@ Le site ne se reconstruit qu'à chaque enregistrement : pour une parution le mar
 
 ## Brancher les formulaires
 
-Les formulaires (vivier de stages, candidatures à l'équipe avec CV, contact) passent par FormSubmit (formsubmit.co) : gratuit, sans compte, pièces jointes acceptées. Les réponses arrivent par mail, CV en pièce jointe.
+Les formulaires (vivier de stages, candidatures à l'équipe avec CV, contact avec 2 pièces jointes) passent par FormSubmit (formsubmit.co) : gratuit, sans compte, pièces jointes acceptées (5 Mo maximum par fichier). Les réponses arrivent par mail, CV en pièce jointe.
 
 1. Dans `_config.yml`, mets `https://formsubmit.co/` suivi de l'adresse qui doit recevoir les réponses, sur les lignes `formulaire_equipe` et `formulaire_contact` (et `formulaire_vivier` le jour de l'ouverture du vivier). Exemple : `formulaire_equipe: "https://formsubmit.co/contact@impactestp.fr"`.
 2. Envoie une première réponse de test depuis le site. FormSubmit envoie un mail « Activate form » à cette adresse : clique sur le bouton pour activer.
 3. Dans ce mail, FormSubmit donne aussi un code secret qui remplace l'adresse (pour ne pas l'afficher dans le code du site). Remplace l'adresse par ce code : `https://formsubmit.co/le-code-recu`.
 
 Tant qu'une ligne est vide, le formulaire correspondant reste fermé avec un message d'attente.
+
+## Le vivier dans Google Sheets
+
+En plus du mail FormSubmit, chaque inscription au vivier peut s'ajouter toute seule comme une ligne dans un tableau Google Sheets privé (accord écrit de Timo le 4 octobre 2026). Tant que la ligne `vivier_sheets` de `_config.yml` est vide, rien n'est envoyé vers Google.
+
+1. Avec le compte Google de l'association, crée un tableau Google Sheets (par exemple « Vivier Impact ESTP »). Ne le partage qu'avec le bureau.
+2. Dans le tableau : Extensions > Apps Script. Efface le code proposé et colle tout le fichier `modeles/vivier-google-sheets.gs`. Enregistre.
+3. Déployer > Nouveau déploiement > type « Application Web ». Exécuter en tant que : Moi. Qui a accès : Tout le monde. Clique sur Déployer, puis autorise l'accès (Google affiche « application non validée » : Paramètres avancés, puis Accéder au projet).
+4. Copie l'adresse qui finit par `/exec` et colle-la dans `_config.yml` : `vivier_sheets: "https://script.google.com/macros/s/…/exec"`.
+5. Le jour où le vivier ouvre (ligne `formulaire_vivier` remplie), chaque inscription arrive dans l'onglet « Vivier » : date, école, année, spécialité, recherche, disponibilité, e-mail, langue du site, accord.
+
+La page Confidentialité affiche toute seule la phrase sur Google Sheets dès que `vivier_sheets` est rempli. Le script refuse les robots (champ piège), coupe les textes trop longs et neutralise les formules.
 
 ## Le nom de domaine impactestp.fr
 
@@ -147,3 +159,10 @@ Branché le 3 octobre 2026 : le fichier `CNAME` du dépôt contient `impactestp.
 ## Pour aller plus loin (technique)
 
 Le site est construit avec Jekyll, le générateur intégré à GitHub Pages. Pour le tester sur un ordinateur : `bundle install` puis `bundle exec jekyll serve`.
+
+### Sécurité
+
+- Le site n'a ni base de données ni mot de passe : il n'y a rien à pirater côté serveur. Les formulaires passent par FormSubmit (et Google Sheets pour le vivier).
+- Une politique de sécurité (CSP, dans `_layouts/default.html`) interdit au navigateur de charger quoi que ce soit qui ne vient pas du site ou des services listés (YouTube sans cookies, FormSubmit, Google Apps Script, Cloudflare). Si on ajoute un service, il faut l'ajouter dans cette ligne, sinon il sera bloqué.
+- Aucun script ni style n'est écrit directement dans les pages : tout est dans `assets/js/debut.js` (chargé en premier : thème, miniatures), `assets/js/site.js` et `assets/css/site.css`. Pour un espacement ponctuel, utiliser les petites classes `mt-14`, `mt-28`, etc.
+- Adresse pour signaler une faille : `/.well-known/security.txt` (date d'expiration à repousser chaque année, avant le 1er octobre).

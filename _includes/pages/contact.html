@@ -17,14 +17,14 @@
     <div class="dm-box">
       <p class="dm-t">{{ t.contact.reseaux_titre }}</p>
       <p>{{ t.contact.reseaux_texte }}</p>
-      <div class="actions" style="margin-top:12px">
+      <div class="actions mt-12">
         {%- if site.instagram != "" %}<a class="btn primary" href="{{ site.instagram }}">Instagram</a>{% endif %}
         {%- if site.linkedin != "" %}<a class="btn" href="{{ site.linkedin }}">LinkedIn</a>{% endif %}
       </div>
     </div>
   </div>
 
-  <form class="sheet js-form" id="form-contact" method="POST" accept-charset="UTF-8"{% if action != "" %} action="{{ action }}"{% endif %}>
+  <form class="sheet js-form" id="form-contact" method="POST" enctype="multipart/form-data" accept-charset="UTF-8"{% if action != "" %} action="{{ action }}"{% endif %} data-err-fichier="{{ f.fichier_trop_gros }}">
     {% include form-endpoint.html action=action texte=f.contact_ferme %}
     <fieldset class="all"{% if action == "" %} disabled{% endif %}>
       <legend class="visually-hidden">{{ f.ton_message }}</legend>
@@ -57,6 +57,15 @@
         <label for="c-msg">{{ f.ton_message }}</label>
         <textarea id="c-msg" name="message" required></textarea>
       </div>
+      <div class="field">
+        <label for="c-pj1">{{ f.piece_1 }}</label>
+        <input type="file" id="c-pj1" name="piece_jointe_1" accept=".pdf,.doc,.docx,.odt,.ppt,.pptx,.xls,.xlsx,.jpg,.jpeg,.png" data-max-mo="5">
+      </div>
+      <div class="field">
+        <label for="c-pj2">{{ f.piece_2 }}</label>
+        <input type="file" id="c-pj2" name="piece_jointe_2" accept=".pdf,.doc,.docx,.odt,.ppt,.pptx,.xls,.xlsx,.jpg,.jpeg,.png" data-max-mo="5">
+      </div>
+      <p class="hint full">{{ f.pieces_jointes }}</p>
       {%- capture lien_conf %}{{ p | append: '/confidentialite/' | relative_url }}{% endcapture %}
       <label class="consent full"><input type="checkbox" name="consentement" value="oui" required> <span>{{ f.consent_contact | replace: "%lien%", lien_conf }}</span></label>
       <div class="full"><button class="btn primary" type="submit">{{ f.envoyer }}</button></div>

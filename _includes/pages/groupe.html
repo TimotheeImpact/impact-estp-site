@@ -6,12 +6,12 @@
   <p class="intro">{{ t.groupe.intro }}</p>
 </div>
 
-<section class="block" style="padding-top:32px" aria-label="{{ t.groupe.projet_aria }}">
+<section class="block pt-32" aria-label="{{ t.groupe.projet_aria }}">
   <div class="hook">
     <p class="label">{{ t.groupe.hook_label }}</p>
     <p class="hook-q">{{ t.groupe.hook_q }}</p>
     <p>{{ t.groupe.hook_texte }}</p>
-    <div class="actions" style="margin-top:20px">
+    <div class="actions mt-20">
       <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Lancer Impact dans mon école' | uri_escape }}">{{ t.groupe.lancer }}</a>
       {%- if site.linkedin != "" %}
       <a class="btn" href="{{ site.linkedin }}">LinkedIn</a>

@@ -30,26 +30,31 @@ instagram: "https://www.instagram.com/impact.estp/"
 
 # ── Chiffres affichés sur la page d'accueil ──────────────────
 chiffres:
-  - auto: publiees                # calculé tout seul à partir des fiches interviews
-    legende: "interviews publiées"
-    legende_en: "interviews published"
-    legende_it: "interviste pubblicate"
-    legende_de: "veröffentlichte Interviews"
-  - auto: montage                 # fiches avec post_prod: true
-    legende: "en montage"
-    legende_en: "in editing"
-    legende_it: "in montaggio"
-    legende_de: "im Schnitt"
-  - auto: tournages               # fiches avec a_venir: true
-    legende: "tournages à venir"
-    legende_en: "shoots coming up"
-    legende_it: "riprese in arrivo"
-    legende_de: "geplante Drehs"
-  - valeur: "FR · IT"
-    legende: "interviews en français et en italien"
-    legende_en: "interviews in French and Italian"
-    legende_it: "interviste in francese e in italiano"
-    legende_de: "Interviews auf Französisch und Italienisch"
+  # auto : calculé tout seul (filmees = publiées + en montage, total = toutes les interviews, publiees, montage, tournages,
+  # entreprises = fiches entreprises, evenements = évènements à venir de l'agenda) ; sinon valeur à la main.
+  - auto: filmees
+    legende: "interviews filmées avec des dirigeants, ingénieurs et entrepreneurs"
+    legende_en: "filmed interviews with leaders, engineers and entrepreneurs"
+    legende_it: "interviste filmate con dirigenti, ingegneri e imprenditori"
+    legende_de: "gefilmte Interviews mit Führungskräften, Ingenieuren und Gründern"
+  - auto: entreprises
+    legende: "entreprises du BTP et de l'énergie à découvrir"
+    legende_en: "construction and energy companies to discover"
+    legende_it: "aziende dell'edilizia e dell'energia da scoprire"
+    legende_de: "Bau- und Energieunternehmen zum Entdecken"
+  - valeur: "11 700+"             # impressions LinkedIn sur 12 mois au 1er octobre 2026 (11 761) : à mettre à jour
+    valeur_en: "11,700+"
+    valeur_it: "11.700+"
+    valeur_de: "11.700+"
+    legende: "impressions sur LinkedIn en un an"
+    legende_en: "LinkedIn impressions in a year"
+    legende_it: "visualizzazioni su LinkedIn in un anno"
+    legende_de: "Impressionen auf LinkedIn in einem Jahr"
+  - auto: evenements
+    legende: "salons, forums et conférences dans notre agenda"
+    legende_en: "fairs, forums and conferences in our calendar"
+    legende_it: "fiere, forum e convegni nel nostro calendario"
+    legende_de: "Messen, Foren und Konferenzen in unserem Kalender"
 
 # Entreprises dont viennent nos invités (bandeau « Ils sont passés au micro » de l'accueil).
 # logo : image dans assets/img/logos (laisser vide pour afficher le nom) ;
@@ -144,6 +149,10 @@ cloudflare_analytics: ""
 formulaire_vivier: ""
 formulaire_equipe: "https://formsubmit.co/contact@impactestp.fr"
 formulaire_contact: "https://formsubmit.co/contact@impactestp.fr"
+# Copie automatique des inscriptions au vivier dans un Google Sheets privé (accord écrit de Timo le 2026-10-04).
+# Coller ici l'adresse « /exec » de l'application Apps Script (mode d'emploi : README, partie « Le vivier dans Google Sheets »).
+# Tant que c'est vide, rien n'est envoyé vers Google et la phrase sur Google Sheets n'apparaît pas dans la page Confidentialité.
+vivier_sheets: ""
 
 # ── Mentions légales (obligatoires en France) ────────────────
 association: "IMPACT ESTP"
@@ -230,6 +239,10 @@ plugins:
 
 feed:
   path: presse/flux.xml
+
+# Dossier caché à publier quand même : /.well-known/security.txt (adresse pour signaler une faille)
+include:
+  - .well-known
 
 exclude:
   - README.md

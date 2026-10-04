@@ -10,7 +10,7 @@
 
 <div class="folds">
 {% include fold-ouvre.html id="pourquoi" titre=t.apropos.pourquoi_titre ouvert=true %}
-  <div class="split" style="padding-top:0">
+  <div class="split pt-0">
     <div class="prose">
       {%- for para in t.apropos.pourquoi %}
       <p>{{ para }}</p>
@@ -45,10 +45,10 @@
 
 {% include fold-ouvre.html id="equipe" label=t.apropos.equipe_label titre=t.apropos.equipe_titre %}
   <p class="fold-intro">{{ t.apropos.equipe_intro }}</p>
-  <div class="pool" style="padding-top:0">
+  <div class="pool pt-0">
     <div class="why">
       <p>{{ t.apropos.equipe_faire }}</p>
-      <ul style="margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px">
+      <ul class="liste-serree">
         {%- for r in t.apropos.equipe_roles %}
         <li>{{ r }}</li>
         {%- endfor %}

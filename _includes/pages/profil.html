@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <form class="sheet" aria-labelledby="t-connexion" onsubmit="return false">
+  <form class="sheet" aria-labelledby="t-connexion">
     <p class="form-closed">{{ t.profil.pas_ouverts }}</p>
     <fieldset class="all" disabled>
       <legend class="visually-hidden">{{ t.profil.connexion }}</legend>
@@ -43,7 +43,7 @@
         <label for="p-mdp">{{ t.profil.mot_de_passe }}</label>
         <input type="password" id="p-mdp" autocomplete="current-password">
       </div>
-      <div class="full actions" style="margin-top:4px">
+      <div class="full actions mt-4">
         <button type="submit" class="btn primary">{{ t.profil.se_connecter }}</button>
         <button type="button" class="btn">{{ t.profil.creer }}</button>
       </div>

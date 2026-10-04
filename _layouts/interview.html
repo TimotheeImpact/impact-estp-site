@@ -49,7 +49,7 @@ layout: default
     {%- if ytid != "" %}
     <div class="player" data-youtube="{{ ytid }}" data-titre="{{ page.title | escape }}">
       <button type="button" aria-label="{{ t.interview.lire }} {{ page.title | escape }}">
-        <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" onerror="this.remove()" alt="" width="480" height="360">
+        <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" data-retirer-si-erreur alt="" width="480" height="360">
         <span class="big-play" aria-hidden="true"></span>
       </button>
     </div>
@@ -82,7 +82,7 @@ layout: default
 
     {%- assign texte = content | strip %}
     {%- if texte != "" %}
-    <div class="prose" style="margin-top:28px">
+    <div class="prose mt-28">
       {{ content }}
     </div>
     {%- endif %}

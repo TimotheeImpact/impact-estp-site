@@ -107,13 +107,13 @@
   <div class="empty">
     <p class="label">{{ t.commun.bientot }}</p>
     <p>{{ te.impact_vide }}</p>
-    <div class="actions" style="margin-top:14px"><a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Organiser un évènement avec Impact' | uri_escape }}">{{ te.impact_proposer }}</a></div>
+    <div class="actions mt-14"><a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Organiser un évènement avec Impact' | uri_escape }}">{{ te.impact_proposer }}</a></div>
   </div>
   {%- endif %}
 </div></details>
 
 {% include fold-ouvre.html id="proposer" label=te.ajouter_label titre=te.ajouter_titre %}
-  <div class="contact-box" style="margin-top:0">
+  <div class="contact-box mt-0">
     <p>{{ te.ajouter_texte }}</p>
     <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Proposer un évènement' | uri_escape }}">{{ te.ajouter_bouton }}</a>
   </div>

@@ -18,7 +18,7 @@ Pour toute question ou demande : {% if site.email != "" %}[{{ site.email }}](mai
 |---|---|---|
 | Vivier de stages | École, année, spécialité, type de recherche, disponibilité, e-mail | Te proposer des offres de stage, d'alternance ou d'emploi qui correspondent à ta recherche |
 | Candidature à l'équipe | Nom, e-mail, école, année, centres d'intérêt, message, CV et lettre de motivation si tu les joins | Répondre à ta candidature et organiser l'équipe |
-| Contact | Nom, e-mail, objet, école ou entreprise si tu l'indiques, message | Répondre à ton message |
+| Contact | Nom, e-mail, objet, école ou entreprise si tu l'indiques, message, pièces jointes si tu en ajoutes (2 au maximum) | Répondre à ton message |
 
 Ces traitements reposent sur ton **consentement**, que tu donnes en cochant la case du formulaire. Tu peux le retirer à tout moment.
 
@@ -27,6 +27,10 @@ Ces traitements reposent sur ton **consentement**, que tu donnes en cochant la c
 Uniquement les membres du bureau de l'association. Pour le vivier, une entreprise ne reçoit ton profil **que si tu as donné ton accord pour cette offre précise**. Nous ne vendons ni ne louons jamais tes données.
 
 Les formulaires passent par le service FormSubmit (formsubmit.co), qui nous transmet les réponses par e-mail. Le site est hébergé par GitHub, Inc. Certains de ces prestataires peuvent traiter des données aux États-Unis, dans le cadre du Data Privacy Framework UE-États-Unis ou de clauses contractuelles types de la Commission européenne.
+{% if site.vivier_sheets != "" %}
+
+Les inscriptions au vivier sont aussi enregistrées automatiquement dans un tableau **Google Sheets** privé, que seul le bureau de l'association peut ouvrir. Google (Google Ireland Limited, et Google LLC aux États-Unis dans le cadre du Data Privacy Framework UE-États-Unis) héberge ce tableau pour notre compte, sans utiliser tes données à ses propres fins.
+{% endif %}
 
 ## Combien de temps nous les gardons
 

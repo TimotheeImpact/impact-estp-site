@@ -3,10 +3,8 @@
   <div class="wrap">
     <div class="titleblock" aria-label="{{ t.pied.cartouche }}">
       <div class="tb-logo">
-        <picture>
-          <source srcset="{{ '/assets/img/logo-sombre.png' | relative_url }}" media="(prefers-color-scheme: dark)">
-          <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Impact ESTP" width="252" height="120" loading="lazy">
-        </picture>
+        <img class="logo-clair" src="{{ '/assets/img/logo.png' | relative_url }}" alt="Impact ESTP" width="252" height="120" loading="lazy">
+        <img class="logo-sombre" src="{{ '/assets/img/logo-sombre.png' | relative_url }}" alt="Impact ESTP" width="252" height="120" loading="lazy">
         <p class="tb-slogan">{% include tr.html o=site k="slogan" %}</p>
       </div>
       <div><p class="label">{{ t.pied.ecole }}</p><div class="v">{{ t.pied.ecole_v }}</div></div>

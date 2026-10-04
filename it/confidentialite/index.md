@@ -19,7 +19,7 @@ Per qualsiasi domanda o richiesta: {% if site.email != "" %}[{{ site.email }}](m
 |---|---|---|
 | Bacino di talenti per stage | Scuola, anno, specializzazione, tipo di ricerca, disponibilità, e-mail | Proporti offerte di stage, di apprendistato o di lavoro in linea con la tua ricerca |
 | Candidatura al team | Nome, e-mail, scuola, anno, interessi, messaggio, CV e lettera motivazionale se li alleghi | Rispondere alla tua candidatura e organizzare il team |
-| Contatto | Nome, e-mail, oggetto, scuola o azienda se la indichi, messaggio | Rispondere al tuo messaggio |
+| Contatto | Nome, e-mail, oggetto, scuola o azienda se la indichi, messaggio, allegati se ne aggiungi (massimo 2) | Rispondere al tuo messaggio |
 
 Questi trattamenti si basano sul tuo **consenso**, che dai spuntando la casella del modulo. Puoi ritirarlo in qualsiasi momento.
 
@@ -28,6 +28,10 @@ Questi trattamenti si basano sul tuo **consenso**, che dai spuntando la casella 
 Solo i membri del consiglio direttivo dell'associazione. Per il bacino di talenti, un'azienda riceve il tuo profilo **solo se hai dato il tuo consenso per quella specifica offerta**. Non vendiamo né affittiamo mai i tuoi dati.
 
 I moduli passano attraverso il servizio FormSubmit (formsubmit.co), che ci trasmette le risposte via e-mail. Il sito è ospitato da GitHub, Inc. Alcuni di questi fornitori possono trattare dati negli Stati Uniti, nell'ambito del Data Privacy Framework UE-USA o di clausole contrattuali tipo della Commissione europea.
+{% if site.vivier_sheets != "" %}
+
+Le iscrizioni al bacino di talenti vengono anche salvate automaticamente in un foglio **Google Sheets** privato, che solo il direttivo dell'associazione può aprire. Google (Google Ireland Limited, e Google LLC negli Stati Uniti nell'ambito del Data Privacy Framework UE-USA) ospita questo foglio per nostro conto, senza usare i tuoi dati per fini propri.
+{% endif %}
 
 ## Per quanto tempo li conserviamo
 

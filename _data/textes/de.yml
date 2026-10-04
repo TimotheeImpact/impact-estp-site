@@ -13,6 +13,7 @@ commun:
   menu_fermer: "Menü schließen"
   langue: "Sprache"
   langue_choisir: "Sprache wechseln"
+  mode_sombre: "Dunkelmodus"
   langues:
     fr: "Français"
     en: "English"
@@ -69,7 +70,6 @@ accueil:
   nouvelle: "Neues Interview"
   regarder: "Ansehen"
   chiffres_aria: "Impact ESTP in Zahlen"
-  depuis: "Im März 2026 von Studierenden der ESTP Paris gegründet"
   micro: "Sie waren schon bei uns am Mikro"
   micro_aria: "Unternehmen unserer Gäste"
   dernieres_label: "Videointerviews"
@@ -171,6 +171,9 @@ entreprise:
   article_n: "Artikel"
   offre_1: "Angebot"
   offre_n: "Angebote"
+  precedente: "Vorheriges Unternehmen"
+  suivante: "Nächstes Unternehmen"
+  nav_aria: "Zwischen den Unternehmen blättern"
 
 offre:
   postuler: "Bewerben"
@@ -271,6 +274,9 @@ formulaire:
   envoyer_candidature: "Bewerbung abschicken"
   candidatures_bientot: "Bewerben kannst du dich schon sehr bald."
   fichier_trop_gros: "Eine Datei ist größer als 5 MB. Speichere sie als kleineres PDF und versuch es noch mal."
+  piece_1: "Anhang 1 (optional)"
+  piece_2: "Anhang 2 (optional)"
+  pieces_jointes: "PDF, Word, PowerPoint, Excel oder Bild, maximal 5 MB pro Datei."
   ton_message: "Deine Nachricht"
   objet: "Betreff"
   objets:

@@ -12,6 +12,7 @@ commun:
   menu_fermer: "Fermer le menu"
   langue: "Langue"
   langue_choisir: "Changer de langue"
+  mode_sombre: "Mode sombre"
   langues:
     fr: "Français"
     en: "English"
@@ -68,7 +69,6 @@ accueil:
   nouvelle: "Nouvelle interview"
   regarder: "Regarder"
   chiffres_aria: "Impact ESTP en chiffres"
-  depuis: "Créé en mars 2026 par des étudiants de l'ESTP Paris"
   micro: "Ils sont passés au micro"
   micro_aria: "Entreprises de nos invités"
   dernieres_label: "Interviews vidéo"
@@ -170,6 +170,9 @@ entreprise:
   article_n: "articles"
   offre_1: "offre"
   offre_n: "offres"
+  precedente: "Entreprise précédente"
+  suivante: "Entreprise suivante"
+  nav_aria: "Passer d'une entreprise à l'autre"
 
 offre:
   postuler: "Postuler"
@@ -270,6 +273,9 @@ formulaire:
   envoyer_candidature: "Envoyer ma candidature"
   candidatures_bientot: "Les candidatures ouvrent très bientôt."
   fichier_trop_gros: "Un fichier dépasse 5 Mo. Enregistre-le en PDF plus léger et réessaie."
+  piece_1: "Pièce jointe 1 (facultatif)"
+  piece_2: "Pièce jointe 2 (facultatif)"
+  pieces_jointes: "PDF, Word, PowerPoint, Excel ou image, 5 Mo maximum par fichier."
   ton_message: "Ton message"
   objet: "Objet"
   objets:

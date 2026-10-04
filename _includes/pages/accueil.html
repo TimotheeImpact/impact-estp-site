@@ -9,9 +9,9 @@
 <div class="hero{% if publiees.size > 0 %} with-teaser{% endif %}">
   <div class="hero-text">
     <p class="label rise">{{ t.accueil.label }}</p>
-    <h1 class="rise" style="--d:.08s">{{ t.accueil.titre }}</h1>
-    <p class="lede rise" style="--d:.2s">{{ t.accueil.lede }}</p>
-    <div class="actions rise" style="--d:.3s">
+    <h1 class="rise d-1">{{ t.accueil.titre }}</h1>
+    <p class="lede rise d-2">{{ t.accueil.lede }}</p>
+    <div class="actions rise d-3">
       <a class="btn primary" href="{{ p | append: '/interviews/' | relative_url }}">{{ t.commun.voir_interviews }}</a>
       <a class="btn" href="{{ p | append: '/stages/' | relative_url }}">{{ t.accueil.btn_stage }}</a>
     </div>
@@ -27,7 +27,7 @@
       {%- if site.accueil_clip and site.accueil_clip != "" %}
       <video src="{{ site.accueil_clip | relative_url }}" poster="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
       {%- else %}
-      <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" onerror="this.remove()" alt="" width="480" height="360">
+      <img src="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" data-retirer-si-erreur alt="" width="480" height="360">
       {%- endif %}
       <span class="play" aria-hidden="true"></span>
     </span>
@@ -45,10 +45,9 @@
 <div class="stats" aria-label="{{ t.accueil.chiffres_aria }}">
   {%- for c in site.chiffres %}
   {%- assign n = nil %}
-  {%- if c.auto == "publiees" %}{% assign n = publiees.size %}{% elsif c.auto == "montage" %}{% assign n = montage.size %}{% elsif c.auto == "tournages" %}{% assign n = tournages.size %}{% endif %}
-  <div><div class="num"{% if n %} data-count="{{ n }}"{% endif %}>{% if n %}{{ n }}{% else %}{{ c.valeur }}{% endif %}</div><div class="cap">{% include tr.html o=c k="legende" %}</div></div>
+  {%- if c.auto == "publiees" %}{% assign n = publiees.size %}{% elsif c.auto == "montage" %}{% assign n = montage.size %}{% elsif c.auto == "tournages" %}{% assign n = tournages.size %}{% elsif c.auto == "total" %}{% assign n = interviews.size %}{% elsif c.auto == "filmees" %}{% assign n = publiees.size | plus: montage.size %}{% elsif c.auto == "entreprises" %}{% assign n = site.entreprises.size %}{% elsif c.auto == "evenements" %}{% assign _auj_c = site.time | date: "%Y-%m-%d" %}{% assign n = site.data.evenements | where_exp: "e", "e.fin >= _auj_c" | size %}{% endif %}
+  <div><div class="num"{% if n %} data-count="{{ n }}"{% endif %}>{% if n %}{{ n }}{% else %}{% include tr.html o=c k="valeur" %}{% endif %}</div><div class="cap">{% include tr.html o=c k="legende" %}</div></div>
   {%- endfor %}
-  <div class="since"><div class="cap">{{ t.accueil.depuis }}</div></div>
 </div>
 
 {%- if site.invites_entreprises.size > 0 %}
@@ -107,7 +106,7 @@
     <p class="label">{{ t.accueil.bientot_label }}</p>
     <p class="soon-strip-t">{% if montage.size > 0 %}{{ montage.size }} {% if montage.size > 1 %}{{ t.accueil.bientot_prod_n }}{% else %}{{ t.accueil.bientot_prod_1 }}{% endif %}{% endif %}{% if montage.size > 0 and tournages.size > 0 %} {{ t.commun.et }} {% endif %}{% if tournages.size > 0 %}{{ tournages.size }} {% if tournages.size > 1 %}{{ t.accueil.bientot_venir_n }}{% else %}{{ t.accueil.bientot_venir_1 }}{% endif %}{% endif %}</p>
   </div>
-  <div class="actions" style="margin-top:0">
+  <div class="actions mt-0">
     {%- if montage.size > 0 %}<a class="btn" href="{{ p | append: '/interviews/' | relative_url }}?statut=post-prod">{{ t.accueil.voir_montage }}</a>{% endif %}
     {%- if tournages.size > 0 %}<a class="btn" href="{{ p | append: '/interviews/' | relative_url }}?statut=a-venir">{{ t.accueil.voir_venir }}</a>{% endif %}
   </div>

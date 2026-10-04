@@ -18,7 +18,7 @@ Für Fragen und Anliegen: {% if site.email != "" %}[{{ site.email }}](mailto:{{ 
 |---|---|---|
 | Praktikums-Talentpool | Hochschule, Studienjahr, Fachrichtung, Art der Suche, Verfügbarkeit, E-Mail | Dir Angebote für Praktika, Werkstudium oder duales Studium und Stellen vorschlagen, die zu deiner Suche passen |
 | Bewerbung fürs Team | Name, E-Mail, Hochschule, Studienjahr, Interessen, Nachricht, Lebenslauf und Anschreiben, falls du sie anhängst | Auf deine Bewerbung antworten und das Team organisieren |
-| Kontakt | Name, E-Mail, Betreff, Hochschule oder Unternehmen, falls du sie angibst, Nachricht | Auf deine Nachricht antworten |
+| Kontakt | Name, E-Mail, Betreff, Hochschule oder Unternehmen, falls du sie angibst, Nachricht, Anhänge, falls du welche hinzufügst (höchstens 2) | Auf deine Nachricht antworten |
 
 Diese Verarbeitung beruht auf deiner **Einwilligung**, die du erteilst, indem du das Kästchen im Formular ankreuzt. Du kannst sie jederzeit widerrufen.
 
@@ -27,6 +27,10 @@ Diese Verarbeitung beruht auf deiner **Einwilligung**, die du erteilst, indem du
 Nur die Mitglieder des Vereinsvorstands. Beim Talentpool bekommt ein Unternehmen dein Profil **nur, wenn du für genau dieses Angebot zugestimmt hast**. Wir verkaufen oder vermieten deine Daten niemals.
 
 Die Formulare laufen über den Dienst FormSubmit (formsubmit.co), der uns die Antworten per E-Mail weiterleitet. Die Website wird von GitHub, Inc. gehostet. Einige dieser Auftragsverarbeiter können Daten in den USA verarbeiten, auf Grundlage des EU-US Data Privacy Framework oder der Standardvertragsklauseln der Europäischen Kommission.
+{% if site.vivier_sheets != "" %}
+
+Anmeldungen für den Talentpool werden außerdem automatisch in einer privaten **Google-Sheets**-Tabelle gespeichert, die nur der Vorstand des Vereins öffnen kann. Google (Google Ireland Limited sowie Google LLC in den USA auf Grundlage des EU-US Data Privacy Framework) hostet diese Tabelle in unserem Auftrag und nutzt deine Daten nicht für eigene Zwecke.
+{% endif %}
 
 ## Wie lange wir sie speichern
 

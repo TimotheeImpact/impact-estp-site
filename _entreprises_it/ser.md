@@ -3,5 +3,5 @@ title: "SER: interviste, mestieri e stage"
 description: "SER (Syndicat des énergies renouvelables) su Impact ESTP, il media studentesco delle costruzioni e dell'energia: interviste video, mestieri e offerte di stage."
 secteur: "Energie rinnovabili"
 pays: "Francia"
-presentation: "Organizzazione professionale che riunisce gli operatori delle energie rinnovabili in Francia."
+presentation: "L'organizzazione professionale delle energie rinnovabili in Francia. Il SER riunisce più di 500 associati, dai grandi gruppi energetici agli operatori locali, per due terzi PMI e medie imprese, dal fotovoltaico ai gas rinnovabili, alle energie marine e alla biomassa legnosa. Rappresenta le posizioni del settore e organizza ogni anno il suo convegno alla Maison de l'UNESCO, a Parigi."
 ---
