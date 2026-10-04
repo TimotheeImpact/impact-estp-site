@@ -86,7 +86,7 @@
     f.title = (btn && btn.getAttribute('aria-label')) || p.getAttribute('data-titre') || 'Vidéo';
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
-    p.innerHTML = '';
+    p.replaceChildren();
     p.appendChild(f);
   };
   document.querySelectorAll('.player[data-youtube]').forEach(function (p) {
@@ -299,7 +299,7 @@
   var sansAccents = function (txt) { return (txt || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
 
   // Marque les évènements en cours et passés (le site n'est reconstruit qu'à chaque modification)
-  document.querySelectorAll('.evt[data-fin]').forEach(function (li) {
+  document.querySelectorAll('.evt[data-fin], .next-evt[data-fin]').forEach(function (li) {
     var passe = li.getAttribute('data-fin') < jour;
     var enCours = !passe && li.getAttribute('data-debut') <= jour;
     li.classList.toggle('evt-passe', passe);
@@ -309,16 +309,16 @@
     if (tPast) tPast.hidden = !passe;
   });
 
-  // Accueil : les 3 prochains évènements seulement
-  document.querySelectorAll('.evts[data-limite]').forEach(function (liste) {
+  // Accueil : les 3 prochains évènements seulement, et le prochain sous la dernière interview
+  document.querySelectorAll('.evts[data-limite], .next-evts[data-limite]').forEach(function (liste) {
     var max = parseInt(liste.getAttribute('data-limite'), 10) || 3;
     var n = 0;
-    liste.querySelectorAll('.evt').forEach(function (li) {
+    liste.querySelectorAll(':scope > li').forEach(function (li) {
       var garder = !li.classList.contains('evt-passe') && n < max;
       li.hidden = !garder;
       if (garder) n++;
     });
-    if (n === 0) { var bloc = liste.closest('section'); if (bloc) bloc.hidden = true; }
+    if (n === 0) { var bloc = liste.closest('section') || liste; bloc.hidden = true; }
   });
 
   // Agenda : filtres par type, thème, ville, date, recherche

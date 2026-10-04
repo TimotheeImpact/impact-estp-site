@@ -17,12 +17,17 @@
     </div>
   </div>
   {%- assign derniere = publiees.first %}
+  {%- assign _auj_h = site.time | date: "%Y-%m-%d" %}
+  {%- assign prochains = site.data.evenements | where_exp: "e", "e.fin >= _auj_h" | sort: "debut" %}
+  {%- if derniere or prochains.size > 0 %}
+  <div class="hero-side">
+  {%- endif %}
   {%- if derniere %}
   {%- include trad.html doc=derniere %}
   {%- capture ytid %}{% include youtube-id.html lien=derniere.youtube %}{% endcapture %}
   {%- assign d_poste = tr.poste | default: derniere.poste %}
   <a class="teaser" href="{{ tr.url | relative_url }}">
-    <span class="teaser-flag">{{ t.accueil.nouvelle }}</span>
+    <span class="side-flag">{{ t.accueil.nouvelle }}</span>
     <span class="thumb">
       {%- if site.accueil_clip and site.accueil_clip != "" %}
       <video src="{{ site.accueil_clip | relative_url }}" poster="https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
@@ -39,6 +44,34 @@
       <span class="teaser-go">{{ t.accueil.regarder }}{% if derniere.duree != "" %} · {{ derniere.duree }}{% endif %}</span>
     </span>
   </a>
+  {%- endif %}
+  {%- if prochains.size > 0 %}
+  {%- comment -%} Prochain évènement de l'agenda : plusieurs sont préparés, le navigateur garde le premier qui n'est pas passé. {%- endcomment -%}
+  {%- assign _mc = t.commun.mois_courts | split: "," %}
+  <ol class="next-evts" data-limite="1" aria-label="{{ t.accueil.prochain_evt }}">
+    {%- for e in prochains limit: 6 %}
+    {%- assign e_fin = e.fin | default: e.debut %}
+    {%- assign _m = e.debut | date: "%-m" | minus: 1 %}
+    {%- capture e_titre %}{% include tr.html o=e k="titre" %}{% endcapture %}
+    <li class="next-evt" data-debut="{{ e.debut | date: '%Y-%m-%d' }}" data-fin="{{ e_fin | date: '%Y-%m-%d' }}">
+      <a href="{{ p | append: '/evenements/' | relative_url }}#evt-{{ e.id }}">
+        <span class="side-flag side-flag-evt">{{ t.accueil.prochain_evt }}</span>
+        <span class="next-evt-body">
+          <span class="evt-date" aria-hidden="true"><span class="evt-j">{{ e.debut | date: "%-d" }}</span><span class="evt-m">{{ _mc[_m] }}</span></span>
+          <span class="next-evt-txt">
+            <span class="tag soon">{{ t.evenements.types[e.type] | default: e.type }}</span>
+            <span class="next-evt-t">{{ e_titre }}</span>
+            <span class="next-evt-q">{% include date-evt.html debut=e.debut fin=e_fin %} · {{ e.ville }}</span>
+          </span>
+        </span>
+        <span class="next-evt-go">{{ t.accueil.voir_agenda }}</span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ol>
+  {%- endif %}
+  {%- if derniere or prochains.size > 0 %}
+  </div>
   {%- endif %}
 </div>
 

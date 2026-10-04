@@ -67,6 +67,8 @@ accueil:
   lede: "Chaque semaine, une interview vidéo avec un dirigeant, un ingénieur ou un entrepreneur du BTP et de l'énergie. Pour choisir ton stage et ton métier en sachant vraiment à quoi ils ressemblent."
   btn_stage: "Trouver un stage"
   nouvelle: "Nouvelle interview"
+  prochain_evt: "Prochain évènement"
+  voir_agenda: "Voir dans l'agenda"
   regarder: "Regarder"
   chiffres_aria: "Impact ESTP en chiffres"
   micro: "Ils sont passés au micro"
@@ -265,7 +267,7 @@ formulaire:
     - { v: "Écriture", l: "Écriture" }
     - { v: "Réseaux sociaux", l: "Réseaux sociaux" }
     - { v: "Partenariats", l: "Partenariats" }
-  un_mot: "Un mot sur toi (facultatif)"
+  un_mot: "Un mot sur toi"
   cv: "CV (facultatif)"
   lettre: "Lettre de motivation (facultatif)"
   fichiers: "PDF ou Word, 5 Mo maximum par fichier."

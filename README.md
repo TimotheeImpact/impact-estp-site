@@ -128,7 +128,7 @@ Le site ne se reconstruit qu'à chaque enregistrement : pour une parution le mar
 
 Les formulaires (vivier de stages, candidatures à l'équipe avec CV, contact avec 2 pièces jointes) passent par FormSubmit (formsubmit.co) : gratuit, sans compte, pièces jointes acceptées (5 Mo maximum par fichier). Les réponses arrivent par mail, CV en pièce jointe.
 
-1. Dans `_config.yml`, mets `https://formsubmit.co/` suivi de l'adresse qui doit recevoir les réponses, sur les lignes `formulaire_equipe` et `formulaire_contact` (et `formulaire_vivier` le jour de l'ouverture du vivier). Exemple : `formulaire_equipe: "https://formsubmit.co/contact@impactestp.fr"`.
+1. Dans `_config.yml`, mets `https://formsubmit.co/` suivi de l'adresse qui doit recevoir les réponses, sur les lignes `formulaire_equipe` et `formulaire_contact` (et `formulaire_vivier` le jour de l'ouverture du vivier). Le site utilise déjà le code secret FormSubmit de contact@impactestp.fr (reçu le 4 octobre 2026) : `https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf`. Le jour de l'ouverture du vivier, recopie la même adresse sur la ligne `formulaire_vivier`.
 2. Envoie une première réponse de test depuis le site. FormSubmit envoie un mail « Activate form » à cette adresse : clique sur le bouton pour activer.
 3. Dans ce mail, FormSubmit donne aussi un code secret qui remplace l'adresse (pour ne pas l'afficher dans le code du site). Remplace l'adresse par ce code : `https://formsubmit.co/le-code-recu`.
 

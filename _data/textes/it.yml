@@ -67,6 +67,8 @@ accueil:
   lede: "Ogni settimana, un'intervista video con un dirigente, un ingegnere o un imprenditore delle costruzioni e dell'energia. Per scegliere il tuo stage e il tuo mestiere sapendo davvero come sono."
   btn_stage: "Trova uno stage"
   nouvelle: "Nuova intervista"
+  prochain_evt: "Prossimo evento"
+  voir_agenda: "Vedi nel calendario"
   regarder: "Guarda"
   chiffres_aria: "Impact ESTP in cifre"
   micro: "Sono passati dal nostro microfono"
@@ -265,7 +267,7 @@ formulaire:
     - { v: "Écriture", l: "Scrittura" }
     - { v: "Réseaux sociaux", l: "Social media" }
     - { v: "Partenariats", l: "Partnership" }
-  un_mot: "Qualche parola su di te (facoltativo)"
+  un_mot: "Qualche parola su di te"
   cv: "CV (facoltativo)"
   lettre: "Lettera di motivazione (facoltativa)"
   fichiers: "PDF o Word, massimo 5 MB per file."

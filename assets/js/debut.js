@@ -15,6 +15,18 @@
     if (meta) meta.setAttribute('content', '#0b1a1f');
   }
 
+  // Appli installée sur le téléphone : écran d'ouverture avec le logo et le slogan, une fois par session.
+  // Pas sur le site web, où les pages doivent s'afficher tout de suite (et Google le mesure).
+  var appli = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
+  if (appli) {
+    try {
+      if (!window.sessionStorage.getItem('ouverture')) {
+        racine.className += ' ouverture';
+        window.sessionStorage.setItem('ouverture', '1');
+      }
+    } catch (e) {}
+  }
+
   // Miniatures YouTube introuvables : on retire l'image pour laisser le fond de la carte
   document.addEventListener('error', function (e) {
     var img = e.target;

@@ -143,12 +143,13 @@ presse_redaction:
 cloudflare_analytics: ""
 
 # ── Formulaires ──────────────────────────────────────────────
-# Adresse d'envoi des formulaires (vivier de stages et candidatures à l'équipe).
+# Adresse d'envoi des formulaires (vivier de stages, candidatures à l'équipe, contact).
+# Le code après formsubmit.co remplace l'adresse contact@impactestp.fr, pour ne pas l'afficher dans le code du site.
 # Voir le mode d'emploi dans README.md, partie « Brancher les formulaires ».
 # Tant que c'est vide, les formulaires affichent « Ouverture le 15 novembre ».
 formulaire_vivier: ""
-formulaire_equipe: "https://formsubmit.co/contact@impactestp.fr"
-formulaire_contact: "https://formsubmit.co/contact@impactestp.fr"
+formulaire_equipe: "https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf"
+formulaire_contact: "https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf"
 # Copie automatique des inscriptions au vivier dans un Google Sheets privé (accord écrit de Timo le 2026-10-04).
 # Coller ici l'adresse « /exec » de l'application Apps Script (mode d'emploi : README, partie « Le vivier dans Google Sheets »).
 # Tant que c'est vide, rien n'est envoyé vers Google et la phrase sur Google Sheets n'apparaît pas dans la page Confidentialité.

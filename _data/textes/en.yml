@@ -67,6 +67,8 @@ accueil:
   lede: "Every week, a video interview with a leader, engineer or entrepreneur from construction and energy. So you can choose your internship and your career knowing what they're really like."
   btn_stage: "Find an internship"
   nouvelle: "New interview"
+  prochain_evt: "Next event"
+  voir_agenda: "See it in the calendar"
   regarder: "Watch"
   chiffres_aria: "Impact ESTP in numbers"
   micro: "They've been on the mic"
@@ -265,7 +267,7 @@ formulaire:
     - { v: "Écriture", l: "Writing" }
     - { v: "Réseaux sociaux", l: "Social media" }
     - { v: "Partenariats", l: "Partnerships" }
-  un_mot: "A few words about you (optional)"
+  un_mot: "A few words about you"
   cv: "CV (optional)"
   lettre: "Cover letter (optional)"
   fichiers: "PDF or Word, 5 MB max per file."

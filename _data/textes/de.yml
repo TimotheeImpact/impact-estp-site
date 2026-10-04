@@ -68,6 +68,8 @@ accueil:
   lede: "Jede Woche ein Videointerview mit einer Führungskraft, einem Ingenieur oder einem Unternehmer aus der Bau- und Energiebranche. So wählst du dein Praktikum und deinen Beruf und weißt wirklich, was dich erwartet."
   btn_stage: "Praktikum finden"
   nouvelle: "Neues Interview"
+  prochain_evt: "Nächster Termin"
+  voir_agenda: "Im Kalender ansehen"
   regarder: "Ansehen"
   chiffres_aria: "Impact ESTP in Zahlen"
   micro: "Sie waren schon bei uns am Mikro"
@@ -266,7 +268,7 @@ formulaire:
     - { v: "Écriture", l: "Schreiben" }
     - { v: "Réseaux sociaux", l: "Soziale Medien" }
     - { v: "Partenariats", l: "Partnerschaften" }
-  un_mot: "Ein paar Worte über dich (optional)"
+  un_mot: "Ein paar Worte über dich"
   cv: "Lebenslauf (optional)"
   lettre: "Anschreiben (optional)"
   fichiers: "PDF oder Word, höchstens 5 MB pro Datei."
