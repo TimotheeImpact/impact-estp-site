@@ -10,6 +10,8 @@
 {{ _mois[m] }} {{ include.date | date: "%Y" }}
 {%- elsif page.lang == "en" -%}
 {{ j }} {{ _mois[m] }} {{ include.date | date: "%Y" }}
+{%- elsif page.lang == "de" -%}
+{{ j }}. {{ _mois[m] }} {{ include.date | date: "%Y" }}
 {%- else -%}
 {%- if j == "1" -%}{{ _t.commun.premier_du_mois }}{%- else -%}{{ j }}{%- endif %} {{ _mois[m] }} {{ include.date | date: "%Y" }}
 {%- endif -%}

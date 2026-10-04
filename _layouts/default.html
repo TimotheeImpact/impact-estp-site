@@ -20,13 +20,28 @@
   <link rel="alternate" hreflang="fr" href="{{ alt_fr | absolute_url }}">
   <link rel="alternate" hreflang="en" href="{{ alt_en | absolute_url }}">
   <link rel="alternate" hreflang="it" href="{{ alt_it | absolute_url }}">
+  <link rel="alternate" hreflang="de" href="{{ alt_de | absolute_url }}">
   <link rel="alternate" hreflang="x-default" href="{{ alt_fr | absolute_url }}">
   {%- endif %}
   {%- if site.cloudflare_analytics != "" and jekyll.environment == "production" %}
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cloudflare_analytics }}"}'></script>
   {%- endif %}
   {% feed_meta %}
+  {%- comment -%} Titre Google des interviews : « Invité (Entreprise) : titre | Impact ESTP » {%- endcomment -%}
+  {%- assign _itv = nil -%}
+  {%- if page.layout == "interview" -%}{%- assign _itv = site.interviews | where: "slug", page.slug | first -%}{%- endif -%}
+  {%- if _itv and _itv.invite and _itv.invite != "" %}
+  <title>{{ _itv.invite }}{% if _itv.entreprise and _itv.entreprise != "" %} ({{ _itv.entreprise }}){% endif %}{% if page.lang == 'fr' %} :{% else %}:{% endif %} {{ page.title }} | {{ site.title }}</title>
+  {% seo title=false %}
+  {%- else %}
   {% seo %}
+  {%- endif %}
+  {%- assign _accueil = page.prefixe | default: "" | append: "/" -%}
+  {%- if page.url == _accueil %}
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"{{ site.title }}","url":"{{ '/' | absolute_url }}","logo":"{{ '/assets/img/icon-512.png' | absolute_url }}","foundingDate":"2026-03","email":"{{ site.email }}","sameAs":[{% if site.youtube != "" %}"{{ site.youtube }}"{% endif %}{% if site.linkedin != "" %},"{{ site.linkedin }}"{% endif %}{% if site.instagram != "" %},"{{ site.instagram }}"{% endif %}]}
+  </script>
+  {%- endif %}
 </head>
 <body>
   <a class="skip" href="#contenu">{{ t.commun.aller_contenu }}</a>

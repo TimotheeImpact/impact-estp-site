@@ -515,6 +515,12 @@ footer { padding-block: 72px 40px; }
 .co-grid .plate-text { font-size: 1rem; }
 .co-name { font-family: var(--font-display); font-weight: 800; line-height: 1.2; }
 .co-sector { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.3; }
+.co-siege { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); line-height: 1.3; }
+.co-tag { margin-top: auto; align-self: flex-start; }
+.co-grid .co-tag { margin-top: 8px; }
+.co-pub { background: var(--leaf-tint); border-color: transparent; color: var(--leaf-ink); }
+.co-selects { grid-template-columns: repeat(2, minmax(0, 220px)); }
+.co-grid li[hidden] { display: none; }
 
 /* Offres de stage */
 .jobs { display: flex; flex-direction: column; gap: 14px; }
@@ -697,6 +703,7 @@ footer { padding-block: 72px 40px; }
   .menu-toggle { width: 40px; padding: 0; justify-content: center; }
   .evt-selects { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .evt-selects .field:nth-child(n+3) { grid-column: 1 / -1; }
+  .co-selects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .evt-selects select { padding-inline: 10px; font-size: 0.95rem; }
   /* Filtres en une ligne qu'on fait glisser du doigt */
   .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; margin-inline: -16px; padding: 2px 16px; scroll-padding-inline: 16px; }

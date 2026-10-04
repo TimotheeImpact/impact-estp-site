@@ -1,4 +1,4 @@
-# Les champs _en et _it sont les traductions anglaise et italienne (facultatives : sans elles, le texte français s'affiche).
+# Les champs _en, _it et _de sont les traductions anglaise, italienne et allemande (facultatives : sans elles, le texte français s'affiche).
 # Thèmes des interviews et des articles.
 # « id » sert dans les fiches (theme: energie). « nom » est ce qui s'affiche sur le site.
 # « En studio » est un filtre à part : il regroupe les fiches qui ont studio: true, en plus de leur thème.
@@ -6,27 +6,34 @@
   nom: Construction bas-carbone
   nom_en: "Low-carbon construction"
   nom_it: "Edilizia a basse emissioni"
+  nom_de: "CO₂-armes Bauen"
 - id: energie
   nom: Transition énergétique
   nom_en: "Energy transition"
   nom_it: "Transizione energetica"
+  nom_de: "Energiewende"
 - id: grands-projets
   nom: Grands projets
   nom_en: "Major projects"
   nom_it: "Grandi progetti"
+  nom_de: "Großprojekte"
 - id: carrieres
   nom: Métiers et carrières
   nom_en: "Jobs and careers"
   nom_it: "Mestieri e carriere"
+  nom_de: "Berufe und Karrieren"
 - id: international
   nom: À l'international
   nom_en: "International"
   nom_it: "Internazionale"
+  nom_de: "International"
 - id: innovation
   nom: Innovation et numérique
   nom_en: "Innovation and digital"
   nom_it: "Innovazione e digitale"
+  nom_de: "Innovation und Digitales"
 - id: studio
   nom: En studio
   nom_en: "In the studio"
   nom_it: "In studio"
+  nom_de: "Im Studio"

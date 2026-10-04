@@ -1,15 +1,67 @@
 {%- comment -%}
-  Grille des fiches entreprises (dossier _entreprises), avec logo et secteur.
+  Grille des fiches entreprises (dossier _entreprises), avec logo, secteur et siège social.
+  Filtres : statut de l'interview (comme l'onglet Interviews), zone du siège (champ « zone » des fiches), tri A-Z ou Z-A.
 {%- endcomment -%}
-{%- assign fiches = site.entreprises | sort: "nom" -%}
-<ul class="co-grid">
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign ta = t.annuaire -%}
+{%- assign fiches = site.entreprises | sort_natural: "nom" -%}
+{%- assign zones_presentes = fiches | map: "zone" | compact | uniq -%}
+{%- assign nb_pub = 0 -%}{%- assign nb_prod = 0 -%}{%- assign nb_venir = 0 -%}
+{%- capture cartes -%}
   {%- for e in fiches %}
   {%- include trad.html doc=e %}
   {%- assign e_secteur = tr.secteur | default: e.secteur %}
-  <li><a href="{{ tr.url | relative_url }}">
+  {%- assign e_itv = site.interviews | where: "entreprise_id", e.slug %}
+  {%- assign e_pub = e_itv | where_exp: "i", "i.youtube" | where_exp: "i", "i.youtube != ''" %}
+  {%- assign e_prod = e_itv | where: "post_prod", true %}
+  {%- assign e_venir = e_itv | where: "a_venir", true %}
+  {%- assign e_statut = "" %}
+  {%- if e_pub.size > 0 %}{% assign e_statut = "publiee" %}{% assign nb_pub = nb_pub | plus: 1 %}
+  {%- elsif e_prod.size > 0 %}{% assign e_statut = "post-prod" %}{% assign nb_prod = nb_prod | plus: 1 %}
+  {%- elsif e_venir.size > 0 %}{% assign e_statut = "a-venir" %}{% assign nb_venir = nb_venir | plus: 1 %}{% endif %}
+  <li data-nom="{{ e.nom | downcase | escape }}" data-statut="{{ e_statut }}" data-zone="{{ e.zone }}"><a href="{{ tr.url | relative_url }}">
     <span class="plate{% if e.logo == "" %} plate-text{% endif %}">{% if e.logo != "" %}<img src="{{ '/assets/img/logos/' | append: e.logo | relative_url }}" alt="" loading="lazy">{% else %}{{ e.nom }}{% endif %}</span>
     <span class="co-name">{{ e.nom }}</span>
     {%- if e_secteur != "" %}<span class="co-sector">{{ e_secteur }}</span>{% endif %}
+    {%- if e.siege and e.siege != "" %}<span class="co-siege">{{ e.siege }}{% if e.zone and e.zone != "" and ta.zones[e.zone] != e.siege %}, {{ ta.zones[e.zone] | default: e.zone }}{% endif %}</span>{% endif %}
+    {%- if e_statut == "publiee" %}<span class="tag co-tag co-pub">{{ ta.publiee }}</span>
+    {%- elsif e_statut == "post-prod" %}<span class="tag co-tag">{{ ta.post_prod }}</span>
+    {%- elsif e_statut == "a-venir" %}<span class="tag co-tag">{{ ta.a_venir }}</span>{% endif %}
   </a></li>
   {%- endfor %}
+{%- endcapture -%}
+{%- if fiches.size > 3 %}
+<div class="evt-filters co-filtres" id="co-filtres" role="group" aria-label="{{ ta.filtres_aria }}">
+  <div class="filters" data-co="statut" role="group" aria-label="{{ ta.interview }}">
+    <span class="label">{{ ta.interview }}</span>
+    <button type="button" data-filter="all" aria-pressed="true">{{ ta.toutes }}</button>
+    {%- if nb_pub > 0 %}<button type="button" data-filter="publiee" aria-pressed="false">{{ ta.publiee }}</button>{% endif %}
+    {%- if nb_prod > 0 %}<button type="button" data-filter="post-prod" aria-pressed="false">{{ ta.post_prod }}</button>{% endif %}
+    {%- if nb_venir > 0 %}<button type="button" data-filter="a-venir" aria-pressed="false">{{ ta.a_venir }}</button>{% endif %}
+  </div>
+  <div class="evt-selects co-selects">
+    {%- if zones_presentes.size > 1 %}
+    <div class="field">
+      <label for="co-zone">{{ ta.zone }}</label>
+      <select id="co-zone" data-co="zone">
+        <option value="all">{{ ta.toutes_zones }}</option>
+        {%- for k in ta.zones %}
+        {%- if zones_presentes contains k[0] %}<option value="{{ k[0] }}">{{ k[1] }}</option>{% endif %}
+        {%- endfor %}
+      </select>
+    </div>
+    {%- endif %}
+    <div class="field">
+      <label for="co-tri">{{ ta.trier }}</label>
+      <select id="co-tri" data-co="tri">
+        <option value="az">{{ ta.tri_az }}</option>
+        <option value="za">{{ ta.tri_za }}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<p class="count" id="co-count" aria-live="polite" data-un="{{ ta.un }}" data-plusieurs="{{ ta.n }}" data-aucun="{{ ta.aucune }}" data-reset="{{ ta.reinitialiser }}">{{ fiches.size }} {{ ta.n }}</p>
+{%- endif %}
+<ul class="co-grid" id="co-grille">
+  {{- cartes }}
 </ul>

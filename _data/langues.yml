@@ -1,12 +1,14 @@
-# Les champs _en et _it sont les traductions anglaise et italienne (facultatives : sans elles, le texte français s'affiche).
+# Les champs _en, _it et _de sont les traductions anglaise, italienne et allemande (facultatives : sans elles, le texte français s'affiche).
 # Langues des interviews. « id » sert dans les fiches (langue: it).
 - id: fr
   nom: En français
   nom_en: "In French"
   nom_it: "In francese"
+  nom_de: "Auf Französisch"
   court: FR
 - id: it
   nom: In italiano
   nom_en: "In Italian"
   nom_it: "In italiano"
+  nom_de: "Auf Italienisch"
   court: IT

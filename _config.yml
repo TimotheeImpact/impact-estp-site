@@ -9,6 +9,7 @@ tagline: "Le média étudiant de la construction et de l'énergie"
 slogan: "Construis ton impact."    # affiché en bas à gauche, à côté du logo
 slogan_en: "Build your impact."
 slogan_it: "Costruisci il tuo impatto."
+slogan_de: "Bau deinen Impact."
 # Petite vidéo muette qui tourne en boucle dans l'encadré « Nouvelle interview » de l'accueil
 # (fichier .mp4 de 10 à 15 secondes, moins de 3 Mo, déposé dans assets/video). Laisser vide pour afficher la vignette YouTube.
 accueil_clip: ""
@@ -33,18 +34,22 @@ chiffres:
     legende: "interviews publiées"
     legende_en: "interviews published"
     legende_it: "interviste pubblicate"
+    legende_de: "veröffentlichte Interviews"
   - auto: montage                 # fiches avec post_prod: true
     legende: "en montage"
     legende_en: "in editing"
     legende_it: "in montaggio"
+    legende_de: "im Schnitt"
   - auto: tournages               # fiches avec a_venir: true
     legende: "tournages à venir"
     legende_en: "shoots coming up"
     legende_it: "riprese in arrivo"
+    legende_de: "geplante Drehs"
   - valeur: "FR · IT"
     legende: "interviews en français et en italien"
     legende_en: "interviews in French and Italian"
     legende_it: "interviste in francese e in italiano"
+    legende_de: "Interviews auf Französisch und Italienisch"
 
 # Entreprises dont viennent nos invités (bandeau « Ils sont passés au micro » de l'accueil).
 # logo : image dans assets/img/logos (laisser vide pour afficher le nom) ;
@@ -100,26 +105,32 @@ invites_entreprises:
 presse_rendezvous: "Chaque mardi à 18h"
 presse_rendezvous_en: "Every Tuesday at 6 pm"
 presse_rendezvous_it: "Ogni martedì alle 18"
+presse_rendezvous_de: "Jeden Dienstag um 18 Uhr"
 presse_premier_article: "mardi 20 octobre 2026"   # vider cette ligne (et ses traductions) une fois le premier article publié
 presse_premier_article_en: "Tuesday 20 October 2026"
 presse_premier_article_it: "martedì 20 ottobre 2026"
+presse_premier_article_de: "Dienstag, 20. Oktober 2026"
 presse_redaction:
   - nom: "Emma"
     role: "Rédactrice en chef, presse écrite"
     role_en: "Editor-in-chief, written press"
     role_it: "Caporedattrice, stampa scritta"
+    role_de: "Chefredakteurin, Textredaktion"
   - nom: "Timothée"
     role: "Directeur de la publication"
     role_en: "Publication director"
     role_it: "Direttore della pubblicazione"
+    role_de: "Herausgeber"
   - nom: "Lucas"
     role: "Auditeur libre"
     role_en: "Auditor"
     role_it: "Uditore"
+    role_de: "Gasthörer"
   - nom: "Jules"
     role: "Auditeur libre"
     role_en: "Auditor"
     role_it: "Uditore"
+    role_de: "Gasthörer"
 
 # ── Mesure d'audience (sans cookie) ──────────────────────────
 # Jeton Cloudflare Web Analytics (une suite de lettres et chiffres, voir le guide).
@@ -144,6 +155,7 @@ directeur_publication: "Timothée de Varax"
 role_directeur: "président fondateur de l'association"
 role_directeur_en: "founding president of the association"
 role_directeur_it: "presidente fondatore dell'associazione"
+role_directeur_de: "Gründer und Vorsitzender des Vereins"
 
 # ─────────────────────────────────────────────────────────────
 #  Réglages techniques : pas besoin d'y toucher
@@ -154,7 +166,7 @@ kramdown:
   input: GFM
 permalink: /presse/:title/
 
-# Fiches : en français dans _interviews et _entreprises ; traductions dans les dossiers _en et _it
+# Fiches : en français dans _interviews et _entreprises ; traductions dans les dossiers _en, _it et _de
 # (même nom de fichier, seulement le titre, le poste et le texte traduits).
 collections:
   interviews:
@@ -175,8 +187,14 @@ collections:
   entreprises_it:
     output: true
     permalink: /it/entreprises/:name/
+  interviews_de:
+    output: true
+    permalink: /de/interviews/:name/
+  entreprises_de:
+    output: true
+    permalink: /de/entreprises/:name/
 
-# Langue de chaque page : français par défaut, anglais dans le dossier en/, italien dans it/.
+# Langue de chaque page : français par défaut, anglais dans le dossier en/, italien dans it/, allemand dans de/.
 defaults:
   - scope: { path: "" }
     values: { image: /assets/img/partage.png, lang: fr, prefixe: "", locale: fr_FR }
@@ -184,6 +202,8 @@ defaults:
     values: { lang: en, prefixe: "/en", locale: en_GB }
   - scope: { path: "it" }
     values: { lang: it, prefixe: "/it", locale: it_IT }
+  - scope: { path: "de" }
+    values: { lang: de, prefixe: "/de", locale: de_DE }
   - scope: { path: "", type: posts }
     values: { layout: article, sans_traduction: true }
   - scope: { path: "", type: interviews }
@@ -198,6 +218,10 @@ defaults:
     values: { layout: entreprise, lang: en, prefixe: "/en", locale: en_GB }
   - scope: { path: "", type: entreprises_it }
     values: { layout: entreprise, lang: it, prefixe: "/it", locale: it_IT }
+  - scope: { path: "", type: interviews_de }
+    values: { layout: interview, lang: de, prefixe: "/de", locale: de_DE }
+  - scope: { path: "", type: entreprises_de }
+    values: { layout: entreprise, lang: de, prefixe: "/de", locale: de_DE }
 
 plugins:
   - jekyll-seo-tag

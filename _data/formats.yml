@@ -1,42 +1,54 @@
-# Les champs _en et _it sont les traductions anglaise et italienne (facultatives : sans elles, le texte français s'affiche).
+# Les champs _en, _it et _de sont les traductions anglaise, italienne et allemande (facultatives : sans elles, le texte français s'affiche).
 # Les quatre formats de la presse écrite, publiés à tour de rôle sur un cycle de 4 semaines.
 - id: decryptage
   nom: Décryptage
   nom_en: "Explainer"
   nom_it: "Approfondimento"
+  nom_de: "Erklärstück"
   principe: Un projet, une technologie ou une règle expliqués simplement.
   principe_en: "A project, a technology or a rule explained simply."
   principe_it: "Un progetto, una tecnologia o una norma spiegati in modo semplice."
+  principe_de: "Ein Projekt, eine Technologie oder eine Vorschrift, einfach erklärt."
   exemple: Comment on pose un câble électrique sous-marin entre un parc éolien et la côte.
   exemple_en: "How a subsea power cable is laid between a wind farm and the coast."
   exemple_it: "Come si posa un cavo elettrico sottomarino tra un parco eolico e la costa."
+  exemple_de: "Wie ein Seekabel zwischen einem Windpark und der Küste verlegt wird."
 - id: metier
   nom: Métier
   nom_en: "Career"
   nom_it: "Mestiere"
+  nom_de: "Beruf"
   principe: Un métier raconté par quelqu'un qui le fait.
   principe_en: "A job described by someone who does it."
   principe_it: "Un mestiere raccontato da chi lo fa."
+  principe_de: "Ein Beruf, erzählt von jemandem, der ihn ausübt."
   exemple: Une journée de conducteur de travaux sur un chantier de logements.
   exemple_en: "A day as a site manager on a housing project."
   exemple_it: "Una giornata da direttore di cantiere nella costruzione di alloggi."
+  exemple_de: "Ein Tag als Bauleiter auf einer Wohnungsbaustelle."
 - id: debat
   nom: Enquête et débat
   nom_en: "Investigation and debate"
   nom_it: "Inchiesta e dibattito"
+  nom_de: "Recherche und Debatte"
   principe: Une question du secteur, plusieurs points de vue.
   principe_en: "One question about the sector, several points of view."
   principe_it: "Una questione del settore, diversi punti di vista."
+  principe_de: "Eine Frage aus der Branche, mehrere Sichtweisen."
   exemple: Le béton bas carbone est-il prêt pour les grands ouvrages ?
   exemple_en: "Is low-carbon concrete ready for major structures?"
   exemple_it: "Il calcestruzzo a basse emissioni è pronto per le grandi opere?"
+  exemple_de: "Ist CO₂-armer Beton bereit für große Bauwerke?"
 - id: video
   nom: Prolongement vidéo
   nom_en: "Video follow-up"
   nom_it: "Seguito video"
+  nom_de: "Video-Nachlese"
   principe: Les idées clés d'une interview Impact, avec les meilleurs extraits.
   principe_en: "The key ideas from an Impact interview, with the best clips."
   principe_it: "Le idee chiave di un'intervista Impact, con i migliori estratti."
+  principe_de: "Die wichtigsten Gedanken aus einem Impact-Interview, mit den besten Ausschnitten."
   exemple: Les 5 idées à retenir de notre dernière interview.
   exemple_en: "5 key takeaways from our latest interview."
   exemple_it: "Le 5 idee da ricordare della nostra ultima intervista."
+  exemple_de: "Die 5 wichtigsten Erkenntnisse aus unserem letzten Interview."

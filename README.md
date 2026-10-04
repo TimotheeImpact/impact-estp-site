@@ -24,18 +24,18 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | La page « Mon profil » (espace membre, pas encore ouvert) | `mon-profil/index.html` |
 | Les thèmes (bas-carbone, énergie…) | `_data/themes.yml` |
 | Le logo | `assets/img/logo.png` (et `logo-sombre.png` pour le mode sombre) |
-| Les textes des menus, boutons et pages, en français, anglais et italien | `_data/textes/fr.yml`, `en.yml`, `it.yml` |
-| Les traductions des interviews et des fiches entreprises | dossiers `_interviews_en`, `_interviews_it`, `_entreprises_en`, `_entreprises_it` |
+| Les textes des menus, boutons et pages, en français, anglais, italien et allemand | `_data/textes/fr.yml`, `en.yml`, `it.yml`, `de.yml` |
+| Les traductions des interviews et des fiches entreprises | dossiers `_interviews_en`, `_interviews_it`, `_interviews_de`, `_entreprises_en`, `_entreprises_it`, `_entreprises_de` |
 
-## Le site en trois langues
+## Le site en quatre langues
 
-Le site existe en français (`impactestp.fr`), en anglais (`impactestp.fr/en/`) et en italien (`impactestp.fr/it/`). Le petit drapeau en haut à droite permet de changer de langue sur la même page.
+Le site existe en français (`impactestp.fr`), en anglais (`impactestp.fr/en/`), en italien (`impactestp.fr/it/`) et en allemand (`impactestp.fr/de/`). Le petit drapeau en haut à droite permet de changer de langue sur la même page.
 
-- Les textes des menus, boutons et pages sont dans `_data/textes/fr.yml`, `en.yml` et `it.yml`. Ces trois fichiers ont exactement les mêmes lignes : si tu changes une phrase en français, change la même ligne dans les deux autres.
-- Dans les autres fichiers de `_data` et dans `_config.yml`, une ligne qui finit par `_en` ou `_it` est la traduction de la ligne du même nom. Si elle est vide ou absente, le texte français s'affiche.
-- Une interview ou une fiche entreprise se traduit dans un fichier du même nom, dans `_interviews_en` / `_interviews_it` (ou `_entreprises_en` / `_entreprises_it`). Ce fichier ne contient que les lignes traduites (titre, poste, présentation, chapitres…). Le reste (lien YouTube, logo, LinkedIn) est repris de la version française. Sans traduction, la page anglaise ou italienne affiche la version française.
+- Les textes des menus, boutons et pages sont dans `_data/textes/fr.yml`, `en.yml`, `it.yml` et `de.yml`. Ces quatre fichiers ont exactement les mêmes lignes : si tu changes une phrase en français, change la même ligne dans les trois autres.
+- Dans les autres fichiers de `_data` et dans `_config.yml`, une ligne qui finit par `_en`, `_it` ou `_de` est la traduction de la ligne du même nom. Si elle est vide ou absente, le texte français s'affiche.
+- Une interview ou une fiche entreprise se traduit dans un fichier du même nom, dans `_interviews_en`, `_interviews_it` ou `_interviews_de` (et pareil pour `_entreprises`). Ce fichier ne contient que les lignes traduites (titre, poste, présentation, chapitres…). Le reste (lien YouTube, logo, LinkedIn) est repris de la version française. Sans traduction, la page traduite affiche la version française.
 - Les articles de la presse écrite restent en français.
-- Les réponses aux formulaires envoyées depuis la version anglaise ou italienne arrivent avec « (EN) » ou « (IT) » à la fin de l'objet du mail.
+- Les réponses aux formulaires envoyées depuis une version traduite arrivent avec « (EN) », « (IT) » ou « (DE) » à la fin de l'objet du mail.
 
 ## Modifier un fichier
 
@@ -82,7 +82,8 @@ La page Interviews s'ouvre sur les interviews publiées. Pour ouvrir directement
 
 1. Va dans le dossier `_entreprises`, ouvre une fiche existante (par exemple `nge.md`) et copie son contenu.
 2. Crée un nouveau fichier dans `_entreprises`, nommé en minuscules avec des tirets (`nom-entreprise.md`).
-3. Remplis le nom, le secteur, le site web, la page Wikipédia (`wikipedia:`, avec si besoin `wikipedia_en:` et `wikipedia_it:` pour les versions anglaise et italienne) et le nom du fichier du logo (déposé dans `assets/img/logos`). Laisse vide ce que tu ne sais pas.
+3. Remplis le nom, le secteur, le site web, la page Wikipédia (`wikipedia:`, avec si besoin `wikipedia_en:`, `wikipedia_it:` et `wikipedia_de:` pour les autres langues), la ville du siège social (`siege:`, par exemple `Paris`) et sa zone (`zone:`, par exemple `ile-de-france`, `hauts-de-france`, `italie`, `canada` : la liste est dans `_data/textes/fr.yml`, partie `annuaire`, `zones`), et le nom du fichier du logo (déposé dans `assets/img/logos`). Laisse vide ce que tu ne sais pas.
+   Dans la page Stages, l'annuaire se trie de A à Z ou de Z à A, et se filtre par statut de l'interview et par zone du siège.
 4. Dans les interviews de cette entreprise, ajoute `entreprise_id: nom-entreprise`.
 
 ## Ajouter une offre de stage

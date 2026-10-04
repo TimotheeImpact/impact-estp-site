@@ -416,4 +416,52 @@
       var det = a.closest('details'); if (det) det.open = false;
     });
   });
+  // Annuaire des entreprises (page Stages) : filtre par interview et par siège, tri A-Z / Z-A
+  var coBox = document.getElementById('co-filtres');
+  var coGrille = document.getElementById('co-grille');
+  if (coBox && coGrille) {
+    var coCount = document.getElementById('co-count');
+    var coEtat = { statut: 'all', zone: 'all', tri: 'az' };
+    var coItems = Array.prototype.slice.call(coGrille.children);
+    var coMaj = function () {
+      var tries = coItems.slice().sort(function (a, b) {
+        var r = a.getAttribute('data-nom').localeCompare(b.getAttribute('data-nom'), document.documentElement.lang || 'fr');
+        return coEtat.tri === 'za' ? -r : r;
+      });
+      var n = 0;
+      tries.forEach(function (li) {
+        var ok = (coEtat.statut === 'all' || li.getAttribute('data-statut') === coEtat.statut) &&
+          (coEtat.zone === 'all' || li.getAttribute('data-zone') === coEtat.zone);
+        li.hidden = !ok;
+        if (ok) n++;
+        coGrille.appendChild(li);
+      });
+      if (coCount) {
+        coCount.textContent = n ? n + ' ' + coCount.getAttribute(n > 1 ? 'data-plusieurs' : 'data-un') : coCount.getAttribute('data-aucun');
+        if (!n) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'count-reset'; b.textContent = coCount.getAttribute('data-reset');
+          b.addEventListener('click', function () {
+            coEtat.statut = 'all'; coEtat.zone = 'all';
+            coBox.querySelectorAll('[data-co="statut"] button').forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-filter') === 'all' ? 'true' : 'false'); });
+            var z = coBox.querySelector('[data-co="zone"]'); if (z) z.value = 'all';
+            coMaj();
+          });
+          coCount.appendChild(document.createTextNode(' '));
+          coCount.appendChild(b);
+        }
+      }
+    };
+    coBox.querySelectorAll('[data-co="statut"] button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        coEtat.statut = btn.getAttribute('data-filter');
+        coBox.querySelectorAll('[data-co="statut"] button').forEach(function (x) { x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'); });
+        coMaj();
+      });
+    });
+    ['zone', 'tri'].forEach(function (k) {
+      var sel = coBox.querySelector('[data-co="' + k + '"]');
+      if (sel) sel.addEventListener('change', function () { coEtat[k] = sel.value; coMaj(); });
+    });
+  }
 })();

@@ -1,23 +1,26 @@
 {%- comment -%}
-  Adresses de la page courante dans les trois langues : alt_fr, alt_en, alt_it (utilisées par le menu des langues et pour Google).
+  Adresses de la page courante dans les quatre langues : alt_fr, alt_en, alt_it, alt_de (utilisées par le menu des langues et pour Google).
 {%- endcomment -%}
 {%- assign base_url = page.url | replace: "index.html", "" -%}
 {%- if page.prefixe and page.prefixe != "" -%}{%- assign base_url = base_url | remove_first: page.prefixe -%}{%- endif -%}
 {%- assign alt_fr = base_url -%}
 {%- assign alt_en = "/en" | append: base_url -%}
 {%- assign alt_it = "/it" | append: base_url -%}
+{%- assign alt_de = "/de" | append: base_url -%}
 {%- assign traduit = true -%}
 {%- if page.sans_traduction -%}
   {%- assign traduit = false -%}
-  {%- if page.collection == "posts" -%}{%- assign alt_en = "/en/presse/" -%}{%- assign alt_it = "/it/presse/" -%}{%- else -%}{%- assign alt_en = "/en/" -%}{%- assign alt_it = "/it/" -%}{%- endif -%}
+  {%- if page.collection == "posts" -%}{%- assign alt_en = "/en/presse/" -%}{%- assign alt_it = "/it/presse/" -%}{%- assign alt_de = "/de/presse/" -%}{%- else -%}{%- assign alt_en = "/en/" -%}{%- assign alt_it = "/it/" -%}{%- assign alt_de = "/de/" -%}{%- endif -%}
 {%- endif -%}
 {%- assign _coll = page.collection | default: "" | split: "_" | first -%}
 {%- if _coll == "interviews" or _coll == "entreprises" -%}
   {%- assign _src = site[_coll] | where: "slug", page.slug | first -%}
   {%- if _src -%}{%- assign alt_fr = _src.url -%}{%- endif -%}
-  {%- assign _col_en = _coll | append: "_en" -%}{%- assign _col_it = _coll | append: "_it" -%}
+  {%- assign _col_en = _coll | append: "_en" -%}{%- assign _col_it = _coll | append: "_it" -%}{%- assign _col_de = _coll | append: "_de" -%}
   {%- assign _en = site[_col_en] | where: "slug", page.slug | first -%}
   {%- assign _it = site[_col_it] | where: "slug", page.slug | first -%}
+  {%- assign _de = site[_col_de] | where: "slug", page.slug | first -%}
   {%- if _en -%}{%- assign alt_en = _en.url -%}{%- else -%}{%- assign alt_en = "/en/" | append: _coll | append: "/" -%}{%- assign traduit = false -%}{%- endif -%}
   {%- if _it -%}{%- assign alt_it = _it.url -%}{%- else -%}{%- assign alt_it = "/it/" | append: _coll | append: "/" -%}{%- assign traduit = false -%}{%- endif -%}
+  {%- if _de -%}{%- assign alt_de = _de.url -%}{%- else -%}{%- assign alt_de = "/de/" | append: _coll | append: "/" -%}{%- assign traduit = false -%}{%- endif -%}
 {%- endif -%}

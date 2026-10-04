@@ -1,14 +1,17 @@
-# Les champs _en et _it sont les traductions anglaise et italienne (facultatives : sans elles, le texte français s'affiche).
+# Les champs _en, _it et _de sont les traductions anglaise, italienne et allemande (facultatives : sans elles, le texte français s'affiche).
 # Offres présentées sur la page Entreprises
 - etiquette: Marque employeur
   etiquette_en: "Employer brand"
   etiquette_it: "Employer branding"
+  etiquette_de: "Employer Branding"
   titre: Contenu partenaire
   titre_en: "Partner content"
   titre_it: "Contenuto partner"
+  titre_de: "Partnerinhalt"
   texte: Une interview d'un de vos dirigeants ou ingénieurs, tournée en studio ou chez vous.
   texte_en: "An interview with one of your executives or engineers, filmed in the studio or at your premises."
   texte_it: "Un'intervista a uno dei vostri dirigenti o ingegneri, girata in studio o nella vostra sede."
+  texte_de: "Ein Interview mit einer Ihrer Führungskräfte oder einem Ihrer Ingenieure, gedreht im Studio oder bei Ihnen vor Ort."
   points:
     - Diffusion sur YouTube, LinkedIn, Instagram et le site
     - 3 à 5 extraits courts pour les réseaux
@@ -21,15 +24,22 @@
     - "Diffusione su YouTube, LinkedIn, Instagram e sul sito"
     - "Da 3 a 5 brevi estratti per i social"
     - "In più, le vostre offerte di stage inoltrate in via prioritaria al bacino di talenti Impact"
+  points_de:
+    - "Veröffentlichung auf YouTube, LinkedIn, Instagram und der Website"
+    - "3 bis 5 kurze Clips für Social Media"
+    - "Als Bonus werden Ihre Praktikumsangebote vorrangig an den Impact-Talentpool weitergegeben"
 - etiquette: Sur le terrain
   etiquette_en: "On the ground"
   etiquette_it: "Sul campo"
+  etiquette_de: "Vor Ort"
   titre: Pack Chantier
   titre_en: "Pack Chantier"
   titre_it: "Pack Chantier"
+  titre_de: "Pack Chantier"
   texte: Une série de vidéos tournées sur l'un de vos chantiers, pour montrer le métier tel qu'il est.
   texte_en: "A series of videos filmed on one of your sites, to show the job as it really is."
   texte_it: "Una serie di video girati in uno dei vostri cantieri, per mostrare il mestiere così com'è."
+  texte_de: "Eine Videoserie, gedreht auf einer Ihrer Baustellen, um den Beruf so zu zeigen, wie er wirklich ist."
   points:
     - 3 vidéos tournées sur site
     - Droits d'usage pour vos propres canaux
@@ -42,15 +52,22 @@
     - "3 video girati in cantiere"
     - "Diritti d'uso per i vostri canali"
     - "Diffusione al nostro pubblico di studenti"
+  points_de:
+    - "3 auf der Baustelle gedrehte Videos"
+    - "Nutzungsrechte für Ihre eigenen Kanäle"
+    - "Verbreitung an unser studentisches Publikum"
 - etiquette: Recrutement
   etiquette_en: "Recruitment"
   etiquette_it: "Reclutamento"
+  etiquette_de: "Recruiting"
   titre: Stagiaires présélectionnés
   titre_en: "Pre-selected interns"
   titre_it: "Stagisti preselezionati"
+  titre_de: "Vorausgewählte Praktikanten"
   texte: Nous diffusons votre offre à notre vivier et vous présentons trois profils motivés.
   texte_en: "We share your offer with our talent pool and introduce you to three motivated candidates."
   texte_it: "Diffondiamo la vostra offerta al nostro bacino di talenti e vi presentiamo tre profili motivati."
+  texte_de: "Wir verbreiten Ihr Angebot in unserem Talentpool und stellen Ihnen drei motivierte Profile vor."
   points:
     - Offre relayée sur nos canaux
     - 3 profils présentés, avec leur accord
@@ -63,3 +80,7 @@
     - "Offerta rilanciata sui nostri canali"
     - "3 profili presentati, con il loro consenso"
     - "Pagate solo se assumete"
+  points_de:
+    - "Angebot über unsere Kanäle verbreitet"
+    - "3 Profile vorgestellt, mit deren Einverständnis"
+    - "Sie zahlen nur, wenn Sie einstellen"

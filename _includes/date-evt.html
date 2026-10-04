@@ -1,5 +1,5 @@
 {%- comment -%}
-  Dates d'un évènement dans la langue de la page : « 5 – 8 oct. 2026 », « 12 nov. 2026 », « 30 sept. – 2 oct. 2026 ».
+  Dates d'un évènement dans la langue de la page : « 5 – 8 oct. 2026 », « 12 nov. 2026 », « 30 sept. – 2 oct. 2026 » (en allemand « 24. Okt. 2026 »).
   Usage : {% include date-evt.html debut=e.debut fin=e.fin %}
 {%- endcomment -%}
 {%- assign _t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
@@ -12,6 +12,7 @@
 {%- assign _yf = include.fin | default: include.debut | date: "%Y" -%}
 {%- assign _jd = include.debut | date: "%-d" -%}
 {%- assign _jf = include.fin | default: include.debut | date: "%-d" -%}
+{%- if page.lang == "de" -%}{%- assign _jd = _jd | append: "." -%}{%- assign _jf = _jf | append: "." -%}{%- endif -%}
 {%- if _d == _f -%}
 {{ _jd }} {{ _mc[_md] }} {{ _yd }}
 {%- elsif _md == _mf and _yd == _yf -%}

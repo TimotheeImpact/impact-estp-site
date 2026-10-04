@@ -1,26 +1,32 @@
-# Les champs _en et _it sont les traductions anglaise et italienne (facultatives : sans elles, le texte français s'affiche).
+# Les champs _en, _it et _de sont les traductions anglaise, italienne et allemande (facultatives : sans elles, le texte français s'affiche).
 # Menu en haut du site
 - titre: Interviews
   titre_en: "Interviews"
   titre_it: "Interviste"
+  titre_de: "Interviews"
   lien: /interviews/
 - titre: Presse
   titre_en: "Press"
   titre_it: "Stampa"
+  titre_de: "Presse"
   lien: /presse/
 - titre: Stages
   titre_en: "Internships"
   titre_it: "Stage"
+  titre_de: "Praktika"
   lien: /stages/
 - titre: Évènements
   titre_en: "Events"
   titre_it: "Eventi"
+  titre_de: "Veranstaltungen"
   lien: /evenements/
 - titre: Entreprises
   titre_en: "Companies"
   titre_it: "Aziende"
+  titre_de: "Unternehmen"
   lien: /entreprises/
 - titre: À propos
   titre_en: "About"
   titre_it: "Chi siamo"
+  titre_de: "Über uns"
   lien: /a-propos/

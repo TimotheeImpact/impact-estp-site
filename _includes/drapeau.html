@@ -1,6 +1,8 @@
-{%- comment -%} Petit drapeau : code="fr", "en" ou "it" ; uid = identifiant unique dans la page (pour le drapeau anglais). {%- endcomment -%}
+{%- comment -%} Petit drapeau : code="fr", "en", "it" ou "de" ; uid = identifiant unique dans la page (pour le drapeau anglais). {%- endcomment -%}
 {%- if include.code == "fr" -%}
 <svg class="drapeau" viewBox="0 0 3 2" width="21" height="14" aria-hidden="true"><rect width="1" height="2" fill="#002654"/><rect x="1" width="1" height="2" fill="#ffffff"/><rect x="2" width="1" height="2" fill="#ce1126"/></svg>
+{%- elsif include.code == "de" -%}
+<svg class="drapeau" viewBox="0 0 5 3" width="21" height="14" preserveAspectRatio="none" aria-hidden="true"><rect width="5" height="1" fill="#000000"/><rect y="1" width="5" height="1" fill="#dd0000"/><rect y="2" width="5" height="1" fill="#ffce00"/></svg>
 {%- elsif include.code == "it" -%}
 <svg class="drapeau" viewBox="0 0 3 2" width="21" height="14" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#ffffff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg>
 {%- else -%}
