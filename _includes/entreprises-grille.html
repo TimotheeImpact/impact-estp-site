@@ -23,7 +23,9 @@
     <span class="plate{% if e.logo == "" %} plate-text{% endif %}">{% if e.logo != "" %}<img src="{{ '/assets/img/logos/' | append: e.logo | relative_url }}" alt="" loading="lazy">{% else %}{{ e.nom }}{% endif %}</span>
     <span class="co-name">{{ e.nom }}</span>
     {%- if e_secteur != "" %}<span class="co-sector">{{ e_secteur }}</span>{% endif %}
-    {%- if e.siege and e.siege != "" %}<span class="co-siege">{{ e.siege }}{% if e.zone and e.zone != "" and ta.zones[e.zone] != e.siege %}, {{ ta.zones[e.zone] | default: e.zone }}{% endif %}</span>{% endif %}
+    {%- assign e_zone = "" %}{% if e.zone and e.zone != "" %}{% assign e_zone = ta.zones[e.zone] | default: e.zone %}{% endif %}
+    {%- if e.siege and e.siege != "" %}<span class="co-siege">{{ e.siege }}{% if e_zone != "" and e_zone != e.siege %}, {{ e_zone }}{% endif %}</span>
+    {%- elsif e_zone != "" %}<span class="co-siege">{{ e_zone }}</span>{% endif %}
     {%- if e_statut == "publiee" %}<span class="tag co-tag co-pub">{{ ta.publiee }}</span>
     {%- elsif e_statut == "post-prod" %}<span class="tag co-tag">{{ ta.post_prod }}</span>
     {%- elsif e_statut == "a-venir" %}<span class="tag co-tag">{{ ta.a_venir }}</span>{% endif %}
