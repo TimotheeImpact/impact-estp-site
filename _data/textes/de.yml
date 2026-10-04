@@ -448,6 +448,29 @@ apropos:
   crew_toi_phrase: "Am Tisch ist noch ein Stuhl frei. Wir haben's getestet: Er ist bequem."
   crew_toi_lien: "Bewirb dich"
 
+newsletter:
+  label: "Monatlicher Newsletter"
+  titre: "Bau und Energie in deinem Postfach"
+  intro: "Einmal im Monat sortieren wir für dich: alles, was du bei Impact nicht verpassen solltest, in einer einzigen Mail."
+  dedans: "In jeder Ausgabe:"
+  points:
+    - "<b>Die neuen Interviews</b> des Monats."
+    - "<b>Die Artikel</b> der Redaktion."
+    - "<b>Praktikumsangebote</b> und Unternehmen, die einstellen."
+    - "<b>Veranstaltungen</b>, die in deinen Kalender gehören."
+  promesse: "Nur eine Mail im Monat. Wir haben viel zu viel zu schneiden, um öfter zu schreiben."
+  ferme: "Die Anmeldung öffnet am 15. November 2026."
+  legende: "Deine Newsletter-Anmeldung"
+  prenom: "Vorname (optional)"
+  profil: "Du bist"
+  profils:
+    - { v: "Étudiant", l: "Student oder Studentin" }
+    - { v: "Entreprise", l: "In einem Unternehmen" }
+    - { v: "École", l: "An einer Hochschule" }
+    - { v: "Autre", l: "Sonstiges" }
+  bouton: "Abonnieren"
+  consent: "Ich bin einverstanden, einmal im Monat den Newsletter von Impact ESTP zu erhalten, und kann mich jederzeit abmelden (<a href=\"%lien%\">Datenschutz</a>)."
+
 contact:
   label: "Kontakt"
   titre: "Schreib uns"
@@ -485,6 +508,7 @@ merci:
   titre: "Danke, deine Nachricht ist angekommen"
   intro: "Das Team von Impact ESTP meldet sich ganz bald bei dir."
   vivier: "Willkommen im Impact-Talentpool. Wir melden uns, sobald ein Angebot zu deiner Suche passt."
+  newsletter: "Erledigt: Der nächste Newsletter landet direkt in deinem Postfach."
   equipe: "Deine Bewerbung ist angekommen. Wir melden uns ganz bald, um darüber zu sprechen."
   contact: "Deine Nachricht ist angekommen. Wir antworten dir ganz bald an die Adresse, die du angegeben hast."
 

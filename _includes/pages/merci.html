@@ -3,7 +3,7 @@
 <div class="page-head">
   <p class="label">{{ t.merci.label }}</p>
   <h1>{{ t.merci.titre }}</h1>
-  <p class="intro" id="merci-texte" data-vivier="{{ t.merci.vivier | escape }}" data-equipe="{{ t.merci.equipe | escape }}" data-contact="{{ t.merci.contact | escape }}">{{ t.merci.intro }}</p>
+  <p class="intro" id="merci-texte" data-vivier="{{ t.merci.vivier | escape }}" data-equipe="{{ t.merci.equipe | escape }}" data-contact="{{ t.merci.contact | escape }}" data-newsletter="{{ t.merci.newsletter | escape }}">{{ t.merci.intro }}</p>
   <div class="actions">
     <a class="btn primary" href="{{ p | append: '/interviews/' | relative_url }}">{{ t.commun.voir_interviews }}</a>
     <a class="btn" href="{{ p | append: '/' | relative_url }}">{{ t.commun.retour_accueil }}</a>

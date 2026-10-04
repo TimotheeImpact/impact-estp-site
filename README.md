@@ -12,6 +12,7 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | La liste des entreprises « Ils sont passés au micro » (nom, logo, fiche) | `_config.yml` |
 | Les fiches entreprises (une page par entreprise, pour Google) | dossier `_entreprises` |
 | Les offres de stage de la page Stages | `_data/offres_stage.yml` |
+| La newsletter de la page Presse (date d'ouverture des inscriptions, adresse d'envoi) | `_config.yml` (`newsletter_ouverture`, `formulaire_newsletter`) et la partie `newsletter` de `_data/textes/fr.yml`, `en.yml`, `it.yml`, `de.yml` |
 | L'agenda des évènements (page Évènements et accueil) | `_data/evenements.yml` |
 | Les objets proposés dans le formulaire de contact | `_data/textes/fr.yml` (partie `objets`, et la même dans `en.yml` et `it.yml`) |
 | Ajouter ou modifier une interview | dossier `_interviews` |

@@ -150,6 +150,11 @@ cloudflare_analytics: ""
 formulaire_vivier: ""
 formulaire_equipe: "https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf"
 formulaire_contact: "https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf"
+# Newsletter mensuelle (page Presse) : les inscriptions arrivent par mail sur contact@, comme les autres formulaires.
+# Le formulaire s'ouvre tout seul à la date « newsletter_ouverture » (année-mois-jour).
+# Si on change la date, changer aussi la phrase « ferme » de la partie newsletter dans _data/textes/fr.yml, en.yml, it.yml et de.yml.
+formulaire_newsletter: "https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf"
+newsletter_ouverture: "2026-11-15"
 # Copie automatique des inscriptions au vivier dans un Google Sheets privé (accord écrit de Timo le 2026-10-04).
 # Coller ici l'adresse « /exec » de l'application Apps Script (mode d'emploi : README, partie « Le vivier dans Google Sheets »).
 # Tant que c'est vide, rien n'est envoyé vers Google et la phrase sur Google Sheets n'apparaît pas dans la page Confidentialité.

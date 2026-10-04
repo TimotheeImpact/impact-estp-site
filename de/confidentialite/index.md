@@ -3,7 +3,7 @@ layout: page
 title: Datenschutzerklärung
 etiquette: Personenbezogene Daten
 intro: "Was wir mit den Daten machen, die du uns anvertraust, und wie du sie löschen lassen kannst."
-description: "Datenschutzerklärung von Impact ESTP: Daten aus dem Praktikums-Talentpool, den Bewerbungen und dem Kontaktformular, Speicherdauer und deine Rechte."
+description: "Datenschutzerklärung von Impact ESTP: Daten aus dem Praktikums-Talentpool, den Bewerbungen, dem Kontaktformular und dem Newsletter, Speicherdauer und deine Rechte."
 ---
 
 ## Wer für deine Daten verantwortlich ist
@@ -19,6 +19,7 @@ Für Fragen und Anliegen: {% if site.email != "" %}[{{ site.email }}](mailto:{{ 
 | Praktikums-Talentpool | Hochschule, Studienjahr, Fachrichtung, Art der Suche, Verfügbarkeit, E-Mail | Dir Angebote für Praktika, Werkstudium oder duales Studium und Stellen vorschlagen, die zu deiner Suche passen |
 | Bewerbung fürs Team | Name, E-Mail, Hochschule, Studienjahr, Interessen, Nachricht, Lebenslauf und Anschreiben, falls du sie anhängst | Auf deine Bewerbung antworten und das Team organisieren |
 | Kontakt | Name, E-Mail, Betreff, Hochschule oder Unternehmen, falls du sie angibst, Nachricht, Anhänge, falls du welche hinzufügst (höchstens 2) | Auf deine Nachricht antworten |
+| Newsletter | E-Mail, Vorname und Profil (Studium, Unternehmen, Hochschule), falls du sie angibst | Dir einmal im Monat den Newsletter von Impact ESTP schicken |
 
 Diese Verarbeitung beruht auf deiner **Einwilligung**, die du erteilst, indem du das Kästchen im Formular ankreuzt. Du kannst sie jederzeit widerrufen.
 
@@ -37,6 +38,7 @@ Anmeldungen für den Talentpool werden außerdem automatisch in einer privaten *
 - Praktikums-Talentpool: **2 Jahre nach unserem letzten Austausch**, danach werden die Daten gelöscht.
 - Bewerbung fürs Team: bis zum Ende des laufenden Studienjahres, wenn die Bewerbung nicht erfolgreich ist.
 - Kontaktnachricht: 1 Jahr nach unserem letzten Austausch.
+- Newsletter: bis du dich abmeldest, was jederzeit möglich ist.
 
 ## Deine Rechte
 
@@ -55,6 +57,6 @@ Die Website nutzt keine Reichweitenmessung.
 
 Die Vorschaubilder der Videos werden von den Servern von YouTube geladen, wodurch deine IP-Adresse an YouTube übermittelt wird. Der YouTube-Videoplayer selbst wird erst geladen, wenn du auf Abspielen klickst, und zwar im „erweiterten Datenschutzmodus“ (youtube-nocookie.com).
 
-Letzte Aktualisierung: 3. Oktober 2026.
+Letzte Aktualisierung: 4. Oktober 2026.
 
 *Diese Übersetzung dient nur der Information. Maßgeblich ist die französische Fassung.*

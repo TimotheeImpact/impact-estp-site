@@ -3,7 +3,7 @@ layout: page
 title: Politique de confidentialité
 etiquette: Données personnelles
 intro: "Ce que nous faisons des informations que tu nous confies, et comment les retirer."
-description: "Politique de confidentialité d'Impact ESTP : données collectées par le vivier de stages, les candidatures et le formulaire de contact, durée de conservation et droits."
+description: "Politique de confidentialité d'Impact ESTP : données collectées par le vivier de stages, les candidatures, le formulaire de contact et la newsletter, durée de conservation et droits."
 ---
 
 ## Qui est responsable de tes données
@@ -19,6 +19,7 @@ Pour toute question ou demande : {% if site.email != "" %}[{{ site.email }}](mai
 | Vivier de stages | École, année, spécialité, type de recherche, disponibilité, e-mail | Te proposer des offres de stage, d'alternance ou d'emploi qui correspondent à ta recherche |
 | Candidature à l'équipe | Nom, e-mail, école, année, centres d'intérêt, message, CV et lettre de motivation si tu les joins | Répondre à ta candidature et organiser l'équipe |
 | Contact | Nom, e-mail, objet, école ou entreprise si tu l'indiques, message, pièces jointes si tu en ajoutes (2 au maximum) | Répondre à ton message |
+| Newsletter | E-mail, prénom et profil (étudiant, entreprise, école) si tu les indiques | T'envoyer la newsletter d'Impact ESTP une fois par mois |
 
 Ces traitements reposent sur ton **consentement**, que tu donnes en cochant la case du formulaire. Tu peux le retirer à tout moment.
 
@@ -37,6 +38,7 @@ Les inscriptions au vivier sont aussi enregistrées automatiquement dans un tabl
 - Vivier de stages : **2 ans après notre dernier échange**, puis suppression.
 - Candidature à l'équipe : jusqu'à la fin de l'année universitaire en cours si elle n'aboutit pas.
 - Message de contact : 1 an après notre dernier échange.
+- Newsletter : jusqu'à ta désinscription, que tu peux demander à tout moment.
 
 ## Tes droits
 
@@ -55,4 +57,4 @@ Il n'utilise aucun outil de mesure d'audience.
 
 Les vignettes des vidéos sont affichées depuis les serveurs de YouTube, ce qui leur transmet ton adresse IP. Le lecteur vidéo YouTube, lui, ne se charge que lorsque tu cliques sur lecture, en mode « confidentialité renforcée » (youtube-nocookie.com).
 
-Dernière mise à jour : 3 octobre 2026.
+Dernière mise à jour : 4 octobre 2026.

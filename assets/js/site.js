@@ -129,7 +129,7 @@
     majSujet();
   }
 
-  // Page « Merci » : texte adapté au formulaire envoyé (?formulaire=vivier, equipe ou contact)
+  // Page « Merci » : texte adapté au formulaire envoyé (?formulaire=vivier, equipe, contact ou newsletter)
   var merci = document.getElementById('merci-texte');
   if (merci) {
     var envoye = params.get('formulaire');
@@ -156,6 +156,17 @@
     };
     s.addEventListener('change', maj);
     maj();
+  });
+
+  // Formulaires qui s'ouvrent tout seuls à une date (newsletter : « newsletter_ouverture » dans _config.yml)
+  document.querySelectorAll('form[data-ouverture][action]').forEach(function (form) {
+    var d = new Date();
+    var auj = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    if (auj < form.getAttribute('data-ouverture')) return;
+    var champs = form.querySelector(':scope > fieldset[disabled]');
+    if (champs) champs.disabled = false;
+    var note = form.querySelector('.form-closed');
+    if (note) note.remove();
   });
 
   // Vérification de la taille des pièces jointes avant l'envoi

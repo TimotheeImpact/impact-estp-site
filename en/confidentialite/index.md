@@ -3,7 +3,7 @@ layout: page
 title: Privacy policy
 etiquette: Personal data
 intro: "What we do with the information you share with us, and how to have it removed."
-description: "Impact ESTP privacy policy: data collected through the internship talent pool, team applications and the contact form, retention periods and your rights."
+description: "Impact ESTP privacy policy: data collected through the internship talent pool, team applications, the contact form and the newsletter, retention periods and your rights."
 lang: en
 ---
 
@@ -20,6 +20,7 @@ For any question or request: {% if site.email != "" %}[{{ site.email }}](mailto:
 | Internship talent pool | School, year, specialisation, type of opportunity sought, availability, email | Offering you internships, work-study placements or jobs that match what you are looking for |
 | Application to join the team | Name, email, school, year, interests, message, CV and cover letter if you attach them | Replying to your application and organising the team |
 | Contact | Name, email, subject, school or company if you provide it, message, attachments if you add any (2 at most) | Replying to your message |
+| Newsletter | Email, first name and profile (student, company, school) if you provide them | Sending you the Impact ESTP newsletter once a month |
 
 This processing is based on your **consent**, which you give by ticking the box on the form. You can withdraw it at any time.
 
@@ -38,6 +39,7 @@ Talent pool sign-ups are also saved automatically in a private **Google Sheets**
 - Internship talent pool: **2 years after our last exchange**, then deleted.
 - Application to join the team: until the end of the current academic year if it is not successful.
 - Contact message: 1 year after our last exchange.
+- Newsletter: until you unsubscribe, which you can do at any time.
 
 ## Your rights
 
@@ -56,6 +58,6 @@ It does not use any audience measurement tool.
 
 Video thumbnails are displayed from YouTube's servers, which passes your IP address on to them. The YouTube video player itself only loads when you click play, in "privacy-enhanced mode" (youtube-nocookie.com).
 
-Last updated: 3 October 2026.
+Last updated: 4 October 2026.
 
 *This is a translation provided for convenience. The French version prevails.*

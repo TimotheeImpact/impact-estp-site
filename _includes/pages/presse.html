@@ -48,6 +48,59 @@
   {%- endif %}
 </div></details>
 
+{%- comment -%} Newsletter : le formulaire s'ouvre tout seul à la date newsletter_ouverture de _config.yml (au moment de la construction du site, ou dans le navigateur). {%- endcomment -%}
+{%- assign nl_action = site.formulaire_newsletter | default: "" -%}
+{%- assign nl_auj = site.time | date: "%Y-%m-%d" -%}
+{%- assign nl_ouvert = false -%}
+{%- if nl_action != "" and nl_auj >= site.newsletter_ouverture -%}{%- assign nl_ouvert = true -%}{%- endif %}
+
+{% include fold-ouvre.html id="newsletter" label=t.newsletter.label titre=t.newsletter.titre ouvert=true %}
+  <p class="fold-intro">{{ t.newsletter.intro }}</p>
+  <div class="pool">
+    <div class="why">
+      <p>{{ t.newsletter.dedans }}</p>
+      <ul class="liste-serree">
+        {%- for x in t.newsletter.points %}
+        <li>{{ x }}</li>
+        {%- endfor %}
+      </ul>
+      <p class="texte-doux">{{ t.newsletter.promesse }}</p>
+    </div>
+
+    <form class="sheet js-form" id="form-newsletter" method="POST" accept-charset="UTF-8"{% if nl_action != "" %} action="{{ nl_action }}"{% endif %}{% unless nl_ouvert %} data-ouverture="{{ site.newsletter_ouverture }}"{% endunless %}>
+      {%- unless nl_ouvert %}
+      <p class="form-closed">{{ t.newsletter.ferme }}</p>
+      {%- endunless %}
+      <fieldset class="all"{% unless nl_ouvert %} disabled{% endunless %}>
+        <legend class="visually-hidden">{{ t.newsletter.legende }}</legend>
+        <input type="hidden" name="formulaire" value="Newsletter">
+        <input type="hidden" name="langue_du_site" value="{{ page.lang }}">
+        {% include form-hidden.html sujet="Impact ESTP : nouvelle inscription à la newsletter" type="newsletter" %}
+        <div class="field">
+          <label for="n-prenom">{{ t.newsletter.prenom }}</label>
+          <input type="text" id="n-prenom" name="prenom" autocomplete="given-name" maxlength="60">
+        </div>
+        <div class="field">
+          <label for="n-profil">{{ t.newsletter.profil }}</label>
+          <select id="n-profil" name="profil">
+            {%- for o in t.newsletter.profils %}
+            <option value="{{ o.v }}">{{ o.l }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <div class="field full">
+          <label for="n-mail">{{ t.formulaire.email }}</label>
+          <input type="email" id="n-mail" name="email" autocomplete="email" required>
+        </div>
+        {%- capture lien_conf %}{{ p | append: '/confidentialite/' | relative_url }}{% endcapture %}
+        <label class="consent full"><input type="checkbox" name="consentement" value="oui" required> <span>{{ t.newsletter.consent | replace: "%lien%", lien_conf }}</span></label>
+        <div class="full"><button class="btn primary" type="submit">{{ t.newsletter.bouton }}</button></div>
+      </fieldset>
+      <p class="form-note error" data-err hidden></p>
+    </form>
+  </div>
+</div></details>
+
 {% include fold-ouvre.html id="formats" label=t.presse.formats_label titre=t.presse.formats_titre %}
   <p class="fold-intro">{{ t.presse.formats_intro }}</p>
   <ol class="formats">

@@ -437,6 +437,29 @@ apropos:
   crew_toi_phrase: "Il reste une chaise autour de la table. On a vérifié, elle est confortable."
   crew_toi_lien: "Candidater"
 
+newsletter:
+  label: "Newsletter mensuelle"
+  titre: "Le BTP et l'énergie dans ta boîte mail"
+  intro: "Une fois par mois, on fait le tri pour toi : tout ce qu'il ne fallait pas rater chez Impact, dans un seul mail."
+  dedans: "Dans chaque numéro :"
+  points:
+    - "<b>Les nouvelles interviews</b> du mois."
+    - "<b>Les articles</b> de la rédaction."
+    - "<b>Les offres de stage</b> et les entreprises qui recrutent."
+    - "<b>Les évènements</b> à noter dans ton agenda."
+  promesse: "Un seul mail par mois. On a bien trop de montage pour t'écrire plus souvent."
+  ferme: "Les inscriptions ouvrent le 15 novembre 2026."
+  legende: "Ton inscription à la newsletter"
+  prenom: "Prénom (facultatif)"
+  profil: "Tu es"
+  profils:
+    - { v: "Étudiant", l: "Étudiant ou étudiante" }
+    - { v: "Entreprise", l: "Dans une entreprise" }
+    - { v: "École", l: "Dans une école" }
+    - { v: "Autre", l: "Autre" }
+  bouton: "Je m'abonne"
+  consent: "J'accepte de recevoir la newsletter d'Impact ESTP une fois par mois, et je peux me désinscrire à tout moment (<a href=\"%lien%\">confidentialité</a>)."
+
 contact:
   label: "Contact"
   titre: "Écris-nous"
@@ -474,6 +497,7 @@ merci:
   titre: "Merci, on a bien reçu ton message"
   intro: "L'équipe d'Impact ESTP revient vers toi très vite."
   vivier: "Bienvenue dans le vivier Impact. On te contacte dès qu'une offre correspond à ta recherche."
+  newsletter: "C'est noté : la prochaine newsletter arrivera directement dans ta boîte mail."
   equipe: "Ta candidature est bien arrivée. On te recontacte très vite pour en discuter."
   contact: "Ton message est bien arrivé. On te répond très vite à l'adresse que tu as indiquée."
 
