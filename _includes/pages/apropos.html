@@ -107,4 +107,25 @@
     </form>
   </div>
 </div></details>
+
+{% include fold-ouvre.html id="lequipe" label=t.apropos.crew_label titre=t.apropos.crew_titre compte=site.data.equipe.size %}
+  <p class="fold-intro">{{ t.apropos.crew_intro }}</p>
+  <ul class="crew">
+    {%- for m in site.data.equipe %}
+    <li>
+      <span class="crew-ini" aria-hidden="true">{{ m.prenom | slice: 0 }}</span>
+      <h3>{{ m.prenom }}</h3>
+      <p class="label">{% include tr.html o=m k="role" %}</p>
+      <p class="crew-phrase">{% include tr.html o=m k="phrase" %}</p>
+    </li>
+    {%- endfor %}
+    <li class="crew-toi">
+      <span class="crew-ini" aria-hidden="true">?</span>
+      <h3>{{ t.apropos.crew_toi }}</h3>
+      <p class="label">{{ t.apropos.crew_toi_role }}</p>
+      <p class="crew-phrase">{{ t.apropos.crew_toi_phrase }}</p>
+      <a class="crew-go" href="#equipe">{{ t.apropos.crew_toi_lien }} <span aria-hidden="true">&uarr;</span></a>
+    </li>
+  </ul>
+</div></details>
 </div>

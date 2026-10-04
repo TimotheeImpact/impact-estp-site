@@ -439,6 +439,13 @@ apropos:
     - "<b>Scrittura</b> degli articoli che accompagnano ogni intervista."
     - "<b>Social media</b>: LinkedIn, Instagram, YouTube."
     - "<b>Partnership</b>: trovare gli ospiti e le aziende partner."
+  crew_label: "La squadra"
+  crew_titre: "I volti dietro il microfono"
+  crew_intro: "Gli studenti che girano, montano, scrivono e pubblicano Impact, tra un esame e l'altro."
+  crew_toi: "E tu?"
+  crew_toi_role: "Ruolo da inventare"
+  crew_toi_phrase: "C'è ancora una sedia libera al tavolo. Abbiamo controllato: è comoda."
+  crew_toi_lien: "Candidati"
 
 contact:
   label: "Contatti"

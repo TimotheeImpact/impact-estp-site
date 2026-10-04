@@ -488,6 +488,24 @@ input[type="file"]::file-selector-button { font-family: var(--font-display); fon
 .team li { display: flex; flex-direction: column; gap: 2px; padding: 12px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--sheet); }
 .team b { font-family: var(--font-display); }
 .team span { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-soft); }
+
+/* L'équipe (page À propos) */
+.crew { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.crew > li { display: flex; flex-direction: column; gap: 4px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--sheet); }
+.crew-ini { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 10px; border-radius: 50%; background: var(--brand-tint); color: var(--brand); font-family: var(--font-text); font-size: 1.6rem; font-weight: 500; line-height: 1; }
+.crew > li:nth-child(even) .crew-ini { background: var(--leaf-tint); color: var(--leaf-ink); }
+.crew h3 { font-family: var(--font-text); font-size: var(--step-1); font-weight: 500; line-height: 1.15; }
+.crew .label { margin: 0; }
+.crew-phrase { margin: 8px 0 0; color: var(--ink-soft); line-height: 1.45; }
+.crew > li.crew-toi { border-style: dashed; background: transparent; }
+.crew-toi .crew-ini { background: transparent; border: 1px dashed var(--ink-soft); color: var(--ink-soft); }
+.crew-go { margin-top: auto; padding-top: 12px; font-weight: 700; color: var(--leaf-ink); }
+.crew-go:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  .crew > li { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: center; padding: 16px; }
+  .crew-ini { grid-row: 1 / span 2; width: 44px; height: 44px; margin: 0; font-size: 1.35rem; }
+  .crew-phrase, .crew-go { grid-column: 1 / -1; }
+}
 .charter { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 24px; }
 .charter ul { margin: 12px 0 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
 .charter li::marker { color: var(--leaf-ink); }

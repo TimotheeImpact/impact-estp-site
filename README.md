@@ -21,6 +21,7 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | Les rubriques et formats de la presse écrite | `_data/rubriques.yml`, `_data/formats.yml` |
 | Le rendez-vous et la rédaction de la presse écrite, le slogan | `_config.yml` |
 | Les témoignages de la page Entreprises | `_data/temoignages.yml` |
+| L'équipe de l'association (page À propos : prénom, fonction, petite phrase drôle) | `_data/equipe.yml` |
 | La page « Mon profil » (espace membre, pas encore ouvert) | `mon-profil/index.html` |
 | Les thèmes (bas-carbone, énergie…) | `_data/themes.yml` |
 | Le logo | `assets/img/logo.png` (et `logo-sombre.png` pour le mode sombre, que le visiteur choisit avec le bouton lune en haut à droite ; le site s'ouvre toujours en clair) |
