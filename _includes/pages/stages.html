@@ -92,6 +92,29 @@
   </div>
 </div></details>
 
+{%- assign exemple = site.etudiants | sort: "ordre" | first %}
+{% include fold-ouvre.html id="profils" label=t.stages.profils_label titre=t.stages.profils_titre %}
+  <p class="fold-intro">{{ t.stages.profils_intro }}</p>
+  {%- if exemple %}
+  {%- include trad.html doc=exemple %}
+  <ul class="stu-grid stu-grid-seul">
+    <li><a href="{{ tr.url | relative_url }}">
+      <span class="stu-top">
+        <span class="stu-avatar" aria-hidden="true">{{ exemple.initiales }}</span>
+        <span class="stu-who"><span class="stu-nom">{{ exemple.prenom }}</span>{% if exemple.ecole and exemple.ecole != "" %}<span class="stu-ecole">{{ exemple.ecole }}</span>{% endif %}</span>
+      </span>
+      <span class="stu-accroche">{{ tr.accroche | default: exemple.accroche }}</span>
+      {% include etudiant-chips.html e=exemple %}
+      <span class="stu-go">{{ t.stages.profils_exemple }} <span aria-hidden="true">→</span></span>
+    </a></li>
+  </ul>
+  {%- endif %}
+  <div class="contact-box">
+    <p>{{ t.etudiants.publier }}</p>
+    <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Publier mon profil' | uri_escape }}">{{ t.stages.profils_btn }}</a>
+  </div>
+</div></details>
+
 {%- if site.entreprises.size > 0 %}
 {% include fold-ouvre.html id="entreprises" label=t.stages.entreprises_label titre=t.stages.entreprises_titre compte=site.entreprises.size %}
   <p class="fold-intro">{{ t.stages.entreprises_intro }}</p>
