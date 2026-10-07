@@ -1,0 +1,12 @@
+{%- comment -%}
+  Cases colorées d'un profil d'étudiant (niveau, recherche, durée, lieu).
+  Usage : {% include etudiant-chips.html e=fiche_francaise %}
+{%- endcomment -%}
+{%- assign te = site.data.textes[page.lang].etudiants | default: site.data.textes.fr.etudiants -%}
+{%- assign _e = include.e -%}
+<span class="stu-chips">
+  {%- if _e.niveau and _e.niveau != "" %}<span class="cc cc-bleu">{{ te.niveaux[_e.niveau] | default: _e.niveau }}</span>{% endif %}
+  {%- if _e.recherche and _e.recherche != "" %}<span class="cc cc-vert">{{ te.recherches[_e.recherche] | default: _e.recherche }}</span>{% endif %}
+  {%- if _e.duree and _e.duree != "" %}<span class="cc cc-ambre">{{ _e.duree }} {{ te.mois }}</span>{% endif %}
+  {%- if _e.lieu and _e.lieu != "" %}<span class="cc cc-violet">{{ te.lieux[_e.lieu] | default: _e.lieu }}</span>{% endif %}
+</span>
