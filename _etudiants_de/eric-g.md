@@ -1,0 +1,25 @@
+---
+title: "Eric G., Student der Energietechnik, sucht ein 6-monatiges Abschlusspraktikum im Ausland"
+description: "Das Profil von Eric G. auf Impact ESTP: Ingenieurstudent an der ESTP im 3. Jahr GECD, dual am Großmarkt Rungis, sucht ein 6-monatiges Abschlusspraktikum im Ausland."
+accroche: "Student der Energietechnik, dual am Großmarkt Rungis"
+presentation: "Ich heiße Eric, studiere im GECD3 an der ESTP, dual am Großmarkt Rungis als Projektleiter für den Betrieb von Netzen und Versorgungstechnik, und suche ein 6-monatiges TFE (Abschlusspraktikum) im Ausland."
+points_forts:
+  - titre: "Praxiserfahrung"
+    texte: "Projektleiter für den Betrieb von Netzen und Versorgungstechnik am Großmarkt Rungis, im dualen Studium."
+  - titre: "Führung"
+    texte: "Pfadfinderleiter: Er leitet und motiviert eine Gruppe."
+  - titre: "Sprachen"
+    texte: "Belegt Italienischkurse."
+debut: ""
+formation: "GECD, 3. Jahr, dual"
+langues: "Französisch, Italienisch (lernt gerade)"
+sigles:
+  - sigle: "GECD"
+    sens: "Génie Énergétique de la Construction Durable (Energietechnik für nachhaltiges Bauen): dualer Ingenieurstudiengang der ESTP über 3 Jahre. GECD3 = das 3. und letzte Jahr."
+  - sigle: "TFE"
+    sens: "Travail de fin d'études: das 6-monatige Abschlusspraktikum, mit dem das Ingenieurstudium endet."
+  - sigle: "M2"
+    sens: "Master, 2. Jahr, also 5 Jahre Studium: das Niveau des französischen Ingenieurdiploms."
+  - sigle: "Dual"
+    sens: "Ausbildung im Wechsel zwischen Hochschule und Unternehmen, mit Ausbildungsvertrag (alternance)."
+---

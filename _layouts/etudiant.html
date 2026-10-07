@@ -1,0 +1,82 @@
+---
+layout: default
+---
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign te = t.etudiants -%}
+{%- assign p = page.prefixe | default: "" -%}
+{%- comment -%} « src » = le profil français (prénom, tableau, filtres). « page » = la version affichée (textes traduits). {%- endcomment -%}
+{%- if page.collection == "etudiants" -%}{%- assign src = page -%}{%- else -%}{%- assign src = site.etudiants | where: "slug", page.slug | first -%}{%- endif -%}
+{%- assign accroche = page.accroche | default: src.accroche -%}
+{%- assign presentation = page.presentation | default: src.presentation -%}
+{%- assign points = page.points_forts | default: src.points_forts -%}
+{%- assign sigles = page.sigles | default: src.sigles -%}
+{%- assign formation = page.formation | default: src.formation -%}
+{%- assign langues = page.langues | default: src.langues -%}
+{%- assign debut = page.debut | default: src.debut -%}
+
+<nav class="co-nav" aria-label="{{ te.retour }}">
+  <a class="co-nav-prec" href="{{ p | append: '/entreprises/' | relative_url }}#etudiants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="co-nav-txt"><span class="co-nav-lab">{{ te.titre }}</span> <span class="co-nav-nom">{{ te.retour }}</span></span></a>
+</nav>
+
+<div class="page-head stu-head">
+  <span class="stu-avatar big" aria-hidden="true">{{ src.initiales }}</span>
+  <div>
+    <p class="label">{{ te.label_profil }}{% if src.ecole and src.ecole != "" %} · {{ src.ecole }}{% endif %}</p>
+    <h1>{{ src.prenom }}</h1>
+    {%- if accroche != "" %}<p class="intro">{{ accroche }}</p>{% endif %}
+  </div>
+</div>
+
+<div class="stu-page">
+  <section class="co-section" aria-labelledby="t-stu-recap">
+    <h2 id="t-stu-recap">{{ te.recap }}</h2>
+    <dl class="stu-recap">
+      {%- if src.niveau and src.niveau != "" %}<div class="cc-bleu"><dt>{{ te.c_niveau }}</dt><dd>{{ te.niveaux[src.niveau] | default: src.niveau }}</dd></div>{% endif %}
+      {%- if src.recherche and src.recherche != "" %}<div class="cc-vert"><dt>{{ te.c_recherche }}</dt><dd>{{ te.recherches[src.recherche] | default: src.recherche }}</dd></div>{% endif %}
+      {%- if src.duree and src.duree != "" %}<div class="cc-ambre"><dt>{{ te.c_duree }}</dt><dd>{{ src.duree }} {{ te.mois }}</dd></div>{% endif %}
+      {%- if src.lieu and src.lieu != "" %}<div class="cc-violet"><dt>{{ te.c_lieu }}</dt><dd>{{ te.lieux[src.lieu] | default: src.lieu }}</dd></div>{% endif %}
+      <div class="cc-ambre"><dt>{{ te.c_debut }}</dt><dd>{% if debut != "" %}{{ debut }}{% else %}{{ te.a_preciser }}{% endif %}</dd></div>
+      {%- if src.domaines and src.domaines != "" %}
+      <div class="cc-vert"><dt>{{ te.c_domaine }}</dt><dd>{% assign doms = src.domaines | split: " " %}{% for d in doms %}{{ te.domaines[d] | default: d }}{% unless forloop.last %}, {% endunless %}{% endfor %}</dd></div>
+      {%- endif %}
+      {%- if src.ecole and src.ecole != "" %}<div class="cc-bleu"><dt>{{ te.c_ecole }}</dt><dd>{{ src.ecole }}</dd></div>{% endif %}
+      {%- if formation != "" %}<div class="cc-bleu"><dt>{{ te.c_formation }}</dt><dd>{{ formation }}</dd></div>{% endif %}
+      {%- if langues != "" %}<div class="cc-violet"><dt>{{ te.c_langues }}</dt><dd>{{ langues }}</dd></div>{% endif %}
+    </dl>
+  </section>
+
+  {%- if presentation != "" %}
+  <section class="co-section" aria-labelledby="t-stu-pres">
+    <h2 id="t-stu-pres">{{ te.presentation }}</h2>
+    <blockquote class="stu-pres"><p>{{ presentation }}</p></blockquote>
+  </section>
+  {%- endif %}
+
+  {%- if points and points.size > 0 %}
+  <section class="co-section" aria-labelledby="t-stu-points">
+    <h2 id="t-stu-points">{{ te.points_forts }}</h2>
+    <ul class="stu-points">
+      {%- for pt in points %}
+      <li><b>{{ pt.titre }}</b> {{ pt.texte }}</li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+
+  <div class="contact-box">
+    <p>{{ te.contacter | replace: "%prenom%", src.prenom }}</p>
+    <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Rencontrer un étudiant' | uri_escape }}&amp;offre={{ src.prenom | uri_escape }}">{{ te.contacter_btn | replace: "%prenom%", src.prenom }}</a>
+  </div>
+
+  {%- if sigles and sigles.size > 0 %}
+  <section class="co-section stu-sigles" aria-labelledby="t-stu-sigles">
+    <h2 id="t-stu-sigles">{{ te.sigles }}</h2>
+    <dl>
+      {%- for s in sigles %}
+      <div><dt>{{ s.sigle }}</dt><dd>{{ s.sens }}</dd></div>
+      {%- endfor %}
+    </dl>
+  </section>
+  {%- endif %}
+  <p class="count stu-accord">{{ te.accord }}</p>
+</div>

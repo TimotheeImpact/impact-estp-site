@@ -13,14 +13,16 @@
   {%- if page.collection == "posts" -%}{%- assign alt_en = "/en/presse/" -%}{%- assign alt_it = "/it/presse/" -%}{%- assign alt_de = "/de/presse/" -%}{%- else -%}{%- assign alt_en = "/en/" -%}{%- assign alt_it = "/it/" -%}{%- assign alt_de = "/de/" -%}{%- endif -%}
 {%- endif -%}
 {%- assign _coll = page.collection | default: "" | split: "_" | first -%}
-{%- if _coll == "interviews" or _coll == "entreprises" -%}
+{%- comment -%} Sans traduction, une fiche renvoie vers la liste de sa rubrique (les profils d'étudiants sont dans la page Entreprises). {%- endcomment -%}
+{%- assign _liste = _coll -%}{%- if _coll == "etudiants" -%}{%- assign _liste = "entreprises" -%}{%- endif -%}
+{%- if _coll == "interviews" or _coll == "entreprises" or _coll == "etudiants" -%}
   {%- assign _src = site[_coll] | where: "slug", page.slug | first -%}
   {%- if _src -%}{%- assign alt_fr = _src.url -%}{%- endif -%}
   {%- assign _col_en = _coll | append: "_en" -%}{%- assign _col_it = _coll | append: "_it" -%}{%- assign _col_de = _coll | append: "_de" -%}
   {%- assign _en = site[_col_en] | where: "slug", page.slug | first -%}
   {%- assign _it = site[_col_it] | where: "slug", page.slug | first -%}
   {%- assign _de = site[_col_de] | where: "slug", page.slug | first -%}
-  {%- if _en -%}{%- assign alt_en = _en.url -%}{%- else -%}{%- assign alt_en = "/en/" | append: _coll | append: "/" -%}{%- assign traduit = false -%}{%- endif -%}
-  {%- if _it -%}{%- assign alt_it = _it.url -%}{%- else -%}{%- assign alt_it = "/it/" | append: _coll | append: "/" -%}{%- assign traduit = false -%}{%- endif -%}
-  {%- if _de -%}{%- assign alt_de = _de.url -%}{%- else -%}{%- assign alt_de = "/de/" | append: _coll | append: "/" -%}{%- assign traduit = false -%}{%- endif -%}
+  {%- if _en -%}{%- assign alt_en = _en.url -%}{%- else -%}{%- assign alt_en = "/en/" | append: _liste | append: "/" -%}{%- assign traduit = false -%}{%- endif -%}
+  {%- if _it -%}{%- assign alt_it = _it.url -%}{%- else -%}{%- assign alt_it = "/it/" | append: _liste | append: "/" -%}{%- assign traduit = false -%}{%- endif -%}
+  {%- if _de -%}{%- assign alt_de = _de.url -%}{%- else -%}{%- assign alt_de = "/de/" | append: _liste | append: "/" -%}{%- assign traduit = false -%}{%- endif -%}
 {%- endif -%}

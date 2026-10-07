@@ -1,0 +1,25 @@
+---
+title: "Eric G., energy engineering student, looking for a 6-month final-year internship abroad"
+description: "Eric G.'s profile on Impact ESTP: ESTP engineering student in the 3rd year of GECD, work-study at the Rungis Market, looking for a 6-month final-year internship abroad."
+accroche: "Energy engineering student, work-study at the Rungis Market"
+presentation: "My name is Eric. I am in GECD3 at ESTP, on a work-study contract at the Rungis Market as a business manager for networks and fluids operations, and I am looking for a 6-month TFE (final-year internship) abroad."
+points_forts:
+  - titre: "Field experience"
+    texte: "Business manager for networks and fluids operations at the Rungis Market, on a work-study contract."
+  - titre: "Leadership"
+    texte: "Scout leader: he leads and drives a group."
+  - titre: "Languages"
+    texte: "Takes Italian classes."
+debut: ""
+formation: "GECD, 3rd year, work-study"
+langues: "French, Italian (learning)"
+sigles:
+  - sigle: "GECD"
+    sens: "Génie Énergétique de la Construction Durable (energy engineering for sustainable construction): ESTP's 3-year work-study engineering programme. GECD3 = the 3rd and final year."
+  - sigle: "TFE"
+    sens: "Travail de fin d'études: the 6-month final-year internship that completes the engineering degree."
+  - sigle: "M2"
+    sens: "Master's degree, second year: 5 years of higher education, the level of the French engineering degree."
+  - sigle: "Work-study"
+    sens: "Training split between school and a company, under an apprenticeship contract (alternance in French)."
+---

@@ -1,0 +1,25 @@
+---
+title: "Eric G., studente di ingegneria energetica, cerca un TFE di 6 mesi all'estero"
+description: "Il profilo di Eric G. su Impact ESTP: studente di ingegneria all'ESTP al 3° anno di GECD, in alternanza al Mercato di Rungis, cerca uno stage di fine studi di 6 mesi all'estero."
+accroche: "Studente di ingegneria energetica, in alternanza al Mercato di Rungis"
+presentation: "Mi chiamo Eric, sono in GECD3 all'ESTP, in alternanza al Mercato di Rungis come responsabile commerciale per la gestione delle reti e dei fluidi, e cerco un TFE (stage di fine studi) di 6 mesi all'estero."
+points_forts:
+  - titre: "Esperienza sul campo"
+    texte: "Responsabile commerciale per la gestione delle reti e dei fluidi al Mercato di Rungis, in alternanza."
+  - titre: "Leadership"
+    texte: "Capo scout: guida e motiva un gruppo."
+  - titre: "Lingue"
+    texte: "Segue corsi di italiano."
+debut: ""
+formation: "GECD, 3° anno, in alternanza"
+langues: "Francese, italiano (in corso di apprendimento)"
+sigles:
+  - sigle: "GECD"
+    sens: "Génie Énergétique de la Construction Durable (ingegneria energetica dell'edilizia sostenibile): percorso di ingegneria dell'ESTP in apprendistato, in 3 anni. GECD3 = il 3° e ultimo anno."
+  - sigle: "TFE"
+    sens: "Travail de fin d'études: lo stage di 6 mesi che conclude il percorso di ingegneria."
+  - sigle: "M2"
+    sens: "Master 2, cioè 5 anni di studi universitari: il livello della laurea in ingegneria francese."
+  - sigle: "Alternanza"
+    sens: "Formazione divisa tra scuola e azienda, con contratto di apprendistato."
+---

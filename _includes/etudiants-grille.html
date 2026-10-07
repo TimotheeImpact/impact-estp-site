@@ -1,0 +1,61 @@
+{%- comment -%}
+  Profils des étudiants qui cherchent un stage (dossier _etudiants), avec filtres pour les entreprises :
+  niveau, type de stage, lieu souhaité, domaine. Page Entreprises.
+{%- endcomment -%}
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign te = t.etudiants -%}
+{%- assign profils = site.etudiants | sort: "ordre" -%}
+{%- if profils.size > 0 %}
+<div class="evt-filters" id="stu-filtres" role="group" aria-label="{{ te.filtres_aria }}">
+  <div class="evt-selects">
+    <div class="field">
+      <label for="stu-niveau">{{ te.f_niveau }}</label>
+      <select id="stu-niveau" data-stu="niveau">
+        <option value="all">{{ te.tous }}</option>
+        {%- for k in te.niveaux %}<option value="{{ k[0] }}">{{ k[1] }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="stu-recherche">{{ te.f_recherche }}</label>
+      <select id="stu-recherche" data-stu="recherche">
+        <option value="all">{{ te.tous }}</option>
+        {%- for k in te.recherches %}<option value="{{ k[0] }}">{{ k[1] }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="stu-lieu">{{ te.f_lieu }}</label>
+      <select id="stu-lieu" data-stu="lieu">
+        <option value="all">{{ te.tous }}</option>
+        {%- for k in te.lieux %}{% if k[0] != "partout" %}<option value="{{ k[0] }}">{{ k[1] }}</option>{% endif %}{% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="stu-domaine">{{ te.f_domaine }}</label>
+      <select id="stu-domaine" data-stu="domaine">
+        <option value="all">{{ te.tous }}</option>
+        {%- for k in te.domaines %}<option value="{{ k[0] }}">{{ k[1] }}</option>{% endfor %}
+      </select>
+    </div>
+  </div>
+</div>
+<p class="count" id="stu-count" aria-live="polite" data-un="{{ te.un }}" data-plusieurs="{{ te.n }}" data-aucun="{{ te.aucun }}" data-reset="{{ te.reinitialiser }}">{{ profils.size }} {% if profils.size > 1 %}{{ te.n }}{% else %}{{ te.un }}{% endif %}</p>
+<ul class="stu-grid" id="stu-grille">
+  {%- for e in profils %}
+  {%- include trad.html doc=e %}
+  {%- comment -%} Lieu : « en France » couvre aussi l'Île-de-France, « partout » couvre tout. {%- endcomment -%}
+  {%- assign lieux = e.lieu -%}
+  {%- if e.lieu == "france" %}{% assign lieux = "france ile-de-france" %}{% elsif e.lieu == "partout" %}{% assign lieux = "france ile-de-france international" %}{% endif %}
+  <li data-niveau="{{ e.niveau }}" data-recherche="{{ e.recherche }}" data-lieu="{{ lieux }}" data-domaine="{{ e.domaines }}"><a href="{{ tr.url | relative_url }}">
+    <span class="stu-top">
+      <span class="stu-avatar" aria-hidden="true">{{ e.initiales }}</span>
+      <span class="stu-who"><span class="stu-nom">{{ e.prenom }}</span>{% if e.ecole and e.ecole != "" %}<span class="stu-ecole">{{ e.ecole }}</span>{% endif %}</span>
+    </span>
+    <span class="stu-accroche">{{ tr.accroche | default: e.accroche }}</span>
+    {% include etudiant-chips.html e=e %}
+    <span class="stu-go">{{ te.voir_profil }} <span aria-hidden="true">→</span></span>
+  </a></li>
+  {%- endfor %}
+</ul>
+{%- else %}
+<div class="empty"><p class="label">{{ t.commun.bientot }}</p><p>{{ te.vide }}</p></div>
+{%- endif %}

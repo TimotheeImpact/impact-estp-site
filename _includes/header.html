@@ -17,7 +17,7 @@
         {%- assign actif = false -%}
         {%- if page.url == lien -%}{%- assign actif = true -%}{%- endif -%}
         {%- if item.lien == '/interviews/' and _coll == 'interviews' -%}{%- assign actif = true -%}{%- endif -%}
-        {%- if item.lien == '/entreprises/' and _coll == 'entreprises' -%}{%- assign actif = true -%}{%- endif -%}
+        {%- if item.lien == '/entreprises/' and _coll == 'entreprises' or item.lien == '/entreprises/' and _coll == 'etudiants' -%}{%- assign actif = true -%}{%- endif -%}
         {%- if item.lien == '/presse/' and page.collection == 'posts' -%}{%- assign actif = true -%}{%- endif %}
         <li><a href="{{ lien | relative_url }}"{% if actif %} aria-current="page"{% endif %}>{% include tr.html o=item k="titre" %}</a></li>
         {%- endfor %}
