@@ -307,7 +307,7 @@
   var maintenant = new Date();
   var jour = isoJour(maintenant);
   var dansJours = function (n) { var d = new Date(maintenant); d.setDate(d.getDate() + n); return isoJour(d); };
-  var sansAccents = function (txt) { return (txt || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
+  var sansAccents = function (txt) { return (txt || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); };
 
   // Marque les évènements en cours et passés (le site n'est reconstruit qu'à chaque modification)
   document.querySelectorAll('.evt[data-fin], .next-evt[data-fin]').forEach(function (li) {
@@ -477,7 +477,7 @@
   var coGrille = document.getElementById('co-grille');
   if (coBox && coGrille) {
     var coCount = document.getElementById('co-count');
-    var coEtat = { statut: 'all', zone: 'all', tri: 'az' };
+    var coEtat = { stage: 'all', statut: 'all', zone: 'all', tri: 'az', q: '' };
     var coItems = Array.prototype.slice.call(coGrille.children);
     var coMaj = function () {
       var tries = coItems.slice().sort(function (a, b) {
@@ -486,8 +486,10 @@
       });
       var n = 0;
       tries.forEach(function (li) {
-        var ok = (coEtat.statut === 'all' || li.getAttribute('data-statut') === coEtat.statut) &&
-          (coEtat.zone === 'all' || li.getAttribute('data-zone') === coEtat.zone);
+        var ok = (coEtat.stage === 'all' || li.getAttribute('data-stage') === coEtat.stage) &&
+          (coEtat.statut === 'all' || li.getAttribute('data-statut') === coEtat.statut) &&
+          (coEtat.zone === 'all' || li.getAttribute('data-zone') === coEtat.zone) &&
+          (!coEtat.q || sansAccents(li.getAttribute('data-nom')).indexOf(sansAccents(coEtat.q).trim()) !== -1);
         li.hidden = !ok;
         if (ok) n++;
         coGrille.appendChild(li);
@@ -498,9 +500,10 @@
           var b = document.createElement('button');
           b.type = 'button'; b.className = 'count-reset'; b.textContent = coCount.getAttribute('data-reset');
           b.addEventListener('click', function () {
-            coEtat.statut = 'all'; coEtat.zone = 'all';
-            coBox.querySelectorAll('[data-co="statut"] button').forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-filter') === 'all' ? 'true' : 'false'); });
+            coEtat.stage = 'all'; coEtat.statut = 'all'; coEtat.zone = 'all'; coEtat.q = '';
+            coBox.querySelectorAll('.filters[data-co] button').forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-filter') === 'all' ? 'true' : 'false'); });
             var z = coBox.querySelector('[data-co="zone"]'); if (z) z.value = 'all';
+            var q = coBox.querySelector('[data-co="q"]'); if (q) q.value = '';
             coMaj();
           });
           coCount.appendChild(document.createTextNode(' '));
@@ -508,16 +511,53 @@
         }
       }
     };
-    coBox.querySelectorAll('[data-co="statut"] button').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        coEtat.statut = btn.getAttribute('data-filter');
-        coBox.querySelectorAll('[data-co="statut"] button').forEach(function (x) { x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'); });
-        coMaj();
+    coBox.querySelectorAll('.filters[data-co]').forEach(function (groupe) {
+      var g = groupe.getAttribute('data-co');
+      groupe.querySelectorAll('button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          coEtat[g] = btn.getAttribute('data-filter');
+          groupe.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'); });
+          coMaj();
+        });
       });
     });
+    var coQ = coBox.querySelector('[data-co="q"]');
+    if (coQ) coQ.addEventListener('input', function () { coEtat.q = coQ.value; coMaj(); });
     ['zone', 'tri'].forEach(function (k) {
       var sel = coBox.querySelector('[data-co="' + k + '"]');
       if (sel) sel.addEventListener('change', function () { coEtat[k] = sel.value; coMaj(); });
     });
+  }
+  // Profils des étudiants qui cherchent un stage (page Entreprises) : filtres niveau, recherche, lieu, domaine
+  var stuBox = document.getElementById('stu-filtres');
+  var stuGrille = document.getElementById('stu-grille');
+  if (stuBox && stuGrille) {
+    var stuCount = document.getElementById('stu-count');
+    var stuSelects = stuBox.querySelectorAll('select[data-stu]');
+    var stuMaj = function () {
+      var n = 0;
+      Array.prototype.forEach.call(stuGrille.children, function (li) {
+        var ok = Array.prototype.every.call(stuSelects, function (sel) {
+          var k = sel.getAttribute('data-stu');
+          // une carte peut avoir plusieurs valeurs séparées par des espaces (ex. lieu « france ile-de-france »)
+          return sel.value === 'all' || (' ' + (li.getAttribute('data-' + k) || '') + ' ').indexOf(' ' + sel.value + ' ') !== -1;
+        });
+        li.hidden = !ok;
+        if (ok) n++;
+      });
+      if (!stuCount) return;
+      stuCount.textContent = n ? n + ' ' + stuCount.getAttribute(n > 1 ? 'data-plusieurs' : 'data-un') : stuCount.getAttribute('data-aucun');
+      if (!n) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'count-reset'; b.textContent = stuCount.getAttribute('data-reset');
+        b.addEventListener('click', function () {
+          stuSelects.forEach(function (sel) { sel.value = 'all'; });
+          stuMaj();
+        });
+        stuCount.appendChild(document.createTextNode(' '));
+        stuCount.appendChild(b);
+      }
+    };
+    stuSelects.forEach(function (sel) { sel.addEventListener('change', stuMaj); });
   }
 })();
