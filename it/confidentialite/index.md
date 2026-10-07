@@ -21,6 +21,7 @@ Per qualsiasi domanda o richiesta: {% if site.email != "" %}[{{ site.email }}](m
 | Candidatura al team | Nome, e-mail, scuola, anno, interessi, messaggio, CV e lettera motivazionale se li alleghi | Rispondere alla tua candidatura e organizzare il team |
 | Contatto | Nome, e-mail, oggetto, scuola o azienda se la indichi, messaggio, allegati se ne aggiungi (massimo 2) | Rispondere al tuo messaggio |
 | Newsletter | E-mail, nome e profilo (studente, azienda, scuola) se li indichi | Inviarti la newsletter di Impact ESTP una volta al mese |
+| Profilo pubblico dello studente (pagina Aziende) | Nome e iniziale del cognome, scuola, percorso, tipo di stage cercato, durata, luogo, presentazione e punti di forza. Mai e-mail, telefono o foto | Presentare la tua ricerca di stage alle aziende, con il tuo consenso scritto |
 
 Questi trattamenti si basano sul tuo **consenso**, che dai spuntando la casella del modulo. Puoi ritirarlo in qualsiasi momento.
 
@@ -40,6 +41,7 @@ Le iscrizioni al bacino di talenti vengono anche salvate automaticamente in un f
 - Candidatura al team: fino alla fine dell'anno accademico in corso, se non va a buon fine.
 - Messaggio di contatto: 1 anno dopo il nostro ultimo contatto.
 - Newsletter: fino alla tua disiscrizione, che puoi chiedere in qualsiasi momento.
+- Profilo pubblico dello studente: fino alla fine della tua ricerca di stage, o prima se ne chiedi la rimozione.
 
 ## I tuoi diritti
 
@@ -58,6 +60,6 @@ Non utilizza alcuno strumento di misurazione dell'audience.
 
 Le miniature dei video vengono caricate dai server di YouTube, che ricevono così il tuo indirizzo IP. Il player video di YouTube, invece, si carica solo quando clicchi su play, in modalità «privacy avanzata» (youtube-nocookie.com).
 
-Ultimo aggiornamento: 4 ottobre 2026.
+Ultimo aggiornamento: 7 ottobre 2026.
 
 *Traduzione fornita per comodità. Fa fede la versione francese.*

@@ -21,6 +21,7 @@ For any question or request: {% if site.email != "" %}[{{ site.email }}](mailto:
 | Application to join the team | Name, email, school, year, interests, message, CV and cover letter if you attach them | Replying to your application and organising the team |
 | Contact | Name, email, subject, school or company if you provide it, message, attachments if you add any (2 at most) | Replying to your message |
 | Newsletter | Email, first name and profile (student, company, school) if you provide them | Sending you the Impact ESTP newsletter once a month |
+| Public student profile (Companies page) | First name and initial of the surname, school, programme, type of internship sought, duration, location, introduction and strengths. Never an email, phone number or photo | Presenting your internship search to companies, with your written consent |
 
 This processing is based on your **consent**, which you give by ticking the box on the form. You can withdraw it at any time.
 
@@ -40,6 +41,7 @@ Talent pool sign-ups are also saved automatically in a private **Google Sheets**
 - Application to join the team: until the end of the current academic year if it is not successful.
 - Contact message: 1 year after our last exchange.
 - Newsletter: until you unsubscribe, which you can do at any time.
+- Public student profile: until the end of your internship search, or earlier if you ask us to remove it.
 
 ## Your rights
 
@@ -58,6 +60,6 @@ It does not use any audience measurement tool.
 
 Video thumbnails are displayed from YouTube's servers, which passes your IP address on to them. The YouTube video player itself only loads when you click play, in "privacy-enhanced mode" (youtube-nocookie.com).
 
-Last updated: 4 October 2026.
+Last updated: 7 October 2026.
 
 *This is a translation provided for convenience. The French version prevails.*

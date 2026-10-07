@@ -12,6 +12,7 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | La liste des entreprises « Ils sont passés au micro » (nom, logo, fiche) | `_config.yml` |
 | Les fiches entreprises (une page par entreprise, pour Google) | dossier `_entreprises` |
 | Les offres de stage de la page Stages | `_data/offres_stage.yml` |
+| Les profils des étudiants qui cherchent un stage (page Entreprises) | dossier `_etudiants` |
 | La newsletter de la page Presse (date d'ouverture des inscriptions, adresse d'envoi) | `_config.yml` (`newsletter_ouverture`, `formulaire_newsletter`) et la partie `newsletter` de `_data/textes/fr.yml`, `en.yml`, `it.yml`, `de.yml` |
 | L'agenda des évènements (page Évènements et accueil) | `_data/evenements.yml` |
 | Les objets proposés dans le formulaire de contact | `_data/textes/fr.yml` (partie `objets`, et la même dans `en.yml` et `it.yml`) |
@@ -22,6 +23,7 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | Les rubriques et formats de la presse écrite | `_data/rubriques.yml`, `_data/formats.yml` |
 | Le rendez-vous et la rédaction de la presse écrite, le slogan | `_config.yml` |
 | Les témoignages de la page Entreprises | `_data/temoignages.yml` |
+| La rédaction de la presse écrite (prénom et fonction) | `_config.yml` (`presse_redaction`) |
 | L'équipe de l'association (page À propos : prénom, fonction, petite phrase drôle) | `_data/equipe.yml` |
 | La page « Mon profil » (espace membre, pas encore ouvert) | `mon-profil/index.html` |
 | Les thèmes (bas-carbone, énergie…) | `_data/themes.yml` |
@@ -93,6 +95,24 @@ La page Interviews s'ouvre sur les interviews publiées. Pour ouvrir directement
 Ouvre `_data/offres_stage.yml` : un exemple commenté montre les lignes à remplir (titre, entreprise, lieu, durée, début, lien). Enlève les `#` devant le bloc, remplis-le, enregistre. L'offre s'affiche sur la page Stages et sur la fiche de l'entreprise.
 
 Pour le lien, trois possibilités : un lien vers l'annonce de l'entreprise (`https://...`), un lien vers le formulaire de contact avec l'objet déjà choisi (`/contact/?objet=Stage&offre=Nom de l'offre`, comme l'offre de Toits Temporaires Urbains), ou rien (le bouton renvoie alors vers le vivier).
+
+## Ajouter un étudiant qui cherche un stage
+
+Les profils des étudiants s'affichent dans la page Entreprises, partie « Les étudiants qui cherchent un stage ». Les entreprises les filtrent par niveau, type de stage, lieu et domaine, puis passent par le formulaire de contact : aucun e-mail ni téléphone n'est affiché.
+
+1. Demande son accord écrit à l'étudiant (c'est obligatoire : son profil sera public).
+2. Copie `_etudiants/eric-g.md` dans un nouveau fichier du dossier `_etudiants`, nommé en minuscules avec des tirets (`prenom-initiale.md`).
+3. Remplis les lignes. Les mots en minuscules servent aux filtres et doivent être choisis dans la liste de `_data/textes_etudiants/fr.yml` :
+   - `niveau:` `bac3`, `m1`, `m2` ou `diplome` ;
+   - `recherche:` `ouvrier`, `assistant`, `tfe`, `alternance`, `cesure` ou `emploi` ;
+   - `lieu:` `ile-de-france`, `france`, `international` ou `partout` ;
+   - `domaines:` `batiment`, `travaux-publics`, `genie-civil`, `energie`, `amenagement` (plusieurs : sépare-les par une espace).
+4. `sigles:` est la liste des abréviations expliquées en bas du profil (GECD, TFE…).
+5. Pour traduire le profil, crée un fichier du même nom dans `_etudiants_en`, `_etudiants_it` ou `_etudiants_de` avec seulement les lignes traduites (titre, accroche, présentation, points forts, sigles). Sans traduction, la version française s'affiche.
+
+Dans l'annuaire des entreprises (page Stages), un filtre « Offre de stage en cours » et une recherche par nom aident les étudiants à trouver les entreprises qui recrutent. Une entreprise y apparaît dès qu'elle a une offre dans `_data/offres_stage.yml`.
+
+Les mots affichés dans cette partie (titres, étiquettes, libellés des filtres) sont dans `_data/textes_etudiants/fr.yml`, `en.yml`, `it.yml`, `de.yml`, et son habillage dans `assets/css/etudiants.css`.
 
 ## L'agenda des évènements
 

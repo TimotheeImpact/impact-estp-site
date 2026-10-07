@@ -20,6 +20,7 @@ Für Fragen und Anliegen: {% if site.email != "" %}[{{ site.email }}](mailto:{{ 
 | Bewerbung fürs Team | Name, E-Mail, Hochschule, Studienjahr, Interessen, Nachricht, Lebenslauf und Anschreiben, falls du sie anhängst | Auf deine Bewerbung antworten und das Team organisieren |
 | Kontakt | Name, E-Mail, Betreff, Hochschule oder Unternehmen, falls du sie angibst, Nachricht, Anhänge, falls du welche hinzufügst (höchstens 2) | Auf deine Nachricht antworten |
 | Newsletter | E-Mail, Vorname und Profil (Studium, Unternehmen, Hochschule), falls du sie angibst | Dir einmal im Monat den Newsletter von Impact ESTP schicken |
+| Öffentliches Profil von Studierenden (Seite Unternehmen) | Vorname und Initiale des Nachnamens, Hochschule, Studiengang, gesuchte Art des Praktikums, Dauer, Ort, Vorstellung und Stärken. Nie E-Mail, Telefonnummer oder Foto | Deine Praktikumssuche Unternehmen vorstellen, mit deiner schriftlichen Zustimmung |
 
 Diese Verarbeitung beruht auf deiner **Einwilligung**, die du erteilst, indem du das Kästchen im Formular ankreuzt. Du kannst sie jederzeit widerrufen.
 
@@ -39,6 +40,7 @@ Anmeldungen für den Talentpool werden außerdem automatisch in einer privaten *
 - Bewerbung fürs Team: bis zum Ende des laufenden Studienjahres, wenn die Bewerbung nicht erfolgreich ist.
 - Kontaktnachricht: 1 Jahr nach unserem letzten Austausch.
 - Newsletter: bis du dich abmeldest, was jederzeit möglich ist.
+- Öffentliches Profil von Studierenden: bis zum Ende deiner Praktikumssuche, oder früher, wenn du die Entfernung verlangst.
 
 ## Deine Rechte
 
@@ -57,6 +59,6 @@ Die Website nutzt keine Reichweitenmessung.
 
 Die Vorschaubilder der Videos werden von den Servern von YouTube geladen, wodurch deine IP-Adresse an YouTube übermittelt wird. Der YouTube-Videoplayer selbst wird erst geladen, wenn du auf Abspielen klickst, und zwar im „erweiterten Datenschutzmodus“ (youtube-nocookie.com).
 
-Letzte Aktualisierung: 4. Oktober 2026.
+Letzte Aktualisierung: 7. Oktober 2026.
 
 *Diese Übersetzung dient nur der Information. Maßgeblich ist die französische Fassung.*
