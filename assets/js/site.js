@@ -307,7 +307,7 @@
   var maintenant = new Date();
   var jour = isoJour(maintenant);
   var dansJours = function (n) { var d = new Date(maintenant); d.setDate(d.getDate() + n); return isoJour(d); };
-  var sansAccents = function (txt) { return (txt || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); };
+  var sansAccents = function (txt) { return (txt || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
 
   // Marque les évènements en cours et passés (le site n'est reconstruit qu'à chaque modification)
   document.querySelectorAll('.evt[data-fin], .next-evt[data-fin]').forEach(function (li) {
