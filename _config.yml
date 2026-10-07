@@ -136,6 +136,11 @@ presse_redaction:
     role_en: "Auditor"
     role_it: "Uditore"
     role_de: "Gasthörer"
+  - nom: "Eric"
+    role: "Rédacteur"
+    role_en: "Writer"
+    role_it: "Redattore"
+    role_de: "Redakteur"
 
 # ── Mesure d'audience (sans cookie) ──────────────────────────
 # Jeton Cloudflare Web Analytics (une suite de lettres et chiffres, voir le guide).
@@ -208,6 +213,19 @@ collections:
   entreprises_de:
     output: true
     permalink: /de/entreprises/:name/
+  # Profils des étudiants qui cherchent un stage (page Entreprises), un fichier par étudiant
+  etudiants:
+    output: true
+    permalink: /entreprises/etudiants/:name/
+  etudiants_en:
+    output: true
+    permalink: /en/entreprises/etudiants/:name/
+  etudiants_it:
+    output: true
+    permalink: /it/entreprises/etudiants/:name/
+  etudiants_de:
+    output: true
+    permalink: /de/entreprises/etudiants/:name/
 
 # Langue de chaque page : français par défaut, anglais dans le dossier en/, italien dans it/, allemand dans de/.
 defaults:
@@ -237,6 +255,14 @@ defaults:
     values: { layout: interview, lang: de, prefixe: "/de", locale: de_DE }
   - scope: { path: "", type: entreprises_de }
     values: { layout: entreprise, lang: de, prefixe: "/de", locale: de_DE }
+  - scope: { path: "", type: etudiants }
+    values: { layout: etudiant }
+  - scope: { path: "", type: etudiants_en }
+    values: { layout: etudiant, lang: en, prefixe: "/en", locale: en_GB }
+  - scope: { path: "", type: etudiants_it }
+    values: { layout: etudiant, lang: it, prefixe: "/it", locale: it_IT }
+  - scope: { path: "", type: etudiants_de }
+    values: { layout: etudiant, lang: de, prefixe: "/de", locale: de_DE }
 
 plugins:
   - jekyll-seo-tag
