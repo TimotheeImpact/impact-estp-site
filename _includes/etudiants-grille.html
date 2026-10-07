@@ -3,7 +3,7 @@
   niveau, type de stage, lieu souhaité, domaine. Page Entreprises.
 {%- endcomment -%}
 {%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
-{%- assign te = t.etudiants -%}
+{%- assign te = site.data.textes_etudiants[page.lang] | default: site.data.textes_etudiants.fr -%}
 {%- assign profils = site.etudiants | sort: "ordre" -%}
 {%- if profils.size > 0 %}
 <div class="evt-filters" id="stu-filtres" role="group" aria-label="{{ te.filtres_aria }}">

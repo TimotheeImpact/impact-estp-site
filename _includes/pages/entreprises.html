@@ -1,5 +1,6 @@
 {%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
 {%- assign p = page.prefixe | default: "" -%}
+{%- assign te = site.data.textes_etudiants[page.lang] | default: site.data.textes_etudiants.fr -%}
 <div class="page-head">
   <p class="label">{{ t.entreprises.label }}</p>
   <h1>{{ t.entreprises.titre }}</h1>
@@ -7,12 +8,12 @@
 </div>
 
 <div class="folds">
-{% include fold-ouvre.html id="etudiants" label=t.etudiants.label titre=t.etudiants.titre ouvert=true compte=site.etudiants.size %}
-  <p class="fold-intro">{{ t.etudiants.intro }}</p>
+{% include fold-ouvre.html id="etudiants" label=te.label titre=te.titre ouvert=true compte=site.etudiants.size %}
+  <p class="fold-intro">{{ te.intro }}</p>
   {% include etudiants-grille.html %}
   <div class="contact-box">
-    <p>{{ t.etudiants.publier }}</p>
-    <a class="btn" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Publier mon profil' | uri_escape }}">{{ t.etudiants.publier_btn }}</a>
+    <p>{{ te.publier }}</p>
+    <a class="btn" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Publier mon profil' | uri_escape }}">{{ te.publier_btn }}</a>
   </div>
 </div></details>
 

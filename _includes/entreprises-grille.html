@@ -5,6 +5,7 @@
 {%- endcomment -%}
 {%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
 {%- assign ta = t.annuaire -%}
+{%- assign tst = site.data.textes_etudiants[page.lang].annuaire | default: site.data.textes_etudiants.fr.annuaire -%}
 {%- assign fiches = site.entreprises | sort_natural: "nom" -%}
 {%- assign zones_presentes = fiches | map: "zone" | compact | uniq -%}
 {%- assign avec_offre = site.data.offres_stage | map: "entreprise_id" | compact | uniq -%}
@@ -30,7 +31,7 @@
     {%- assign e_zone = "" %}{% if e.zone and e.zone != "" %}{% assign e_zone = ta.zones[e.zone] | default: e.zone %}{% endif %}
     {%- if e.siege and e.siege != "" %}<span class="co-siege">{{ e.siege }}{% if e_zone != "" and e_zone != e.siege %}, {{ e_zone }}{% endif %}</span>
     {%- elsif e_zone != "" %}<span class="co-siege">{{ e_zone }}</span>{% endif %}
-    {%- if e_offre == "oui" %}<span class="tag co-tag co-stage">{{ ta.offre_tag }}</span>{% endif %}
+    {%- if e_offre == "oui" %}<span class="tag co-tag co-stage">{{ tst.offre_tag }}</span>{% endif %}
     {%- if e_statut == "publiee" %}<span class="tag co-tag co-pub">{{ ta.publiee }}</span>
     {%- elsif e_statut == "post-prod" %}<span class="tag co-tag">{{ ta.post_prod }}</span>
     {%- elsif e_statut == "a-venir" %}<span class="tag co-tag">{{ ta.a_venir }}</span>{% endif %}
@@ -40,10 +41,10 @@
 {%- if fiches.size > 3 %}
 <div class="evt-filters co-filtres" id="co-filtres" role="group" aria-label="{{ ta.filtres_aria }}">
   {%- if nb_offre > 0 %}
-  <div class="filters" data-co="stage" role="group" aria-label="{{ ta.stage }}">
-    <span class="label">{{ ta.stage }}</span>
+  <div class="filters" data-co="stage" role="group" aria-label="{{ tst.stage }}">
+    <span class="label">{{ tst.stage }}</span>
     <button type="button" data-filter="all" aria-pressed="true">{{ ta.toutes }}</button>
-    <button type="button" data-filter="oui" aria-pressed="false">{{ ta.avec_offre }} ({{ nb_offre }})</button>
+    <button type="button" data-filter="oui" aria-pressed="false">{{ tst.avec_offre }} ({{ nb_offre }})</button>
   </div>
   {%- endif %}
   <div class="filters" data-co="statut" role="group" aria-label="{{ ta.interview }}">
@@ -55,8 +56,8 @@
   </div>
   <div class="evt-selects co-selects">
     <div class="field">
-      <label for="co-q">{{ ta.chercher }}</label>
-      <input type="search" id="co-q" data-co="q" placeholder="{{ ta.chercher_ph }}" autocomplete="off">
+      <label for="co-q">{{ tst.chercher }}</label>
+      <input type="search" id="co-q" data-co="q" placeholder="{{ tst.chercher_ph }}" autocomplete="off">
     </div>
     {%- if zones_presentes.size > 1 %}
     <div class="field">

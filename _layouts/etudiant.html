@@ -2,7 +2,7 @@
 layout: default
 ---
 {%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
-{%- assign te = t.etudiants -%}
+{%- assign te = site.data.textes_etudiants[page.lang] | default: site.data.textes_etudiants.fr -%}
 {%- assign p = page.prefixe | default: "" -%}
 {%- comment -%} « src » = le profil français (prénom, tableau, filtres). « page » = la version affichée (textes traduits). {%- endcomment -%}
 {%- if page.collection == "etudiants" -%}{%- assign src = page -%}{%- else -%}{%- assign src = site.etudiants | where: "slug", page.slug | first -%}{%- endif -%}

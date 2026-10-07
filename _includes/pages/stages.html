@@ -3,6 +3,7 @@
 {%- assign f = t.formulaire -%}
 {%- assign action = site.formulaire_vivier -%}
 {%- assign offres = site.data.offres_stage -%}
+{%- assign te = site.data.textes_etudiants[page.lang] | default: site.data.textes_etudiants.fr -%}
 <div class="page-head">
   <p class="label">{{ t.stages.label }}</p>
   <h1>{{ t.stages.titre }}</h1>
@@ -93,8 +94,8 @@
 </div></details>
 
 {%- assign exemple = site.etudiants | sort: "ordre" | first %}
-{% include fold-ouvre.html id="profils" label=t.stages.profils_label titre=t.stages.profils_titre %}
-  <p class="fold-intro">{{ t.stages.profils_intro }}</p>
+{% include fold-ouvre.html id="profils" label=te.stages.profils_label titre=te.stages.profils_titre %}
+  <p class="fold-intro">{{ te.stages.profils_intro }}</p>
   {%- if exemple %}
   {%- include trad.html doc=exemple %}
   <ul class="stu-grid stu-grid-seul">
@@ -105,13 +106,13 @@
       </span>
       <span class="stu-accroche">{{ tr.accroche | default: exemple.accroche }}</span>
       {% include etudiant-chips.html e=exemple %}
-      <span class="stu-go">{{ t.stages.profils_exemple }} <span aria-hidden="true">→</span></span>
+      <span class="stu-go">{{ te.stages.profils_exemple }} <span aria-hidden="true">→</span></span>
     </a></li>
   </ul>
   {%- endif %}
   <div class="contact-box">
-    <p>{{ t.etudiants.publier }}</p>
-    <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Publier mon profil' | uri_escape }}">{{ t.stages.profils_btn }}</a>
+    <p>{{ te.publier }}</p>
+    <a class="btn primary" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Publier mon profil' | uri_escape }}">{{ te.stages.profils_btn }}</a>
   </div>
 </div></details>
 
