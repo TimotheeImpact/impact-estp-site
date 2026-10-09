@@ -1,4 +1,4 @@
-/* Impact ESTP : allure de journal. Fond clair et uni par défaut (thème sombre au choix), titres en serif,
+/* Impact ESTP : allure de journal. Fond clair légèrement teinté par défaut (thème sombre au choix), titres en serif,
    filets plutôt qu'ombres, encadrés arrondis aux couleurs du logo.
    Polices hébergées sur le site (aucun appel à Google Fonts). */
 
@@ -25,8 +25,12 @@
 
 :root {
   /* Couleurs du logo : bleu pétrole #0b3e4a et vert feuille #5c9d3d */
-  --paper: #f3f6f4;
-  --sheet: #ffffff;
+  --paper: #eff5f1;
+  --sheet: #fafcf9;
+  /* Nuance très légère du fond : vert du logo en haut, bleu pétrole en bas (demande de Timo, octobre 2026) */
+  --fond: radial-gradient(1200px 600px at 12% -120px, rgba(92, 157, 61, 0.09), transparent 70%),
+          radial-gradient(1000px 700px at 100% 100%, rgba(11, 62, 74, 0.06), transparent 70%),
+          linear-gradient(180deg, #f1f7f2 0%, #eef4f2 55%, #f2f4ee 100%);
   --ink: #10262e;
   --ink-soft: #4b5d63;
   --line: #c8d3d3;
@@ -61,6 +65,10 @@
 :root[data-theme="sombre"] {
   --paper: #0b1a1f;
   --sheet: #10232a;
+  /* Dégradé à peine perceptible : un peu plus clair en haut, un soupçon de vert en bas */
+  --fond: radial-gradient(1200px 600px at 15% -160px, rgba(140, 203, 216, 0.07), transparent 70%),
+          radial-gradient(900px 600px at 90% 100%, rgba(124, 194, 90, 0.045), transparent 70%),
+          linear-gradient(180deg, #0d1e24 0%, #0b1a1f 50%, #0a171c 100%);
   --ink: #e4eeee;
   --ink-soft: #9db3b8;
   --line: #24414a;
@@ -95,6 +103,8 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   background: var(--paper);
+  background-image: var(--fond);
+  min-height: 100vh;
   color: var(--ink);
   font-family: var(--font-text);
   font-size: var(--step-0);
@@ -128,11 +138,11 @@ h3 { font-stretch: 100%; letter-spacing: -0.005em; }
 @supports (backdrop-filter: blur(1px)) {
   .top { background: color-mix(in srgb, var(--paper) 82%, transparent); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); }
 }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 8px 16px; padding-block: 14px; flex-wrap: wrap; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; padding-block: 14px; flex-wrap: wrap; }
 .brand { display: block; line-height: 0; }
 .brand img { height: 48px; width: auto; }
 nav { margin-left: auto; }
-nav ul { list-style: none; display: flex; gap: 4px 20px; margin: 0; padding: 0; flex-wrap: wrap; }
+nav ul { list-style: none; display: flex; gap: 4px 13px; margin: 0; padding: 0; flex-wrap: wrap; }
 nav a { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; text-decoration: none; color: var(--ink-soft); padding-block: 4px; }
 nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
 nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--leaf); }
@@ -714,7 +724,8 @@ footer { padding-block: 72px 40px; }
 }
 .teaser .thumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
-@media (max-width: 1100px) {
+/* Avec l'entrée Podcast, le menu est plus long : « Mon profil » devient une icône dès 1280 px */
+@media (max-width: 1280px) {
   .profile-link { padding: 0; width: 36px; height: 36px; justify-content: center; }
   .profile-link .pl-text { display: none; }
 }
@@ -820,3 +831,27 @@ footer { padding-block: 72px 40px; }
 @media (prefers-reduced-motion: no-preference) {
   .btn, .card, .door, .profile-link, .group-link { transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; }
 }
+
+/* Page Interviews : encart « Vous souhaitez être interviewé ? » */
+.micro-box { margin-top: 24px; display: flex; gap: 14px 18px; align-items: center; flex-wrap: wrap; padding: 18px 22px; border-radius: var(--radius-lg); background: var(--brand-tint); border-left: 4px solid var(--brand); }
+.micro-box p { margin: 0; flex: 1 1 320px; }
+.micro-ic { flex: none; color: var(--brand); }
+.micro-box .btn { font-family: var(--font-mono); font-size: var(--step--1); }
+
+/* Page Stages : offres du réseau Impact et des entreprises partenaires de l'école */
+.offres-groupe + .offres-groupe { margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
+.offres-sous { font-family: var(--font-display); font-size: var(--step-1); margin: 0; }
+.offres-sous .fold-n { font-size: 0.62em; vertical-align: 0.2em; }
+.offres-sous-intro { margin: 6px 0 16px; color: var(--ink-soft); }
+
+/* Page Podcast */
+.pod-plateformes { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.pod-bientot { opacity: 0.62; cursor: default; }
+.pod-bientot small { font-family: var(--font-mono); font-size: 0.72em; text-transform: uppercase; letter-spacing: 0.04em; margin-left: 4px; }
+.pod-note { margin: 14px 0 0; color: var(--ink-soft); font-size: var(--step--1); }
+.pod-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.pod-liste li { display: flex; align-items: center; gap: 14px 18px; flex-wrap: wrap; padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--sheet); }
+.pod-num { font-family: var(--font-mono); color: var(--leaf-ink); min-width: 3.2em; }
+.pod-txt { flex: 1 1 260px; display: grid; gap: 2px; }
+.pod-txt a { color: var(--ink-soft); }
+.pod-auteur, .pod-resume { color: var(--ink-soft); font-size: var(--step--1); }

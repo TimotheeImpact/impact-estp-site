@@ -24,7 +24,7 @@
 </section>
 
 <div class="folds">
-{% include fold-ouvre.html id="apport" label=t.groupe.apport_label titre=t.groupe.apport_titre ouvert=true %}
+{% include fold-ouvre.html id="apport" label=t.groupe.apport_label titre=t.groupe.apport_titre compte=t.groupe.apports.size %}
   <div class="offers">
     {%- for a in t.groupe.apports %}
     <div class="offer">
@@ -36,7 +36,7 @@
   </div>
 </div></details>
 
-{% include fold-ouvre.html id="etapes" label=t.groupe.etapes_label titre=t.groupe.etapes_titre %}
+{% include fold-ouvre.html id="etapes" label=t.groupe.etapes_label titre=t.groupe.etapes_titre compte=t.groupe.etapes.size %}
   <ol class="steps">
     {%- for e in t.groupe.etapes %}
     <li><b>{{ e.t }}</b><p>{{ e.p }}</p></li>

@@ -5,6 +5,11 @@
   titre_it: "Interviste"
   titre_de: "Interviews"
   lien: /interviews/
+- titre: Podcast
+  titre_en: "Podcast"
+  titre_it: "Podcast"
+  titre_de: "Podcast"
+  lien: /podcast/
 - titre: Presse
   titre_en: "Press"
   titre_it: "Stampa"

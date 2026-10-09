@@ -19,7 +19,7 @@
 </div>
 
 <div class="folds">
-{% include fold-ouvre.html id="agenda" label=te.agenda_label titre=te.agenda_titre ouvert=true compte=evts_secteur.size %}
+{% include fold-ouvre.html id="agenda" label=te.agenda_label titre=te.agenda_titre compte=evts_secteur.size %}
   <div class="evt-filters" id="evt-filtres" role="search" aria-label="{{ te.filtres_aria }}">
     <div class="filters" data-evt="type" role="group" aria-label="{{ te.filtre_type }}">
       <span class="label">{{ te.filtre_type }}</span>

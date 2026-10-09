@@ -1,0 +1,30 @@
+# Le podcast d'Impact ESTP (page Podcast) : les interviews en version audio et la rubrique « Chroniques audio ».
+#
+# 1. Plateformes : colle l'adresse de la page du podcast sur chaque plateforme dès qu'elle existe.
+#    Tant que « lien » est vide, le bouton affiche « Bientôt ».
+# 2. Les interviews en audio : dans la fiche de l'interview (dossier _interviews), ajoute la ligne
+#    audio: "https://..." (lien vers l'épisode). L'interview apparaît alors automatiquement dans la page Podcast.
+# 3. Chroniques audio : enlève les # devant le bloc d'exemple, remplis-le, et garde les espaces.
+
+plateformes:
+  - nom: "Spotify"
+    lien: ""
+  - nom: "Apple Podcasts"
+    lien: ""
+  - nom: "Deezer"
+    lien: ""
+  - nom: "Amazon Music"
+    lien: ""
+  - nom: "YouTube Music"
+    lien: ""
+
+chroniques:
+# - titre: "Pourquoi le béton bas-carbone coûte encore plus cher"
+#   titre_en: "Why low-carbon concrete still costs more"
+#   titre_it: "Perché il calcestruzzo a basse emissioni costa ancora di più"
+#   titre_de: "Warum CO2-armer Beton noch teurer ist"
+#   auteur: "Emma"             # prénom du chroniqueur ou de la chroniqueuse
+#   date: "2026-11-20"         # date de sortie, au format AAAA-MM-JJ
+#   duree: "6 min"
+#   resume: "Deux ou trois phrases sur le sujet de la chronique."
+#   lien: "https://..."        # lien vers l'épisode (Spotify, Apple Podcasts…)

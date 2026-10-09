@@ -38,8 +38,8 @@ publier: "<b>Cerchi uno stage?</b> Il tuo profilo può comparire qui, visto dall
 publier_btn: "Pubblica il mio profilo"
 niveaux:
   bac3: "Laurea triennale"
-  m1: "Magistrale, 1° anno (M1)"
-  m2: "Magistrale, 2° anno (M2)"
+  m1: "4° anno (bac+4)"
+  m2: "Ultimo anno (bac+5)"
   diplome: "Neolaureato"
 recherches:
   ouvrier: "Stage operaio"
@@ -59,6 +59,7 @@ domaines:
   genie-civil: "Ingegneria civile"
   energie: "Energia"
   amenagement: "Urbanistica"
+  architecture: "Architettura"
 
 # Encadré « Publie ton profil » de la page Stages
 stages:

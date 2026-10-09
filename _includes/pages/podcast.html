@@ -1,0 +1,72 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign tp = t.podcast -%}
+{%- assign p = page.prefixe | default: "" -%}
+{%- assign pod = site.data.podcast -%}
+{%- assign episodes = site.interviews | where_exp: "i", "i.audio" | where_exp: "i", "i.audio != ''" | sort: "numero" | reverse -%}
+{%- assign chroniques = pod.chroniques -%}
+{%- unless chroniques %}{% assign chroniques = "" | split: "," %}{% endunless -%}
+<div class="page-head">
+  <p class="label">{{ tp.label }}</p>
+  <h1>{{ tp.titre }}</h1>
+  <p class="intro">{{ tp.intro }}</p>
+</div>
+
+<section class="block pt-32" aria-labelledby="t-plateformes">
+  <div class="hook pod-hook">
+    <p class="label" id="t-plateformes">{{ tp.ecouter }}</p>
+    <ul class="pod-plateformes">
+      {%- for pl in pod.plateformes %}
+      <li>{% if pl.lien and pl.lien != "" %}<a class="btn" href="{{ pl.lien }}">{{ pl.nom }}</a>{% else %}<span class="btn pod-bientot" aria-disabled="true">{{ pl.nom }} <small>{{ tp.bientot }}</small></span>{% endif %}</li>
+      {%- endfor %}
+    </ul>
+    <p class="pod-note">{{ tp.note }}</p>
+  </div>
+</section>
+
+<div class="folds">
+{% include fold-ouvre.html id="episodes" label=tp.episodes_label titre=tp.episodes_titre compte=episodes.size %}
+  <p class="fold-intro">{{ tp.episodes_intro }}</p>
+  {%- if episodes.size > 0 %}
+  <ul class="pod-liste">
+    {%- for i in episodes %}
+    {%- include trad.html doc=i %}
+    <li>
+      <span class="pod-num">#{{ i.numero }}</span>
+      <span class="pod-txt"><b>{{ i.invite }}</b>{% if i.entreprise and i.entreprise != "" %}, {{ i.entreprise }}{% endif %}<a href="{{ tr.url | relative_url }}">{{ tr.title }}</a></span>
+      <a class="btn primary" href="{{ i.audio }}">{{ tp.ecouter_btn }}</a>
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- else %}
+  <div class="empty">
+    <p class="label">{{ t.commun.bientot }}</p>
+    <p>{{ tp.episodes_vide }} <a href="{{ p | append: '/interviews/' | relative_url }}">{{ tp.voir_videos }}</a></p>
+  </div>
+  {%- endif %}
+</div></details>
+
+{% include fold-ouvre.html id="chroniques" label=tp.chroniques_label titre=tp.chroniques_titre compte=chroniques.size %}
+  <p class="fold-intro">{{ tp.chroniques_intro }}</p>
+  {%- if chroniques.size > 0 %}
+  <ul class="pod-liste">
+    {%- assign tri = chroniques | sort: "date" | reverse %}
+    {%- for c in tri %}
+    <li>
+      <span class="pod-num">{{ c.duree }}</span>
+      <span class="pod-txt"><b>{% include tr.html o=c k="titre" %}</b>{% if c.auteur and c.auteur != "" %} <span class="pod-auteur">{{ tp.par }} {{ c.auteur }}</span>{% endif %}{% capture c_resume %}{% include tr.html o=c k="resume" %}{% endcapture %}{% if c_resume != "" %}<span class="pod-resume">{{ c_resume }}</span>{% endif %}</span>
+      {%- if c.lien and c.lien != "" %}<a class="btn primary" href="{{ c.lien }}">{{ tp.ecouter_btn }}</a>{% endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- else %}
+  <div class="empty">
+    <p class="label">{{ t.commun.bientot }}</p>
+    <p>{{ tp.chroniques_vide }}</p>
+  </div>
+  {%- endif %}
+  <div class="contact-box">
+    <p>{{ tp.chroniquer }}</p>
+    <a class="btn" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Chronique audio' | uri_escape }}">{{ tp.chroniquer_btn }}</a>
+  </div>
+</div></details>
+</div>

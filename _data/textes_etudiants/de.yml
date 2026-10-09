@@ -38,8 +38,8 @@ publier: "<b>Du suchst ein Praktikum?</b> Dein Profil kann hier erscheinen, sich
 publier_btn: "Mein Profil veröffentlichen"
 niveaux:
   bac3: "Bachelor-Niveau"
-  m1: "Master, 1. Jahr (M1)"
-  m2: "Master, 2. Jahr (M2)"
+  m1: "4. Studienjahr"
+  m2: "Letztes Studienjahr (5. Jahr)"
   diplome: "Absolvent"
 recherches:
   ouvrier: "Baustellenpraktikum"
@@ -59,6 +59,7 @@ domaines:
   genie-civil: "Bauingenieurwesen"
   energie: "Energie"
   amenagement: "Stadtplanung"
+  architecture: "Architektur"
 
 # Encadré « Publie ton profil » de la page Stages
 stages:

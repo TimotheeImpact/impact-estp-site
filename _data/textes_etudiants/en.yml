@@ -38,8 +38,8 @@ publier: "<b>Looking for an internship?</b> Your profile can appear here, seen b
 publier_btn: "Publish my profile"
 niveaux:
   bac3: "Bachelor's level (3 years)"
-  m1: "Master's, 1st year (M1)"
-  m2: "Master's, 2nd year (M2)"
+  m1: "4th year (bac+4)"
+  m2: "Final year (bac+5)"
   diplome: "Recent graduate"
 recherches:
   ouvrier: "Worker internship"
@@ -59,6 +59,7 @@ domaines:
   genie-civil: "Civil engineering"
   energie: "Energy"
   amenagement: "Urban planning"
+  architecture: "Architecture"
 
 # Encadré « Publie ton profil » de la page Stages
 stages:

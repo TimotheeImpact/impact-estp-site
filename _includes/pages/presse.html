@@ -17,7 +17,7 @@
 </div>
 
 <div class="folds">
-{% include fold-ouvre.html id="articles" label=t.presse.articles_label titre=t.presse.articles_titre ouvert=true compte=site.posts.size %}
+{% include fold-ouvre.html id="articles" label=t.presse.articles_label titre=t.presse.articles_titre compte=site.posts.size %}
   {%- if site.posts.size > 0 %}
   {%- if t.commun.articles_en_francais != "" %}<p class="count">{{ t.commun.articles_en_francais }}</p>{% endif %}
   <div class="filter-rows">
@@ -54,7 +54,7 @@
 {%- assign nl_ouvert = false -%}
 {%- if nl_action != "" and nl_auj >= site.newsletter_ouverture -%}{%- assign nl_ouvert = true -%}{%- endif %}
 
-{% include fold-ouvre.html id="newsletter" label=t.newsletter.label titre=t.newsletter.titre ouvert=true %}
+{% include fold-ouvre.html id="newsletter" label=t.newsletter.label titre=t.newsletter.titre %}
   <p class="fold-intro">{{ t.newsletter.intro }}</p>
   <div class="pool">
     <div class="why">
@@ -101,7 +101,7 @@
   </div>
 </div></details>
 
-{% include fold-ouvre.html id="formats" label=t.presse.formats_label titre=t.presse.formats_titre %}
+{% include fold-ouvre.html id="formats" label=t.presse.formats_label titre=t.presse.formats_titre compte=site.data.formats.size %}
   <p class="fold-intro">{{ t.presse.formats_intro }}</p>
   <ol class="formats">
     {%- for f in site.data.formats %}
@@ -115,7 +115,7 @@
   </ol>
 </div></details>
 
-{% include fold-ouvre.html id="rubriques" label=t.presse.rubriques_label titre=t.presse.rubriques_titre %}
+{% include fold-ouvre.html id="rubriques" label=t.presse.rubriques_label titre=t.presse.rubriques_titre compte=site.data.rubriques.size %}
   <div class="rubriques">
     {%- for r in site.data.rubriques %}
     <div class="rubrique">
@@ -126,7 +126,7 @@
   </div>
 </div></details>
 
-{% include fold-ouvre.html id="redaction" label=t.presse.redaction_label titre=t.presse.redaction_titre %}
+{% include fold-ouvre.html id="redaction" label=t.presse.redaction_label titre=t.presse.redaction_titre compte=site.presse_redaction.size %}
   <div class="press-team">
     <div>
       <ul class="team">

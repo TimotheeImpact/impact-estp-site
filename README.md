@@ -11,7 +11,8 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | Les chiffres de l'accueil, les liens LinkedIn et Instagram, l'adresse mail | `_config.yml` |
 | La liste des entreprises « Ils sont passés au micro » (nom, logo, fiche) | `_config.yml` |
 | Les fiches entreprises (une page par entreprise, pour Google) | dossier `_entreprises` |
-| Les offres de stage de la page Stages | `_data/offres_stage.yml` |
+| Les offres de stage de la page Stages (ligne `source` : `impact` pour le réseau d'Impact, `ecole` pour les entreprises partenaires de l'école) | `_data/offres_stage.yml` |
+| Le podcast : liens Spotify, Apple Podcasts…, chroniques audio | `_data/podcast.yml` (et la ligne `audio:` dans la fiche d'une interview pour l'ajouter à la page Podcast) |
 | Les profils des étudiants qui cherchent un stage (page Entreprises) | dossier `_etudiants` |
 | La newsletter de la page Presse (date d'ouverture des inscriptions, adresse d'envoi) | `_config.yml` (`newsletter_ouverture`, `formulaire_newsletter`) et la partie `newsletter` de `_data/textes/fr.yml`, `en.yml`, `it.yml`, `de.yml` |
 | L'agenda des évènements (page Évènements et accueil) | `_data/evenements.yml` |

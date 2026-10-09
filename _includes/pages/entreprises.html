@@ -8,7 +8,7 @@
 </div>
 
 <div class="folds">
-{% include fold-ouvre.html id="etudiants" label=te.label titre=te.titre ouvert=true compte=site.etudiants.size %}
+{% include fold-ouvre.html id="etudiants" label=te.label titre=te.titre compte=site.etudiants.size %}
   <p class="fold-intro">{{ te.intro }}</p>
   {% include etudiants-grille.html %}
   <div class="contact-box">
@@ -17,7 +17,7 @@
   </div>
 </div></details>
 
-{% include fold-ouvre.html id="offres" label=t.entreprises.offres_label titre=t.entreprises.offres_titre %}
+{% include fold-ouvre.html id="offres" label=t.entreprises.offres_label titre=t.entreprises.offres_titre compte=site.data.offres.size %}
   <div class="offers">
     {%- for o in site.data.offres %}
     {%- assign _kp = "points_" | append: page.lang %}
@@ -66,7 +66,7 @@
 </div></details>
 {%- endif %}
 
-{% include fold-ouvre.html id="methode" label=t.entreprises.methode_label titre=t.entreprises.methode_titre %}
+{% include fold-ouvre.html id="methode" label=t.entreprises.methode_label titre=t.entreprises.methode_titre compte=t.entreprises.etapes.size %}
   <ol class="steps">
     {%- for e in t.entreprises.etapes %}
     <li><b>{{ e.t }}</b><p>{{ e.p }}</p></li>

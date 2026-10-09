@@ -262,7 +262,7 @@
       if (sombre) racine.setAttribute('data-theme', 'sombre'); else racine.removeAttribute('data-theme');
       boutonTheme.setAttribute('aria-pressed', sombre ? 'true' : 'false');
       var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', sombre ? '#0b1a1f' : '#f3f6f4');
+      if (meta) meta.setAttribute('content', sombre ? '#0b1a1f' : '#eff5f1');
       try { window.localStorage.setItem('theme', sombre ? 'sombre' : 'clair'); } catch (e) {}
     });
   }

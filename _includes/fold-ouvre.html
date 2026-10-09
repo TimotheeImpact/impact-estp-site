@@ -1,6 +1,8 @@
 {%- comment -%}
   Début d'une partie dépliable (à refermer avec </div></details>).
-  Usage : {% include fold-ouvre.html id="offres" label="Offres" titre="Les offres de stage" ouvert=true compte=3 %}
+  Usage : {% include fold-ouvre.html id="offres" label="Offres" titre="Les offres de stage" compte=3 %}
+  Toutes les parties sont fermées à l'arrivée sur la page (demande de Timo, octobre 2026) ; « compte » affiche le nombre d'éléments.
+  ouvert=true existe encore mais n'est plus utilisé.
 {%- endcomment -%}
 <details class="fold" id="{{ include.id }}"{% if include.ouvert %} open{% endif %}>
   <summary>

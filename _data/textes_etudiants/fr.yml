@@ -40,8 +40,8 @@ publier: "<b>Tu cherches un stage ?</b> Ton profil peut apparaître ici, vu par 
 publier_btn: "Publier mon profil"
 niveaux:
   bac3: "Bac+3"
-  m1: "Bac+4 (M1)"
-  m2: "Bac+5 (M2)"
+  m1: "Bac+4"
+  m2: "Bac+5 (dernière année)"
   diplome: "Jeune diplômé"
 recherches:
   ouvrier: "Stage ouvrier"
@@ -61,6 +61,7 @@ domaines:
   genie-civil: "Génie civil"
   energie: "Énergie"
   amenagement: "Aménagement et urbanisme"
+  architecture: "Architecture"
 
 # Encadré « Publie ton profil » de la page Stages
 stages:
