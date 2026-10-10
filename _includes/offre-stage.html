@@ -38,7 +38,7 @@
     {%- if premier == "/" %}
     <a class="btn primary" href="{{ p | append: o.lien | relative_url }}">{{ t.offre.postuler }}</a>
     {%- else %}
-    <a class="btn primary" href="{{ o.lien }}">{{ t.offre.voir }}</a>
+    <a class="btn primary" href="{{ o.lien }}">{% if o.source == "jobteaser" %}{{ t.offre.voir_jobteaser }}{% else %}{{ t.offre.voir }}{% endif %}</a>
     {%- endif %}
     {%- else %}
     <a class="btn primary" href="{{ p | append: '/stages/' | relative_url }}#form-vivier">{{ t.offre.postuler_vivier }}</a>

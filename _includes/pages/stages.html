@@ -58,12 +58,14 @@
     {%- for c in jt.categories %}
     {%- assign liste = offres_jt | where: "categorie", c.id %}
     {%- if liste.size > 0 %}
-    <h4 class="jt-sous">{{ t.stages.jt_cats[c.id].titre }} <span class="fold-n">{{ liste.size }}</span></h4>
-    <div class="jobs">
-      {%- for o in liste %}
-      {% include offre-stage.html offre=o %}
-      {%- endfor %}
-    </div>
+    <details class="jt-groupe jt-{{ c.id }}" id="jt-{{ c.id }}">
+      <summary><h4 class="jt-sous">{{ t.stages.jt_cats[c.id].titre }} <span class="fold-n">{{ liste.size }}</span></h4></summary>
+      <div class="jobs">
+        {%- for o in liste %}
+        {% include offre-stage.html offre=o %}
+        {%- endfor %}
+      </div>
+    </details>
     {%- endif %}
     {%- endfor %}
     {%- else %}

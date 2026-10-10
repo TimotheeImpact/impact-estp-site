@@ -185,6 +185,7 @@ entreprise:
 offre:
   postuler: "Apply"
   voir: "View the offer"
+  voir_jobteaser: "See on JobTeaser"
   postuler_vivier: "Apply via the talent pool"
   debut: "Start:"
 
@@ -208,7 +209,7 @@ stages:
   offres_impact_titre: "Impact offers"
   offres_impact_intro: "Offers we find ourselves, often with companies that have been on our mic."
   jt_titre: "ESTP offers on JobTeaser"
-  jt_intro: "The school posts its offers on JobTeaser, in three categories. We will share them here one by one, as soon as each company gives its consent."
+  jt_intro: "The school posts its offers on JobTeaser, in three categories. Here they are, as of 10 October 2026; to apply, log in to JobTeaser with your ESTP account."
   jt_nombre: "offers"
   jt_btn: "See the offers on JobTeaser"
   jt_acces: "Log in with your ESTP account."

@@ -185,6 +185,7 @@ entreprise:
 offre:
   postuler: "Candidati"
   voir: "Vedi l'offerta"
+  voir_jobteaser: "Vedi su JobTeaser"
   postuler_vivier: "Candidati tramite il bacino di talenti"
   debut: "Inizio:"
 
@@ -208,7 +209,7 @@ stages:
   offres_impact_titre: "Le offerte Impact"
   offres_impact_intro: "Offerte che troviamo noi, spesso presso le aziende passate al nostro microfono."
   jt_titre: "Le offerte dell'ESTP su JobTeaser"
-  jt_intro: "La scuola pubblica le sue offerte su JobTeaser, in tre categorie. Le riprenderemo qui una per una, appena ogni azienda avrà dato il suo consenso."
+  jt_intro: "La scuola pubblica le sue offerte su JobTeaser, in tre categorie. Eccole, aggiornate al 10 ottobre 2026; per candidarti, accedi a JobTeaser con il tuo account ESTP."
   jt_nombre: "offerte"
   jt_btn: "Vedi le offerte su JobTeaser"
   jt_acces: "Accesso con il tuo account ESTP."

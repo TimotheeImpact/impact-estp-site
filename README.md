@@ -100,7 +100,7 @@ Le filtre « Relation » de l'annuaire se remplit tout seul : « Réseau Impact 
 
 Ouvre `_data/offres_stage.yml` : un exemple commenté montre les lignes à remplir (titre, entreprise, lieu, durée, début, lien). Enlève les `#` devant le bloc, remplis-le, enregistre. L'offre s'affiche sur la page Stages et sur la fiche de l'entreprise.
 
-Les offres de l'ESTP sur JobTeaser ne sont publiées ici qu'avec l'accord écrit de l'entreprise (les conditions d'utilisation de JobTeaser interdisent de les recopier sans autorisation). Avec cet accord, ajoute l'offre avec `source: "jobteaser"` et sa `categorie`. Pense aussi à mettre à jour les chiffres et la date dans `_data/jobteaser.yml`.
+Les offres de l'ESTP sur JobTeaser ont `source: "jobteaser"` et une `categorie` (`ciblee`, `partenaire` ou `reseau`). Le 10 octobre 2026, Timo a choisi de publier les 48 offres relevées ce jour-là sans attendre l'accord des entreprises (les conditions d'utilisation de JobTeaser l'interdisent en principe). Si une entreprise ou l'école demande un retrait, supprime le bloc de l'offre. Les offres pourvues sont à retirer de la même façon. Pense aussi à mettre à jour les chiffres et la date dans `_data/jobteaser.yml`.
 
 Pour le lien, trois possibilités : un lien vers l'annonce de l'entreprise (`https://...`), un lien vers le formulaire de contact avec l'objet déjà choisi (`/contact/?objet=Stage&offre=Nom de l'offre`, comme l'offre de Toits Temporaires Urbains), ou rien (le bouton renvoie alors vers le vivier).
 
