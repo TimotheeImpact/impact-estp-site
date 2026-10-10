@@ -4,4 +4,5 @@ description: "Eiffage Route bei Impact ESTP, dem Studierendenmedium für Bau und
 secteur: "Straßenbau und -instandhaltung"
 pays: "Frankreich"
 presentation: "Die Straßenbausparte der Eiffage-Gruppe."
+fun_fact: "Die Eiffage-Gruppe hat das Viadukt von Millau gebaut: Sein höchster Pylon ragt 343 m hoch, höher als der Eiffelturm."
 ---

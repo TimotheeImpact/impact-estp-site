@@ -4,4 +4,5 @@ description: "Villa e Palazzo Aminta on Impact ESTP, the student media for const
 secteur: "Luxury hospitality"
 pays: "Italy (Stresa)"
 presentation: "Five-star hotel in Stresa, facing the Borromean Islands, the only hotel on the Italian side of Lake Maggiore that is a member of The Leading Hotels of the World, set in a historic residence more than a hundred years old. Restaurant, spa, gardens and event rooms; the hotel holds GSTC certification for its sustainability approach."
+fun_fact: "It is the only hotel on the Italian side of Lake Maggiore that belongs to The Leading Hotels of the World."
 ---

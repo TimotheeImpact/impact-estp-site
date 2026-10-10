@@ -4,4 +4,5 @@ description: "Costruire Group su Impact ESTP, il media studentesco delle costruz
 secteur: "Costruzioni e sviluppo immobiliare"
 pays: "Italia (Lago Maggiore)"
 presentation: "Impresa di costruzioni storica del Lago Maggiore, che il suo CEO Emmanuel Bordignon sta trasformando in un attore dello sviluppo immobiliare."
+fun_fact: "Il gruppo ha sede a Verbania, sul Lago Maggiore, il secondo lago d'Italia per superficie dopo il Garda."
 ---

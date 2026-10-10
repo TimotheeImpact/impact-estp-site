@@ -28,6 +28,15 @@ layout: default
   <a class="co-nav-suiv" href="{{ u_suiv | relative_url }}" rel="next"><span class="co-nav-txt"><span class="co-nav-lab">{{ t.entreprise.suivante }}</span> <span class="co-nav-nom">{{ f_suiv.nom }}</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </nav>
 
+{%- assign fun_fact = page.fun_fact | default: src.fun_fact -%}
+{%- if fun_fact and fun_fact != "" %}
+{%- comment -%} Fun fact en haut de fiche, pour accrocher le lecteur. Source facultative (fun_fact_source dans la fiche française). {%- endcomment %}
+<aside class="fun-fact" aria-label="{{ t.entreprise.fun_fact }}">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <p><span class="fun-fact-lab">{{ t.entreprise.fun_fact }}</span> {{ fun_fact }}{% if src.fun_fact_source and src.fun_fact_source != "" %} <a class="fun-fact-src" href="{{ src.fun_fact_source }}">{{ t.entreprise.fun_fact_source }}</a>{% endif %}</p>
+</aside>
+{%- endif %}
+
 <div class="page-head co-head">
   <div>
     <p class="label">{{ t.entreprise.label }}{% if secteur != "" %} · {{ secteur }}{% endif %}</p>

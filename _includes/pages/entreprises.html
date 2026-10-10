@@ -43,6 +43,11 @@
   </div>
 </div></details>
 
+{% include fold-ouvre.html id="annuaire" label=t.entreprises.annuaire_label titre=t.entreprises.annuaire_titre compte=site.entreprises.size %}
+  <p class="fold-intro">{{ t.entreprises.annuaire_intro }}</p>
+  {% include entreprises-grille.html %}
+</div></details>
+
 {%- if site.data.temoignages.size > 0 %}
 {% include fold-ouvre.html id="temoignages" label=t.entreprises.avis_label titre=t.entreprises.avis_titre compte=site.data.temoignages.size %}
   <div class="quotes">

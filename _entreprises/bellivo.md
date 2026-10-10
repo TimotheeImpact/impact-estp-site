@@ -11,4 +11,6 @@ site_web: "https://www.bellivo-immo.fr/"
 logo: "bellivo.png"
 wikipedia: ""
 presentation: "Promoteur immobilier de Boulogne-Billancourt spécialisé dans l'habitat résidentiel et inclusif en Île-de-France. Bellivo accompagne les projets de la conception à la construction, avec les communes et les architectes, en misant sur l'économie circulaire et la bonne gestion des déchets de chantier."
+fun_fact: "Chaque programme Bellivo est pensé pour être réversible : les logements peuvent changer d'usage au fil des années."
+fun_fact_source: "https://www.bellivo-immo.fr/"
 ---

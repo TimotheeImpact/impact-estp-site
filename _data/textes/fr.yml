@@ -66,6 +66,9 @@ accueil:
   titre: "Le métier d'ingénieur, raconté par <em>ceux qui le font.</em>"
   lede: "Chaque semaine, une interview vidéo avec un dirigeant, un ingénieur ou un entrepreneur du BTP et de l'énergie. Pour choisir ton stage et ton métier en sachant vraiment à quoi ils ressemblent."
   btn_stage: "Trouver un stage"
+  info_tag: "Info spéciale"
+  info_texte: "<b>Marre des CV filtrés par des robots ?</b> Ici, c'est toi qui fais passer l'entretien : écoute ton futur manager, puis décide si tu as envie de travailler avec lui."
+  info_btn: "Rejoins-nous"
   nouvelle: "Nouvelle interview"
   prochain_evt: "Prochain évènement"
   voir_agenda: "Voir dans l'agenda"
@@ -110,9 +113,7 @@ interviews:
   label: "Interviews vidéo"
   titre: "Ceux qui font la construction et l'énergie"
   intro: "25 à 50 minutes de conversation sans filtre : le parcours, les projets concrets, et ce que l'invité dirait à un étudiant qui hésite."
-  micro_label: "Passer au micro"
-  micro_texte: "<b>Vous souhaitez être interviewé ?</b> Vous travaillez dans la construction ou l'énergie et votre parcours peut éclairer des étudiants : écrivez-nous directement."
-  micro_objet: "Interview Impact ESTP"
+  micro_lien: "Vous souhaitez être interviewé ?"
   liste_aria: "Liste des interviews"
   statut: "Statut"
   statut_aria: "Filtrer par statut"
@@ -156,6 +157,8 @@ interview:
 
 entreprise:
   label: "Entreprise"
+  fun_fact: "Le savais-tu ?"
+  fun_fact_source: "Source"
   l_interview: "L'interview"
   les_interviews: "Les interviews"
   a_lire: "À lire"
@@ -188,7 +191,7 @@ offre:
 stages:
   label: "Stages et premier emploi"
   titre: "Ton stage dans la construction et l'énergie"
-  intro: "Rejoins le vivier, découvre les offres des entreprises et prépare tes candidatures avec nos fiches entreprises."
+  intro: "Découvre les offres de stage, rejoins le vivier et prépare tes candidatures avec nos fiches entreprises."
   vivier_label: "Le vivier"
   vivier_titre: "Rejoins le vivier Impact"
   vivier_intro: "Les entreprises que nous interviewons cherchent des stagiaires et des jeunes ingénieurs. Laisse-nous ton profil : quand une offre correspond, on te la transmet en priorité."
@@ -199,14 +202,28 @@ stages:
   ouverture: "Ouverture des inscriptions le 15 novembre 2026."
   offres_label: "Offres des entreprises"
   offres_titre: "Les offres de stage"
-  offres_intro: "Stages, alternances et premiers emplois de la construction et de l'énergie, en deux familles : les offres trouvées par le réseau d'Impact, et celles des entreprises partenaires de l'ESTP."
+  offres_intro: "Stages, alternances et premiers emplois de la construction et de l'énergie : d'abord les offres trouvées par Impact, puis celles que l'ESTP publie sur JobTeaser."
   offres_vide: "Les premières offres seront publiées ici. Inscris-toi au vivier pour les recevoir en priorité"
   offres_vide_date: ", dès son ouverture le 15 novembre 2026"
-  offres_impact_titre: "Le réseau Impact"
+  offres_impact_titre: "Les offres Impact"
   offres_impact_intro: "Des offres que nous dénichons nous-mêmes, souvent auprès des entreprises passées au micro."
-  offres_ecole_titre: "Les entreprises partenaires de l'ESTP"
-  offres_ecole_intro: "Des offres transmises par le service des relations entreprises de l'école."
-  offres_ecole_vide: "Les premières offres des entreprises partenaires de l'école arrivent bientôt ici."
+  jt_titre: "Les offres de l'ESTP sur JobTeaser"
+  jt_intro: "L'école publie ses offres sur JobTeaser, en trois catégories. Nous les reprendrons ici une par une, dès que chaque entreprise aura donné son accord."
+  jt_nombre: "offres"
+  jt_btn: "Voir les offres sur JobTeaser"
+  jt_acces: "Connexion avec ton compte ESTP."
+  jt_releve: "Chiffres relevés le %date%."
+  jt_vide: "Aucune de ces offres n'est encore publiée ici : nous attendons l'accord des entreprises."
+  jt_cats:
+    ciblee:
+      titre: "Offres ciblées"
+      texte: "L'entreprise recherche précisément un candidat de l'ESTP."
+    partenaire:
+      titre: "Offres partenaires"
+      texte: "Publiées par une entreprise partenaire de l'école."
+    reseau:
+      titre: "Offres du réseau école"
+      texte: "Publiées par des alumni et des étudiants de l'ESTP."
   recrutez: "<b>Vous recrutez ?</b> Envoyez-nous votre offre de stage, d'alternance ou d'emploi : nous la publions ici et la transmettons aux profils du vivier qui correspondent."
   proposer_offre: "Proposer une offre"
   entreprises_label: "Avant de postuler"
@@ -295,6 +312,7 @@ formulaire:
     - { v: "Stage", l: "Stage" }
     - { v: "Proposer une offre de stage", l: "Proposer une offre de stage" }
     - { v: "Proposer un invité pour une interview", l: "Proposer un invité pour une interview" }
+    - { v: "Être interviewé", l: "Être interviewé" }
     - { v: "Proposer un évènement", l: "Proposer un évènement pour l'agenda" }
     - { v: "Organiser un évènement avec Impact", l: "Organiser un évènement avec Impact" }
     - { v: "Autre demande", l: "Autre demande" }
@@ -353,6 +371,9 @@ entreprises:
   label: "Pour les entreprises"
   titre: "Parlez à la prochaine génération d'ingénieurs"
   intro: "Nos spectateurs sont les étudiants que vous cherchez à recruter. Trois façons de travailler ensemble."
+  annuaire_label: "Elles sont sur Impact"
+  annuaire_titre: "Les entreprises sur Impact"
+  annuaire_intro: "Les entreprises avec qui nous avons tourné, nos partenaires et celles dont nous relayons les offres. Chacune a sa fiche, avec ses interviews et ses offres."
   offres_label: "Nos offres"
   offres_titre: "Travailler avec Impact"
   confiance: "<b>Ils nous font confiance.</b> Kaufman &amp; Broad nous confie un Pack Chantier de 3 vidéos sur l'un de ses chantiers, tournées en octobre et novembre 2026. Eiffage Route nous confie l'interview en studio de son directeur technique, début novembre."
@@ -410,6 +431,14 @@ apropos:
     - "On demande aux étudiants de s'engager dans un secteur qu'ils connaissent mal, en ne leur montrant qu'un seul visage. Pourtant, les métiers de la construction et de l'énergie sont d'une diversité immense."
     - "En mars 2026, des étudiants de l'ESTP Paris ont lancé Impact pour changer ça : des interviews vidéo sans filtre, de 25 à 50 minutes, avec les dirigeants, ingénieurs et entrepreneurs qui font le secteur. Pas une plaquette, une vraie conversation, avec les questions qu'un étudiant se pose vraiment."
     - "Depuis, des invités de NGE, VNF, Autodesk ou Aecon sont passés au micro, en France comme à l'international, avec des interviews en français et en italien."
+  estp_label: "Notre école"
+  estp_titre: "L'ESTP en bref"
+  estp:
+    - "L'ESTP est la grande école d'ingénieurs de la construction. Fondée en 1891 par Léon Eyrolles et reconnue par l'État depuis 1921, elle forme les ingénieurs et les cadres du bâtiment, des travaux publics et de l'énergie sur six campus : Cachan, Paris, Dijon, Troyes, Orléans et Aix-en-Provence."
+    - "Plus de 50 000 diplômés travaillent aujourd'hui dans le secteur, réunis dans l'association ESTP Alumni. Impact ESTP est une association d'étudiants de l'école, créée avec son accord."
+  estp_site: "https://www.estp.fr/"
+  estp_site_btn: "Le site de l'ESTP"
+  estp_alumni_btn: "ESTP Alumni, le réseau des diplômés"
   vision_titre: "Notre vision"
   vision_intro: "Impact veut devenir le lieu où une génération d'ingénieurs se forge son opinion sur la construction et l'énergie."
   vision:
@@ -602,6 +631,14 @@ annuaire:
   trier: "Trier"
   tri_az: "De A à Z"
   tri_za: "De Z à A"
+  relation: "Relation"
+  reseau: "Réseau Impact"
+  reseau_aide: "Entreprises avec qui nous avons tourné ou allons tourner"
+  partenaire: "Partenaires"
+  partenaire_aide: "Entreprises qui soutiennent Impact"
+  relais: "Présentes sur le site"
+  relais_aide: "Entreprises dont nous relayons les offres"
+  partenaire_tag: "Partenaire"
   interview: "Interview"
   toutes: "Toutes"
   publiee: "Interview en ligne"
@@ -659,3 +696,30 @@ podcast:
   par: "par"
   chroniquer: "<b>Tu veux tenir une chronique ?</b> Propose ton sujet, on t'aide pour l'écriture et l'enregistrement."
   chroniquer_btn: "Proposer une chronique"
+
+# Page « Installer l'appli » (/appli/) et bouton dans le pied de page et le menu mobile
+appli:
+  bouton: "Installer l'appli"
+  label: "Appli"
+  titre: "Impact ESTP dans ta poche"
+  intro: "Pas besoin de store : le site s'installe comme une appli, avec son icône sur ton écran d'accueil. Gratuit, sans compte à créer."
+  direct: "Installer maintenant"
+  deja: "L'appli est installée sur cet appareil. Bonne lecture !"
+  comment: "Comment l'installer"
+  note: "L'appli affiche le même contenu que le site, toujours à jour. Pour la retirer, supprime-la comme n'importe quelle appli."
+  appareils:
+    - t: "iPhone et iPad"
+      etapes:
+        - "Ouvre impactestp.fr dans Safari."
+        - "Touche le bouton Partager (le carré avec une flèche vers le haut), parfois rangé dans le menu « ⋯ »."
+        - "Choisis « Sur l'écran d'accueil », puis « Ajouter »."
+    - t: "Android"
+      etapes:
+        - "Ouvre impactestp.fr dans Chrome."
+        - "Touche le menu ⋮ en haut à droite."
+        - "Choisis « Installer l'application » ou « Ajouter à l'écran d'accueil »."
+    - t: "Ordinateur"
+      etapes:
+        - "Ouvre impactestp.fr dans Chrome ou Edge."
+        - "Clique sur l'icône d'installation à droite de la barre d'adresse."
+        - "Confirme avec « Installer »."

@@ -11,4 +11,6 @@ site_web: "https://prosolia.com/fr/"
 logo: "prosolia-energy.png"
 wikipedia: ""
 presentation: "Producteur indépendant d'énergies renouvelables basé à Valence, en Espagne, actif depuis 23 ans : centrales photovoltaïques, éolien et stockage, de la construction à l'exploitation. Plus de 650 MW installés, plus de 250 salariés et 10 bureaux dans six pays, dont la France."
+fun_fact: "Sa centrale Albispark associe 34,4 MWc de panneaux solaires et une batterie de 60 MWh pour stocker l'énergie."
+fun_fact_source: "https://prosolia.com/fr/"
 ---

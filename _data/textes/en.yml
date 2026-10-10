@@ -66,6 +66,9 @@ accueil:
   titre: "Engineering, told by <em>the people who do it.</em>"
   lede: "Every week, a video interview with a leader, engineer or entrepreneur from construction and energy. So you can choose your internship and your career knowing what they're really like."
   btn_stage: "Find an internship"
+  info_tag: "Breaking news"
+  info_texte: "<b>Tired of CVs screened out by robots?</b> Here, you are the one doing the interview: listen to your future manager, then decide whether you want to work with them."
+  info_btn: "Join us"
   nouvelle: "New interview"
   prochain_evt: "Next event"
   voir_agenda: "See it in the calendar"
@@ -110,9 +113,7 @@ interviews:
   label: "Video interviews"
   titre: "The people who make construction and energy happen"
   intro: "25 to 50 minutes of unfiltered conversation: the guest's career path, real projects, and what they'd tell a student who's unsure."
-  micro_label: "Get on the mic"
-  micro_texte: "<b>Would you like to be interviewed?</b> You work in construction or energy and your career could help students find their way: email us directly."
-  micro_objet: "Impact ESTP interview"
+  micro_lien: "Would you like to be interviewed?"
   liste_aria: "List of interviews"
   statut: "Status"
   statut_aria: "Filter by status"
@@ -156,6 +157,8 @@ interview:
 
 entreprise:
   label: "Company"
+  fun_fact: "Did you know?"
+  fun_fact_source: "Source"
   l_interview: "The interview"
   les_interviews: "The interviews"
   a_lire: "Further reading"
@@ -188,7 +191,7 @@ offre:
 stages:
   label: "Internships and first jobs"
   titre: "Your internship in construction and energy"
-  intro: "Join the talent pool, discover companies' offers and prepare your applications with our company profiles."
+  intro: "Browse internship offers, join the talent pool and prepare your applications with our company profiles."
   vivier_label: "The talent pool"
   vivier_titre: "Join the Impact talent pool"
   vivier_intro: "The companies we interview are looking for interns and young engineers. Leave us your profile: when an offer matches, we'll send it to you first."
@@ -199,14 +202,28 @@ stages:
   ouverture: "Sign-ups open on 15 November 2026."
   offres_label: "Company offers"
   offres_titre: "Internship offers"
-  offres_intro: "Internships, work-study placements and first jobs in construction and energy, in two groups: offers found through Impact's network, and those from ESTP's partner companies."
+  offres_intro: "Internships, work-study and first jobs in construction and energy: first the offers found by Impact, then the ones ESTP posts on JobTeaser."
   offres_vide: "The first offers will be published here. Join the talent pool to get them first"
   offres_vide_date: ", as soon as it opens on 15 November 2026"
-  offres_impact_titre: "The Impact network"
+  offres_impact_titre: "Impact offers"
   offres_impact_intro: "Offers we find ourselves, often with companies that have been on our mic."
-  offres_ecole_titre: "ESTP partner companies"
-  offres_ecole_intro: "Offers passed on by the school's corporate relations team."
-  offres_ecole_vide: "The first offers from the school's partner companies will be posted here soon."
+  jt_titre: "ESTP offers on JobTeaser"
+  jt_intro: "The school posts its offers on JobTeaser, in three categories. We will share them here one by one, as soon as each company gives its consent."
+  jt_nombre: "offers"
+  jt_btn: "See the offers on JobTeaser"
+  jt_acces: "Log in with your ESTP account."
+  jt_releve: "Figures checked on %date%."
+  jt_vide: "None of these offers is published here yet: we are waiting for the companies' consent."
+  jt_cats:
+    ciblee:
+      titre: "Targeted offers"
+      texte: "The company is looking specifically for an ESTP candidate."
+    partenaire:
+      titre: "Partner offers"
+      texte: "Posted by one of the school's partner companies."
+    reseau:
+      titre: "School network offers"
+      texte: "Posted by ESTP alumni and students."
   recrutez: "<b>Hiring?</b> Send us your internship, work-study or job offer: we'll publish it here and pass it on to the matching profiles in the talent pool."
   proposer_offre: "Submit an offer"
   entreprises_label: "Before you apply"
@@ -295,6 +312,7 @@ formulaire:
     - { v: "Stage", l: "Internship" }
     - { v: "Proposer une offre de stage", l: "Submit an internship offer" }
     - { v: "Proposer un invité pour une interview", l: "Suggest a guest for an interview" }
+    - { v: "Être interviewé", l: "Be interviewed" }
     - { v: "Proposer un évènement", l: "Suggest an event for the calendar" }
     - { v: "Organiser un évènement avec Impact", l: "Organise an event with Impact" }
     - { v: "Autre demande", l: "Other request" }
@@ -363,6 +381,9 @@ entreprises:
   label: "For companies"
   titre: "Talk to the next generation of engineers"
   intro: "Our viewers are the students you're looking to recruit. Three ways to work together."
+  annuaire_label: "They're on Impact"
+  annuaire_titre: "Companies on Impact"
+  annuaire_intro: "The companies we have filmed with, our partners and those whose offers we share. Each one has its own profile, with its interviews and offers."
   offres_label: "Our offers"
   offres_titre: "Working with Impact"
   confiance: "<b>They trust us.</b> Kaufman &amp; Broad has entrusted us with a Pack Chantier of 3 videos on one of its sites, filmed in October and November 2026. Eiffage Route has entrusted us with a studio interview with its technical director, in early November."
@@ -420,6 +441,14 @@ apropos:
     - "Students are asked to commit to a sector they barely know, while being shown only one side of it. Yet careers in construction and energy are hugely diverse."
     - "In March 2026, students at ESTP Paris launched Impact to change that: unfiltered video interviews, 25 to 50 minutes long, with the leaders, engineers and entrepreneurs who make the sector. Not a brochure, but a real conversation, with the questions students actually ask themselves."
     - "Since then, guests from the likes of NGE, VNF, Autodesk and Aecon have been on the mic, in France and internationally, with interviews in French and Italian."
+  estp_label: "Our school"
+  estp_titre: "ESTP in brief"
+  estp:
+    - "ESTP is the leading French engineering school for construction. Founded in 1891 by Léon Eyrolles and recognised by the State since 1921, it trains engineers and managers for building, civil works and energy on six campuses: Cachan, Paris, Dijon, Troyes, Orléans and Aix-en-Provence."
+    - "More than 50,000 graduates now work in the sector, brought together in the ESTP Alumni association. Impact ESTP is an association of the school's students, created with its approval."
+  estp_site: "https://www.estp.fr/en/home-page/"
+  estp_site_btn: "ESTP website"
+  estp_alumni_btn: "ESTP Alumni, the graduate network"
   vision_titre: "Our vision"
   vision_intro: "Impact wants to become the place where a generation of engineers forms its view of construction and energy."
   vision:
@@ -612,6 +641,14 @@ annuaire:
   trier: "Sort"
   tri_az: "A to Z"
   tri_za: "Z to A"
+  relation: "Relationship"
+  reseau: "Impact network"
+  reseau_aide: "Companies we have filmed with or will film with"
+  partenaire: "Partners"
+  partenaire_aide: "Companies that support Impact"
+  relais: "Featured on the site"
+  relais_aide: "Companies whose offers we share"
+  partenaire_tag: "Partner"
   interview: "Interview"
   toutes: "All"
   publiee: "Interview online"
@@ -669,3 +706,30 @@ podcast:
   par: "by"
   chroniquer: "<b>Want to host a column?</b> Pitch your topic and we will help you write and record it."
   chroniquer_btn: "Pitch a column"
+
+# Page « Installer l'appli » (/appli/) et bouton dans le pied de page et le menu mobile
+appli:
+  bouton: "Install the app"
+  label: "App"
+  titre: "Impact ESTP in your pocket"
+  intro: "No app store needed: the website installs like an app, with its icon on your home screen. Free, no account required."
+  direct: "Install now"
+  deja: "The app is installed on this device. Enjoy!"
+  comment: "How to install it"
+  note: "The app shows the same content as the website, always up to date. To remove it, delete it like any other app."
+  appareils:
+    - t: "iPhone and iPad"
+      etapes:
+        - "Open impactestp.fr in Safari."
+        - "Tap the Share button (the square with an arrow pointing up), sometimes found in the “⋯” menu."
+        - "Choose “Add to Home Screen”, then “Add”."
+    - t: "Android"
+      etapes:
+        - "Open impactestp.fr in Chrome."
+        - "Tap the ⋮ menu at the top right."
+        - "Choose “Install app” or “Add to Home screen”."
+    - t: "Computer"
+      etapes:
+        - "Open impactestp.fr in Chrome or Edge."
+        - "Click the install icon on the right of the address bar."
+        - "Confirm with “Install”."

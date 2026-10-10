@@ -4,4 +4,5 @@ description: "Kaufman & Broad bei Impact ESTP, dem Studierendenmedium für Bau u
 secteur: "Immobilienentwicklung"
 pays: "Frankreich"
 presentation: "Französischer Immobilienentwickler."
+fun_fact: "Der Bauträger wurde 1957 in Detroit in den USA gegründet und kam erst 1968 nach Frankreich."
 ---

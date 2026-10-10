@@ -21,6 +21,7 @@
         <a href="{{ p | append: '/mentions-legales/' | relative_url }}">{{ t.pied.mentions }}</a>
         <a href="{{ p | append: '/confidentialite/' | relative_url }}">{{ t.pied.confidentialite }}</a>
       </div>
+      <a class="btn foot-appli" href="{{ p | append: '/appli/' | relative_url }}" data-installer><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v7M9 11l3 3 3-3M10.5 18.5h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ t.appli.bouton }}</a>
       {%- if site.instagram != "" %}
       <a class="qr" href="{{ site.instagram }}">
         <img src="{{ '/assets/img/instagram-qr.png' | relative_url }}" alt="{{ t.pied.qr_alt }}" width="96" height="110" loading="lazy">

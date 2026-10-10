@@ -11,7 +11,8 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | Les chiffres de l'accueil, les liens LinkedIn et Instagram, l'adresse mail | `_config.yml` |
 | La liste des entreprises « Ils sont passés au micro » (nom, logo, fiche) | `_config.yml` |
 | Les fiches entreprises (une page par entreprise, pour Google) | dossier `_entreprises` |
-| Les offres de stage de la page Stages (ligne `source` : `impact` pour le réseau d'Impact, `ecole` pour les entreprises partenaires de l'école) | `_data/offres_stage.yml` |
+| Les offres de stage de la page Stages (ligne `source` : `impact` pour les offres trouvées par Impact, `jobteaser` pour une offre de l'ESTP publiée avec l'accord de l'entreprise, avec `categorie` : `ciblee`, `partenaire` ou `reseau`) | `_data/offres_stage.yml` |
+| Les chiffres des offres de l'ESTP sur JobTeaser (74 ciblées, 20 partenaires, 9 réseau école au 10 octobre 2026) et la date du relevé | `_data/jobteaser.yml` |
 | Le podcast : liens Spotify, Apple Podcasts…, chroniques audio | `_data/podcast.yml` (et la ligne `audio:` dans la fiche d'une interview pour l'ajouter à la page Podcast) |
 | Les profils des étudiants qui cherchent un stage (page Entreprises) | dossier `_etudiants` |
 | La newsletter de la page Presse (date d'ouverture des inscriptions, adresse d'envoi) | `_config.yml` (`newsletter_ouverture`, `formulaire_newsletter`) et la partie `newsletter` de `_data/textes/fr.yml`, `en.yml`, `it.yml`, `de.yml` |
@@ -88,12 +89,18 @@ La page Interviews s'ouvre sur les interviews publiées. Pour ouvrir directement
 1. Va dans le dossier `_entreprises`, ouvre une fiche existante (par exemple `nge.md`) et copie son contenu.
 2. Crée un nouveau fichier dans `_entreprises`, nommé en minuscules avec des tirets (`nom-entreprise.md`).
 3. Remplis le nom, le secteur, le site web, la page Wikipédia (`wikipedia:`, avec si besoin `wikipedia_en:`, `wikipedia_it:` et `wikipedia_de:` pour les autres langues), la ville du siège social (`siege:`, par exemple `Paris`) et sa zone (`zone:`, par exemple `ile-de-france`, `hauts-de-france`, `italie`, `canada` : la liste est dans `_data/textes/fr.yml`, partie `annuaire`, `zones`), et le nom du fichier du logo (déposé dans `assets/img/logos`). Laisse vide ce que tu ne sais pas.
-   Dans la page Stages, l'annuaire se trie de A à Z ou de Z à A, et se filtre par statut de l'interview et par zone du siège.
-4. Dans les interviews de cette entreprise, ajoute `entreprise_id: nom-entreprise`.
+   Dans les pages Stages et Entreprises, l'annuaire se trie de A à Z ou de Z à A, et se filtre par relation avec Impact, par statut de l'interview et par zone du siège.
+4. Ajoute un fun fact, affiché en haut de la fiche dans un encadré « Le savais-tu ? » : `fun_fact:` (une phrase courte et vérifiée) et, si tu l'as, `fun_fact_source:` (le lien de la source). Dans les fiches traduites (`_entreprises_en`, `_it`, `_de`), mets seulement `fun_fact:` traduit.
+5. Si l'entreprise est partenaire d'Impact, ajoute `partenaire: true` (elle l'est aussi automatiquement si une de ses interviews a `partenaire: true`).
+6. Dans les interviews de cette entreprise, ajoute `entreprise_id: nom-entreprise`.
+
+Le filtre « Relation » de l'annuaire se remplit tout seul : « Réseau Impact » = au moins une interview (tournée ou prévue), « Partenaires » = `partenaire: true`, « Présentes sur le site » = une fiche sans interview, par exemple une entreprise dont on relaie seulement les offres. Un bouton n'apparaît que s'il compte au moins une entreprise.
 
 ## Ajouter une offre de stage
 
 Ouvre `_data/offres_stage.yml` : un exemple commenté montre les lignes à remplir (titre, entreprise, lieu, durée, début, lien). Enlève les `#` devant le bloc, remplis-le, enregistre. L'offre s'affiche sur la page Stages et sur la fiche de l'entreprise.
+
+Les offres de l'ESTP sur JobTeaser ne sont publiées ici qu'avec l'accord écrit de l'entreprise (les conditions d'utilisation de JobTeaser interdisent de les recopier sans autorisation). Avec cet accord, ajoute l'offre avec `source: "jobteaser"` et sa `categorie`. Pense aussi à mettre à jour les chiffres et la date dans `_data/jobteaser.yml`.
 
 Pour le lien, trois possibilités : un lien vers l'annonce de l'entreprise (`https://...`), un lien vers le formulaire de contact avec l'objet déjà choisi (`/contact/?objet=Stage&offre=Nom de l'offre`, comme l'offre de Toits Temporaires Urbains), ou rien (le bouton renvoie alors vers le vivier).
 
@@ -128,7 +135,7 @@ La page Évènements (`/evenements/`) liste les salons, forums étudiants et con
 
 ## Sur téléphone
 
-Sur téléphone et tablette, les pages sont rangées derrière le bouton « Menu » en haut à droite. Le site peut aussi s'installer comme une application : dans le navigateur du téléphone, « Ajouter à l'écran d'accueil » pose l'icône Impact (fichier `manifest.webmanifest`, icônes `assets/img/icon-*.png`).
+Sur téléphone et tablette, les pages sont rangées derrière le bouton « Menu » en haut à droite. Le site peut aussi s'installer comme une application : dans le navigateur du téléphone, « Ajouter à l'écran d'accueil » pose l'icône Impact (fichier `manifest.webmanifest`, icônes `assets/img/icon-*.png`). Le bouton « Installer l'appli » (pied de page et menu du téléphone) ouvre directement la fenêtre d'installation sur Chrome, Edge et Android ; ailleurs, il mène à la page `/appli/`, qui explique comment faire sur iPhone, Android et ordinateur. Il disparaît quand le site est ouvert depuis l'appli.
 
 ## Animation de l'accueil et parties dépliables
 

@@ -32,6 +32,18 @@
   </div>
 </div></details>
 
+{% include fold-ouvre.html id="estp" label=t.apropos.estp_label titre=t.apropos.estp_titre %}
+  <div class="prose">
+    {%- for para in t.apropos.estp %}
+    <p>{{ para }}</p>
+    {%- endfor %}
+  </div>
+  <div class="actions mt-14">
+    <a class="btn" href="{{ t.apropos.estp_site }}">{{ t.apropos.estp_site_btn }}</a>
+    <a class="btn" href="https://www.estp-alumni.org/">{{ t.apropos.estp_alumni_btn }}</a>
+  </div>
+</div></details>
+
 {% include fold-ouvre.html id="vision" titre=t.apropos.vision_titre %}
   <div class="prose">
     <p>{{ t.apropos.vision_intro }}</p>

@@ -4,4 +4,5 @@ description: "S3D-SPAD on Impact ESTP, the student media for construction and en
 secteur: "Land planning and urban development"
 pays: "France (Dunkirk)"
 presentation: "The planning and development companies of the Dunkirk area, which lead urban and economic projects across the Dunkirk territory."
+fun_fact: "Their playground, Dunkirk, is home to France's third-largest port."
 ---

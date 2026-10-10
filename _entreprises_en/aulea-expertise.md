@@ -4,4 +4,5 @@ description: "Aulea Expertise on Impact ESTP, the student media for construction
 secteur: "Building expertise"
 pays: "France (Nouvelle-Aquitaine)"
 presentation: "Independent building expertise firm based in Gironde, founded by Aurélien Heilles after thirteen years running a construction company. Its job: spotting what is wrong with a building and finding out why."
+fun_fact: "Before tracking down other people's cracks, its founder ran a building company for thirteen years."
 ---

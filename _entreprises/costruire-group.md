@@ -11,4 +11,6 @@ site_web: "https://costruire-group.com/"
 logo: "costruire-group.png"
 wikipedia: ""
 presentation: "Entreprise de construction historique du lac Majeur, que son CEO Emmanuel Bordignon transforme en acteur du développement immobilier."
+fun_fact: "Le groupe est installé à Verbania, sur le lac Majeur, le deuxième plus grand lac d'Italie après le lac de Garde."
+fun_fact_source: "https://it.wikipedia.org/wiki/Lago_Maggiore"
 ---

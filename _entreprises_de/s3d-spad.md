@@ -4,4 +4,5 @@ description: "S3D-SPAD bei Impact ESTP, dem Studierendenmedium für Bau und Ener
 secteur: "Raumplanung und Stadtentwicklung"
 pays: "Frankreich (Dünkirchen)"
 presentation: "Die Entwicklungs- und Erschließungsgesellschaften des Großraums Dünkirchen, die städtebauliche und wirtschaftliche Projekte in der Region umsetzen."
+fun_fact: "Ihr Spielfeld Dünkirchen beherbergt den drittgrößten Hafen Frankreichs."
 ---

@@ -11,4 +11,6 @@ site_web: "https://www.aveil.fr/"
 logo: "aveil.png"
 wikipedia: ""
 presentation: "Les structures dirigées par Grégory Pons, expert du photovoltaïque et du stockage depuis plus de 25 ans."
+fun_fact: "À Sallèles-d'Aude, Aveil a accompagné une centrale de 4,2 MWc dont les panneaux pivotent toute la journée pour suivre le soleil."
+fun_fact_source: "https://www.aveil.fr/"
 ---

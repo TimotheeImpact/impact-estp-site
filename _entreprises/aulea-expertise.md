@@ -11,4 +11,5 @@ site_web: "https://auleaexpertise.fr/"
 logo: "aulea-expertise.jpg"
 wikipedia: ""
 presentation: "Cabinet d'expertise en bâtiment indépendant installé en Gironde, fondé par Aurélien Heilles après treize ans à la tête d'une entreprise du bâtiment. Son métier : repérer les pathologies d'un bâtiment et en trouver les causes."
+fun_fact: "Avant de traquer les fissures des autres, son fondateur a dirigé une entreprise du bâtiment pendant treize ans."
 ---

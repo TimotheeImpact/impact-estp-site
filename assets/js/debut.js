@@ -18,6 +18,7 @@
   // Appli installée sur le téléphone : écran d'ouverture avec le logo et le slogan, une fois par session.
   // Pas sur le site web, où les pages doivent s'afficher tout de suite (et Google le mesure).
   var appli = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
+  if (appli) racine.className += ' en-appli';
   if (appli) {
     try {
       if (!window.sessionStorage.getItem('ouverture')) {
@@ -26,6 +27,28 @@
       }
     } catch (e) {}
   }
+
+  // Bouton « Installer l'appli » : sur Chrome, Edge et Android, il ouvre directement la fenêtre d'installation.
+  // Ailleurs (iPhone, Firefox…), le navigateur ne le permet pas : le lien mène à la page /appli/ qui explique comment faire.
+  // L'évènement arrive parfois avant la fin du chargement de la page, d'où sa place ici, tout en haut.
+  var invite = null;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    invite = e;
+    racine.classList.add('installable');
+  });
+  window.addEventListener('appinstalled', function () {
+    invite = null;
+    racine.classList.remove('installable');
+    racine.classList.add('appli-installee');
+  });
+  document.addEventListener('click', function (e) {
+    var lien = e.target.closest && e.target.closest('[data-installer]');
+    if (!lien || !invite) return;
+    e.preventDefault();
+    invite.prompt();
+    invite.userChoice.then(function () { invite = null; racine.classList.remove('installable'); });
+  });
 
   // Miniatures YouTube introuvables : on retire l'image pour laisser le fond de la carte
   document.addEventListener('error', function (e) {

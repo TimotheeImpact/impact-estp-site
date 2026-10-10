@@ -11,4 +11,6 @@ site_web: "https://www.aecon.com"
 logo: "aecon.png"
 wikipedia: "https://en.wikipedia.org/wiki/Aecon"
 presentation: "Groupe canadien de construction et d'infrastructures. Pascale Commun y est directrice technique, à Montréal."
+fun_fact: "Aecon a participé à la construction de la tour CN de Toronto, qui a été la plus haute structure autoportante du monde pendant plus de trente ans."
+fun_fact_source: "https://en.wikipedia.org/wiki/Aecon"
 ---

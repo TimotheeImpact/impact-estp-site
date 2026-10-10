@@ -11,4 +11,6 @@ site_web: "https://observatoire-immobilier-connecte.org/"
 logo: "oicr.png"
 wikipedia: ""
 presentation: "Observatoire qui rassemble ce que le numérique apporte de mieux aux bâtiments, à leurs occupants et à la ville. L'OICR publie de la veille, des études de cas et des livres blancs sur le smart building, tient un annuaire des professionnels du secteur et organise tous les deux ans les Trophées Smart Building."
+fun_fact: "Les Trophées Smart Building de l'OICR récompensent les bâtiments les plus intelligents ; la 2e édition est remise le 14 octobre 2026 au salon IBS, à Paris."
+fun_fact_source: "https://observatoire-immobilier-connecte.org/"
 ---

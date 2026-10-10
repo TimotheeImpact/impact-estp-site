@@ -472,12 +472,12 @@
       var det = a.closest('details'); if (det) det.open = false;
     });
   });
-  // Annuaire des entreprises (page Stages) : filtre par interview et par siège, tri A-Z / Z-A
+  // Annuaire des entreprises (page Stages) : filtre par relation avec Impact, interview et siège, tri A-Z / Z-A
   var coBox = document.getElementById('co-filtres');
   var coGrille = document.getElementById('co-grille');
   if (coBox && coGrille) {
     var coCount = document.getElementById('co-count');
-    var coEtat = { stage: 'all', statut: 'all', zone: 'all', tri: 'az', q: '' };
+    var coEtat = { stage: 'all', relation: 'all', statut: 'all', zone: 'all', tri: 'az', q: '' };
     var coItems = Array.prototype.slice.call(coGrille.children);
     var coMaj = function () {
       var tries = coItems.slice().sort(function (a, b) {
@@ -487,6 +487,7 @@
       var n = 0;
       tries.forEach(function (li) {
         var ok = (coEtat.stage === 'all' || li.getAttribute('data-stage') === coEtat.stage) &&
+          (coEtat.relation === 'all' || (' ' + li.getAttribute('data-relation') + ' ').indexOf(' ' + coEtat.relation + ' ') !== -1) &&
           (coEtat.statut === 'all' || li.getAttribute('data-statut') === coEtat.statut) &&
           (coEtat.zone === 'all' || li.getAttribute('data-zone') === coEtat.zone) &&
           (!coEtat.q || sansAccents(li.getAttribute('data-nom')).indexOf(sansAccents(coEtat.q).trim()) !== -1);
@@ -500,7 +501,7 @@
           var b = document.createElement('button');
           b.type = 'button'; b.className = 'count-reset'; b.textContent = coCount.getAttribute('data-reset');
           b.addEventListener('click', function () {
-            coEtat.stage = 'all'; coEtat.statut = 'all'; coEtat.zone = 'all'; coEtat.q = '';
+            coEtat.stage = 'all'; coEtat.relation = 'all'; coEtat.statut = 'all'; coEtat.zone = 'all'; coEtat.q = '';
             coBox.querySelectorAll('.filters[data-co] button').forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-filter') === 'all' ? 'true' : 'false'); });
             var z = coBox.querySelector('[data-co="zone"]'); if (z) z.value = 'all';
             var q = coBox.querySelector('[data-co="q"]'); if (q) q.value = '';

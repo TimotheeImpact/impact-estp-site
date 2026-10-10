@@ -11,4 +11,6 @@ site_web: "https://www.bouygues-immobilier.com"
 logo: "bouygues-immobilier.jpg"
 wikipedia: "https://fr.wikipedia.org/wiki/Bouygues_Immobilier"
 presentation: "Promoteur immobilier du groupe Bouygues."
+fun_fact: "En 2019, Bouygues Immobilier a livré à Strasbourg « Sensations », présenté comme le premier immeuble de grande hauteur 100 % bois de France."
+fun_fact_source: "https://fr.wikipedia.org/wiki/Bouygues_Immobilier"
 ---

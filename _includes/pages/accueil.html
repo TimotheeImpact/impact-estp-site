@@ -75,6 +75,15 @@
   {%- endif %}
 </div>
 
+{%- comment -%} Bandeau penché « Info spéciale » (texte dans _data/textes, rubrique accueil > info_*). {%- endcomment %}
+<aside class="info-speciale" aria-label="{{ t.accueil.info_tag }}">
+  <div class="info-speciale-in">
+    <span class="info-tag"><span class="info-dot" aria-hidden="true"></span>{{ t.accueil.info_tag }}</span>
+    <p>{{ t.accueil.info_texte }}</p>
+    <a class="btn info-btn" href="{{ p | append: '/stages/' | relative_url }}#vivier">{{ t.accueil.info_btn }}</a>
+  </div>
+</aside>
+
 <div class="stats" aria-label="{{ t.accueil.chiffres_aria }}">
   {%- for c in site.chiffres %}
   {%- assign n = nil %}

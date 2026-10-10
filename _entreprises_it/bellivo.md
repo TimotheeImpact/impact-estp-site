@@ -4,4 +4,5 @@ description: "Bellivo Immo e VAT IMMO su Impact ESTP, il media studentesco delle
 secteur: "Immobiliare"
 pays: "Francia"
 presentation: "Promotore immobiliare di Boulogne-Billancourt specializzato nell'abitare residenziale e inclusivo nella regione di Parigi. Bellivo segue i progetti dalla progettazione alla costruzione, con i comuni e gli architetti, puntando sull'economia circolare e su una buona gestione dei rifiuti di cantiere."
+fun_fact: "Ogni progetto Bellivo è pensato per essere reversibile: gli alloggi possono cambiare destinazione nel corso degli anni."
 ---

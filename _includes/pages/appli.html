@@ -1,0 +1,30 @@
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign ta = t.appli -%}
+{%- comment -%}
+  Page « Installer l'appli ». Le site est une appli web (fichier manifest.webmanifest) : pas de store, on l'ajoute à l'écran d'accueil.
+  Le bouton « Installer maintenant » n'apparaît que si le navigateur sait ouvrir la fenêtre d'installation (Chrome, Edge, Android).
+{%- endcomment %}
+<div class="page-head">
+  <p class="label">{{ ta.label }}</p>
+  <h1>{{ ta.titre }}</h1>
+  <p class="intro">{{ ta.intro }}</p>
+  <p class="appli-direct"><a class="btn primary" href="#comment" data-installer>{{ ta.direct }}</a></p>
+  <p class="appli-deja">{{ ta.deja }}</p>
+</div>
+
+<section class="block pt-32" id="comment" aria-labelledby="t-comment">
+  <h2 id="t-comment" class="appli-h2">{{ ta.comment }}</h2>
+  <div class="appli-etapes">
+    {%- for a in ta.appareils %}
+    <div class="appli-carte">
+      <h3>{{ a.t }}</h3>
+      <ol>
+        {%- for e in a.etapes %}
+        <li>{{ e }}</li>
+        {%- endfor %}
+      </ol>
+    </div>
+    {%- endfor %}
+  </div>
+  <p class="appli-note">{{ ta.note }}</p>
+</section>

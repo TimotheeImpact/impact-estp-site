@@ -12,4 +12,6 @@ logo: "vnf.png"
 wikipedia: "https://fr.wikipedia.org/wiki/Voies_navigables_de_France"
 wikipedia_en: "https://en.wikipedia.org/wiki/Voies_navigables_de_France"
 presentation: "Établissement public qui gère les voies navigables françaises et veut faire du fleuve un outil de décarbonation et de logistique."
+fun_fact: "VNF gère 6 700 km de canaux et de rivières, et plus de 4 000 ouvrages comme des écluses et des barrages."
+fun_fact_source: "https://fr.wikipedia.org/wiki/Voies_navigables_de_France"
 ---

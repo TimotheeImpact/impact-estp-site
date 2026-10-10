@@ -4,9 +4,10 @@
 # entreprise_id = nom du fichier de l'entreprise dans _entreprises (sans .md), pour afficher son logo et un lien vers sa fiche.
 # lien = page de l'offre chez l'entreprise, ou le formulaire de contact (/contact/?objet=Stage&offre=Nom de l'offre) ;
 #        si vide, le bouton propose de postuler via le vivier Impact.
-# source = « impact » pour une offre trouvée par le réseau d'Impact ESTP,
-#          « ecole » pour une offre transmise par la responsable des relations entreprises de l'école (entreprises partenaires de l'ESTP).
-#          Les deux familles s'affichent séparément dans la page Stages.
+# source = « impact » pour une offre trouvée par le réseau d'Impact ESTP (affichée en haut de la page Stages),
+#          « jobteaser » pour une offre de l'ESTP sur JobTeaser, publiée avec l'accord écrit de l'entreprise.
+# categorie (offres JobTeaser seulement) = « ciblee » (candidat ESTP recherché), « partenaire » (entreprise partenaire
+#          de l'école) ou « reseau » (postée par des alumni ou des étudiants). Voir aussi _data/jobteaser.yml.
 #
 # - titre: "Stage assistant conducteur de travaux"
 #   titre_en: "Assistant site manager internship"
@@ -20,7 +21,8 @@
 #   debut: "Février 2027"
 #   description: "Deux ou trois phrases sur les missions et le profil recherché."
 #   lien: ""
-#   source: "impact"           # impact ou ecole
+#   source: "impact"           # impact ou jobteaser
+#   categorie: ""              # pour jobteaser : ciblee, partenaire ou reseau
 
 - titre: "Stage de fin d'études, avec possibilité d'embauche"
   titre_en: "Final-year internship, with possible hiring"

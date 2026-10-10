@@ -11,4 +11,5 @@ site_web: "https://www.villa-aminta.it/"
 logo: "villa-palazzo-aminta.jpg"
 wikipedia: ""
 presentation: "Hôtel cinq étoiles de Stresa, face aux îles Borromées, seul hôtel du lac Majeur italien membre de The Leading Hotels of the World, dans une demeure historique de plus de cent ans. Restaurant, spa, jardins et salles de réception ; l'hôtel est certifié GSTC pour sa démarche durable."
+fun_fact: "C'est le seul hôtel du lac Majeur italien membre de The Leading Hotels of the World."
 ---

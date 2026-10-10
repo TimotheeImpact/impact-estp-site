@@ -11,4 +11,5 @@ site_web: ""
 logo: "toits-temporaires-urbains.jpg"
 wikipedia: ""
 presentation: "Société qui conçoit et déploie des bâtiments mobiles et modulables à ossature bois, pour loger, héberger ou accueillir des activités sur des terrains disponibles, puis les déplacer ailleurs. Elle a été lancée en 2022 à l'initiative de la Banque des Territoires, de SNCF Immobilier, d'ICF Habitat et du Département de la Seine-Saint-Denis."
+fun_fact: "Ses bâtiments déménagent : construits en bois sur des terrains en attente, ils sont démontés puis remontés ailleurs quand le terrain change d'usage."
 ---

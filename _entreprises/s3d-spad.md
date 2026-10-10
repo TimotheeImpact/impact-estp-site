@@ -11,4 +11,6 @@ site_web: "https://s3d-spad.fr/"
 logo: "s3d-spad.png"
 wikipedia: ""
 presentation: "Les sociétés d'aménagement et de développement du Dunkerquois, qui conduisent des projets urbains et économiques sur le territoire de Dunkerque."
+fun_fact: "Leur terrain de jeu, Dunkerque, abrite le troisième port de France."
+fun_fact_source: "https://fr.wikipedia.org/wiki/Port_de_Dunkerque"
 ---

@@ -4,4 +4,5 @@ description: "CDC Habitat on Impact ESTP, the student media for construction and
 secteur: "Social and intermediate housing"
 pays: "France"
 presentation: "Real estate subsidiary of the Caisse des Dépôts, and a landlord of social and intermediate housing."
+fun_fact: "Its forerunner, Sogima, was set up in 1961 to house the armed forces."
 ---

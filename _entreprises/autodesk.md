@@ -13,4 +13,6 @@ wikipedia: "https://fr.wikipedia.org/wiki/Autodesk"
 wikipedia_en: "https://en.wikipedia.org/wiki/Autodesk"
 wikipedia_it: "https://it.wikipedia.org/wiki/Autodesk"
 presentation: "Éditeur de logiciels de conception, dont AutoCAD et Revit, très utilisés pour le BIM dans la construction."
+fun_fact: "AutoCAD, son logiciel le plus connu, est sorti en décembre 1982 : il est plus vieux que la plupart des ingénieurs qui l'utilisent."
+fun_fact_source: "https://fr.wikipedia.org/wiki/AutoCAD"
 ---

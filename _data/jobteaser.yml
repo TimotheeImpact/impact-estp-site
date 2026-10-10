@@ -1,0 +1,16 @@
+# Offres de l'ESTP sur JobTeaser (page Stages, sous les offres Impact).
+# lien    = page des offres de l'ESTP sur JobTeaser (réservée aux étudiants de l'école).
+# releve  = date du dernier relevé des chiffres (AAAA-MM-JJ).
+# nombre  = nombre d'offres vues sur JobTeaser ce jour-là, par catégorie (mettre 0 pour ne rien afficher).
+# Les textes des catégories sont dans _data/textes/*.yml (stages > jt_cats).
+# Une offre JobTeaser n'est publiée sur le site qu'avec l'accord écrit de l'entreprise :
+# on l'ajoute alors dans _data/offres_stage.yml avec source: "jobteaser" et categorie: "ciblee", "partenaire" ou "reseau".
+lien: "https://estp.jobteaser.com/fr/job-offers"
+releve: 2026-10-10
+categories:
+  - id: ciblee
+    nombre: 74
+  - id: partenaire
+    nombre: 20
+  - id: reseau
+    nombre: 9

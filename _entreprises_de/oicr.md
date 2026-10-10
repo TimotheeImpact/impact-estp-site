@@ -4,4 +4,5 @@ description: "OICR (Observatoire de l'Immobilier Connecté et Responsable) bei I
 secteur: "Vernetzte und verantwortungsvolle Immobilien"
 pays: "Frankreich"
 presentation: "Beobachtungsstelle, die zusammenträgt, was die Digitalisierung Gebäuden, ihren Nutzern und der Stadt Bestes bietet. Das OICR veröffentlicht Marktbeobachtungen, Fallstudien und Whitepaper zum Smart Building, führt ein Verzeichnis der Fachleute der Branche und vergibt alle zwei Jahre die Trophées Smart Building."
+fun_fact: "Die Trophées Smart Building des OICR zeichnen die intelligentesten Gebäude aus; die 2. Ausgabe wird am 14. Oktober 2026 auf der Messe IBS in Paris verliehen."
 ---

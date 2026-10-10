@@ -1,0 +1,16 @@
+---
+title: "Hoffmann Green Cement Technologies : interviews, métiers et stages"
+description: "Hoffmann Green Cement Technologies sur Impact ESTP, le média étudiant de la construction et de l'énergie : interviews vidéo, métiers et offres de stage."
+nom: "Hoffmann Green"
+nom_complet: "Hoffmann Green Cement Technologies"
+secteur: "Ciment décarboné"
+pays: "France"
+siege: "Bournezeau"
+zone: "pays-de-la-loire"
+site_web: "https://www.ciments-hoffmann.com/fr/"
+logo: ""
+wikipedia: ""
+presentation: "Industriel vendéen fondé en 2014 par Julien Blanchard et David Hoffmann, qui fabrique des ciments sans clinker. L'entreprise annonce une empreinte carbone divisée par cinq par rapport à un ciment traditionnel."
+fun_fact: "Son usine H2, inaugurée en 2023 à Bournezeau, en Vendée, est présentée comme la première cimenterie verticale au monde."
+fun_fact_source: "https://www.businesswire.com/news/home/20231108507114/fr"
+---

@@ -11,4 +11,6 @@ site_web: "https://www.kaufmanbroad.fr"
 logo: "kaufman-broad.jpg"
 wikipedia: "https://fr.wikipedia.org/wiki/Kaufman_%26_Broad"
 presentation: "Promoteur immobilier français."
+fun_fact: "Le promoteur est né à Detroit, aux États-Unis, en 1957, et n'est arrivé en France qu'en 1968."
+fun_fact_source: "https://fr.wikipedia.org/wiki/Kaufman_%26_Broad"
 ---

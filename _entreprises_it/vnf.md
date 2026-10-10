@@ -4,4 +4,5 @@ description: "VNF (Voies navigables de France) su Impact ESTP, il media studente
 secteur: "Trasporto fluviale e infrastrutture"
 pays: "Francia"
 presentation: "Ente pubblico che gestisce le vie navigabili francesi e vuole fare del fiume uno strumento di decarbonizzazione e di logistica."
+fun_fact: "VNF gestisce 6.700 km di canali e fiumi e oltre 4.000 opere come chiuse e dighe."
 ---

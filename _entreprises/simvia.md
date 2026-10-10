@@ -11,4 +11,6 @@ site_web: "https://simvia.tech"
 logo: "simvia.png"
 wikipedia: ""
 presentation: "Startup deeptech basée à Palaiseau qui démocratise la simulation numérique open source pour les ingénieurs."
+fun_fact: "Ses outils de simulation, comme Code_Aster, sont open source et sans licence à payer. Orano et Vattenfall font pourtant partie de ses clients."
+fun_fact_source: "https://simvia.tech"
 ---

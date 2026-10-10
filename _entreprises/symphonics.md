@@ -11,4 +11,5 @@ site_web: "https://www.symphonics.fr/"
 logo: "symphonics.png"
 wikipedia: ""
 presentation: "Acteur de l'énergie pilotée, à la fois agrégateur, opérateur de flexibilités et fournisseur d'électricité. Symphonics supervise les équipements connectés des particuliers et des entreprises (chauffage, climatisation, ballon d'eau chaude, bornes de recharge, panneaux solaires) pour décaler la consommation vers les heures les moins chères et les moins carbonées. Elle pilote 600 MW sur 85 000 sites en France, en Espagne et au Portugal."
+fun_fact: "Les 600 MW qu'elle pilote représentent les deux tiers de la puissance d'un réacteur nucléaire de 900 MW, répartis sur 85 000 sites."
 ---

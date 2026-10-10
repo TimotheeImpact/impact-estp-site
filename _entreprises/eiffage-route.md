@@ -13,4 +13,6 @@ wikipedia: "https://fr.wikipedia.org/wiki/Eiffage"
 wikipedia_en: "https://en.wikipedia.org/wiki/Eiffage"
 wikipedia_it: "https://it.wikipedia.org/wiki/Eiffage"
 presentation: "Branche routière du groupe Eiffage."
+fun_fact: "Le groupe Eiffage a construit le viaduc de Millau : son plus haut pylône culmine à 343 m, plus haut que la tour Eiffel."
+fun_fact_source: "https://fr.wikipedia.org/wiki/Viaduc_de_Millau"
 ---

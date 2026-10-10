@@ -11,4 +11,6 @@ site_web: "https://www.grandparisamenagement.fr"
 logo: "grand-paris-amenagement.jpg"
 wikipedia: "https://fr.wikipedia.org/wiki/Grand_Paris_Am%C3%A9nagement"
 presentation: "Aménageur public de l'État en Île-de-France, héritier de l'AFTRP créée en 1962."
+fun_fact: "La Solideo, qui a construit les ouvrages olympiques de Paris 2024, est appelée à se fondre dans Grand Paris Aménagement."
+fun_fact_source: "https://fr.wikipedia.org/wiki/Grand_Paris_Am%C3%A9nagement"
 ---

@@ -11,4 +11,6 @@ site_web: "https://www.syndicat-energies-renouvelables.fr/"
 logo: "ser.png"
 wikipedia: "https://fr.wikipedia.org/wiki/Syndicat_des_%C3%A9nergies_renouvelables"
 presentation: "Organisation professionnelle des énergies renouvelables en France. Le SER rassemble plus de 500 adhérents, des grands énergéticiens aux acteurs locaux, dont deux tiers de PME et d'ETI, du photovoltaïque aux gaz renouvelables, aux énergies marines et au bois énergie. Il porte les positions de la filière et organise chaque année son colloque à la Maison de l'UNESCO, à Paris."
+fun_fact: "Le SER est né en 1993 sous un autre nom, SIPROFER, et son colloque annuel réunit plus de 1 000 personnes."
+fun_fact_source: "https://fr.wikipedia.org/wiki/Syndicat_des_%C3%A9nergies_renouvelables"
 ---

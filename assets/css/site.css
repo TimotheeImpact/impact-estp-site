@@ -164,7 +164,8 @@ nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--leaf); }
 .menu-toggle[aria-expanded="true"] .menu-icone::before { transform: translateY(5px) rotate(45deg); }
 .menu-toggle[aria-expanded="true"] .menu-icone span { opacity: 0; }
 .menu-toggle[aria-expanded="true"] .menu-icone::after { transform: translateY(-5px) rotate(-45deg); }
-.nav-groupe { display: none; }
+.nav-groupe, .nav-appli { display: none; }
+.nav-appli svg { flex: none; margin-right: 10px; color: var(--brand); }
 
 /* Écran d'ouverture de l'appli installée sur téléphone (logo et slogan, une fois par session, voir debut.js) */
 .ouverture body::before, .ouverture body::after { position: fixed; left: 0; right: 0; z-index: 100; pointer-events: none; animation: ouverture-fin 0.45s ease 1.1s forwards; }
@@ -270,6 +271,39 @@ section.block { padding-block: 64px 24px; }
 /* En-tête de page intérieure */
 .page-head { padding-block: 48px 28px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
 /* Flèches entre les fiches entreprises : en haut de page, puis sur les côtés de l'écran quand il est large */
+/* Accueil : bandeau penché « Info spéciale » */
+.info-speciale { margin: 6px 4px 44px; transform: rotate(-1.4deg); }
+.info-speciale-in { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; padding: 16px 24px; border-radius: var(--radius); background: var(--cta-bg); color: var(--cta-fg); }
+.info-speciale p { margin: 0; flex: 1 1 360px; font-size: var(--step-0); line-height: 1.45; }
+.info-tag { display: inline-flex; align-items: center; gap: 8px; padding: 5px 11px; border-radius: 999px; background: var(--leaf); color: var(--on-leaf); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+.info-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.info-btn { background: var(--cta-fg); color: var(--cta-bg); border-color: var(--cta-fg); white-space: nowrap; }
+.info-btn:hover { background: transparent; color: var(--cta-fg); }
+@media (prefers-reduced-motion: no-preference) { .info-dot { animation: info-clignote 1.6s ease-in-out infinite; } }
+@keyframes info-clignote { 50% { opacity: 0.25; } }
+[data-theme="sombre"] .info-tag { background: var(--cta-fg); color: var(--cta-bg); }
+@media (max-width: 560px) { .info-speciale { transform: rotate(-1deg); margin-bottom: 32px; } .info-speciale-in { padding: 14px 16px; } }
+/* Bouton « Installer l'appli » (pied de page) et page /appli/ */
+.foot-appli { gap: 8px; font-size: var(--step--1); padding: 8px 14px; align-self: center; margin-left: auto; flex: none; white-space: nowrap; }
+.foot-appli svg { color: var(--brand); }
+.en-appli .foot-appli, .en-appli .nav-appli, .appli-installee .foot-appli, .appli-installee .nav-appli { display: none !important; }
+.appli-direct { display: none; margin: 22px 0 0; }
+.installable .appli-direct { display: block; }
+.appli-deja { display: none; margin: 18px 0 0; font-weight: 600; color: var(--leaf-ink); }
+.en-appli .appli-deja, .appli-installee .appli-deja { display: block; }
+.appli-h2 { font-size: var(--step-1); margin-bottom: 16px; }
+.appli-etapes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.appli-carte { padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--sheet); }
+.appli-carte h3 { font-size: var(--step-0); margin-bottom: 10px; }
+.appli-carte ol { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+.appli-note { margin-top: 18px; color: var(--ink-soft); max-width: 60ch; }
+@media (max-width: 900px) { .appli-etapes { grid-template-columns: minmax(0, 1fr); } }
+/* Fun fact en haut des fiches entreprises : une ligne sobre, filet de couleur à gauche */
+.fun-fact { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 6px; padding: 14px 18px; border-radius: var(--radius-lg); background: var(--sheet); border: 1px solid var(--line); border-left: 3px solid var(--brand); }
+.fun-fact svg { flex: none; color: var(--brand); margin-top: 2px; }
+.fun-fact p { margin: 0; font-family: var(--font-text); font-style: italic; font-size: 1.12rem; line-height: 1.5; color: var(--ink); }
+.fun-fact-lab { display: block; font-style: normal; margin-bottom: 2px; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand); }
+.fun-fact-src { margin-left: 4px; font-style: normal; font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); white-space: nowrap; }
 .co-nav { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 22px; }
 .co-nav a { display: inline-flex; align-items: center; gap: 10px; min-width: 0; max-width: calc(50% - 6px); padding: 8px 16px 8px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--sheet); color: var(--ink); text-decoration: none; font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; transition: border-color .15s, transform .15s; }
 .co-nav a:hover { border-color: var(--brand); }
@@ -608,6 +642,7 @@ footer { padding-block: 72px 40px; }
 .co-tag { margin-top: auto; align-self: flex-start; }
 .co-grid .co-tag { margin-top: 8px; }
 .co-pub { background: var(--leaf-tint); border-color: transparent; color: var(--leaf-ink); }
+.co-part { background: var(--brand-tint); border-color: transparent; color: var(--brand); }
 .co-selects { grid-template-columns: repeat(2, minmax(0, 220px)); }
 .co-grid li[hidden] { display: none; }
 
@@ -741,6 +776,7 @@ footer { padding-block: 72px 40px; }
   .js .menu-toggle { display: inline-flex; order: 4; }
   .js .top nav { order: 5; display: none; }
   .js .top nav.ouvert { display: block; }
+  .js .nav-appli { display: block; }
   .js .top nav ul { flex-direction: column; flex-wrap: nowrap; gap: 0; padding: 6px 0 10px; overflow: visible; }
   .js .top nav li + li { border-top: 1px solid var(--line); }
   .js .top nav a { display: flex; align-items: center; min-height: 50px; padding: 0 4px; font-size: 1.08rem; color: var(--ink); white-space: normal; }
@@ -833,16 +869,33 @@ footer { padding-block: 72px 40px; }
 }
 
 /* Page Interviews : encart « Vous souhaitez être interviewé ? » */
-.micro-box { margin-top: 24px; display: flex; gap: 14px 18px; align-items: center; flex-wrap: wrap; padding: 18px 22px; border-radius: var(--radius-lg); background: var(--brand-tint); border-left: 4px solid var(--brand); }
-.micro-box p { margin: 0; flex: 1 1 320px; }
-.micro-ic { flex: none; color: var(--brand); }
-.micro-box .btn { font-family: var(--font-mono); font-size: var(--step--1); }
+/* Petit lien en haut à droite d'un en-tête de page (« Vous souhaitez être interviewé ? ») */
+.page-head.has-coin { position: relative; }
+.coin-lien { position: absolute; top: 18px; right: 0; display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--sheet); color: var(--ink-soft); font-size: var(--step--1); text-decoration: none; transition: color .15s, border-color .15s; }
+.coin-lien svg { color: var(--brand); flex: none; }
+.coin-lien:hover, .coin-lien:focus-visible { color: var(--brand); border-color: var(--brand); }
+@media (max-width: 720px) { .coin-lien { position: static; margin-bottom: 14px; } }
 
 /* Page Stages : offres du réseau Impact et des entreprises partenaires de l'école */
 .offres-groupe + .offres-groupe { margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
 .offres-sous { font-family: var(--font-display); font-size: var(--step-1); margin: 0; }
 .offres-sous .fold-n { font-size: 0.62em; vertical-align: 0.2em; }
 .offres-sous-intro { margin: 6px 0 16px; color: var(--ink-soft); }
+/* Offres de l'ESTP sur JobTeaser : trois catégories en cartes, chiffres relevés à la main */
+.jt-cats { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.jt-cat { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border: 1px solid var(--line); border-top: 3px solid var(--jt, var(--brand)); border-radius: var(--radius); background: var(--sheet); }
+.jt-ciblee { --jt: var(--c-vert); }
+.jt-partenaire { --jt: var(--c-bleu); }
+.jt-reseau { --jt: var(--c-ambre); }
+.jt-n { font-family: var(--font-display); font-size: var(--step-2); font-weight: 700; line-height: 1; color: var(--jt); }
+.jt-n span { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); }
+.jt-t { font-family: var(--font-display); font-weight: 700; margin-top: 6px; }
+.jt-d { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.45; }
+.jt-go { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 16px; }
+.jt-go p { margin: 0; color: var(--ink-soft); font-size: var(--step--1); }
+.jt-sous { font-family: var(--font-display); font-size: var(--step-0); margin: 24px 0 12px; }
+.jt-vide { margin: 14px 0 0; color: var(--ink-soft); font-size: 0.95rem; }
+@media (max-width: 720px) { .jt-cats { grid-template-columns: 1fr; } .jt-cat { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 10px; } .jt-d { flex-basis: 100%; } .jt-t { margin-top: 0; } }
 
 /* Page Podcast */
 .pod-plateformes { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }

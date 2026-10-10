@@ -4,4 +4,5 @@ description: "CDC Habitat su Impact ESTP, il media studentesco delle costruzioni
 secteur: "Edilizia sociale e a canone intermedio"
 pays: "Francia"
 presentation: "Filiale immobiliare della Caisse des Dépôts, locatore di alloggi sociali e a canone intermedio."
+fun_fact: "Il suo antenato, la Sogima, è stato creato nel 1961 per dare un alloggio ai militari."
 ---

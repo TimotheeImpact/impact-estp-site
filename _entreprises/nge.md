@@ -11,4 +11,6 @@ site_web: "https://www.nge.fr"
 logo: "nge.png"
 wikipedia: "https://fr.wikipedia.org/wiki/Groupe_NGE"
 presentation: "Groupe français indépendant de travaux publics et de bâtiment."
+fun_fact: "NGE est né en 2002 du regroupement de trois entreprises, dont la plus ancienne date de 1947. Il compte aujourd'hui plus de 16 000 salariés."
+fun_fact_source: "https://fr.wikipedia.org/wiki/Groupe_NGE"
 ---

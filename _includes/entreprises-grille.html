@@ -1,7 +1,9 @@
 {%- comment -%}
   Grille des fiches entreprises (dossier _entreprises), avec logo, secteur et siège social.
   Filtres : offre de stage en cours (_data/offres_stage.yml), statut de l'interview (comme l'onglet Interviews),
-  zone du siège (champ « zone » des fiches), recherche par nom, tri A-Z ou Z-A.
+  zone du siège (champ « zone » des fiches), relation avec Impact, recherche par nom, tri A-Z ou Z-A.
+  Relation : « reseau » = au moins une interview (tournée ou prévue) ; « partenaire » = partenaire: true dans la fiche
+  ou dans une de ses interviews ; « relais » = aucune interview, l'entreprise est sur le site parce qu'on relaie ses offres.
 {%- endcomment -%}
 {%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
 {%- assign ta = t.annuaire -%}
@@ -11,6 +13,7 @@
 {%- assign avec_offre = site.data.offres_stage | map: "entreprise_id" | compact | uniq -%}
 {%- assign nb_offre = 0 -%}
 {%- assign nb_pub = 0 -%}{%- assign nb_prod = 0 -%}{%- assign nb_venir = 0 -%}
+{%- assign nb_reseau = 0 -%}{%- assign nb_part = 0 -%}{%- assign nb_relais = 0 -%}
 {%- capture cartes -%}
   {%- for e in fiches %}
   {%- include trad.html doc=e %}
@@ -24,13 +27,18 @@
   {%- elsif e_prod.size > 0 %}{% assign e_statut = "post-prod" %}{% assign nb_prod = nb_prod | plus: 1 %}
   {%- elsif e_venir.size > 0 %}{% assign e_statut = "a-venir" %}{% assign nb_venir = nb_venir | plus: 1 %}{% endif %}
   {%- assign e_offre = "" %}{% if avec_offre contains e.slug %}{% assign e_offre = "oui" %}{% assign nb_offre = nb_offre | plus: 1 %}{% endif %}
-  <li data-nom="{{ e.nom | downcase | escape }}" data-statut="{{ e_statut }}" data-zone="{{ e.zone }}" data-stage="{{ e_offre }}"><a href="{{ tr.url | relative_url }}">
+  {%- assign e_part_itv = e_itv | where: "partenaire", true %}
+  {%- assign e_part = false %}{% if e.partenaire or e_part_itv.size > 0 %}{% assign e_part = true %}{% assign nb_part = nb_part | plus: 1 %}{% endif %}
+  {%- capture e_relation -%}{% if e_itv.size > 0 %}reseau{% else %}relais{% endif %}{% if e_part %} partenaire{% endif %}{%- endcapture %}
+  {%- if e_itv.size > 0 %}{% assign nb_reseau = nb_reseau | plus: 1 %}{% else %}{% assign nb_relais = nb_relais | plus: 1 %}{% endif %}
+  <li data-nom="{{ e.nom | downcase | escape }}" data-statut="{{ e_statut }}" data-zone="{{ e.zone }}" data-stage="{{ e_offre }}" data-relation="{{ e_relation }}"><a href="{{ tr.url | relative_url }}">
     <span class="plate{% if e.logo == "" %} plate-text{% endif %}">{% if e.logo != "" %}<img src="{{ '/assets/img/logos/' | append: e.logo | relative_url }}" alt="" loading="lazy">{% else %}{{ e.nom }}{% endif %}</span>
     <span class="co-name">{{ e.nom }}</span>
     {%- if e_secteur != "" %}<span class="co-sector">{{ e_secteur }}</span>{% endif %}
     {%- assign e_zone = "" %}{% if e.zone and e.zone != "" %}{% assign e_zone = ta.zones[e.zone] | default: e.zone %}{% endif %}
     {%- if e.siege and e.siege != "" %}<span class="co-siege">{{ e.siege }}{% if e_zone != "" and e_zone != e.siege %}, {{ e_zone }}{% endif %}</span>
     {%- elsif e_zone != "" %}<span class="co-siege">{{ e_zone }}</span>{% endif %}
+    {%- if e_part %}<span class="tag co-tag co-part">{{ ta.partenaire_tag }}</span>{% endif %}
     {%- if e_offre == "oui" %}<span class="tag co-tag co-stage">{{ tst.offre_tag }}</span>{% endif %}
     {%- if e_statut == "publiee" %}<span class="tag co-tag co-pub">{{ ta.publiee }}</span>
     {%- elsif e_statut == "post-prod" %}<span class="tag co-tag">{{ ta.post_prod }}</span>
@@ -47,6 +55,13 @@
     <button type="button" data-filter="oui" aria-pressed="false">{{ tst.avec_offre }} ({{ nb_offre }})</button>
   </div>
   {%- endif %}
+  <div class="filters" data-co="relation" role="group" aria-label="{{ ta.relation }}">
+    <span class="label">{{ ta.relation }}</span>
+    <button type="button" data-filter="all" aria-pressed="true">{{ ta.toutes }}</button>
+    {%- if nb_reseau > 0 %}<button type="button" data-filter="reseau" aria-pressed="false" title="{{ ta.reseau_aide }}">{{ ta.reseau }} ({{ nb_reseau }})</button>{% endif %}
+    {%- if nb_part > 0 %}<button type="button" data-filter="partenaire" aria-pressed="false" title="{{ ta.partenaire_aide }}">{{ ta.partenaire }} ({{ nb_part }})</button>{% endif %}
+    {%- if nb_relais > 0 %}<button type="button" data-filter="relais" aria-pressed="false" title="{{ ta.relais_aide }}">{{ ta.relais }} ({{ nb_relais }})</button>{% endif %}
+  </div>
   <div class="filters" data-co="statut" role="group" aria-label="{{ ta.interview }}">
     <span class="label">{{ ta.interview }}</span>
     <button type="button" data-filter="all" aria-pressed="true">{{ ta.toutes }}</button>

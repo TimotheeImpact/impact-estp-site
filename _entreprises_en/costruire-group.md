@@ -4,4 +4,5 @@ description: "Costruire Group on Impact ESTP, the student media for construction
 secteur: "Construction and real estate development"
 pays: "Italy (Lake Maggiore)"
 presentation: "Long-established construction company on Lake Maggiore, which its CEO Emmanuel Bordignon is turning into a real estate developer."
+fun_fact: "The group is based in Verbania, on Lake Maggiore, Italy's second-largest lake after Lake Garda."
 ---

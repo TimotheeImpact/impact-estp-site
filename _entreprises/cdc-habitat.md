@@ -11,4 +11,6 @@ site_web: "https://www.cdc-habitat.fr"
 logo: "cdc-habitat.png"
 wikipedia: "https://fr.wikipedia.org/wiki/CDC_Habitat"
 presentation: "Filiale immobilière de la Caisse des Dépôts, bailleur de logements sociaux et intermédiaires."
+fun_fact: "Son ancêtre, la Sogima, a été créée en 1961 pour loger les militaires."
+fun_fact_source: "https://fr.wikipedia.org/wiki/CDC_Habitat"
 ---

@@ -67,6 +67,9 @@ accueil:
   titre: "Der Ingenieurberuf, erzählt von <em>denen, die ihn leben.</em>"
   lede: "Jede Woche ein Videointerview mit einer Führungskraft, einem Ingenieur oder einem Unternehmer aus der Bau- und Energiebranche. So wählst du dein Praktikum und deinen Beruf und weißt wirklich, was dich erwartet."
   btn_stage: "Praktikum finden"
+  info_tag: "Eilmeldung"
+  info_texte: "<b>Keine Lust mehr auf Lebensläufe, die Roboter aussortieren?</b> Hier führst du das Gespräch: Hör deiner künftigen Führungskraft zu und entscheide dann, ob du mit ihr arbeiten willst."
+  info_btn: "Mach mit"
   nouvelle: "Neues Interview"
   prochain_evt: "Nächster Termin"
   voir_agenda: "Im Kalender ansehen"
@@ -111,9 +114,7 @@ interviews:
   label: "Videointerviews"
   titre: "Die Menschen hinter Bau und Energie"
   intro: "25 bis 50 Minuten ungefiltertes Gespräch: der Werdegang, konkrete Projekte und was der Gast jemandem raten würde, der noch unsicher ist."
-  micro_label: "Ans Mikrofon"
-  micro_texte: "<b>Sie möchten interviewt werden?</b> Sie arbeiten im Bau oder in der Energie und Ihr Werdegang kann Studierenden Orientierung geben: Schreiben Sie uns direkt."
-  micro_objet: "Interview Impact ESTP"
+  micro_lien: "Sie möchten interviewt werden?"
   liste_aria: "Liste der Interviews"
   statut: "Status"
   statut_aria: "Nach Status filtern"
@@ -157,6 +158,8 @@ interview:
 
 entreprise:
   label: "Unternehmen"
+  fun_fact: "Schon gewusst?"
+  fun_fact_source: "Quelle"
   l_interview: "Das Interview"
   les_interviews: "Die Interviews"
   a_lire: "Zum Weiterlesen"
@@ -189,7 +192,7 @@ offre:
 stages:
   label: "Praktika und Berufseinstieg"
   titre: "Dein Praktikum in Bau und Energie"
-  intro: "Komm in den Talentpool, entdecke die Angebote der Unternehmen und bereite deine Bewerbungen mit unseren Unternehmenssteckbriefen vor."
+  intro: "Entdecke die Praktikumsangebote, tritt dem Talentpool bei und bereite deine Bewerbungen mit unseren Unternehmensprofilen vor."
   vivier_label: "Der Talentpool"
   vivier_titre: "Komm in den Impact-Talentpool"
   vivier_intro: "Die Unternehmen, die wir interviewen, suchen Praktikanten und junge Ingenieure. Hinterlass uns dein Profil: Wenn ein Angebot passt, schicken wir es dir zuerst."
@@ -200,14 +203,28 @@ stages:
   ouverture: "Die Anmeldung startet am 15. November 2026."
   offres_label: "Angebote der Unternehmen"
   offres_titre: "Die Praktikumsangebote"
-  offres_intro: "Praktika, duale Stellen und Einstiegsjobs in Bau und Energie, in zwei Gruppen: Angebote aus dem Netzwerk von Impact und Angebote der Partnerunternehmen der ESTP."
+  offres_intro: "Praktika, duale Stellen und erste Jobs in Bau und Energie: zuerst die Angebote, die Impact gefunden hat, dann die Angebote, die die ESTP auf JobTeaser veröffentlicht."
   offres_vide: "Die ersten Angebote erscheinen hier. Trag dich in den Talentpool ein, dann bekommst du sie zuerst"
   offres_vide_date: ", ab dem Start am 15. November 2026"
-  offres_impact_titre: "Das Impact-Netzwerk"
+  offres_impact_titre: "Angebote von Impact"
   offres_impact_intro: "Angebote, die wir selbst finden, oft bei Unternehmen, die schon bei uns am Mikrofon waren."
-  offres_ecole_titre: "Partnerunternehmen der ESTP"
-  offres_ecole_intro: "Angebote, die uns die Unternehmensbeziehungen der Hochschule weiterleiten."
-  offres_ecole_vide: "Die ersten Angebote der Partnerunternehmen der Hochschule erscheinen bald hier."
+  jt_titre: "Angebote der ESTP auf JobTeaser"
+  jt_intro: "Die Hochschule veröffentlicht ihre Angebote auf JobTeaser, in drei Kategorien. Wir übernehmen sie hier einzeln, sobald das jeweilige Unternehmen zugestimmt hat."
+  jt_nombre: "Angebote"
+  jt_btn: "Angebote auf JobTeaser ansehen"
+  jt_acces: "Anmeldung mit deinem ESTP-Konto."
+  jt_releve: "Zahlen vom %date%."
+  jt_vide: "Noch keines dieser Angebote ist hier veröffentlicht: Wir warten auf die Zustimmung der Unternehmen."
+  jt_cats:
+    ciblee:
+      titre: "Gezielte Angebote"
+      texte: "Das Unternehmen sucht gezielt eine Person von der ESTP."
+    partenaire:
+      titre: "Partnerangebote"
+      texte: "Veröffentlicht von einem Partnerunternehmen der Hochschule."
+    reseau:
+      titre: "Angebote aus dem Hochschulnetzwerk"
+      texte: "Veröffentlicht von Alumni und Studierenden der ESTP."
   recrutez: "<b>Sie stellen ein?</b> Schicken Sie uns Ihr Angebot für ein Praktikum, ein Werkstudium oder duales Studium oder eine Stelle: Wir veröffentlichen es hier und leiten es an die passenden Profile im Talentpool weiter."
   proposer_offre: "Angebot einreichen"
   entreprises_label: "Vor der Bewerbung"
@@ -296,6 +313,7 @@ formulaire:
     - { v: "Stage", l: "Praktikum" }
     - { v: "Proposer une offre de stage", l: "Praktikumsangebot einreichen" }
     - { v: "Proposer un invité pour une interview", l: "Gast für ein Interview vorschlagen" }
+    - { v: "Être interviewé", l: "Interviewt werden" }
     - { v: "Proposer un évènement", l: "Veranstaltung für den Kalender vorschlagen" }
     - { v: "Organiser un évènement avec Impact", l: "Veranstaltung mit Impact organisieren" }
     - { v: "Autre demande", l: "Sonstiges Anliegen" }
@@ -364,6 +382,9 @@ entreprises:
   label: "Für Unternehmen"
   titre: "Sprechen Sie die nächste Generation von Ingenieuren an"
   intro: "Unsere Zuschauer sind die Studierenden, die Sie einstellen möchten. Drei Wege der Zusammenarbeit."
+  annuaire_label: "Sie sind bei Impact"
+  annuaire_titre: "Die Unternehmen bei Impact"
+  annuaire_intro: "Die Unternehmen, mit denen wir gedreht haben, unsere Partner und die, deren Angebote wir weitergeben. Jedes hat ein eigenes Profil mit Interviews und Angeboten."
   offres_label: "Unsere Angebote"
   offres_titre: "Mit Impact zusammenarbeiten"
   confiance: "<b>Diese Unternehmen vertrauen uns.</b> Kaufman &amp; Broad hat uns mit einem Pack Chantier beauftragt: 3 Videos auf einer seiner Baustellen, gedreht im Oktober und November 2026. Eiffage Route vertraut uns Anfang November das Studiointerview mit seinem technischen Direktor an."
@@ -421,6 +442,14 @@ apropos:
     - "Von Studierenden wird erwartet, dass sie sich für eine Branche entscheiden, die sie kaum kennen und von der man ihnen nur eine Seite zeigt. Dabei sind die Berufe in Bau und Energie unglaublich vielfältig."
     - "Im März 2026 haben Studierende der ESTP Paris Impact gegründet, um das zu ändern: ungefilterte Videointerviews von 25 bis 50 Minuten mit den Führungskräften, Ingenieuren und Unternehmern, die die Branche prägen. Keine Hochglanzbroschüre, sondern ein echtes Gespräch, mit den Fragen, die sich Studierende wirklich stellen."
     - "Seitdem waren Gäste von NGE, VNF, Autodesk oder Aecon bei uns am Mikro, in Frankreich wie international, mit Interviews auf Französisch und Italienisch."
+  estp_label: "Unsere Hochschule"
+  estp_titre: "Die ESTP in Kürze"
+  estp:
+    - "Die ESTP ist die führende französische Ingenieurhochschule für das Bauwesen. 1891 von Léon Eyrolles gegründet und seit 1921 staatlich anerkannt, bildet sie Ingenieurinnen, Ingenieure und Führungskräfte für Hochbau, Tiefbau und Energie an sechs Standorten aus: Cachan, Paris, Dijon, Troyes, Orléans und Aix-en-Provence."
+    - "Über 50.000 Absolventinnen und Absolventen arbeiten heute in der Branche, vereint im Verband ESTP Alumni. Impact ESTP ist ein Verein von Studierenden der Hochschule, gegründet mit ihrer Zustimmung."
+  estp_site: "https://www.estp.fr/en/home-page/"
+  estp_site_btn: "Website der ESTP"
+  estp_alumni_btn: "ESTP Alumni, das Absolventennetzwerk"
   vision_titre: "Unsere Vision"
   vision_intro: "Impact will der Ort werden, an dem sich eine Generation von Ingenieuren ihre Meinung über Bau und Energie bildet."
   vision:
@@ -613,6 +642,14 @@ annuaire:
   trier: "Sortieren"
   tri_az: "A bis Z"
   tri_za: "Z bis A"
+  relation: "Beziehung"
+  reseau: "Impact-Netzwerk"
+  reseau_aide: "Unternehmen, mit denen wir gedreht haben oder drehen werden"
+  partenaire: "Partner"
+  partenaire_aide: "Unternehmen, die Impact unterstützen"
+  relais: "Auf der Website vertreten"
+  relais_aide: "Unternehmen, deren Angebote wir weitergeben"
+  partenaire_tag: "Partner"
   interview: "Interview"
   toutes: "Alle"
   publiee: "Interview online"
@@ -670,3 +707,30 @@ podcast:
   par: "von"
   chroniquer: "<b>Du möchtest eine Kolumne übernehmen?</b> Schlag dein Thema vor, wir helfen beim Schreiben und Aufnehmen."
   chroniquer_btn: "Kolumne vorschlagen"
+
+# Page « Installer l'appli » (/appli/) et bouton dans le pied de page et le menu mobile
+appli:
+  bouton: "App installieren"
+  label: "App"
+  titre: "Impact ESTP für die Hosentasche"
+  intro: "Kein App-Store nötig: Die Website lässt sich wie eine App installieren, mit eigenem Symbol auf dem Startbildschirm. Kostenlos, ohne Konto."
+  direct: "Jetzt installieren"
+  deja: "Die App ist auf diesem Gerät installiert. Viel Spaß beim Lesen!"
+  comment: "So wird sie installiert"
+  note: "Die App zeigt dieselben Inhalte wie die Website, immer aktuell. Zum Entfernen löschst du sie wie jede andere App."
+  appareils:
+    - t: "iPhone und iPad"
+      etapes:
+        - "Öffne impactestp.fr in Safari."
+        - "Tippe auf Teilen (das Quadrat mit dem Pfeil nach oben), manchmal im Menü „⋯“."
+        - "Wähle „Zum Home-Bildschirm“ und dann „Hinzufügen“."
+    - t: "Android"
+      etapes:
+        - "Öffne impactestp.fr in Chrome."
+        - "Tippe oben rechts auf das Menü ⋮."
+        - "Wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“."
+    - t: "Computer"
+      etapes:
+        - "Öffne impactestp.fr in Chrome oder Edge."
+        - "Klicke auf das Installationssymbol rechts in der Adressleiste."
+        - "Bestätige mit „Installieren“."

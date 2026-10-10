@@ -11,6 +11,71 @@
 </div>
 
 <div class="folds">
+{% include fold-ouvre.html id="offres" label=t.stages.offres_label titre=t.stages.offres_titre compte=offres.size %}
+  <p class="fold-intro">{{ t.stages.offres_intro }}</p>
+  {%- comment -%}
+    En haut, les offres trouvées par Impact (source « impact », par défaut). En dessous, les offres de l'ESTP sur JobTeaser
+    (source « jobteaser ») en trois catégories, avec les chiffres relevés dans _data/jobteaser.yml. Une offre JobTeaser
+    n'est publiée ici qu'avec l'accord écrit de l'entreprise.
+  {%- endcomment -%}
+  {%- assign offres_jt = offres | where: "source", "jobteaser" %}
+  {%- assign offres_impact = offres | where_exp: "o", "o.source != 'jobteaser'" %}
+  {%- assign jt = site.data.jobteaser %}
+  <section class="offres-groupe" aria-labelledby="t-offres-impact">
+    <h3 class="offres-sous" id="t-offres-impact">{{ t.stages.offres_impact_titre }}{% if offres_impact.size > 0 %} <span class="fold-n">{{ offres_impact.size }}</span>{% endif %}</h3>
+    <p class="offres-sous-intro">{{ t.stages.offres_impact_intro }}</p>
+    {%- if offres_impact.size > 0 %}
+    <div class="jobs">
+      {%- for o in offres_impact %}
+      {% include offre-stage.html offre=o %}
+      {%- endfor %}
+    </div>
+    {%- else %}
+    <div class="empty">
+      <p class="label">{{ t.commun.bientot }}</p>
+      <p>{{ t.stages.offres_vide }}{% if action == "" %}{{ t.stages.offres_vide_date }}{% endif %}.</p>
+    </div>
+    {%- endif %}
+  </section>
+  <section class="offres-groupe" aria-labelledby="t-offres-jt">
+    <h3 class="offres-sous" id="t-offres-jt">{{ t.stages.jt_titre }}{% if offres_jt.size > 0 %} <span class="fold-n">{{ offres_jt.size }}</span>{% endif %}</h3>
+    <p class="offres-sous-intro">{{ t.stages.jt_intro }}</p>
+    <ul class="jt-cats">
+      {%- for c in jt.categories %}
+      {%- assign tc = t.stages.jt_cats[c.id] %}
+      <li class="jt-cat jt-{{ c.id }}">
+        {%- if c.nombre and c.nombre > 0 %}<span class="jt-n">{{ c.nombre }} <span>{{ t.stages.jt_nombre }}</span></span>{% endif %}
+        <span class="jt-t">{{ tc.titre }}</span>
+        <span class="jt-d">{{ tc.texte }}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+    <div class="jt-go">
+      <a class="btn primary" href="{{ jt.lien }}">{{ t.stages.jt_btn }}</a>
+      <p>{{ t.stages.jt_acces }}{% if jt.releve %} {% capture d %}{% include date-fr.html date=jt.releve %}{% endcapture %}{{ t.stages.jt_releve | replace: "%date%", d }}{% endif %}</p>
+    </div>
+    {%- if offres_jt.size > 0 %}
+    {%- for c in jt.categories %}
+    {%- assign liste = offres_jt | where: "categorie", c.id %}
+    {%- if liste.size > 0 %}
+    <h4 class="jt-sous">{{ t.stages.jt_cats[c.id].titre }} <span class="fold-n">{{ liste.size }}</span></h4>
+    <div class="jobs">
+      {%- for o in liste %}
+      {% include offre-stage.html offre=o %}
+      {%- endfor %}
+    </div>
+    {%- endif %}
+    {%- endfor %}
+    {%- else %}
+    <p class="jt-vide">{{ t.stages.jt_vide }}</p>
+    {%- endif %}
+  </section>
+  <div class="contact-box">
+    <p>{{ t.stages.recrutez }}</p>
+    <a class="btn" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Proposer une offre de stage' | uri_escape }}">{{ t.stages.proposer_offre }}</a>
+  </div>
+</div></details>
+
 {% include fold-ouvre.html id="vivier" label=t.stages.vivier_label titre=t.stages.vivier_titre %}
   <p class="fold-intro">{{ t.stages.vivier_intro }}</p>
   <div class="pool">
@@ -73,48 +138,6 @@
   </div>
 </div></details>
 
-{% include fold-ouvre.html id="offres" label=t.stages.offres_label titre=t.stages.offres_titre compte=offres.size %}
-  <p class="fold-intro">{{ t.stages.offres_intro }}</p>
-  {%- comment -%} Deux familles d'offres : « impact » (réseau d'Impact, par défaut) et « ecole » (entreprises partenaires de l'école). {%- endcomment -%}
-  {%- assign offres_ecole = offres | where: "source", "ecole" %}
-  {%- assign offres_impact = offres | where_exp: "o", "o.source != 'ecole'" %}
-  <section class="offres-groupe" aria-labelledby="t-offres-impact">
-    <h3 class="offres-sous" id="t-offres-impact">{{ t.stages.offres_impact_titre }}{% if offres_impact.size > 0 %} <span class="fold-n">{{ offres_impact.size }}</span>{% endif %}</h3>
-    <p class="offres-sous-intro">{{ t.stages.offres_impact_intro }}</p>
-    {%- if offres_impact.size > 0 %}
-    <div class="jobs">
-      {%- for o in offres_impact %}
-      {% include offre-stage.html offre=o %}
-      {%- endfor %}
-    </div>
-    {%- else %}
-    <div class="empty">
-      <p class="label">{{ t.commun.bientot }}</p>
-      <p>{{ t.stages.offres_vide }}{% if action == "" %}{{ t.stages.offres_vide_date }}{% endif %}.</p>
-    </div>
-    {%- endif %}
-  </section>
-  <section class="offres-groupe" aria-labelledby="t-offres-ecole">
-    <h3 class="offres-sous" id="t-offres-ecole">{{ t.stages.offres_ecole_titre }}{% if offres_ecole.size > 0 %} <span class="fold-n">{{ offres_ecole.size }}</span>{% endif %}</h3>
-    <p class="offres-sous-intro">{{ t.stages.offres_ecole_intro }}</p>
-    {%- if offres_ecole.size > 0 %}
-    <div class="jobs">
-      {%- for o in offres_ecole %}
-      {% include offre-stage.html offre=o %}
-      {%- endfor %}
-    </div>
-    {%- else %}
-    <div class="empty">
-      <p class="label">{{ t.commun.bientot }}</p>
-      <p>{{ t.stages.offres_ecole_vide }}</p>
-    </div>
-    {%- endif %}
-  </section>
-  <div class="contact-box">
-    <p>{{ t.stages.recrutez }}</p>
-    <a class="btn" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Proposer une offre de stage' | uri_escape }}">{{ t.stages.proposer_offre }}</a>
-  </div>
-</div></details>
 
 {%- assign exemple = site.etudiants | sort: "ordre" | first %}
 {% include fold-ouvre.html id="profils" label=te.stages.profils_label titre=te.stages.profils_titre compte=site.etudiants.size %}
