@@ -29,6 +29,9 @@
     </nav>
     {%- assign lien = p | append: '/groupe-impact/' %}
     <a class="group-link" href="{{ lien | relative_url }}"{% if page.url == lien %} aria-current="page"{% endif %}>{{ t.commun.groupe_impact }}</a>
+    <button class="search-toggle" type="button" aria-haspopup="dialog" aria-controls="recherche" aria-label="{{ t.recherche.bouton }}" title="{{ t.recherche.bouton }}">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
     {%- assign lien = p | append: '/mon-profil/' %}
     <a class="profile-link" aria-label="{{ t.commun.mon_profil }}" href="{{ lien | relative_url }}"{% if page.url == lien %} aria-current="page"{% endif %}>
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -50,3 +53,15 @@
     </details>
   </div>
 </header>
+{%- comment -%} Fenêtre de recherche, ouverte par la loupe (ou Ctrl K). L'index est chargé à la première ouverture (voir _includes/recherche-index.json). {%- endcomment %}
+<dialog class="recherche" id="recherche" aria-labelledby="rech-titre" data-index="{{ p | append: '/recherche.json' | relative_url }}?v={{ site.time | date: '%s' }}" data-aucun="{{ t.recherche.aucun }}" data-un="{{ t.recherche.un }}" data-plusieurs="{{ t.recherche.plusieurs }}" data-chargement="{{ t.recherche.chargement }}" data-erreur="{{ t.recherche.erreur }}" data-proches="{{ t.recherche.proches }}" data-g1="{{ t.recherche.guillemets[0] }}" data-g2="{{ t.recherche.guillemets[1] }}">
+  <form class="rech-form" role="search">
+    <label class="visually-hidden" for="rech-q" id="rech-titre">{{ t.recherche.titre }}</label>
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input id="rech-q" type="search" name="q" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" placeholder="{{ t.recherche.placeholder }}" aria-describedby="rech-statut" aria-controls="rech-res">
+    <button class="rech-fermer" type="button" aria-label="{{ t.recherche.fermer }}"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </form>
+  <p class="rech-statut" id="rech-statut" role="status">{{ t.recherche.aide }}</p>
+  <ul class="rech-res" id="rech-res"></ul>
+  <p class="rech-astuce">{{ t.recherche.raccourci }}</p>
+</dialog>

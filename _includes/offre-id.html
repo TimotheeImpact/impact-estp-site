@@ -1,0 +1,10 @@
+{%- comment -%}
+  Identifiant d'une offre dans la page Stages (pour un lien direct, par exemple depuis la recherche).
+  Usage : {% capture id %}{% include offre-id.html offre=o %}{% endcapture %}
+{%- endcomment -%}
+{%- assign _oid = include.offre.entreprise | append: " " | append: include.offre.titre | slugify: "latin" | truncate: 60, "" -%}
+{%- if include.offre.lien and include.offre.lien != "" -%}
+  {%- assign _oid_fin = include.offre.lien | split: "/" | last | slugify: "latin" | slice: 0, 8 -%}
+  {%- assign _oid = _oid | append: "-" | append: _oid_fin -%}
+{%- endif -%}
+offre-{{ _oid }}

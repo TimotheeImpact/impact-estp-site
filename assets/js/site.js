@@ -202,11 +202,11 @@
     if (!id) return;
     var cible = document.getElementById(id);
     if (!cible) return;
-    var fold = cible.closest('details.fold');
-    if (fold && !fold.open) {
-      fold.open = true;
-      cible.scrollIntoView({ block: 'start' });
+    var ouvert = false;
+    for (var d = cible.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) {
+      if (!d.open) { d.open = true; ouvert = true; }
     }
+    if (ouvert) cible.scrollIntoView({ block: cible.classList.contains('job') ? 'center' : 'start' });
   };
   ouvrirDepuisAdresse();
   window.addEventListener('hashchange', ouvrirDepuisAdresse);
@@ -273,6 +273,7 @@
   if (boutonMenu && navPrincipale) {
     var basculerMenu = function (ouvrir) {
       navPrincipale.classList.toggle('ouvert', ouvrir);
+      document.documentElement.classList.toggle('menu-ouvert', ouvrir);
       boutonMenu.setAttribute('aria-expanded', ouvrir ? 'true' : 'false');
       boutonMenu.setAttribute('aria-label', boutonMenu.getAttribute(ouvrir ? 'data-fermer' : 'data-ouvrir'));
     };
@@ -281,6 +282,179 @@
       if (e.key === 'Escape' && boutonMenu.getAttribute('aria-expanded') === 'true') { basculerMenu(false); boutonMenu.focus(); }
     });
     window.addEventListener('resize', function () { if (window.innerWidth > 900) basculerMenu(false); });
+  }
+
+  // Recherche dans tout le site : la loupe en haut (ou Ctrl K, ou « / ») ouvre la fenêtre.
+  // L'index (/recherche.json, une version par langue) est chargé à la première ouverture seulement.
+  var rech = document.getElementById('recherche');
+  var boutonRech = document.querySelector('.search-toggle');
+  if (rech && boutonRech && typeof rech.showModal === 'function') {
+    var champRech = rech.querySelector('input[type="search"]');
+    var listeRech = rech.querySelector('.rech-res');
+    var statutRech = rech.querySelector('.rech-statut');
+    var aideRech = statutRech.textContent;
+    var indexRech = null;
+    var chargementRech = null;
+    var poids = { page: 3, interview: 2, entreprise: 2, venir: 1, article: 1 };
+    // minuscules, sans accents (« Énergie » = « energie »)
+    var sansAccents = function (s) {
+      return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/œ/g, 'oe').replace(/æ/g, 'ae');
+    };
+    var pourChercher = function (s) { return ' ' + sansAccents(s).replace(/[^a-z0-9]+/g, ' ').trim() + ' '; };
+    // Met en avant les mots trouvés (balises <mark>), sans jamais écrire de HTML
+    var surligner = function (texte, mots) {
+      var frag = document.createDocumentFragment();
+      var n = '', pos = [];
+      for (var i = 0; i < texte.length; i++) {
+        var c = sansAccents(texte.charAt(i));
+        for (var j = 0; j < c.length; j++) { n += c.charAt(j); pos.push(i); }
+      }
+      var marque = [];
+      mots.forEach(function (m) {
+        var k = n.indexOf(m);
+        while (k !== -1) {
+          for (var q = k; q < k + m.length; q++) marque[pos[q]] = true;
+          k = n.indexOf(m, k + m.length);
+        }
+      });
+      var debut = 0;
+      for (var f = 1; f <= texte.length; f++) {
+        if (f === texte.length || !!marque[f] !== !!marque[debut]) {
+          var bout = texte.slice(debut, f);
+          if (marque[debut]) { var mk = document.createElement('mark'); mk.textContent = bout; frag.appendChild(mk); }
+          else frag.appendChild(document.createTextNode(bout));
+          debut = f;
+        }
+      }
+      return frag;
+    };
+    var chercher = function () {
+      var brut = champRech.value.trim();
+      var mots = pourChercher(brut).trim().split(' ').filter(Boolean);
+      if (mots.length > 1) {
+        var longs = mots.filter(function (m) { return m.length > 1; });
+        if (longs.length) mots = longs;
+      }
+      listeRech.textContent = '';
+      if (!mots.length) { statutRech.textContent = aideRech; return; }
+      if (!indexRech) { statutRech.textContent = rech.getAttribute('data-chargement'); return; }
+      // Un mot rare (« bouygues ») compte plus qu'un mot courant (« stage »)
+      var rarete = mots.map(function (m) {
+        var n = 0;
+        indexRech.forEach(function (e) { if (e.nt.indexOf(m) !== -1 || e.ns.indexOf(m) !== -1 || e.nx.indexOf(m) !== -1) n++; });
+        return 1 + Math.log((indexRech.length + 1) / (n + 1));
+      });
+      var res = [];
+      var meilleur = 0;
+      indexRech.forEach(function (e, ordre) {
+        var score = poids[e.c] || 0;
+        var trouves = 0;
+        for (var i = 0; i < mots.length; i++) {
+          var m = mots[i];
+          var pts = 0;
+          if (e.nt.indexOf(' ' + m) !== -1) pts = 12;
+          else if (e.nt.indexOf(m) !== -1) pts = 7;
+          else if (e.ns.indexOf(m) !== -1) pts = 4;
+          else if (e.nx.indexOf(m) !== -1) pts = 1;
+          if (pts) { trouves++; score += pts * rarete[i]; }
+        }
+        if (!trouves) return;
+        if (trouves > meilleur) meilleur = trouves;
+        res.push({ e: e, s: score, n: trouves, o: ordre });
+      });
+      res = res.filter(function (r) { return r.n === meilleur; });
+      res.sort(function (a, b) { return b.s - a.s || a.o - b.o; });
+      if (!res.length) {
+        statutRech.textContent = rech.getAttribute('data-aucun') + ' ' + rech.getAttribute('data-g1') + brut + rech.getAttribute('data-g2');
+        return;
+      }
+      statutRech.textContent = res.length + ' ' + rech.getAttribute(res.length > 1 ? 'data-plusieurs' : 'data-un');
+      if (meilleur < mots.length) statutRech.textContent = rech.getAttribute('data-proches') + ' (' + statutRech.textContent + ')';
+      res.slice(0, 20).forEach(function (r) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.className = 'rech-lien';
+        a.href = r.e.u;
+        var k = document.createElement('span');
+        k.className = 'rech-k rech-' + r.e.c;
+        k.textContent = r.e.k;
+        var t = document.createElement('span');
+        t.className = 'rech-t';
+        t.appendChild(surligner(r.e.t, mots));
+        a.appendChild(k);
+        a.appendChild(t);
+        if (r.e.s) {
+          var st = document.createElement('span');
+          st.className = 'rech-s';
+          st.appendChild(surligner(r.e.s, mots));
+          a.appendChild(st);
+        }
+        li.appendChild(a);
+        listeRech.appendChild(li);
+      });
+    };
+    var chargerRech = function () {
+      if (indexRech || chargementRech) return;
+      chargementRech = fetch(rech.getAttribute('data-index'), { credentials: 'same-origin' })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (d) {
+          indexRech = d.filter(Boolean).map(function (e) {
+            e.nt = pourChercher(e.t);
+            e.ns = pourChercher(e.s);
+            e.nx = pourChercher(e.k + ' ' + e.x);
+            return e;
+          });
+          chercher();
+        })
+        .catch(function () {
+          chargementRech = null;
+          statutRech.textContent = rech.getAttribute('data-erreur');
+        });
+    };
+    var ouvrirRech = function () {
+      if (!rech.open) rech.showModal();
+      chargerRech();
+      champRech.focus();
+      champRech.select();
+    };
+    boutonRech.addEventListener('click', ouvrirRech);
+    rech.querySelector('.rech-fermer').addEventListener('click', function () { rech.close(); });
+    // Un clic à côté de la fenêtre la ferme
+    rech.addEventListener('click', function (e) {
+      if (e.target === rech) rech.close();
+      else if (e.target.closest && e.target.closest('.rech-lien')) rech.close();
+    });
+    champRech.addEventListener('input', chercher);
+    rech.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var premier = listeRech.querySelector('a');
+      if (premier) { rech.close(); window.location.href = premier.href; }
+    });
+    // Flèches haut et bas pour passer d'un résultat à l'autre
+    rech.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      var liens = Array.prototype.slice.call(listeRech.querySelectorAll('a'));
+      if (!liens.length) return;
+      var i = liens.indexOf(document.activeElement);
+      e.preventDefault();
+      if (e.key === 'ArrowDown') (liens[i + 1] || liens[0]).focus();
+      else if (i <= 0) champRech.focus();
+      else liens[i - 1].focus();
+    });
+    document.addEventListener('keydown', function (e) {
+      var cible = e.target;
+      var saisie = cible && (cible.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(cible.tagName));
+      if ((e.key === 'k' || e.key === 'K') && (e.ctrlKey || e.metaKey) && !e.altKey) { e.preventDefault(); ouvrirRech(); }
+      else if (e.key === '/' && !saisie && !e.ctrlKey && !e.metaKey && !e.altKey && !rech.open) { e.preventDefault(); ouvrirRech(); }
+    });
+  }
+
+  // Téléphone : le bouton flottant « Installer l'appli » s'efface quand le pied de page (et son propre bouton) est à l'écran
+  var piedPage = document.querySelector('body > footer');
+  if (piedPage && document.querySelector('.appli-flottant') && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entrees) {
+      document.documentElement.classList.toggle('pied-visible', entrees[0].isIntersecting);
+    }).observe(piedPage);
   }
 
   // Fiches entreprises : les flèches du clavier passent à la fiche précédente ou suivante

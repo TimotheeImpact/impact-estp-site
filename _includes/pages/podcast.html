@@ -16,10 +16,12 @@
     <p class="label" id="t-plateformes">{{ tp.ecouter }}</p>
     <ul class="pod-plateformes">
       {%- for pl in pod.plateformes %}
-      <li>{% if pl.lien and pl.lien != "" %}<a class="btn" href="{{ pl.lien }}">{{ pl.nom }}</a>{% else %}<span class="btn pod-bientot" aria-disabled="true">{{ pl.nom }} <small>{{ tp.bientot }}</small></span>{% endif %}</li>
+      <li>{% if pl.lien and pl.lien != "" %}<a class="btn primary pod-btn" href="{{ pl.lien }}">{% if pl.nom == "Spotify" %}<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="currentColor"/><path d="M6.8 9.4c3.4-1 7.6-.7 10.6 1.1M7.3 12.4c2.8-.8 6.1-.5 8.6 1M7.8 15.2c2.2-.6 4.6-.4 6.6.8" fill="none" stroke-width="1.7" stroke-linecap="round"/></svg>{% endif %}{{ pl.nom }}</a>{% else %}<span class="btn pod-bientot" aria-disabled="true">{{ pl.nom }} <small>{{ tp.bientot }}</small></span>{% endif %}</li>
       {%- endfor %}
     </ul>
-    <p class="pod-note">{{ tp.note }}</p>
+    {%- if pod.rss and pod.rss != "" %}
+    <p class="pod-note">{{ tp.note }} <a href="{{ pod.rss }}">{{ tp.rss }}</a></p>
+    {%- endif %}
   </div>
 </section>
 
@@ -32,7 +34,7 @@
     {%- include trad.html doc=i %}
     <li>
       <span class="pod-num">#{{ i.numero }}</span>
-      <span class="pod-txt"><b>{{ i.invite }}</b>{% if i.entreprise and i.entreprise != "" %}, {{ i.entreprise }}{% endif %}<a href="{{ tr.url | relative_url }}">{{ tr.title }}</a></span>
+      <span class="pod-txt"><span><b>{% if i.invite and i.invite != "" %}{{ i.invite }}{% else %}{{ tr.poste | default: i.poste }}{% endif %}</b>{% if i.entreprise and i.entreprise != "" %}, {{ i.entreprise }}{% endif %}</span><a href="{{ tr.url | relative_url }}">{{ tr.title }}</a></span>
       <a class="btn primary" href="{{ i.audio }}">{{ tp.ecouter_btn }}</a>
     </li>
     {%- endfor %}

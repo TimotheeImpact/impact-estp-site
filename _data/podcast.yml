@@ -1,22 +1,17 @@
 # Le podcast d'Impact ESTP (page Podcast) : les interviews en version audio et la rubrique « Chroniques audio ».
 #
-# 1. Plateformes : colle l'adresse de la page du podcast sur chaque plateforme dès qu'elle existe.
-#    Tant que « lien » est vide, le bouton affiche « Bientôt ».
+# 1. Plateformes : le podcast est sur Spotify (choix de Timo, 10 octobre 2026). Pour en ajouter une autre plus tard,
+#    recopie le bloc Spotify avec son nom et son lien.
+#    « rss » : le flux RSS du podcast, pour les autres applis de podcast.
 # 2. Les interviews en audio : dans la fiche de l'interview (dossier _interviews), ajoute la ligne
 #    audio: "https://..." (lien vers l'épisode). L'interview apparaît alors automatiquement dans la page Podcast.
 # 3. Chroniques audio : enlève les # devant le bloc d'exemple, remplis-le, et garde les espaces.
 
 plateformes:
   - nom: "Spotify"
-    lien: ""
-  - nom: "Apple Podcasts"
-    lien: ""
-  - nom: "Deezer"
-    lien: ""
-  - nom: "Amazon Music"
-    lien: ""
-  - nom: "YouTube Music"
-    lien: ""
+    lien: "https://open.spotify.com/show/54pEr0nkXxLYUNqw5nmnwK"
+
+rss: "https://anchor.fm/s/11858edb4/podcast/rss"
 
 chroniques:
 # - titre: "Pourquoi le béton bas-carbone coûte encore plus cher"

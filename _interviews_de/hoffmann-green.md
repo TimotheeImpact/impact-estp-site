@@ -1,5 +1,5 @@
 ---
-title: "Julien Blanchard, Vorstandsvorsitzender von Hoffmann Green Cement Technologies"
+title: "Der Vorstandsvorsitzende von Hoffmann Green Cement Technologies"
 poste: "Vorstandsvorsitzender"
 quand: "Anfang Dezember 2026"
 ---

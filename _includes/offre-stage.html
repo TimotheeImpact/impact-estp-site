@@ -16,7 +16,8 @@
 {%- capture o_debut %}{% include tr.html o=o k="debut" %}{% endcapture -%}
 {%- capture o_lieu %}{% include tr.html o=o k="lieu" %}{% endcapture -%}
 {%- capture o_desc %}{% include tr.html o=o k="description" %}{% endcapture -%}
-<article class="job{% if include.sans_logo %} job-sans-logo{% endif %}">
+{%- capture o_id %}{% include offre-id.html offre=o %}{% endcapture -%}
+<article class="job{% if include.sans_logo %} job-sans-logo{% endif %}" id="{{ o_id | strip }}">
   {%- unless include.sans_logo %}
   <span class="plate job-plate{% unless fiche and fiche_fr.logo != "" %} plate-text{% endunless %}">
     {%- if fiche and fiche_fr.logo != "" %}<img src="{{ '/assets/img/logos/' | append: fiche_fr.logo | relative_url }}" alt="{{ o.entreprise }}" loading="lazy">{% else %}{{ o.entreprise }}{% endif -%}

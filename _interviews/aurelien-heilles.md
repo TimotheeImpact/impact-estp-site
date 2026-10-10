@@ -11,6 +11,7 @@ langue: fr
 youtube: "https://youtu.be/VAD3QDADkAw"
 duree: "31 min"
 numero: 2
+audio: "https://podcasters.spotify.com/pod/show/impact-estp1/episodes/Pathologies-du-btiment--expertise-indpendante-et-entrepreneuriat-e3q9tb4"
 ---
 Handball de haut niveau, puis 13 ans à la tête d'une entreprise de 30 collaborateurs : Aurélien Heilles est aujourd'hui expert en bâtiment indépendant et fondateur d'Aulea Expertise, en Nouvelle-Aquitaine.
 

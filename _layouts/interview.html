@@ -156,7 +156,8 @@ layout: default
 </script>
 {%- endif %}
 
-{%- assign autres = site.interviews | where_exp: "i", "i.slug != src.slug" | sort: "numero" | reverse %}
+{%- comment -%} « À voir aussi » : seulement les interviews déjà publiées (avec un lien YouTube). {%- endcomment %}
+{%- assign autres = site.interviews | where_exp: "i", "i.slug != src.slug" | where_exp: "i", "i.youtube" | where_exp: "i", "i.youtube != ''" | sort: "numero" | reverse %}
 {%- if autres.size > 0 %}
 <section class="block" aria-labelledby="t-autres">
   <div class="head">

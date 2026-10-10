@@ -1,5 +1,5 @@
 ---
-title: "Julien Blanchard, Chairman of the Management Board of Hoffmann Green Cement Technologies"
+title: "The Chairman of the Management Board of Hoffmann Green Cement Technologies"
 poste: "Chairman of the Management Board"
 quand: "Early December 2026"
 ---

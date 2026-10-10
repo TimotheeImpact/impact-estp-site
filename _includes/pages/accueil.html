@@ -75,12 +75,16 @@
   {%- endif %}
 </div>
 
-{%- comment -%} Bandeau penché « Info spéciale » (texte dans _data/textes, rubrique accueil > info_*). {%- endcomment %}
-<aside class="info-speciale" aria-label="{{ t.accueil.info_tag }}">
-  <div class="info-speciale-in">
-    <span class="info-tag"><span class="info-dot" aria-hidden="true"></span>{{ t.accueil.info_tag }}</span>
-    <p>{{ t.accueil.info_texte }}</p>
-    <a class="btn info-btn" href="{{ p | append: '/stages/' | relative_url }}#vivier">{{ t.accueil.info_btn }}</a>
+{%- comment -%} Encadré « Info spéciale », inspiré de l'affiche de recrutement (textes dans _data/textes, rubrique accueil > info_*). {%- endcomment %}
+<aside class="info-speciale" aria-labelledby="t-info">
+  <span class="info-tag"><span class="info-dot" aria-hidden="true"></span>{{ t.accueil.info_tag }}</span>
+  <div class="info-corps">
+    <p class="info-titre" id="t-info">{{ t.accueil.info_titre }}</p>
+    <p class="info-sous">{{ t.accueil.info_texte }}</p>
+  </div>
+  <div class="info-cote">
+    <p class="info-roles">{{ t.accueil.info_roles }}</p>
+    <a class="btn primary" href="{{ p | append: '/a-propos/#equipe' | relative_url }}">{{ t.accueil.info_btn }}<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </div>
 </aside>
 

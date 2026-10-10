@@ -1,5 +1,5 @@
 ---
-title: "Julien Blanchard, presidente del consiglio di gestione di Hoffmann Green Cement Technologies"
+title: "Il presidente del consiglio di gestione di Hoffmann Green Cement Technologies"
 poste: "Presidente del consiglio di gestione"
 quand: "Inizio dicembre 2026"
 ---

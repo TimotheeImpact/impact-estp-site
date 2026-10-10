@@ -1,0 +1,68 @@
+{%- comment -%}
+  Index de la barre de recherche (une liste par langue : /recherche.json, /en/recherche.json…).
+  Rien à remplir à la main : il se refait tout seul à chaque mise en ligne, à partir des pages, interviews,
+  fiches entreprises, offres, évènements, articles et profils étudiants.
+  Chaque ligne : k = type affiché, c = code du type, t = titre, s = sous-titre, x = mots en plus pour trouver, u = adresse.
+{%- endcomment -%}
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign tk = t.recherche.types -%}
+{%- assign p = page.prefixe | default: "" -%}
+{%- assign _auj = site.time | date: "%Y-%m-%d" -%}
+{%- assign _url_accueil = p | append: "/" -%}
+[
+{%- comment -%} Pages du site dans la langue de la page {%- endcomment -%}
+{%- for pg in site.pages -%}
+  {%- if pg.lang != page.lang or pg.title == nil or pg.sitemap == false -%}{%- continue -%}{%- endif -%}
+  {%- unless pg.layout == "default" or pg.layout == "page" -%}{%- continue -%}{%- endunless -%}
+  {%- if pg.url == _url_accueil -%}{%- continue -%}{%- endif %}
+{"c":"page","k":{{ tk.page | jsonify }},"t":{{ pg.title | strip_html | jsonify }},"s":{{ pg.description | default: pg.intro | strip_html | normalize_whitespace | truncate: 140 | jsonify }},"x":"","u":{{ pg.url | relative_url | jsonify }}},
+{%- endfor -%}
+{%- comment -%} Interviews (publiées, en montage, à venir) {%- endcomment -%}
+{%- for i in site.interviews -%}
+  {%- include trad.html doc=i -%}
+  {%- assign _theme = site.data.themes | where: "id", i.theme | first -%}
+  {%- capture _theme_nom %}{% if _theme %}{% include tr.html o=_theme k="nom" %}{% endif %}{% endcapture -%}
+  {%- assign _k = tk.interview -%}{%- assign _c = "interview" -%}
+  {%- if i.a_venir -%}{%- assign _k = tk.interview_venir -%}{%- assign _c = "venir" -%}{%- elsif i.post_prod -%}{%- assign _k = tk.interview_montage -%}{%- assign _c = "venir" -%}{%- endif -%}
+  {%- capture _s %}{% if i.invite and i.invite != "" %}{{ i.invite }}, {% endif %}{{ tr.poste | default: i.poste }}{% if i.entreprise and i.entreprise != "" %}, {{ i.entreprise }}{% endif %}{% endcapture -%}
+  {%- capture _x %}{{ _theme_nom }} {{ tr.description | default: i.description }} {{ tr.content | strip_html | truncatewords: 60, "" }}{% endcapture %}
+{"c":{{ _c | jsonify }},"k":{{ _k | jsonify }},"t":{{ tr.title | strip_html | jsonify }},"s":{{ _s | strip | normalize_whitespace | jsonify }},"x":{{ _x | strip_html | normalize_whitespace | jsonify }},"u":{{ tr.url | relative_url | jsonify }}},
+{%- endfor -%}
+{%- comment -%} Fiches entreprises {%- endcomment -%}
+{%- for e in site.entreprises -%}
+  {%- include trad.html doc=e -%}
+  {%- capture _s %}{{ tr.secteur | default: e.secteur }}{% if e.siege and e.siege != "" %} · {{ e.siege }}{% endif %}{% endcapture -%}
+  {%- capture _x %}{{ e.nom_complet }} {{ e.pays }} {{ tr.presentation | default: e.presentation }} {{ tr.fun_fact | default: e.fun_fact }}{% endcapture %}
+{"c":"entreprise","k":{{ tk.entreprise | jsonify }},"t":{{ e.nom | default: e.nom_complet | jsonify }},"s":{{ _s | strip | normalize_whitespace | jsonify }},"x":{{ _x | strip_html | normalize_whitespace | jsonify }},"u":{{ tr.url | relative_url | jsonify }}},
+{%- endfor -%}
+{%- comment -%} Offres de stage et d'emploi (lien vers l'offre dans la page Stages) {%- endcomment -%}
+{%- assign _url_stages = p | append: "/stages/" | relative_url -%}
+{%- for o in site.data.offres_stage -%}
+  {%- if o.publiee == false -%}{%- continue -%}{%- endif -%}
+  {%- capture _t %}{% include tr.html o=o k="titre" %}{% endcapture -%}
+  {%- capture _type %}{% include tr.html o=o k="type" %}{% endcapture -%}
+  {%- capture _lieu %}{% include tr.html o=o k="lieu" %}{% endcapture -%}
+  {%- capture _desc %}{% include tr.html o=o k="description" %}{% endcapture -%}
+  {%- capture _id %}{% include offre-id.html offre=o %}{% endcapture -%}
+  {%- capture _s %}{{ o.entreprise }}{% if _lieu != "" %} · {{ _lieu }}{% endif %}{% endcapture %}
+{"c":"offre","k":{{ _type | strip | default: tk.offre | jsonify }},"t":{{ _t | strip | jsonify }},"s":{{ _s | strip | normalize_whitespace | jsonify }},"x":{{ _desc | append: " " | append: tk.offre | strip_html | normalize_whitespace | truncate: 300 | jsonify }},"u":{{ _url_stages | append: "#" | append: _id | strip | jsonify }}},
+{%- endfor -%}
+{%- comment -%} Évènements à venir de l'agenda {%- endcomment -%}
+{%- assign _url_evts = p | append: "/evenements/" | relative_url -%}
+{%- for e in site.data.evenements -%}
+  {%- assign _fin = e.fin | default: e.debut -%}
+  {%- if _fin < _auj -%}{%- continue -%}{%- endif -%}
+  {%- capture _t %}{% include tr.html o=e k="titre" %}{% endcapture -%}
+  {%- capture _s %}{{ e.debut | date: "%d/%m/%Y" }}{% if e.ville and e.ville != "" %} · {{ e.ville }}{% endif %}{% endcapture %}
+{"c":"evenement","k":{{ tk.evenement | jsonify }},"t":{{ _t | strip | jsonify }},"s":{{ _s | strip | jsonify }},"x":{{ e.lieu | append: " " | append: e.organisateur | append: " " | append: e.region | append: " " | append: tk.evenement | normalize_whitespace | jsonify }},"u":{{ _url_evts | append: "#evt-" | append: e.id | jsonify }}},
+{%- endfor -%}
+{%- comment -%} Articles de presse (en français) {%- endcomment -%}
+{%- for a in site.posts %}
+{"c":"article","k":{{ tk.article | jsonify }},"t":{{ a.title | strip_html | jsonify }},"s":{{ a.date | date: "%d/%m/%Y" | jsonify }},"x":{{ a.excerpt | strip_html | normalize_whitespace | truncatewords: 50, "" | jsonify }},"u":{{ a.url | relative_url | jsonify }}},
+{%- endfor -%}
+{%- comment -%} Profils d'étudiants qui cherchent un stage (déjà publics, avec leur accord) {%- endcomment -%}
+{%- for s in site.etudiants -%}
+  {%- include trad.html doc=s %}
+{"c":"profil","k":{{ tk.profil | jsonify }},"t":{{ tr.accroche | default: s.accroche | jsonify }},"s":{{ s.prenom | append: " · " | append: s.ecole | jsonify }},"x":"","u":{{ tr.url | relative_url | jsonify }}},
+{%- endfor %}
+null]
