@@ -151,15 +151,16 @@ cloudflare_analytics: ""
 # Adresse d'envoi des formulaires (vivier de stages, candidatures à l'équipe, contact).
 # Le code après formsubmit.co remplace l'adresse contact@impactestp.fr, pour ne pas l'afficher dans le code du site.
 # Voir le mode d'emploi dans README.md, partie « Brancher les formulaires ».
-# Tant que c'est vide, les formulaires affichent « Ouverture le 15 novembre ».
-formulaire_vivier: ""
+# Si on vide une adresse, le formulaire se ferme et affiche « Les inscriptions ouvrent très bientôt ».
+# Vivier ouvert le 11 octobre 2026 (Timo n'attend plus le 15 novembre).
+formulaire_vivier: "https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf"
 formulaire_equipe: "https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf"
 formulaire_contact: "https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf"
 # Newsletter mensuelle (page Presse) : les inscriptions arrivent par mail sur contact@, comme les autres formulaires.
 # Le formulaire s'ouvre tout seul à la date « newsletter_ouverture » (année-mois-jour).
-# Si on change la date, changer aussi la phrase « ferme » de la partie newsletter dans _data/textes/fr.yml, en.yml, it.yml et de.yml.
+# Ouverte le 11 octobre 2026. Avant cette date, le formulaire affiche la phrase « ferme » de la partie newsletter (_data/textes/*.yml).
 formulaire_newsletter: "https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf"
-newsletter_ouverture: "2026-11-15"
+newsletter_ouverture: "2026-10-11"
 # Copie automatique des inscriptions au vivier dans un Google Sheets privé (accord écrit de Timo le 2026-10-04).
 # Coller ici l'adresse « /exec » de l'application Apps Script (mode d'emploi : README, partie « Le vivier dans Google Sheets »).
 # Tant que c'est vide, rien n'est envoyé vers Google et la phrase sur Google Sheets n'apparaît pas dans la page Confidentialité.

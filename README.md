@@ -13,7 +13,7 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | Les fiches entreprises (une page par entreprise, pour Google) | dossier `_entreprises` |
 | Les offres de stage de la page Stages (ligne `source` : `impact` pour les offres trouvées par Impact, `jobteaser` pour une offre de l'ESTP publiée avec l'accord de l'entreprise, avec `categorie` : `ciblee`, `partenaire` ou `reseau`) | `_data/offres_stage.yml` |
 | Les chiffres des offres de l'ESTP sur JobTeaser (74 ciblées, 20 partenaires, 9 réseau école au 10 octobre 2026) et la date du relevé | `_data/jobteaser.yml` |
-| Le podcast : lien Spotify, flux RSS, chroniques audio | `_data/podcast.yml` (et la ligne `audio:` dans la fiche d'une interview pour l'ajouter à la page Podcast) |
+| Le podcast : lien Spotify, flux RSS, la chronique d'Éric | `_data/podcast.yml` (et la ligne `audio:` dans la fiche d'une interview : elle s'ajoute à la page Podcast, le bouton « Écouter sur Spotify » de sa page et de la fiche entreprise mène à l'épisode, et sa carte prend l'étiquette « Podcast ») |
 | Les profils des étudiants qui cherchent un stage (page Entreprises) | dossier `_etudiants` |
 | La newsletter de la page Presse (date d'ouverture des inscriptions, adresse d'envoi) | `_config.yml` (`newsletter_ouverture`, `formulaire_newsletter`) et la partie `newsletter` de `_data/textes/fr.yml`, `en.yml`, `it.yml`, `de.yml` |
 | L'agenda des évènements (page Évènements et accueil) | `_data/evenements.yml` |
@@ -135,7 +135,7 @@ La page Évènements (`/evenements/`) liste les salons, forums étudiants et con
 
 ## Sur téléphone
 
-Sur téléphone et tablette, les pages sont rangées derrière le bouton « Menu » en haut à droite. Le site peut aussi s'installer comme une application : dans le navigateur du téléphone, « Ajouter à l'écran d'accueil » pose l'icône Impact (fichier `manifest.webmanifest`, icônes `assets/img/icon-*.png`). Le bouton « Installer l'appli » (pied de page et menu du téléphone) ouvre directement la fenêtre d'installation sur Chrome, Edge et Android ; ailleurs, il mène à la page `/appli/`, qui explique comment faire sur iPhone, Android et ordinateur. Sur téléphone, un petit bouton flottant « Installer l'appli » reste aussi en bas à gauche de l'écran (il s'efface quand le pied de page apparaît). Ces boutons disparaissent quand le site est ouvert depuis l'appli.
+Sur téléphone et tablette, les pages sont rangées derrière le bouton « Menu » en haut à droite. Le site peut aussi s'installer comme une application : dans le navigateur du téléphone, « Ajouter à l'écran d'accueil » pose l'icône Impact (fichier `manifest.webmanifest`, icônes `assets/img/icon-*.png`). Le bouton « Installer l'appli » (pied de page et menu du téléphone) ouvre directement la fenêtre d'installation sur Chrome, Edge et Android ; ailleurs, il mène à la page `/appli/`, qui explique comment faire sur iPhone, Android et ordinateur. Sur téléphone, l'accueil a aussi un lien « Installer l'appli » sous ses deux boutons du haut. Ces boutons disparaissent quand le site est ouvert depuis l'appli.
 
 ## Animation de l'accueil et parties dépliables
 
@@ -158,7 +158,7 @@ Le site ne se reconstruit qu'à chaque enregistrement : pour une parution le mar
 
 Les formulaires (vivier de stages, candidatures à l'équipe avec CV, contact avec 2 pièces jointes) passent par FormSubmit (formsubmit.co) : gratuit, sans compte, pièces jointes acceptées (5 Mo maximum par fichier). Les réponses arrivent par mail, CV en pièce jointe.
 
-1. Dans `_config.yml`, mets `https://formsubmit.co/` suivi de l'adresse qui doit recevoir les réponses, sur les lignes `formulaire_equipe` et `formulaire_contact` (et `formulaire_vivier` le jour de l'ouverture du vivier). Le site utilise déjà le code secret FormSubmit de contact@impactestp.fr (reçu le 4 octobre 2026) : `https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf`. Le jour de l'ouverture du vivier, recopie la même adresse sur la ligne `formulaire_vivier`.
+1. Dans `_config.yml`, mets `https://formsubmit.co/` suivi de l'adresse qui doit recevoir les réponses, sur les lignes `formulaire_equipe`, `formulaire_contact` et `formulaire_vivier`. Le site utilise le code secret FormSubmit de contact@impactestp.fr (reçu le 4 octobre 2026) : `https://formsubmit.co/febc6e870cbdd2c6fed4d33857abdbcf`. Le vivier et la newsletter sont ouverts depuis le 11 octobre 2026.
 2. Envoie une première réponse de test depuis le site. FormSubmit envoie un mail « Activate form » à cette adresse : clique sur le bouton pour activer.
 3. Dans ce mail, FormSubmit donne aussi un code secret qui remplace l'adresse (pour ne pas l'afficher dans le code du site). Remplace l'adresse par ce code : `https://formsubmit.co/le-code-recu`.
 
@@ -199,4 +199,4 @@ Le site est construit avec Jekyll, le générateur intégré à GitHub Pages. Po
 
 ## Recherche
 
-La loupe en haut de chaque page (ou Ctrl K, ⌘ K sur Mac) ouvre la recherche. Elle cherche dans les pages, les interviews, les fiches entreprises, les offres de stage, les évènements à venir, les articles et les profils étudiants, sans tenir compte des accents. Rien à faire à la main : la liste (`recherche.json`, une par langue, fabriquée par `_includes/recherche-index.json`) se refait à chaque mise en ligne. Un résultat « offre » mène directement à l'offre dans la page Stages.
+La loupe en haut de chaque page (ou Ctrl K, ⌘ K sur Mac) ouvre la recherche. Elle cherche dans les pages, les interviews, les fiches entreprises, les offres de stage, les évènements à venir, les articles et les profils étudiants, sans tenir compte des accents. Rien à faire à la main : la liste (`recherche.json`, une par langue, fabriquée par `_includes/recherche-index.json`) se refait à chaque mise en ligne. Un résultat « offre » mène directement à l'offre dans la page Stages. La fenêtre (`_includes/recherche.html`) range les résultats par type, avec le meilleur résultat en premier ; les flèches du clavier choisissent, Entrée ouvre. Sur téléphone, elle s'ouvre en plein écran avec « Annuler ».

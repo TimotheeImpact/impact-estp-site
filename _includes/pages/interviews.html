@@ -52,4 +52,6 @@
   {%- if site.youtube != "" %}
   <p class="mt-28"><a class="btn" href="{{ site.youtube }}">{{ t.interviews.youtube_btn }}</a></p>
   {%- endif %}
+  {%- capture lien_signaler %}{{ p | append: '/contact/' | relative_url }}?objet={{ 'Signaler un problème' | uri_escape }}{% endcapture %}
+  <p class="signaler"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5.5 21V4.5M5.5 4.5h11l-2 4 2 4h-11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{{ t.interviews.signaler | replace: "%lien%", lien_signaler }}</span></p>
 </section>

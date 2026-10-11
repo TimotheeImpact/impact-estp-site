@@ -1,0 +1,49 @@
+{%- comment -%}
+  Fenêtre de recherche, façon Spotlight : ouverte par la loupe de l'en-tête (ou Ctrl K, ⌘ K, « / »).
+  L'index est chargé à la première ouverture (voir _includes/recherche-index.json). Les résultats sont écrits par assets/js/site.js.
+{%- endcomment -%}
+{%- assign tr_ = t.recherche -%}
+{%- assign p = page.prefixe | default: "" -%}
+<dialog class="recherche" id="recherche" aria-labelledby="rech-titre"
+  data-index="{{ p | append: '/recherche.json' | relative_url }}?v={{ site.time | date: '%s' }}"
+  data-aucun="{{ tr_.aucun }}" data-un="{{ tr_.un }}" data-plusieurs="{{ tr_.plusieurs }}" data-chargement="{{ tr_.chargement }}" data-erreur="{{ tr_.erreur }}"
+  data-proches="{{ tr_.proches }}" data-g1="{{ tr_.guillemets[0] }}" data-g2="{{ tr_.guillemets[1] }}" data-meilleur="{{ tr_.meilleur }}"
+  {%- for g in tr_.groupes %} data-groupe-{{ g[0] }}="{{ g[1] }}"{% endfor %}>
+  <svg class="rech-sprite" aria-hidden="true" focusable="false">
+    <symbol id="ri-loupe" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="ri-interview" viewBox="0 0 24 24"><path d="M8.5 6.2v11.6a1 1 0 0 0 1.5.86l9.6-5.8a1 1 0 0 0 0-1.72L10 5.34a1 1 0 0 0-1.5.86z" fill="currentColor"/></symbol>
+    <symbol id="ri-venir" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ri-entreprise" viewBox="0 0 24 24"><path d="M4.5 20V5.5A1.5 1.5 0 0 1 6 4h7a1.5 1.5 0 0 1 1.5 1.5V20M14.5 9.5h3.5A1.5 1.5 0 0 1 19.5 11v9M3 20h18M8 8h3M8 11.5h3M8 15h3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ri-offre" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3.5 12.5h17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="ri-evenement" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3.5 9.5h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="14.5" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="ri-article" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8 9h8M8 12.5h8M8 16h5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="ri-page" viewBox="0 0 24 24"><path d="M7 3.5h6.5L18 8v11a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M13.5 3.5V8H18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="ri-profil" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M5 20c.6-3.6 3.4-5.6 7-5.6s6.4 2 7 5.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="ri-podcast" viewBox="0 0 24 24"><path d="M4.5 14v-2a7.5 7.5 0 0 1 15 0v2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><rect x="3.5" y="13" width="4.5" height="7" rx="2" fill="currentColor"/><rect x="16" y="13" width="4.5" height="7" rx="2" fill="currentColor"/></symbol>
+    <symbol id="ri-presse" viewBox="0 0 24 24"><path d="M5 5.5h11v13a1.5 1.5 0 0 0 1.5 1.5H6.5A1.5 1.5 0 0 1 5 18.5z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 9h3v9.5a1.5 1.5 0 0 1-3 0M8 9h5M8 12.5h5M8 16h3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="ri-apropos" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M12 11v5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.8" r="1.25" fill="currentColor"/></symbol>
+  </svg>
+  <form class="rech-form" role="search">
+    <label class="visually-hidden" for="rech-q" id="rech-titre">{{ tr_.titre }}</label>
+    <div class="rech-champ">
+      <svg class="rech-loupe" width="22" height="22" aria-hidden="true"><use href="#ri-loupe"/></svg>
+      <input id="rech-q" type="search" name="q" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="rech-res" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" placeholder="{{ tr_.placeholder }}">
+      <button class="rech-esc" type="button" aria-label="{{ tr_.fermer }}">esc</button>
+    </div>
+    <button class="rech-annuler" type="button">{{ tr_.annuler }}</button>
+  </form>
+  <div class="rech-corps">
+    <div class="rech-vide">
+      <p class="rech-groupe">{{ tr_.rapide }}</p>
+      <ul class="rech-tuiles">
+        {%- for item in site.data.navigation %}
+        {%- assign _ic = item.lien | remove: "/" | replace: "a-propos", "apropos" | replace: "interviews", "interview" | replace: "stages", "offre" | replace: "entreprises", "entreprise" | replace: "evenements", "evenement" %}
+        <li><a class="rech-tuile" href="{{ p | append: item.lien | relative_url }}"><span class="rech-ic rech-{{ _ic }}"><svg width="22" height="22" aria-hidden="true"><use href="#ri-{{ _ic }}"/></svg></span><span>{% include tr.html o=item k="titre" %}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <p class="rech-statut" id="rech-statut" role="status"></p>
+    <div class="rech-res" id="rech-res" role="listbox" aria-label="{{ tr_.titre }}"></div>
+  </div>
+  <p class="rech-touches" aria-hidden="true"><span><kbd>↑</kbd><kbd>↓</kbd> {{ tr_.touches.naviguer }}</span><span><kbd>↵</kbd> {{ tr_.touches.ouvrir }}</span><span><kbd>esc</kbd> {{ tr_.touches.fermer }}</span></p>
+</dialog>

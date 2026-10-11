@@ -71,6 +71,14 @@ layout: default
     </section>
     {%- endif %}
 
+    {%- assign en_audio = interviews | where_exp: "i", "i.audio" | where_exp: "i", "i.audio != ''" | first %}
+    {%- if en_audio %}
+    {%- assign titre_pod = t.podcast.bande_co_titre | replace: "%nom%", src.nom %}
+    {% include podcast-bande.html episode=en_audio.audio titre=titre_pod texte=t.podcast.bande_co_texte %}
+    {%- else %}
+    {% include podcast-bande.html titre=t.podcast.bande_titre texte=t.podcast.bande_texte %}
+    {%- endif %}
+
     {%- if articles.size > 0 %}
     <section class="co-section" aria-labelledby="t-co-articles">
       <h2 id="t-co-articles">{{ t.entreprise.a_lire }}</h2>

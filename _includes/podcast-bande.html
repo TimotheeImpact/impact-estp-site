@@ -1,0 +1,17 @@
+{%- comment -%}
+  Bandeau « aussi en podcast » des pages interview et des fiches entreprises : un clic pour écouter sur Spotify,
+  et un lien vers la page Podcast du site.
+  Usage : {% include podcast-bande.html episode=lien_de_l_episode titre=... texte=... %}
+  Sans épisode (pas de ligne « audio: » dans la fiche de l'interview), le bouton mène à l'émission sur Spotify.
+{%- endcomment -%}
+{%- assign tp = t.podcast -%}
+{%- assign _spotify = site.data.podcast.plateformes | where: "nom", "Spotify" | first -%}
+{%- assign _ecoute = include.episode | default: _spotify.lien -%}
+{%- assign _p = page.prefixe | default: "" -%}
+{%- if _ecoute and _ecoute != "" %}
+<aside class="pod-bande" aria-label="Podcast">
+  <span class="pod-bande-ic">{% include logo-spotify.html taille=30 %}</span>
+  <p class="pod-bande-txt"><b>{{ include.titre }}</b> <span>{{ include.texte }}</span></p>
+  <p class="pod-bande-liens"><a class="pod-spotify" href="{{ _ecoute }}">{% include logo-spotify.html taille=18 %}{{ tp.spotify_btn }}</a><a class="pod-bande-plus" href="{{ _p | append: '/podcast/' | relative_url }}">{{ tp.tous_episodes }}</a></p>
+</aside>
+{%- endif %}

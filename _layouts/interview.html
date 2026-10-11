@@ -80,6 +80,12 @@ layout: default
     </div>
     {%- endif %}
 
+    {%- if src.audio and src.audio != "" %}
+    {% include podcast-bande.html episode=src.audio titre=t.podcast.bande_ep_titre texte=t.podcast.bande_ep_texte %}
+    {%- else %}
+    {% include podcast-bande.html titre=t.podcast.bande_titre texte=t.podcast.bande_texte %}
+    {%- endif %}
+
     {%- assign texte = content | strip %}
     {%- if texte != "" %}
     <div class="prose mt-28">

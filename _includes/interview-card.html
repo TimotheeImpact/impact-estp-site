@@ -9,6 +9,7 @@
 {%- assign a_invite = false -%}{%- if i.invite and i.invite != "" -%}{%- assign a_invite = true -%}{%- endif -%}
 {%- assign a_poste = false -%}{%- if tr.poste and tr.poste != "" -%}{%- assign a_poste = true -%}{%- endif -%}
 {%- assign a_entreprise = false -%}{%- if i.entreprise and i.entreprise != "" -%}{%- assign a_entreprise = true -%}{%- endif -%}
+{%- assign a_audio = false -%}{%- if i.audio and i.audio != "" -%}{%- assign a_audio = true -%}{%- endif -%}
 <a class="card" href="{{ tr.url | relative_url }}" data-theme-tag="{{ i.theme }}{% if i.studio %} studio{% endif %}" data-langue="{{ langue }}" data-statut="{{ statut }}">
   <div class="thumb{% if statut != "publiee" %} upcoming{% endif %}">
     {%- if ytid != "" %}
@@ -39,9 +40,10 @@
     {%- elsif statut != "publiee" %}
     <p class="when soon"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.75" y="3" width="12.5" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.75 6.5h12.5M5 1.5v3M11 1.5v3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>{{ tr.quand | default: i.quand | default: t.commun.bientot }}</p>
     {%- endif %}
-    {%- if langue != "fr" or theme or i.studio or i.partenaire %}
+    {%- if langue != "fr" or theme or i.studio or i.partenaire or a_audio %}
     <div class="tags">
       {%- if langue != "fr" and langue_info %}<span class="tag lang">{% include tr.html o=langue_info k="nom" %}</span>{% endif -%}
+      {%- if a_audio %}<span class="tag pod"><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M4.5 14v-2a7.5 7.5 0 0 1 15 0v2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><rect x="3.5" y="13" width="4.5" height="7" rx="2" fill="currentColor"/><rect x="16" y="13" width="4.5" height="7" rx="2" fill="currentColor"/></svg>Podcast</span>{% endif -%}
       {%- if i.studio %}<span class="tag studio">{{ t.carte.en_studio }}</span>{% endif -%}
       {%- if theme %}<span class="tag">{% include tr.html o=theme k="nom" %}</span>{% endif -%}
       {%- if i.partenaire %}<span class="tag partner">{{ t.carte.partenaire }}</span>{% endif -%}

@@ -23,7 +23,7 @@
 - titre: Évènements
   titre_en: "Events"
   titre_it: "Eventi"
-  titre_de: "Veranstaltungen"
+  titre_de: "Veranstal\u00ADtungen"   # \u00AD : coupure possible « Veranstal-tungen » sur petit écran (invisible sinon)
   lien: /evenements/
 - titre: Entreprises
   titre_en: "Companies"
