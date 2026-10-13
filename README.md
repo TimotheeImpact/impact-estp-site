@@ -98,7 +98,9 @@ Le filtre « Relation » de l'annuaire se remplit tout seul : « Réseau Impact 
 
 ## Ajouter une offre de stage
 
-Ouvre `_data/offres_stage.yml` : un exemple commenté montre les lignes à remplir (titre, entreprise, lieu, durée, début, lien). Enlève les `#` devant le bloc, remplis-le, enregistre. L'offre s'affiche sur la page Stages et sur la fiche de l'entreprise.
+Ouvre `_data/offres_stage.yml` : un exemple commenté montre les lignes à remplir (titre, entreprise, lieu, zone, durée, début, lien). Enlève les `#` devant le bloc, remplis-le, enregistre. L'offre s'affiche sur la page Stages et sur la fiche de l'entreprise.
+
+La page Stages montre les offres tout de suite, avec une recherche et deux filtres : le type (stage, alternance ou emploi, d'après la ligne `type`) et le lieu, d'après la ligne `zone` : `idf` (Île-de-France), `regions` ou `etranger`. Un lien comme `/stages/?lieu=etranger` ou `/stages/?type=alternance` ouvre la page déjà filtrée. Pour joindre l'annonce de l'entreprise en PDF, range le fichier dans `assets/docs/` et ajoute la ligne `pdf: "/assets/docs/nom-du-fichier.pdf"` (exemple : l'offre de Toits Temporaires Urbains, publiée avec l'accord de sa directrice générale le 13 octobre 2026).
 
 Les offres de l'ESTP sur JobTeaser ont `source: "jobteaser"` et une `categorie` (`ciblee`, `partenaire` ou `reseau`). Le 10 octobre 2026, Timo a choisi de publier les 48 offres relevées ce jour-là sans attendre l'accord des entreprises (les conditions d'utilisation de JobTeaser l'interdisent en principe). Si une entreprise ou l'école demande un retrait, supprime le bloc de l'offre. Les offres pourvues sont à retirer de la même façon. Pense aussi à mettre à jour les chiffres et la date dans `_data/jobteaser.yml`.
 

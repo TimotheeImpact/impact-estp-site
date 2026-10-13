@@ -1,6 +1,7 @@
 {%- comment -%}
-  Une offre de stage (données dans _data/offres_stage.yml).
+  Une offre de stage (données dans _data/offres_stage.yml), en une ligne : qui, quoi, où, quand, et le bouton pour postuler.
   Usage : {% include offre-stage.html offre=o %} ; sans_logo=true sur la fiche de l'entreprise.
+  data-type et data-zone servent aux filtres de la page Stages.
 {%- endcomment -%}
 {%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
 {%- assign p = page.prefixe | default: "" -%}
@@ -17,21 +18,27 @@
 {%- capture o_lieu %}{% include tr.html o=o k="lieu" %}{% endcapture -%}
 {%- capture o_desc %}{% include tr.html o=o k="description" %}{% endcapture -%}
 {%- capture o_id %}{% include offre-id.html offre=o %}{% endcapture -%}
-<article class="job{% if include.sans_logo %} job-sans-logo{% endif %}" id="{{ o_id | strip }}">
+{%- assign o_type_fr = o.type | default: "" | downcase -%}
+{%- if o_type_fr contains "altern" -%}{%- assign o_cle = "alternance" -%}{%- elsif o_type_fr contains "stage" or o_type_fr == "" -%}{%- assign o_cle = "stage" -%}{%- else -%}{%- assign o_cle = "emploi" -%}{%- endif -%}
+<article class="job{% if include.sans_logo %} job-sans-logo{% endif %}{% if o.source != "jobteaser" %} job-impact{% endif %}" id="{{ o_id | strip }}" data-type="{{ o_cle }}" data-zone="{{ o.zone }}">
   {%- unless include.sans_logo %}
   <span class="plate job-plate{% unless fiche and fiche_fr.logo != "" %} plate-text{% endunless %}">
     {%- if fiche and fiche_fr.logo != "" %}<img src="{{ '/assets/img/logos/' | append: fiche_fr.logo | relative_url }}" alt="{{ o.entreprise }}" loading="lazy">{% else %}{{ o.entreprise }}{% endif -%}
   </span>
   {%- endunless %}
   <div class="job-main">
-    {%- if o_type != "" %}
-    <div class="tags"><span class="tag soon">{{ o_type }}</span></div>
-    {%- endif %}
     <h3>{{ o_titre }}</h3>
-    <p class="job-co">{% if fiche %}<a href="{{ fiche.url | relative_url }}">{{ o.entreprise }}</a>{% else %}{{ o.entreprise }}{% endif %}</p>
-    {%- capture infos -%}{% if o_lieu != "" %}{{ o_lieu }}{% endif %}{% if o_duree != "" %}{% if o_lieu != "" %} · {% endif %}{{ o_duree }}{% endif %}{% if o_debut != "" %} · {{ t.offre.debut }} {{ o_debut }}{% endif %}{%- endcapture -%}
-    {%- if infos != "" %}<p class="job-facts">{{ infos }}</p>{% endif %}
+    <p class="job-co">{% if fiche %}<a href="{{ fiche.url | relative_url }}">{{ o.entreprise }}</a>{% else %}<span>{{ o.entreprise }}</span>{% endif %}
+      {%- if o_lieu != "" %}<span class="job-lieu"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></svg>{{ o_lieu }}</span>{% endif -%}
+    </p>
     {%- if o_desc != "" %}<p class="job-desc">{{ o_desc }}</p>{% endif %}
+    <p class="job-tags">
+      {%- if o.source != "jobteaser" %}<span class="tag tag-impact">{{ t.stages.badge_impact }}</span>{% endif -%}
+      {%- if o_type != "" %}<span class="tag">{{ o_type }}</span>{% endif -%}
+      {%- if o_duree != "" %}<span class="tag tag-gris">{{ o_duree }}</span>{% endif -%}
+      {%- if o_debut != "" %}<span class="tag tag-gris">{{ t.offre.debut }} {{ o_debut }}</span>{% endif -%}
+      {%- if o.source == "jobteaser" and o.categorie and o.categorie != "" %}<span class="tag tag-jt">JobTeaser · {{ t.stages.jt_badges[o.categorie] }}</span>{% endif -%}
+    </p>
   </div>
   <div class="job-go">
     {%- if o.lien and o.lien != "" %}
@@ -43,6 +50,9 @@
     {%- endif %}
     {%- else %}
     <a class="btn primary" href="{{ p | append: '/stages/' | relative_url }}#form-vivier">{{ t.offre.postuler_vivier }}</a>
+    {%- endif %}
+    {%- if o.pdf and o.pdf != "" %}
+    <a class="job-pdf" href="{{ o.pdf | relative_url }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M7 3.5h6.5L18 8v11a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M12 10v6M9.5 13.5 12 16l2.5-2.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ t.offre.pdf }}</a>
     {%- endif %}
   </div>
 </article>

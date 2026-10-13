@@ -191,12 +191,28 @@ offre:
   voir: "Angebot ansehen"
   voir_jobteaser: "Auf JobTeaser ansehen"
   postuler_vivier: "Über den Talentpool bewerben"
+  pdf: "Die Anzeige (PDF)"
   debut: "Beginn:"
 
 stages:
   label: "Praktika und Berufseinstieg"
   titre: "Dein Praktikum in Bau und Energie"
-  intro: "Entdecke die Praktikumsangebote, tritt dem Talentpool bei und bereite deine Bewerbungen mit unseren Unternehmensprofilen vor."
+  intro: "Praktika, duale Stellen und erste Jobs in Bau und Energie. Filtern, klicken, bewerben."
+  filtre_type: "Art"
+  filtre_lieu: "Ort"
+  f_types: { tous: "Alle", stage: "Praktikum", alternance: "Dual", emploi: "Job" }
+  f_zones: { tous: "Überall", idf: "Großraum Paris", regions: "Übriges Frankreich", etranger: "Im Ausland" }
+  recherche_offres: "Ein Beruf, ein Unternehmen, eine Stadt…"
+  recherche_offres_aria: "In den Angeboten suchen"
+  offres_aria: "Praktikums- und Stellenangebote"
+  n_1: "Angebot"
+  n_n: "Angebote"
+  aucune: "Kein Angebot für diese Auswahl."
+  reinit: "Alle anzeigen"
+  badge_impact: "Impact-Angebot"
+  jt_badges: { ciblee: "ESTP-gezielt", partenaire: "ESTP-Partner", reseau: "Schulnetzwerk" }
+  jt_note: "JobTeaser-Angebote öffnen sich mit deinem ESTP-Konto. Stand: %date%."
+  jt_tout: "Alles auf JobTeaser ansehen"
   vivier_label: "Der Talentpool"
   vivier_titre: "Komm in den Impact-Talentpool"
   vivier_intro: "Die Unternehmen, die wir interviewen, suchen Praktikanten und junge Ingenieure. Hinterlass uns dein Profil: Wenn ein Angebot passt, schicken wir es dir zuerst."

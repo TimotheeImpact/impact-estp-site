@@ -10,74 +10,68 @@
   <p class="intro">{{ t.stages.intro }}</p>
 </div>
 
-<div class="folds">
-{% include fold-ouvre.html id="offres" label=t.stages.offres_label titre=t.stages.offres_titre compte=offres.size %}
-  <p class="fold-intro">{{ t.stages.offres_intro }}</p>
-  {%- comment -%}
-    En haut, les offres trouvées par Impact (source « impact », par défaut). En dessous, les offres de l'ESTP sur JobTeaser
-    (source « jobteaser ») en trois catégories, avec les chiffres relevés dans _data/jobteaser.yml. Une offre JobTeaser
-    n'est publiée ici qu'avec l'accord écrit de l'entreprise.
-  {%- endcomment -%}
-  {%- assign offres_jt = offres | where: "source", "jobteaser" %}
-  {%- assign offres_impact = offres | where_exp: "o", "o.source != 'jobteaser'" %}
-  {%- assign jt = site.data.jobteaser %}
-  <section class="offres-groupe" aria-labelledby="t-offres-impact">
-    <h3 class="offres-sous" id="t-offres-impact">{{ t.stages.offres_impact_titre }}{% if offres_impact.size > 0 %} <span class="fold-n">{{ offres_impact.size }}</span>{% endif %}</h3>
-    <p class="offres-sous-intro">{{ t.stages.offres_impact_intro }}</p>
-    {%- if offres_impact.size > 0 %}
-    <div class="jobs">
-      {%- for o in offres_impact %}
-      {% include offre-stage.html offre=o %}
+{%- comment -%}
+  Les offres, tout de suite (demande de Timo, 13 octobre 2026 : « straight to the point ») : une recherche, deux filtres
+  (type, lieu), puis la liste. D'abord les offres trouvées par Impact, puis celles de l'ESTP sur JobTeaser.
+  Le lieu vient du champ « zone » de chaque offre (idf, regions ou etranger) dans _data/offres_stage.yml.
+{%- endcomment -%}
+{%- assign offres_jt = offres | where: "source", "jobteaser" %}
+{%- assign offres_impact = offres | where_exp: "o", "o.source != 'jobteaser'" %}
+{%- assign jt = site.data.jobteaser %}
+{%- assign ts = t.stages %}
+<section class="block pt-32 offres" id="offres" aria-label="{{ ts.offres_aria }}">
+  {%- if offres.size > 0 %}
+  <div class="off-barre" id="off-barre">
+    <label class="off-q">
+      <span class="visually-hidden">{{ ts.recherche_offres_aria }}</span>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <input type="search" id="off-q" autocomplete="off" spellcheck="false" placeholder="{{ ts.recherche_offres }}">
+    </label>
+    <div class="filters off-filtres" role="group" aria-label="{{ ts.filtre_type }}" data-off="type">
+      <span class="label">{{ ts.filtre_type }}</span>
+      {%- for f in ts.f_types %}
+      {%- if f[0] == "tous" %}{% assign n = offres.size %}{% assign v = "all" %}{% else %}{% assign v = f[0] %}{% assign n = 0 %}
+      {%- for o in offres %}{% assign _ty = o.type | default: "" | downcase %}{% if _ty contains "altern" %}{% assign _k = "alternance" %}{% elsif _ty contains "stage" or _ty == "" %}{% assign _k = "stage" %}{% else %}{% assign _k = "emploi" %}{% endif %}{% if _k == v %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+      {%- endif %}
+      <button type="button" aria-pressed="{% if v == 'all' %}true{% else %}false{% endif %}" data-filter="{{ v }}">{{ f[1] }} <span class="off-n">{{ n }}</span></button>
       {%- endfor %}
     </div>
-    {%- else %}
-    <div class="empty">
-      <p class="label">{{ t.commun.bientot }}</p>
-      <p>{{ t.stages.offres_vide }}{% if action == "" %}{{ t.stages.offres_vide_date }}{% endif %}.</p>
-    </div>
-    {%- endif %}
-  </section>
-  <section class="offres-groupe" aria-labelledby="t-offres-jt">
-    <h3 class="offres-sous" id="t-offres-jt">{{ t.stages.jt_titre }}{% if offres_jt.size > 0 %} <span class="fold-n">{{ offres_jt.size }}</span>{% endif %}</h3>
-    <p class="offres-sous-intro">{{ t.stages.jt_intro }}</p>
-    <ul class="jt-cats">
-      {%- for c in jt.categories %}
-      {%- assign tc = t.stages.jt_cats[c.id] %}
-      <li class="jt-cat jt-{{ c.id }}">
-        {%- if c.nombre and c.nombre > 0 %}<span class="jt-n">{{ c.nombre }} <span>{{ t.stages.jt_nombre }}</span></span>{% endif %}
-        <span class="jt-t">{{ tc.titre }}</span>
-        <span class="jt-d">{{ tc.texte }}</span>
-      </li>
+    <div class="filters off-filtres" role="group" aria-label="{{ ts.filtre_lieu }}" data-off="zone">
+      <span class="label">{{ ts.filtre_lieu }}</span>
+      {%- for f in ts.f_zones %}
+      {%- if f[0] == "tous" %}{% assign n = offres.size %}{% assign v = "all" %}{% else %}{% assign v = f[0] %}{% assign n = offres | where: "zone", v | size %}{% endif %}
+      <button type="button" aria-pressed="{% if v == 'all' %}true{% else %}false{% endif %}" data-filter="{{ v }}">{% if v == "etranger" %}<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.5 5.2 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.2-3.5-8.5s1.1-6.1 3.5-8.5z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>{% endif %}{{ f[1] }} <span class="off-n">{{ n }}</span></button>
       {%- endfor %}
-    </ul>
-    <div class="jt-go">
-      <a class="btn primary" href="{{ jt.lien }}">{{ t.stages.jt_btn }}</a>
-      <p>{{ t.stages.jt_acces }}{% if jt.releve %} {% capture d %}{% include date-fr.html date=jt.releve %}{% endcapture %}{{ t.stages.jt_releve | replace: "%date%", d }}{% endif %}</p>
     </div>
-    {%- if offres_jt.size > 0 %}
+  </div>
+  <p class="off-compte" id="off-compte" aria-live="polite" data-un="{{ ts.n_1 }}" data-plusieurs="{{ ts.n_n }}" data-aucune="{{ ts.aucune }}" data-reinit="{{ ts.reinit }}">{{ offres.size }} {% if offres.size > 1 %}{{ ts.n_n }}{% else %}{{ ts.n_1 }}{% endif %}</p>
+  <div class="jobs" id="offres-liste">
+    {%- for o in offres_impact %}
+    {% include offre-stage.html offre=o %}
+    {%- endfor %}
     {%- for c in jt.categories %}
     {%- assign liste = offres_jt | where: "categorie", c.id %}
-    {%- if liste.size > 0 %}
-    <details class="jt-groupe jt-{{ c.id }}" id="jt-{{ c.id }}">
-      <summary><h4 class="jt-sous">{{ t.stages.jt_cats[c.id].titre }} <span class="fold-n">{{ liste.size }}</span></h4></summary>
-      <div class="jobs">
-        {%- for o in liste %}
-        {% include offre-stage.html offre=o %}
-        {%- endfor %}
-      </div>
-    </details>
-    {%- endif %}
+    {%- for o in liste %}
+    {% include offre-stage.html offre=o %}
     {%- endfor %}
-    {%- else %}
-    <p class="jt-vide">{{ t.stages.jt_vide }}</p>
-    {%- endif %}
-  </section>
-  <div class="contact-box">
-    <p>{{ t.stages.recrutez }}</p>
-    <a class="btn" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Proposer une offre de stage' | uri_escape }}">{{ t.stages.proposer_offre }}</a>
+    {%- endfor %}
   </div>
-</div></details>
+  {%- if offres_jt.size > 0 %}
+  <p class="off-jt">{% capture d %}{% include date-fr.html date=jt.releve %}{% endcapture %}{{ ts.jt_note | replace: "%date%", d }} <a href="{{ jt.lien }}">{{ ts.jt_tout }}</a></p>
+  {%- endif %}
+  {%- else %}
+  <div class="empty">
+    <p class="label">{{ t.commun.bientot }}</p>
+    <p>{{ ts.offres_vide }}.</p>
+  </div>
+  {%- endif %}
+  <div class="contact-box">
+    <p>{{ ts.recrutez }}</p>
+    <a class="btn" href="{{ p | append: '/contact/' | relative_url }}?objet={{ 'Proposer une offre de stage' | uri_escape }}">{{ ts.proposer_offre }}</a>
+  </div>
+</section>
 
+<div class="folds">
 {% include fold-ouvre.html id="vivier" label=t.stages.vivier_label titre=t.stages.vivier_titre %}
   <p class="fold-intro">{{ t.stages.vivier_intro }}</p>
   <div class="pool">

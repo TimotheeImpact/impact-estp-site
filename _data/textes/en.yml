@@ -190,12 +190,28 @@ offre:
   voir: "View the offer"
   voir_jobteaser: "See on JobTeaser"
   postuler_vivier: "Apply via the talent pool"
+  pdf: "Full offer (PDF)"
   debut: "Start:"
 
 stages:
   label: "Internships and first jobs"
   titre: "Your internship in construction and energy"
-  intro: "Browse internship offers, join the talent pool and prepare your applications with our company profiles."
+  intro: "Internships, work-study and first jobs in construction and energy. Filter, click, apply."
+  filtre_type: "Type"
+  filtre_lieu: "Location"
+  f_types: { tous: "All", stage: "Internship", alternance: "Work-study", emploi: "Job" }
+  f_zones: { tous: "Anywhere", idf: "Paris region", regions: "Rest of France", etranger: "Abroad" }
+  recherche_offres: "A job, a company, a city…"
+  recherche_offres_aria: "Search the offers"
+  offres_aria: "Internship and job offers"
+  n_1: "offer"
+  n_n: "offers"
+  aucune: "No offers match this choice."
+  reinit: "Show all"
+  badge_impact: "Impact offer"
+  jt_badges: { ciblee: "ESTP-targeted", partenaire: "ESTP partner", reseau: "School network" }
+  jt_note: "JobTeaser offers open with your ESTP account. Listed on %date%."
+  jt_tout: "See everything on JobTeaser"
   vivier_label: "The talent pool"
   vivier_titre: "Join the Impact talent pool"
   vivier_intro: "The companies we interview are looking for interns and young engineers. Leave us your profile: when an offer matches, we'll send it to you first."

@@ -190,12 +190,28 @@ offre:
   voir: "Vedi l'offerta"
   voir_jobteaser: "Vedi su JobTeaser"
   postuler_vivier: "Candidati tramite il bacino di talenti"
+  pdf: "L'annuncio (PDF)"
   debut: "Inizio:"
 
 stages:
   label: "Stage e primo impiego"
   titre: "Il tuo stage nelle costruzioni e nell'energia"
-  intro: "Scopri le offerte di stage, entra nel vivaio e prepara le tue candidature con le nostre schede aziendali."
+  intro: "Stage, alternanza e primi impieghi nelle costruzioni e nell'energia. Filtra, clicca, candidati."
+  filtre_type: "Tipo"
+  filtre_lieu: "Luogo"
+  f_types: { tous: "Tutti", stage: "Stage", alternance: "Alternanza", emploi: "Lavoro" }
+  f_zones: { tous: "Ovunque", idf: "Île-de-France", regions: "Resto della Francia", etranger: "All'estero" }
+  recherche_offres: "Un mestiere, un'azienda, una città…"
+  recherche_offres_aria: "Cerca nelle offerte"
+  offres_aria: "Offerte di stage e di lavoro"
+  n_1: "offerta"
+  n_n: "offerte"
+  aucune: "Nessuna offerta per questa scelta."
+  reinit: "Mostra tutto"
+  badge_impact: "Offerta Impact"
+  jt_badges: { ciblee: "Mirata ESTP", partenaire: "Partner ESTP", reseau: "Rete della scuola" }
+  jt_note: "Le offerte JobTeaser si aprono con il tuo account ESTP. Rilevate il %date%."
+  jt_tout: "Vedi tutto su JobTeaser"
   vivier_label: "Il bacino di talenti"
   vivier_titre: "Entra nel bacino di talenti Impact"
   vivier_intro: "Le aziende che intervistiamo cercano stagisti e giovani ingegneri. Lasciaci il tuo profilo: quando un'offerta corrisponde, te la inoltriamo in via prioritaria."

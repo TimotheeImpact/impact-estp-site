@@ -190,12 +190,28 @@ offre:
   voir: "Voir l'offre"
   voir_jobteaser: "Voir sur JobTeaser"
   postuler_vivier: "Postuler via le vivier"
+  pdf: "L'annonce (PDF)"
   debut: "Début :"
 
 stages:
   label: "Stages et premier emploi"
   titre: "Ton stage dans la construction et l'énergie"
-  intro: "Découvre les offres de stage, rejoins le vivier et prépare tes candidatures avec nos fiches entreprises."
+  intro: "Stages, alternances et premiers emplois de la construction et de l'énergie. Filtre, clique, postule."
+  filtre_type: "Type"
+  filtre_lieu: "Lieu"
+  f_types: { tous: "Tout", stage: "Stage", alternance: "Alternance", emploi: "Emploi" }
+  f_zones: { tous: "Partout", idf: "Île-de-France", regions: "Régions", etranger: "À l'étranger" }
+  recherche_offres: "Un métier, une entreprise, une ville…"
+  recherche_offres_aria: "Chercher dans les offres"
+  offres_aria: "Les offres de stage et d'emploi"
+  n_1: "offre"
+  n_n: "offres"
+  aucune: "Aucune offre pour ce choix."
+  reinit: "Tout afficher"
+  badge_impact: "Offre Impact"
+  jt_badges: { ciblee: "Ciblée ESTP", partenaire: "Partenaire ESTP", reseau: "Réseau école" }
+  jt_note: "Les offres JobTeaser s'ouvrent avec ton compte ESTP. Relevé du %date%."
+  jt_tout: "Tout voir sur JobTeaser"
   vivier_label: "Le vivier"
   vivier_titre: "Rejoins le vivier Impact"
   vivier_intro: "Les entreprises que nous interviewons cherchent des stagiaires et des jeunes ingénieurs. Laisse-nous ton profil : quand une offre correspond, on te la transmet en priorité."

@@ -77,6 +77,67 @@
     });
   });
 
+  // Page Stages : recherche et filtres des offres (type et lieu), combinés. Ex. /stages/?lieu=etranger ou ?type=alternance
+  var listeOffres = document.getElementById('offres-liste');
+  var barreOffres = document.getElementById('off-barre');
+  if (listeOffres && barreOffres) {
+    var offresJobs = Array.prototype.slice.call(listeOffres.querySelectorAll('.job'));
+    var sansAccentsO = function (s) { return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); };
+    var textesOffres = offresJobs.map(function (j) { return sansAccentsO(j.textContent.replace(/\s+/g, ' ')); });
+    var compteOffres = document.getElementById('off-compte');
+    var champOffres = document.getElementById('off-q');
+    var etatOffres = { type: 'all', zone: 'all' };
+    var choisirOffres = function (g, v) {
+      var groupe = barreOffres.querySelector('[data-off="' + g + '"]');
+      if (!groupe) return;
+      var b = groupe.querySelector('button[data-filter="' + v + '"]');
+      if (!b) return;
+      etatOffres[g] = v;
+      groupe.querySelectorAll('button').forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+    };
+    var appliquerOffres = function () {
+      var mots = sansAccentsO(champOffres ? champOffres.value : '').split(/\s+/).filter(Boolean);
+      var n = 0;
+      offresJobs.forEach(function (j, i) {
+        var ok = (etatOffres.type === 'all' || j.getAttribute('data-type') === etatOffres.type) &&
+          (etatOffres.zone === 'all' || j.getAttribute('data-zone') === etatOffres.zone) &&
+          mots.every(function (m) { return textesOffres[i].indexOf(m) !== -1; });
+        j.hidden = !ok;
+        if (ok) n++;
+      });
+      compteOffres.textContent = '';
+      if (n > 0) {
+        compteOffres.textContent = n + ' ' + compteOffres.getAttribute(n > 1 ? 'data-plusieurs' : 'data-un');
+        return;
+      }
+      compteOffres.appendChild(document.createTextNode(compteOffres.getAttribute('data-aucune') + ' '));
+      var r = document.createElement('button');
+      r.type = 'button';
+      r.className = 'count-reset';
+      r.textContent = compteOffres.getAttribute('data-reinit');
+      r.addEventListener('click', function () {
+        choisirOffres('type', 'all');
+        choisirOffres('zone', 'all');
+        if (champOffres) champOffres.value = '';
+        appliquerOffres();
+      });
+      compteOffres.appendChild(r);
+    };
+    barreOffres.querySelectorAll('[data-off]').forEach(function (groupe) {
+      var g = groupe.getAttribute('data-off');
+      groupe.querySelectorAll('button').forEach(function (b) {
+        b.addEventListener('click', function () { choisirOffres(g, b.getAttribute('data-filter')); appliquerOffres(); });
+      });
+    });
+    if (champOffres) champOffres.addEventListener('input', appliquerOffres);
+    var paOffres = new URLSearchParams(window.location.search);
+    if (paOffres.get('type') || paOffres.get('lieu')) {
+      if (paOffres.get('type')) choisirOffres('type', paOffres.get('type').replace(/[^a-z]/g, ''));
+      if (paOffres.get('lieu')) choisirOffres('zone', paOffres.get('lieu').replace(/[^a-z]/g, ''));
+      appliquerOffres();
+    }
+  }
+
   // Lecteur YouTube chargé seulement au clic, ou au clic sur un chapitre (démarre au bon moment)
   var lancer = function (p, debut) {
     if (!/^[A-Za-z0-9_-]{6,20}$/.test(p.getAttribute('data-youtube') || '')) return;
