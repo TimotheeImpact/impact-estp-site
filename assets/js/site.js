@@ -616,6 +616,11 @@
   var dansJours = function (n) { var d = new Date(maintenant); d.setDate(d.getDate() + n); return isoJour(d); };
   var sansAccents = function (txt) { return (txt || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
 
+  // Étiquette « Nouveau » des interviews : retirée 30 jours après la publication
+  document.querySelectorAll('[data-nouveau-jusqua]').forEach(function (el) {
+    if (el.getAttribute('data-nouveau-jusqua') < jour) el.remove();
+  });
+
   // Marque les évènements en cours et passés (le site n'est reconstruit qu'à chaque modification)
   document.querySelectorAll('.evt[data-fin], .next-evt[data-fin]').forEach(function (li) {
     var passe = li.getAttribute('data-fin') < jour;

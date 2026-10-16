@@ -54,6 +54,7 @@ pied:
 
 carte:
   a_venir: "Riprese in arrivo"
+  nouveau: "Novità"
   post_prod: "In post-produzione"
   duree: "Durata:"
   en_studio: "In studio"
@@ -806,3 +807,11 @@ recherche:
     evenement: "Evento"
     article: "Articolo"
     profil: "Profilo studente"
+
+amis:
+  label: "Associazioni amiche"
+  titre: "Le associazioni che sosteniamo"
+  intro: "Fanno muovere l'edilizia all'ESTP. Andate a trovarle da parte nostra."
+  decouvrir: "Scopri %nom%"
+  pied: "Associazione amica:"
+  pied_n: "Associazioni amiche:"

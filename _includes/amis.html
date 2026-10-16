@@ -1,0 +1,45 @@
+{%- comment -%}
+  Les assos amies (données dans _data/amis.yml), en grand sur l'accueil.
+  Promotion croisée demandée par Timo le 16 octobre 2026 (Passion BTP).
+{%- endcomment -%}
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- if site.data.amis.size > 0 %}
+<section class="block reveal" aria-labelledby="t-amis">
+  <div class="head">
+    <div>
+      <p class="label">{{ t.amis.label }}</p>
+      <h2 id="t-amis">{{ t.amis.titre }}</h2>
+      <p>{{ t.amis.intro }}</p>
+    </div>
+  </div>
+  {%- for a in site.data.amis %}
+  {%- capture a_projet %}{% include tr.html o=a k="projet" %}{% endcapture %}
+  {%- capture a_texte %}{% include tr.html o=a k="texte" %}{% endcapture %}
+  <article class="ami" id="ami-{{ a.id }}">
+    <a class="ami-logo{% if a.logo == "" %} ami-logo-texte{% endif %}" href="{{ a.site }}" aria-hidden="true" tabindex="-1">
+      {%- if a.logo != "" %}<img src="{{ '/assets/img/logos/' | append: a.logo | relative_url }}" alt="" loading="lazy">
+      {%- else %}<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 90 27v46L50 96 10 73V27z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/></svg><span>{{ a.nom | replace: " ", "<br>" }}</span>{% endif -%}
+    </a>
+    <div class="ami-corps">
+      <h3><a href="{{ a.site }}">{{ a.nom_complet | default: a.nom }}</a></h3>
+      {%- if a_projet != "" %}<p class="ami-projet">{{ a_projet }}</p>{% endif %}
+      <p class="ami-texte">{{ a_texte }}</p>
+      {%- if a.chiffres.size > 0 %}
+      <ul class="ami-chiffres">
+        {%- for c in a.chiffres %}
+        <li><b>{{ c.valeur }}</b> {% include tr.html o=c k="legende" %}</li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </div>
+    <div class="ami-go">
+      <a class="btn primary" href="{{ a.site }}">{{ t.amis.decouvrir | replace: "%nom%", a.nom }}<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 5h10v10M19 5 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <p class="ami-reseaux">
+        {%- if a.instagram != "" %}<a href="{{ a.instagram }}">Instagram</a>{% endif -%}
+        {%- if a.linkedin != "" %}<a href="{{ a.linkedin }}">LinkedIn</a>{% endif -%}
+      </p>
+    </div>
+  </article>
+  {%- endfor %}
+</section>
+{%- endif %}

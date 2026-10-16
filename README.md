@@ -17,6 +17,7 @@ Pas besoin de savoir coder. Tout se fait depuis le site github.com, dans ce dép
 | Les profils des étudiants qui cherchent un stage (page Entreprises) | dossier `_etudiants` |
 | La newsletter de la page Presse (date d'ouverture des inscriptions, adresse d'envoi) | `_config.yml` (`newsletter_ouverture`, `formulaire_newsletter`) et la partie `newsletter` de `_data/textes/fr.yml`, `en.yml`, `it.yml`, `de.yml` |
 | L'agenda des évènements (page Évènements et accueil) | `_data/evenements.yml` |
+| Les assos amies mises en avant sur l'accueil et dans le pied de page (Passion BTP depuis le 16 octobre 2026) | `_data/amis.yml` |
 | Les objets proposés dans le formulaire de contact | `_data/textes/fr.yml` (partie `objets`, et la même dans `en.yml` et `it.yml`) |
 | Ajouter ou modifier une interview | dossier `_interviews` |
 | Publier un article | dossier `_posts` |
@@ -63,7 +64,7 @@ La vignette de la vidéo s'affiche toute seule à partir du lien YouTube.
 Une interview pas encore en ligne a deux statuts possibles :
 - tournée mais en montage : `post_prod: true` (badge « En post-production ») ;
 - pas encore tournée : `a_venir: true` (badge « Tournage à venir »). Pour une interview à venir, on n'écrit pas le nom de l'invité : `invite: ""`, seulement sa fonction et l'entreprise (demande de Timo, 10 octobre 2026).
-Le jour de la sortie, enlève cette ligne et colle le lien YouTube. Les chiffres de l'accueil se mettent à jour tout seuls.
+Le jour de la sortie, enlève cette ligne (et la ligne `quand`), colle le lien YouTube et ajoute `date_publication:` avec la date du jour. Les chiffres de l'accueil se mettent à jour tout seuls. La publiée qui a le plus grand `numero` devient la « Nouvelle interview » en haut de l'accueil et porte l'étiquette « Nouveau » pendant 30 jours.
 
 Lien direct vers une sélection : `/interviews/?langue=it`, `/interviews/?statut=post-prod`, `/interviews/?theme=energie`, `/interviews/?theme=studio`.
 

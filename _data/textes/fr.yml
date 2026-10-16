@@ -54,6 +54,7 @@ pied:
 
 carte:
   a_venir: "Tournage à venir"
+  nouveau: "Nouveau"
   post_prod: "En post-production"
   duree: "Durée :"
   en_studio: "En studio"
@@ -796,3 +797,11 @@ recherche:
     evenement: "Évènement"
     article: "Article"
     profil: "Profil étudiant"
+
+amis:
+  label: "Assos amies"
+  titre: "Les assos qu'on soutient"
+  intro: "Elles font bouger le BTP à l'ESTP. Allez les voir de notre part."
+  decouvrir: "Découvrir %nom%"
+  pied: "Asso amie :"
+  pied_n: "Assos amies :"

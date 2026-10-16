@@ -42,7 +42,7 @@
       {%- if derniere.invite != "" %}
       <span class="teaser-who"><b>{{ derniere.invite }}</b>{% if d_poste != "" or derniere.entreprise != "" %}<br>{{ d_poste }}{% if d_poste != "" and derniere.entreprise != "" %}, {% endif %}{{ derniere.entreprise }}{% endif %}</span>
       {%- endif %}
-      <span class="teaser-go">{{ t.accueil.regarder }}{% if derniere.duree != "" %} · {{ derniere.duree }}{% endif %}</span>
+      <span class="teaser-go">{{ t.accueil.regarder }}{% if derniere.duree and derniere.duree != "" %} · {{ derniere.duree }}{% endif %}</span>
     </span>
   </a>
   {%- endif %}
@@ -179,6 +179,8 @@
   </ol>
 </section>
 {%- endif %}
+
+{% include amis.html %}
 
 <section class="block reveal" aria-labelledby="t-presse">
   <div class="head">

@@ -55,6 +55,7 @@ pied:
 
 carte:
   a_venir: "Dreh geplant"
+  nouveau: "Neu"
   post_prod: "In der Postproduktion"
   duree: "Dauer:"
   en_studio: "Im Studio"
@@ -807,3 +808,11 @@ recherche:
     evenement: "Veranstaltung"
     article: "Artikel"
     profil: "Studierendenprofil"
+
+amis:
+  label: "Befreundete Vereine"
+  titre: "Vereine, die wir unterstützen"
+  intro: "Sie bringen das Bauwesen an der ESTP in Bewegung. Schaut von uns aus vorbei."
+  decouvrir: "%nom% entdecken"
+  pied: "Befreundeter Verein:"
+  pied_n: "Befreundete Vereine:"

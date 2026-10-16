@@ -465,6 +465,7 @@ a.card:hover { border-color: var(--ink); }
 .stamp { position: absolute; left: 12px; bottom: 12px; font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 4px 8px; background: var(--leaf); color: var(--on-leaf); border-radius: 999px; }
 .stamp.static { position: static; display: inline-block; margin-right: 6px; }
 .stamp.prod { background: var(--cta-bg); color: var(--cta-fg); }
+.stamp.neuf { top: 12px; bottom: auto; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35); }
 .card .body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .card h3 { font-size: 1.2rem; font-weight: 750; line-height: 1.22; }
 a.card:hover h3, a.teaser:hover .teaser-t, .door:hover h3 { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
@@ -718,6 +719,40 @@ footer { padding-block: 72px 40px; }
 .qr { display: flex; align-items: center; gap: 12px; text-decoration: none; font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); max-width: 220px; }
 .qr img { width: 72px; height: auto; border-radius: var(--radius-sm); flex: none; }
 .foot-links a { text-underline-offset: 3px; }
+.foot-amis { flex-basis: 100%; }
+.foot-amis a { color: var(--ink); font-weight: 700; }
+
+/* Assos amies (accueil) */
+.ami { display: grid; grid-template-columns: 132px minmax(0, 1fr) auto; gap: 26px; align-items: center; padding: 24px 26px; background: var(--sheet); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+.ami + .ami { margin-top: 16px; }
+.ami-logo { display: grid; place-items: center; width: 132px; height: 132px; text-decoration: none; color: var(--brand); }
+.ami-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.ami-logo-texte { position: relative; }
+.ami-logo-texte svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ami-logo-texte span { position: relative; font-family: var(--font-display); font-stretch: 112%; font-weight: 900; font-size: 1.12rem; line-height: 1.05; text-align: center; text-transform: uppercase; letter-spacing: 0.02em; }
+.ami-corps h3 { font-size: 1.45rem; font-weight: 800; line-height: 1.15; }
+.ami-corps h3 a { text-decoration: none; }
+.ami-corps h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.ami-projet { margin: 4px 0 0; font-family: var(--font-display); font-weight: 700; color: var(--leaf-ink); }
+.ami-texte { margin: 10px 0 0; color: var(--ink-soft); max-width: 62ch; }
+.ami-chiffres { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 0.92rem; color: var(--ink-soft); }
+.ami-chiffres b { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; color: var(--ink); margin-right: 3px; }
+.ami-go { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.ami-go .btn { gap: 8px; white-space: nowrap; }
+.ami-reseaux { margin: 0; display: flex; gap: 16px; font-family: var(--font-mono); font-size: var(--step--1); }
+.ami-reseaux a { color: var(--ink-soft); text-underline-offset: 3px; }
+@media (max-width: 900px) {
+  .ami { grid-template-columns: 96px minmax(0, 1fr); gap: 18px 20px; }
+  .ami-logo { width: 96px; height: 96px; }
+  .ami-logo-texte span { font-size: 0.76rem; }
+  .ami-go { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; gap: 12px 20px; }
+}
+@media (max-width: 560px) {
+  .ami { grid-template-columns: 1fr; padding: 20px 18px; }
+  .ami-logo { width: 84px; height: 84px; }
+  .ami-logo-texte span { font-size: 0.66rem; }
+  .ami-go .btn { width: 100%; justify-content: center; white-space: normal; }
+}
 
 /* Chapitres d'une interview */
 .chapters { margin-top: 22px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--sheet); padding: 16px 18px; }

@@ -60,6 +60,9 @@ chiffres:
 # logo : image dans assets/img/logos (laisser vide pour afficher le nom) ;
 # fiche : nom du fichier dans _entreprises (sans .md) pour faire un lien vers la fiche.
 invites_entreprises:
+  - nom: "S3D-SPAD"
+    logo: "s3d-spad.png"
+    fiche: "s3d-spad"
   - nom: "Aecon"
     logo: "aecon.png"
     fiche: "aecon"
@@ -96,9 +99,6 @@ invites_entreprises:
   - nom: "Prosolia Energy"
     logo: "prosolia-energy.png"
     fiche: "prosolia-energy"
-  - nom: "S3D-SPAD"
-    logo: "s3d-spad.png"
-    fiche: "s3d-spad"
   - nom: "Symphonics"
     logo: "symphonics.png"
     fiche: "symphonics"

@@ -54,6 +54,7 @@ pied:
 
 carte:
   a_venir: "Filming soon"
+  nouveau: "New"
   post_prod: "In post-production"
   duree: "Length:"
   en_studio: "In the studio"
@@ -806,3 +807,11 @@ recherche:
     evenement: "Event"
     article: "Article"
     profil: "Student profile"
+
+amis:
+  label: "Friends"
+  titre: "Student associations we support"
+  intro: "They get things moving in construction at ESTP. Go and say hi from us."
+  decouvrir: "Discover %nom%"
+  pied: "Friends:"
+  pied_n: "Friends:"

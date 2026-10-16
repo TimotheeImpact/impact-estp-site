@@ -10,6 +10,12 @@
 {%- assign a_poste = false -%}{%- if tr.poste and tr.poste != "" -%}{%- assign a_poste = true -%}{%- endif -%}
 {%- assign a_entreprise = false -%}{%- if i.entreprise and i.entreprise != "" -%}{%- assign a_entreprise = true -%}{%- endif -%}
 {%- assign a_audio = false -%}{%- if i.audio and i.audio != "" -%}{%- assign a_audio = true -%}{%- endif -%}
+{%- comment -%} Étiquette « Nouveau » sur la dernière interview publiée, pendant 30 jours après sa date de publication (le navigateur la retire ensuite). {%- endcomment -%}
+{%- assign nouveau_fin = "" -%}
+{%- if statut == "publiee" and i.date_publication -%}
+  {%- assign _derniere = site.interviews | where_exp: "x", "x.youtube != ''" | sort: "numero" | last -%}
+  {%- if _derniere.slug == i.slug -%}{%- assign nouveau_fin = i.date_publication | date: "%s" | plus: 2592000 | date: "%Y-%m-%d" -%}{%- endif -%}
+{%- endif -%}
 <a class="card" href="{{ tr.url | relative_url }}" data-theme-tag="{{ i.theme }}{% if i.studio %} studio{% endif %}" data-langue="{{ langue }}" data-statut="{{ statut }}">
   <div class="thumb{% if statut != "publiee" %} upcoming{% endif %}">
     {%- if ytid != "" %}
@@ -25,6 +31,7 @@
     <span class="stamp{% if statut == "post-prod" %} prod{% endif %}">{{ statut_nom }}</span>
     {%- else %}
     <span class="play" aria-hidden="true"></span>
+    {%- if nouveau_fin != "" %}<span class="stamp neuf" data-nouveau-jusqua="{{ nouveau_fin }}">{{ t.carte.nouveau }}</span>{% endif %}
     {%- endif %}
   </div>
   <div class="body">

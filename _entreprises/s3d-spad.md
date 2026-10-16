@@ -10,7 +10,7 @@ zone: "hauts-de-france"
 site_web: "https://s3d-spad.fr/"
 logo: "s3d-spad.png"
 wikipedia: ""
-presentation: "Les sociétés d'aménagement et de développement du Dunkerquois, qui conduisent des projets urbains et économiques sur le territoire de Dunkerque."
+presentation: "Les outils d'aménagement (SEM et SPL) de l'agglomération dunkerquoise. Ils pilotent la transformation d'un territoire en pleine réindustrialisation : 20 000 emplois en création, 1 000 logements par an visés et des quartiers entiers à réinventer, comme la Pointe des Alliés."
 fun_fact: "Leur terrain de jeu, Dunkerque, abrite le troisième port de France."
 fun_fact_source: "https://fr.wikipedia.org/wiki/Port_de_Dunkerque"
 ---
