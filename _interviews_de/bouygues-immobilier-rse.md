@@ -1,6 +1,6 @@
 ---
 title: "Die CSR-Direktorin von Bouygues Immobilier"
 poste: "CSR-Direktorin"
-quand: "Mitte Oktober 2026"
+quand: "Schnitt läuft"
 ---
-Dreharbeiten für Mitte Oktober 2026 geplant. Das Video wird hier veröffentlicht, sobald es erscheint.
+Interview gedreht, derzeit im Schnitt. Das Video wird hier veröffentlicht, sobald es erscheint.

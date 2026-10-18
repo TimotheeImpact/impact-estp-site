@@ -1,6 +1,6 @@
 ---
 title: "La direttrice CSR di Bouygues Immobilier"
 poste: "Direttrice CSR"
-quand: "Metà ottobre 2026"
+quand: "Montaggio in corso"
 ---
-Riprese previste a metà ottobre 2026. Il video sarà pubblicato qui appena uscirà.
+Intervista girata, in fase di montaggio. Il video sarà pubblicato qui appena uscirà.

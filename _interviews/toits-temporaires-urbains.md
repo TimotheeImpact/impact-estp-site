@@ -9,8 +9,8 @@ theme: bas-carbone
 langue: fr
 youtube: ""
 numero: 19
-a_venir: true
-quand: "Mi-octobre 2026"
+post_prod: true
+quand: "Montage en cours"
 logo: /assets/img/logos/toits-temporaires-urbains.jpg
 ---
-Tournage prévu mi-octobre 2026. La vidéo sera publiée ici dès sa sortie.
+Interview tournée, en cours de montage. La vidéo sera publiée ici dès sa sortie.
