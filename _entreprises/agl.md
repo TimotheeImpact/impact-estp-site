@@ -8,7 +8,7 @@ pays: "France"
 siege: "Puteaux"
 zone: "ile-de-france"
 site_web: "https://www.aglgroup.com/"
-logo: ""
+logo: "agl.jpg"
 wikipedia: ""
 # Mention « des offres de VIE arrivent bientôt » sur la fiche et dans l'annuaire (à retirer quand les offres sont publiées)
 offres_bientot: "VIE"
