@@ -101,7 +101,12 @@ layout: default
       </div>
       {%- else %}
       <div class="empty">
+        {%- if src.offres_bientot and src.offres_bientot != "" %}
+        <p><span class="tag co-stage">{{ t.annuaire.bientot_tag | replace: "%type%", src.offres_bientot }}</span></p>
+        <p class="mt-14">{{ t.entreprise.bientot | replace: "%type%", src.offres_bientot | replace: "%nom%", src.nom }}</p>
+        {%- else %}
         <p>{{ t.entreprise.pas_offre | replace: "%nom%", src.nom }}</p>
+        {%- endif %}
         <p class="mt-14"><a class="btn" href="{{ p | append: '/stages/' | relative_url }}">{{ t.commun.rejoindre_vivier }}</a></p>
       </div>
       {%- endif %}

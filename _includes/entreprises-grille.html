@@ -39,7 +39,8 @@
     {%- if e.siege and e.siege != "" %}<span class="co-siege">{{ e.siege }}{% if e_zone != "" and e_zone != e.siege %}, {{ e_zone }}{% endif %}</span>
     {%- elsif e_zone != "" %}<span class="co-siege">{{ e_zone }}</span>{% endif %}
     {%- if e_part %}<span class="tag co-tag co-part">{{ ta.partenaire_tag }}</span>{% endif %}
-    {%- if e_offre == "oui" %}<span class="tag co-tag co-stage">{{ tst.offre_tag }}</span>{% endif %}
+    {%- if e_offre == "oui" %}<span class="tag co-tag co-stage">{{ tst.offre_tag }}</span>
+    {%- elsif e.offres_bientot and e.offres_bientot != "" %}<span class="tag co-tag co-stage">{{ ta.bientot_tag | replace: "%type%", e.offres_bientot }}</span>{% endif %}
     {%- if e_statut == "publiee" %}<span class="tag co-tag co-pub">{{ ta.publiee }}</span>
     {%- elsif e_statut == "post-prod" %}<span class="tag co-tag">{{ ta.post_prod }}</span>
     {%- elsif e_statut == "a-venir" %}<span class="tag co-tag">{{ ta.a_venir }}</span>{% endif %}

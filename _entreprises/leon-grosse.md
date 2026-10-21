@@ -1,0 +1,16 @@
+---
+title: "Léon Grosse : interviews, métiers et stages"
+description: "Léon Grosse sur Impact ESTP, le média étudiant de la construction et de l'énergie : interviews vidéo, métiers et offres de stage."
+nom: "Léon Grosse"
+nom_complet: ""
+secteur: "Construction et génie civil"
+pays: "France"
+siege: "Aix-les-Bains"
+zone: "auvergne-rhone-alpes"
+site_web: "https://www.leongrosse.fr/"
+logo: ""
+wikipedia: "https://en.wikipedia.org/wiki/L%C3%A9on_Grosse"
+presentation: "Groupe de construction indépendant et familial fondé en 1881 à Aix-les-Bains, en Savoie. Il réalise des bâtiments, des ouvrages de génie civil et des réhabilitations en France et en Europe. Le groupe compte environ 2 800 collaborateurs et visait plus de 950 millions d'euros de chiffre d'affaires en 2025. En 2026, il a racheté l'aménageur espagnol Grupo IC, basé à Séville."
+fun_fact: "Toujours aux mains de la même famille depuis 1881, le groupe a notamment construit le stade Jean-Bouin à Paris et la tour du Parlement européen à Strasbourg."
+fun_fact_source: "https://en.wikipedia.org/wiki/L%C3%A9on_Grosse"
+---
