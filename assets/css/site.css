@@ -364,6 +364,21 @@ section.block { padding-block: 64px 24px; }
 /* En-tête de page intérieure */
 .page-head { padding-block: 48px 28px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
 /* Flèches entre les fiches entreprises : en haut de page, puis sur les côtés de l'écran quand il est large */
+/* Accueil : annonce en haut (partenariat Contech France), bandeau cliquable au-dessus du titre */
+.annonce { display: flex; align-items: center; gap: 14px 22px; margin-top: 26px; padding: 14px 18px; border: 2px solid var(--ink); border-radius: var(--radius); background: var(--sheet); color: var(--ink); text-decoration: none; }
+.annonce:hover { border-color: var(--brand); }
+.annonce-tag { display: inline-flex; align-items: center; gap: 8px; flex: none; padding: 6px 12px; border-radius: 999px; background: var(--leaf); color: var(--on-leaf); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+[data-theme="sombre"] .annonce-tag { background: var(--cta-bg); color: var(--cta-fg); }
+.annonce-logo { flex: none; display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 10px; background: #fff; }
+.annonce-logo img { display: block; width: auto; height: 30px; }
+.annonce-txt { flex: 1; min-width: 0; font-size: var(--step-0); line-height: 1.4; color: var(--ink-soft); }
+.annonce-txt b { display: block; font-family: var(--font-display); font-size: var(--step-1); color: var(--ink); }
+.annonce-go { flex: none; display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; color: var(--brand); white-space: nowrap; }
+.annonce + .hero { padding-top: 34px; }
+@media (max-width: 760px) {
+  .annonce { flex-wrap: wrap; padding: 14px; }
+  .annonce-txt { flex-basis: 100%; }
+}
 /* Accueil : encadré « Info spéciale », façon affiche (titre en capitales grasses, pastille penchée) */
 .info-speciale { position: relative; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 20px 40px; align-items: center; margin: 14px 0 44px; padding: 34px 36px 30px; border: 2px solid var(--ink); border-radius: var(--radius); background: var(--sheet); }
 .info-tag { position: absolute; top: -15px; left: 26px; transform: rotate(-3deg); display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px; border-radius: 999px; background: var(--leaf); color: var(--on-leaf); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; box-shadow: 0 3px 10px rgba(11, 30, 36, 0.14); }

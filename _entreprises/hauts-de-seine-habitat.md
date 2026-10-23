@@ -1,0 +1,16 @@
+---
+title: "Hauts-de-Seine Habitat : interviews, métiers et stages"
+description: "Hauts-de-Seine Habitat sur Impact ESTP, le média étudiant de la construction et de l'énergie : interviews vidéo, métiers et offres de stage."
+nom: "Hauts-de-Seine Habitat"
+nom_complet: "Hauts-de-Seine Habitat - OPH"
+secteur: "Logement social"
+pays: "France"
+siege: "Levallois-Perret"
+zone: "ile-de-france"
+site_web: "https://www.hautsdeseinehabitat.fr"
+logo: "hauts-de-seine-habitat.jpg"
+wikipedia: ""
+presentation: "Office public de l'habitat des Hauts-de-Seine, créé en 1982. Il construit, gère et loue des logements sociaux dans le département."
+fun_fact: ""
+fun_fact_source: ""
+---

@@ -1,5 +1,5 @@
 # Les champs _en, _it et _de sont les traductions anglaise, italienne et allemande (facultatives : sans elles, le texte français s'affiche).
-# Les quatre formats de la presse écrite, publiés à tour de rôle sur un cycle de 4 semaines.
+# Les quatre formats de la presse écrite, publiés à tour de rôle, un par mois (cycle de 4 mois).
 - id: decryptage
   nom: Décryptage
   nom_en: "Explainer"

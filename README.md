@@ -155,7 +155,7 @@ Sur les pages Stages, Évènements, Presse, Entreprises, Groupe Impact et À pro
 3. Nomme le fichier `AAAA-MM-JJ-titre-court.md`, par exemple `2026-11-12-eiffage-route-studio.md`. La date est celle qui s'affiche sur le site. Une date dans le futur ne s'affiche pas.
 4. Colle le modèle, choisis la rubrique et le format, écris l'article et enregistre.
 
-Le site ne se reconstruit qu'à chaque enregistrement : pour une parution le mardi à 18h, enregistre l'article le mardi à 18h (un article daté dans le futur et enregistré à l'avance ne s'affichera pas tout seul).
+Le site ne se reconstruit qu'à chaque enregistrement : pour une parution le 1er du mois, enregistre l'article ce jour-là (un article daté dans le futur et enregistré à l'avance ne s'affichera pas tout seul).
 
 ## Brancher les formulaires
 

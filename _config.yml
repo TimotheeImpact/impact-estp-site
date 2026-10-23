@@ -56,10 +56,33 @@ chiffres:
     legende_it: "fiere, forum e convegni nel nostro calendario"
     legende_de: "Messen, Foren und Konferenzen in unserem Kalender"
 
+# Annonce en haut de l'accueil (bandeau cliquable au-dessus du titre). Pour la retirer : mettre actif: false.
+# fiche : nom du fichier dans _entreprises (sans .md), le bandeau mène à sa fiche dans la bonne langue.
+annonce_accueil:
+  actif: true
+  logo: "contech-france.png"
+  fiche: "contech-france"
+  tag: "Nouveau partenariat"
+  tag_en: "New partnership"
+  tag_it: "Nuova partnership"
+  tag_de: "Neue Partnerschaft"
+  titre: "Impact ESTP × Contech France"
+  texte: "Contech France, la communauté des entrepreneurs qui innovent dans la construction, devient partenaire d'Impact ESTP."
+  texte_en: "Contech France, the community of entrepreneurs innovating in construction, is now a partner of Impact ESTP."
+  texte_it: "Contech France, la comunità degli imprenditori che innovano nelle costruzioni, diventa partner di Impact ESTP."
+  texte_de: "Contech France, die Community der Unternehmer, die im Bauwesen innovieren, ist jetzt Partner von Impact ESTP."
+  bouton: "Découvrir"
+  bouton_en: "Find out more"
+  bouton_it: "Scopri"
+  bouton_de: "Mehr erfahren"
+
 # Entreprises dont viennent nos invités (bandeau « Ils sont passés au micro » de l'accueil).
 # logo : image dans assets/img/logos (laisser vide pour afficher le nom) ;
 # fiche : nom du fichier dans _entreprises (sans .md) pour faire un lien vers la fiche.
 invites_entreprises:
+  - nom: "Autodesk"
+    logo: "autodesk.png"
+    fiche: "autodesk"
   - nom: "S3D-SPAD"
     logo: "s3d-spad.png"
     fiche: "s3d-spad"
@@ -87,9 +110,6 @@ invites_entreprises:
   - nom: "NGE"
     logo: "nge.png"
     fiche: "nge"
-  - nom: "Autodesk"
-    logo: "autodesk.png"
-    fiche: "autodesk"
   - nom: "CDC Habitat"
     logo: "cdc-habitat.png"
     fiche: "cdc-habitat"
@@ -107,14 +127,14 @@ invites_entreprises:
     fiche: "bellivo"
 
 # ── Presse écrite ────────────────────────────────────────────
-presse_rendezvous: "Chaque mardi à 18h"
-presse_rendezvous_en: "Every Tuesday at 6 pm"
-presse_rendezvous_it: "Ogni martedì alle 18"
-presse_rendezvous_de: "Jeden Dienstag um 18 Uhr"
-presse_premier_article: "mardi 20 octobre 2026"   # vider cette ligne (et ses traductions) une fois le premier article publié
-presse_premier_article_en: "Tuesday 20 October 2026"
-presse_premier_article_it: "martedì 20 ottobre 2026"
-presse_premier_article_de: "Dienstag, 20. Oktober 2026"
+presse_rendezvous: "Chaque mois"   # depuis le 23 octobre 2026 : 1er article le 1er novembre, puis un article par mois (demande de Timo)
+presse_rendezvous_en: "Every month"
+presse_rendezvous_it: "Ogni mese"
+presse_rendezvous_de: "Jeden Monat"
+presse_premier_article: "dimanche 1er novembre 2026"   # vider cette ligne (et ses traductions) une fois le premier article publié
+presse_premier_article_en: "Sunday 1 November 2026"
+presse_premier_article_it: "domenica 1° novembre 2026"
+presse_premier_article_de: "Sonntag, 1. November 2026"
 presse_redaction:
   - nom: "Emma"
     role: "Rédactrice en chef, presse écrite"

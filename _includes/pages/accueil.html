@@ -6,6 +6,19 @@
 {%- assign tournages = interviews | where: "a_venir", true -%}
 {%- assign articles = site.posts -%}
 
+{%- assign an = site.annonce_accueil -%}
+{%- if an and an.actif %}
+{%- comment -%} Annonce en haut de l'accueil (réglages dans _config.yml, annonce_accueil). Partenariat Contech France, 23 octobre 2026. {%- endcomment %}
+{%- assign an_lien = nil %}
+{%- if an.fiche and an.fiche != "" %}{% assign an_fr = site.entreprises | where: "slug", an.fiche | first %}{% if an_fr %}{% include trad.html doc=an_fr %}{% assign an_lien = tr.url | relative_url %}{% endif %}{% endif %}
+<a class="annonce rise" href="{{ an_lien | default: '#' }}">
+  <span class="annonce-tag"><span class="info-dot" aria-hidden="true"></span>{% include tr.html o=an k="tag" %}</span>
+  {%- if an.logo and an.logo != "" %}<span class="annonce-logo"><img src="{{ '/assets/img/logos/' | append: an.logo | relative_url }}" alt="" width="300" height="81"></span>{% endif %}
+  <span class="annonce-txt"><b>{{ an.titre }}</b> {% include tr.html o=an k="texte" %}</span>
+  <span class="annonce-go">{% include tr.html o=an k="bouton" %}<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</a>
+{%- endif %}
+
 <div class="hero{% if publiees.size > 0 %} with-teaser{% endif %}">
   <div class="hero-text">
     <p class="label rise">{{ t.accueil.label }}</p>

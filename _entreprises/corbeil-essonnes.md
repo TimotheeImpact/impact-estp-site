@@ -1,0 +1,17 @@
+---
+title: "Corbeil-Essonnes : interviews, métiers et stages"
+description: "Corbeil-Essonnes sur Impact ESTP, le média étudiant de la construction et de l'énergie : interviews vidéo, métiers et offres de stage."
+nom: "Corbeil-Essonnes"
+nom_complet: "Ville de Corbeil-Essonnes"
+secteur: "Collectivité locale"
+pays: "France"
+siege: "Corbeil-Essonnes"
+zone: "ile-de-france"
+site_web: "https://www.corbeil-essonnes.fr"
+logo: "corbeil-essonnes.png"
+wikipedia: "https://fr.wikipedia.org/wiki/Corbeil-Essonnes"
+wikipedia_en: "https://en.wikipedia.org/wiki/Corbeil-Essonnes"
+presentation: "Commune de l'Essonne d'environ 54 000 habitants, sur les bords de Seine, à une trentaine de kilomètres au sud de Paris. Sa direction Logement & Habitat suit le logement et l'habitat dans la ville."
+fun_fact: "C'est à Essonnes qu'a été brevetée en 1799 la première machine à fabriquer le papier en continu, inventée par Louis-Nicolas Robert."
+fun_fact_source: "https://fr.wikipedia.org/wiki/Louis-Nicolas_Robert"
+---

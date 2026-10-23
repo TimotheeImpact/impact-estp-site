@@ -21,7 +21,7 @@ layout: default
 <div class="page-head stu-head">
   <span class="stu-avatar big" aria-hidden="true">{{ src.initiales }}</span>
   <div>
-    <p class="label">{{ te.label_profil }}{% if src.ecole and src.ecole != "" %} · {{ src.ecole }}{% endif %}</p>
+    <p class="label">{% if src.recherche == "emploi" %}{{ te.label_emploi }}{% else %}{{ te.label_profil }}{% endif %}{% if src.ecole and src.ecole != "" %} · {{ src.ecole }}{% endif %}</p>
     <h1>{{ src.prenom }}</h1>
     {%- if accroche != "" %}<p class="intro">{{ accroche }}</p>{% endif %}
   </div>

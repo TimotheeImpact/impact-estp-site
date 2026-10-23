@@ -1,0 +1,16 @@
+---
+title: "Yourban : interviews, métiers et stages"
+description: "Yourban sur Impact ESTP, le média étudiant de la construction et de l'énergie : interviews vidéo, métiers et offres de stage."
+nom: "Yourban"
+nom_complet: ""
+secteur: "Intelligence artificielle et immobilier commercial"
+pays: "France"
+siege: ""
+zone: ""
+site_web: "https://yourban.ai"
+logo: "yourban.png"
+wikipedia: ""
+presentation: "Start-up française qui utilise l'intelligence artificielle pour analyser la demande autour des lieux de commerce. Sa plateforme aide les propriétaires de centres commerciaux et les enseignes à attirer du monde et à piloter leurs sites."
+fun_fact: ""
+fun_fact_source: ""
+---
