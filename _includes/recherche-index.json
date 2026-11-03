@@ -13,6 +13,7 @@
 {%- comment -%} Pages du site dans la langue de la page {%- endcomment -%}
 {%- for pg in site.pages -%}
   {%- if pg.lang != page.lang or pg.title == nil or pg.sitemap == false -%}{%- continue -%}{%- endif -%}
+  {%- if pg.rubrique and site.rubriques_masquees contains pg.rubrique -%}{%- continue -%}{%- endif -%}
   {%- unless pg.layout == "default" or pg.layout == "page" -%}{%- continue -%}{%- endunless -%}
   {%- if pg.url == _url_accueil -%}{%- continue -%}{%- endif %}
 {"c":"page","k":{{ tk.page | jsonify }},"t":{{ pg.title | strip_html | jsonify }},"s":{{ pg.description | default: pg.intro | strip_html | normalize_whitespace | truncate: 140 | jsonify }},"x":"","u":{{ pg.url | relative_url | jsonify }}},
@@ -58,6 +59,7 @@
 {%- endfor -%}
 {%- comment -%} Articles de presse (en français) {%- endcomment -%}
 {%- for a in site.posts %}
+{%- if site.rubriques_masquees contains "presse" %}{% break %}{% endif %}
 {"c":"article","k":{{ tk.article | jsonify }},"t":{{ a.title | strip_html | jsonify }},"s":{{ a.date | date: "%d/%m/%Y" | jsonify }},"x":{{ a.excerpt | strip_html | normalize_whitespace | truncatewords: 50, "" | jsonify }},"u":{{ a.url | relative_url | jsonify }}},
 {%- endfor -%}
 {%- comment -%} Profils d'étudiants qui cherchent un stage (déjà publics, avec leur accord) {%- endcomment -%}

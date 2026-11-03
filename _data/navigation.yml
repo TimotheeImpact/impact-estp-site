@@ -10,11 +10,13 @@
   titre_it: "Podcast"
   titre_de: "Podcast"
   lien: /podcast/
+  rubrique: podcast
 - titre: Presse
   titre_en: "Press"
   titre_it: "Stampa"
   titre_de: "Presse"
   lien: /presse/
+  rubrique: presse
 - titre: Stages
   titre_en: "Internships"
   titre_it: "Stage"

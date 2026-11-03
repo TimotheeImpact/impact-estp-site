@@ -328,7 +328,7 @@ formulaire:
   ton_message: "Ton message"
   objet: "Objet"
   objets:
-    - { v: "Presse écrite - proposition de sujets", l: "Presse écrite - proposition de sujets" }
+    - { rubrique: presse, v: "Presse écrite - proposition de sujets", l: "Presse écrite - proposition de sujets" }
     - { v: "Lancer Impact dans mon école", l: "Lancer Impact dans mon école" }
     - { v: "Partenariat entreprise", l: "Partenariat entreprise" }
     - { v: "Stage", l: "Stage" }
@@ -550,6 +550,12 @@ profil:
   mot_de_passe: "Mot de passe"
   creer: "Créer un compte"
   attente: "<b>En attendant</b>, laisse ton profil dans le vivier : il sera repris dans ton futur compte."
+
+# Page Presse ou Podcast quand la rubrique est masquée (rubriques_masquees dans _config.yml)
+masquee:
+  label: "Bientôt"
+  titre: "Cette rubrique revient bientôt"
+  intro: "On la prépare en coulisses. En attendant, retrouve toutes nos interviews en vidéo."
 
 merci:
   label: "C'est envoyé"

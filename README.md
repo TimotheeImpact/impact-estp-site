@@ -148,6 +148,12 @@ Pour mettre un court extrait vidéo muet en boucle à la place de la vignette de
 
 Sur les pages Stages, Évènements, Presse, Entreprises, Groupe Impact et À propos, chaque partie s'ouvre et se referme en cliquant sur la flèche. La première est ouverte au chargement. Un lien vers une partie (par exemple `/stages/#offres`) l'ouvre directement.
 
+## Cacher ou remettre une rubrique (Presse, Podcast)
+
+Dans `_config.yml`, la ligne `rubriques_masquees: [presse, podcast]` cache ces rubriques partout, dans les 4 langues : menu, accueil, pied de page (flux RSS), recherche, plan du site pour Google, bandeaux « aussi en podcast », objet « Presse écrite » du formulaire de contact. Les adresses /presse/ et /podcast/ affichent « Cette rubrique revient bientôt » (non indexé par Google). Rien n'est supprimé.
+
+Pour remettre le podcast seul : `rubriques_masquees: [presse]`. Pour tout remettre : `rubriques_masquees: []`.
+
 ## Publier un article
 
 1. Ouvre `modeles/article.md` et copie tout son contenu.

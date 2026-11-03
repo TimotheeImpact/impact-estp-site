@@ -328,7 +328,7 @@ formulaire:
   ton_message: "Your message"
   objet: "Subject"
   objets:
-    - { v: "Presse écrite - proposition de sujets", l: "Written press - topic ideas" }
+    - { rubrique: presse, v: "Presse écrite - proposition de sujets", l: "Written press - topic ideas" }
     - { v: "Lancer Impact dans mon école", l: "Launch Impact at my school" }
     - { v: "Partenariat entreprise", l: "Company partnership" }
     - { v: "Stage", l: "Internship" }
@@ -560,6 +560,12 @@ profil:
   mot_de_passe: "Password"
   creer: "Create an account"
   attente: "<b>In the meantime</b>, leave your profile in the talent pool: it will be carried over to your future account."
+
+# Page Presse ou Podcast quand la rubrique est masquée (rubriques_masquees dans _config.yml)
+masquee:
+  label: "Coming soon"
+  titre: "This section is coming back soon"
+  intro: "We're working on it behind the scenes. In the meantime, watch all our video interviews."
 
 merci:
   label: "Sent"

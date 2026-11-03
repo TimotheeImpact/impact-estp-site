@@ -2,5 +2,10 @@
 layout: default
 title: "Presse écrite"
 description: "La presse écrite d'Impact ESTP : chaque mardi, un article pour comprendre les chantiers et l'énergie qui construisent demain, écrit par des étudiants ingénieurs."
+rubrique: presse
 ---
+{%- if site.rubriques_masquees contains page.rubrique %}
+{% include rubrique-masquee.html %}
+{%- else %}
 {% include pages/presse.html %}
+{%- endif %}

@@ -329,7 +329,7 @@ formulaire:
   ton_message: "Deine Nachricht"
   objet: "Betreff"
   objets:
-    - { v: "Presse écrite - proposition de sujets", l: "Artikel - Themenvorschläge" }
+    - { rubrique: presse, v: "Presse écrite - proposition de sujets", l: "Artikel - Themenvorschläge" }
     - { v: "Lancer Impact dans mon école", l: "Impact an meine Hochschule bringen" }
     - { v: "Partenariat entreprise", l: "Unternehmenspartnerschaft" }
     - { v: "Stage", l: "Praktikum" }
@@ -561,6 +561,12 @@ profil:
   mot_de_passe: "Passwort"
   creer: "Konto erstellen"
   attente: "<b>Bis dahin</b> kannst du dein Profil schon in den Talentpool eintragen: Es wird in dein künftiges Konto übernommen."
+
+# Page Presse ou Podcast quand la rubrique est masquée (rubriques_masquees dans _config.yml)
+masquee:
+  label: "Bald"
+  titre: "Diese Rubrik kommt bald zurück"
+  intro: "Wir bereiten sie hinter den Kulissen vor. Bis dahin findest du hier alle unsere Video-Interviews."
 
 merci:
   label: "Gesendet"

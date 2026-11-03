@@ -45,6 +45,7 @@
         <select id="c-objet" name="objet" required>
           <option value="" selected disabled>{{ f.choisis }}</option>
           {%- for o in f.objets %}
+          {%- if o.rubrique and site.rubriques_masquees contains o.rubrique %}{% continue %}{% endif %}
           <option value="{{ o.v }}">{{ o.l }}</option>
           {%- endfor %}
         </select>

@@ -33,7 +33,12 @@
   {%- if site.cloudflare_analytics != "" and jekyll.environment == "production" %}
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cloudflare_analytics }}"}'></script>
   {%- endif %}
+  {%- unless site.rubriques_masquees contains "presse" %}
   {% feed_meta %}
+  {%- endunless %}
+  {%- if page.rubrique and site.rubriques_masquees contains page.rubrique %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
   {%- comment -%} Titre Google des interviews : « Invité (Entreprise) : titre | Impact ESTP » {%- endcomment -%}
   {%- assign _itv = nil -%}
   {%- if page.layout == "interview" -%}{%- assign _itv = site.interviews | where: "slug", page.slug | first -%}{%- endif -%}

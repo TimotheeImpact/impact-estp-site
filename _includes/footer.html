@@ -17,7 +17,9 @@
         {% if site.linkedin != "" %}<a href="{{ site.linkedin }}" rel="me">LinkedIn</a>{% endif %}
         {% if site.instagram != "" %}<a href="{{ site.instagram }}" rel="me">Instagram</a>{% endif %}
         <a href="{{ p | append: '/contact/' | relative_url }}">{{ t.pied.contact }}</a>
+        {%- unless site.rubriques_masquees contains "presse" %}
         <a href="{{ '/presse/flux.xml' | relative_url }}">{{ t.pied.flux }}</a>
+        {%- endunless %}
         <a href="{{ p | append: '/mentions-legales/' | relative_url }}">{{ t.pied.mentions }}</a>
         <a href="{{ p | append: '/confidentialite/' | relative_url }}">{{ t.pied.confidentialite }}</a>
         {%- if site.data.amis.size > 0 %}

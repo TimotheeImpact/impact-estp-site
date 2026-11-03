@@ -13,6 +13,7 @@
       <ul>
         {%- assign _coll = page.collection | default: "" | split: "_" | first %}
         {%- for item in site.data.navigation %}
+        {%- if item.rubrique and site.rubriques_masquees contains item.rubrique %}{% continue %}{% endif %}
         {%- assign lien = p | append: item.lien -%}
         {%- assign actif = false -%}
         {%- if page.url == lien -%}{%- assign actif = true -%}{%- endif -%}

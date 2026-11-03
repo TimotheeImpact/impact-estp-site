@@ -2,5 +2,10 @@
 layout: default
 title: "Podcast : les interviews et la chronique d'Éric, sur Spotify"
 description: "Toutes les interviews d'Impact ESTP en version audio sur Spotify, et la chronique d'Éric : quelques minutes sur la construction et l'énergie, rapides comme un coup de poing."
+rubrique: podcast
 ---
+{%- if site.rubriques_masquees contains page.rubrique %}
+{% include rubrique-masquee.html %}
+{%- else %}
 {% include pages/podcast.html %}
+{%- endif %}

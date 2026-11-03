@@ -2,5 +2,10 @@
 layout: default
 title: "Stampa scritta"
 description: "Gli articoli di Impact ESTP: ogni martedì, un articolo per capire i cantieri e l'energia che costruiscono il domani, scritto da studenti di ingegneria."
+rubrique: presse
 ---
+{%- if site.rubriques_masquees contains page.rubrique %}
+{% include rubrique-masquee.html %}
+{%- else %}
 {% include pages/presse.html %}
+{%- endif %}

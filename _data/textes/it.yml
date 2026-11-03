@@ -328,7 +328,7 @@ formulaire:
   ton_message: "Il tuo messaggio"
   objet: "Oggetto"
   objets:
-    - { v: "Presse écrite - proposition de sujets", l: "Stampa scritta - proposta di argomenti" }
+    - { rubrique: presse, v: "Presse écrite - proposition de sujets", l: "Stampa scritta - proposta di argomenti" }
     - { v: "Lancer Impact dans mon école", l: "Lanciare Impact nella mia scuola" }
     - { v: "Partenariat entreprise", l: "Partnership aziendale" }
     - { v: "Stage", l: "Stage" }
@@ -560,6 +560,12 @@ profil:
   mot_de_passe: "Password"
   creer: "Crea un account"
   attente: "<b>Nel frattempo</b>, lascia il tuo profilo nel bacino di talenti: verrà ripreso nel tuo futuro account."
+
+# Page Presse ou Podcast quand la rubrique est masquée (rubriques_masquees dans _config.yml)
+masquee:
+  label: "Presto"
+  titre: "Questa sezione torna presto"
+  intro: "La stiamo preparando dietro le quinte. Nel frattempo, guarda tutte le nostre interviste video."
 
 merci:
   label: "Inviato"

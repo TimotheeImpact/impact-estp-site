@@ -2,5 +2,10 @@
 layout: default
 title: "Podcast: Impact ESTP interviews and Éric's column, on Spotify"
 description: "All Impact ESTP interviews as audio on Spotify, plus Éric's column: a few minutes on construction and energy, quick as a knockout punch."
+rubrique: podcast
 ---
+{%- if site.rubriques_masquees contains page.rubrique %}
+{% include rubrique-masquee.html %}
+{%- else %}
 {% include pages/podcast.html %}
+{%- endif %}

@@ -10,6 +10,7 @@
 {%- assign a_poste = false -%}{%- if tr.poste and tr.poste != "" -%}{%- assign a_poste = true -%}{%- endif -%}
 {%- assign a_entreprise = false -%}{%- if i.entreprise and i.entreprise != "" -%}{%- assign a_entreprise = true -%}{%- endif -%}
 {%- assign a_audio = false -%}{%- if i.audio and i.audio != "" -%}{%- assign a_audio = true -%}{%- endif -%}
+{%- if site.rubriques_masquees contains "podcast" -%}{%- assign a_audio = false -%}{%- endif -%}
 {%- comment -%} Étiquette « Nouveau » sur la dernière interview publiée, pendant 30 jours après sa date de publication (le navigateur la retire ensuite). {%- endcomment -%}
 {%- assign nouveau_fin = "" -%}
 {%- if statut == "publiee" and i.date_publication -%}

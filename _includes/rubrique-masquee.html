@@ -1,0 +1,15 @@
+{%- comment -%}
+  Page affichée à la place de Presse ou Podcast tant que la rubrique est dans « rubriques_masquees » (_config.yml).
+  La page n'est pas indexée par Google (balise noindex ajoutée par _layouts/default.html).
+{%- endcomment -%}
+{%- assign t = site.data.textes[page.lang] | default: site.data.textes.fr -%}
+{%- assign p = page.prefixe | default: "" -%}
+<div class="page-head">
+  <p class="label">{{ t.masquee.label }}</p>
+  <h1>{{ t.masquee.titre }}</h1>
+  <p class="intro">{{ t.masquee.intro }}</p>
+  <div class="actions">
+    <a class="btn primary" href="{{ p | append: '/interviews/' | relative_url }}">{{ t.commun.voir_interviews }}</a>
+    <a class="btn" href="{{ p | append: '/' | relative_url }}">{{ t.commun.retour_accueil }}</a>
+  </div>
+</div>

@@ -10,6 +10,7 @@ layout: default
 {%- assign presentation = page.presentation | default: src.presentation -%}
 {%- assign interviews = site.interviews | where: "entreprise_id", src.slug | sort: "numero" | reverse -%}
 {%- assign articles = site.posts | where: "entreprise_id", src.slug -%}
+{%- if site.rubriques_masquees contains "presse" %}{% assign articles = "" | split: "" %}{% endif -%}
 {%- assign offres = site.data.offres_stage | where: "entreprise_id", src.slug -%}
 {%- assign avec_linkedin = interviews | where_exp: "i", "i.linkedin != ''" | where_exp: "i", "i.linkedin" | where_exp: "i", "i.invite != ''" -%}
 {%- comment -%} Flèches : fiche précédente et suivante dans l'ordre alphabétique de l'annuaire (on boucle au bout). {%- endcomment -%}

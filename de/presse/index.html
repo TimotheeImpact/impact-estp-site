@@ -2,5 +2,10 @@
 layout: default
 title: "Artikel"
 description: "Die Artikel von Impact ESTP: jeden Dienstag ein Artikel über die Baustellen und die Energie von morgen, geschrieben von Ingenieurstudierenden."
+rubrique: presse
 ---
+{%- if site.rubriques_masquees contains page.rubrique %}
+{% include rubrique-masquee.html %}
+{%- else %}
 {% include pages/presse.html %}
+{%- endif %}

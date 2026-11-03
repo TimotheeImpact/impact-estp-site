@@ -37,6 +37,7 @@
       <p class="rech-groupe">{{ tr_.rapide }}</p>
       <ul class="rech-tuiles">
         {%- for item in site.data.navigation %}
+        {%- if item.rubrique and site.rubriques_masquees contains item.rubrique %}{% continue %}{% endif %}
         {%- assign _ic = item.lien | remove: "/" | replace: "a-propos", "apropos" | replace: "interviews", "interview" | replace: "stages", "offre" | replace: "entreprises", "entreprise" | replace: "evenements", "evenement" %}
         <li><a class="rech-tuile" href="{{ p | append: item.lien | relative_url }}"><span class="rech-ic rech-{{ _ic }}"><svg width="22" height="22" aria-hidden="true"><use href="#ri-{{ _ic }}"/></svg></span><span>{% include tr.html o=item k="titre" %}</span></a></li>
         {%- endfor %}

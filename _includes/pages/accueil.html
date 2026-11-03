@@ -195,6 +195,7 @@
 
 {% include amis.html %}
 
+{%- unless site.rubriques_masquees contains "presse" %}
 <section class="block reveal" aria-labelledby="t-presse">
   <div class="head">
     <div>
@@ -235,6 +236,7 @@
   </div>
   {%- endif %}
 </section>
+{%- endunless %}
 
 <section class="block reveal" aria-labelledby="t-portes">
   <div class="head">

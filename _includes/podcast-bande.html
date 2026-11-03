@@ -4,6 +4,7 @@
   Usage : {% include podcast-bande.html episode=lien_de_l_episode titre=... texte=... %}
   Sans épisode (pas de ligne « audio: » dans la fiche de l'interview), le bouton mène à l'émission sur Spotify.
 {%- endcomment -%}
+{%- unless site.rubriques_masquees contains "podcast" -%}
 {%- assign tp = t.podcast -%}
 {%- assign _spotify = site.data.podcast.plateformes | where: "nom", "Spotify" | first -%}
 {%- assign _ecoute = include.episode | default: _spotify.lien -%}
@@ -15,3 +16,4 @@
   <p class="pod-bande-liens"><a class="pod-spotify" href="{{ _ecoute }}">{% include logo-spotify.html taille=18 %}{{ tp.spotify_btn }}</a><a class="pod-bande-plus" href="{{ _p | append: '/podcast/' | relative_url }}">{{ tp.tous_episodes }}</a></p>
 </aside>
 {%- endif %}
+{%- endunless -%}

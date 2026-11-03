@@ -94,6 +94,7 @@ layout: default
     {%- endif %}
 
     {%- assign articles = site.posts | where: "interview", src.slug %}
+    {%- if site.rubriques_masquees contains "presse" %}{% assign articles = "" | split: "" %}{% endif -%}
     {%- if articles.size > 0 %}
     <div class="related">
       <h2>{{ t.interview.a_lire }}</h2>
@@ -132,7 +133,7 @@ layout: default
   "name": {{ page.title | jsonify }},
   "description": {{ page.description | default: site.description | jsonify }},
   "thumbnailUrl": ["https://i.ytimg.com/vi/{{ ytid }}/hqdefault.jpg"],
-  "uploadDate": "{{ src.date_publication | date: '%Y-%m-%d' }}",
+  "uploadDate": "{{ src.date_publication | date_to_xmlschema }}",
   {%- if d > 0 %}
   "duration": "PT{{ d }}M",
   {%- endif %}

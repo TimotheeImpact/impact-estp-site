@@ -126,6 +126,12 @@ invites_entreprises:
     logo: "bellivo.png"
     fiche: "bellivo"
 
+# ── Rubriques masquées ───────────────────────────────────────
+# Les rubriques de cette liste sont cachées partout (menu, accueil, pied de page, recherche, plan du site pour Google,
+# bandeaux « aussi en podcast »), dans les 4 langues. Rien n'est supprimé : pour remettre une rubrique,
+# il suffit d'enlever son mot de la liste (ex. [presse] pour ne remettre que le podcast, [] pour tout remettre).
+rubriques_masquees: [presse, podcast]   # depuis le 3 novembre 2026 (demande de Timo : « ce sera pour plus tard »)
+
 # ── Presse écrite ────────────────────────────────────────────
 presse_rendezvous: "Chaque mois"   # depuis le 23 octobre 2026 : 1er article le 1er novembre, puis un article par mois (demande de Timo)
 presse_rendezvous_en: "Every month"
@@ -250,6 +256,8 @@ collections:
 
 # Langue de chaque page : français par défaut, anglais dans le dossier en/, italien dans it/, allemand dans de/.
 defaults:
+  - scope: { path: "", type: posts }
+    values: { rubrique: presse }
   - scope: { path: "" }
     values: { image: /assets/img/partage.png, lang: fr, prefixe: "", locale: fr_FR }
   - scope: { path: "en" }
