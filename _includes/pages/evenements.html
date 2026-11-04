@@ -139,10 +139,16 @@
     "endDate": "{{ _f }}",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "eventStatus": "https://schema.org/EventScheduled",
-    "location": { "@type": "Place", "name": {{ e.lieu | default: e.ville | jsonify }}, "address": { "@type": "PostalAddress", "addressLocality": {{ e.ville | jsonify }}, "addressRegion": {{ e.region | default: "" | jsonify }}, "addressCountry": "FR" } },
-    {%- if e.organisateur and e.organisateur != "" %}
-    "organizer": { "@type": "Organization", "name": {{ e.organisateur | jsonify }}{% if e.lien %}, "url": {{ e.lien | jsonify }}{% endif %} },
-    {%- endif %}
+    "location": { "@type": "Place", "name": {{ e.lieu | default: e.ville | jsonify }}, "address": { "@type": "PostalAddress", "addressLocality": {{ e.ville | jsonify }}{% if e.region and e.region != "" and e.region != "National" %}, "addressRegion": {{ e.region | jsonify }}{% endif %}, "addressCountry": "FR" } },
+    {%- comment %} Organisateur : champ « organisateur », sinon le nom de l'évènement. Il sert aussi de « performer » (ce sont des salons et conférences, sans artiste). {% endcomment %}
+    {%- assign e_org = e.organisateur | default: e_titre %}
+    "organizer": { "@type": "Organization", "name": {{ e_org | jsonify }}{% if e.lien %}, "url": {{ e.lien | jsonify }}{% endif %} },
+    "performer": { "@type": "Organization", "name": {{ e_org | jsonify }} },
+    {%- comment %} Image : champ « image » de l'évènement si renseigné (adresse complète ou /assets/...), sinon l'image de partage du site. {% endcomment %}
+    {%- assign e_img = e.image | default: "/assets/img/partage.png" %}
+    "image": [{% if e_img contains "://" %}{{ e_img | jsonify }}{% else %}{{ e_img | absolute_url | jsonify }}{% endif %}],
+    {%- comment %} Entrée : gratuite ou sur inscription = prix 0 €. Sinon le prix n'est pas connu : on donne seulement le lien de l'organisateur. {% endcomment %}
+    "offers": { "@type": "Offer", "url": {{ e.lien | default: page.url | absolute_url | jsonify }}{% if e.entree == "gratuit" or e.entree == "sur-inscription" %}, "price": 0, "priceCurrency": "EUR"{% endif %}, "availability": "https://schema.org/InStock" },
     "description": {{ e_desc | jsonify }},
     "url": {{ e.lien | default: page.url | jsonify }}
   }

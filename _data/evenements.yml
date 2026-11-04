@@ -18,6 +18,7 @@
 #   entree: "gratuit"                 # pour un étudiant : gratuit, payant, sur-inscription, variable, reserve-ecole
 #   etudiants: "Ce qu'un étudiant y gagne."
 #   description: "Une phrase sur l'évènement."
+#   image: "https://..."             # facultatif : affiche ou visuel de l'évènement pour Google (sinon l'image de partage du site)
 
 - id: "colloque-france-renouvelables-2026"
   titre: "16e Colloque national de France Renouvelables"
