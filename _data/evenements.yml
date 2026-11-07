@@ -19,6 +19,8 @@
 #   etudiants: "Ce qu'un étudiant y gagne."
 #   description: "Une phrase sur l'évènement."
 #   image: "https://..."             # facultatif : affiche ou visuel de l'évènement pour Google (sinon l'image de partage du site)
+#   prix: 25                         # facultatif : prix d'entrée en euros (pour Google), quand il est connu et que l'entrée n'est pas gratuite
+#   billetterie: "2026-09-01"         # facultatif : date d'ouverture des inscriptions ou de la billetterie
 
 - id: "colloque-france-renouvelables-2026"
   titre: "16e Colloque national de France Renouvelables"

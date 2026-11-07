@@ -147,8 +147,17 @@
     {%- comment %} Image : champ « image » de l'évènement si renseigné (adresse complète ou /assets/...), sinon l'image de partage du site. {% endcomment %}
     {%- assign e_img = e.image | default: "/assets/img/partage.png" %}
     "image": [{% if e_img contains "://" %}{{ e_img | jsonify }}{% else %}{{ e_img | absolute_url | jsonify }}{% endif %}],
-    {%- comment %} Entrée : gratuite ou sur inscription = prix 0 €. Sinon le prix n'est pas connu : on donne seulement le lien de l'organisateur. {% endcomment %}
-    "offers": { "@type": "Offer", "url": {{ e.lien | default: page.url | absolute_url | jsonify }}{% if e.entree == "gratuit" or e.entree == "sur-inscription" %}, "price": 0, "priceCurrency": "EUR"{% endif %}, "availability": "https://schema.org/InStock" },
+    {%- comment %}
+      Billet (« offers ») : seulement quand le prix est connu, car Google exige un prix. Entrée gratuite ou sur inscription = 0 €,
+      sinon le champ facultatif « prix » de l'évènement (en euros). « validFrom » = champ facultatif « billetterie » (date
+      d'ouverture des inscriptions), sinon la date de mise en ligne du site. Sans prix connu, pas de bloc « offers » :
+      on ne fabrique pas de prix (Google le signale seulement comme suggestion).
+    {% endcomment %}
+    {%- assign e_prix = nil %}
+    {%- if e.prix != nil and e.prix != "" %}{% assign e_prix = e.prix %}{% elsif e.entree == "gratuit" or e.entree == "sur-inscription" %}{% assign e_prix = 0 %}{% endif %}
+    {%- if e_prix != nil %}
+    "offers": { "@type": "Offer", "url": {{ e.lien | default: page.url | absolute_url | jsonify }}, "price": {{ e_prix | jsonify }}, "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "validFrom": "{{ e.billetterie | default: site.time | date_to_xmlschema }}" },
+    {%- endif %}
     "description": {{ e_desc | jsonify }},
     "url": {{ e.lien | default: page.url | jsonify }}
   }
