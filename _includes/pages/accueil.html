@@ -232,7 +232,7 @@
   <div class="empty">
     <p class="label">{{ t.commun.bientot }}</p>
     {%- capture date_presse %}{% include tr.html o=site k="presse_premier_article" %}{% endcapture %}
-    <p>{{ t.accueil.presse_bientot | replace: "%date%", date_presse }}</p>
+    <p>{% if date_presse != "" %}{{ t.accueil.presse_bientot | replace: "%date%", date_presse }}{% else %}{{ t.accueil.presse_bientot_sans_date }}{% endif %}</p>
   </div>
   {%- endif %}
 </section>

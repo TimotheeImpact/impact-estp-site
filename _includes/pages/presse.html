@@ -43,7 +43,7 @@
   <div class="empty narrow">
     <p class="label">{{ t.commun.bientot }}</p>
     {%- capture lien_iv %}{{ p | append: '/interviews/' | relative_url }}{% endcapture %}
-    <p>{{ t.presse.vide | replace: "%date%", date_presse | replace: "%lien%", lien_iv }}</p>
+    <p>{% if date_presse != "" %}{{ t.presse.vide | replace: "%date%", date_presse | replace: "%lien%", lien_iv }}{% else %}{{ t.presse.vide_sans_date | replace: "%lien%", lien_iv }}{% endif %}</p>
   </div>
   {%- endif %}
 </div></details>
