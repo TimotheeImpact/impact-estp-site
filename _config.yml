@@ -42,14 +42,14 @@ chiffres:
     legende_en: "construction and energy companies to discover"
     legende_it: "aziende dell'edilizia e dell'energia da scoprire"
     legende_de: "Bau- und Energieunternehmen zum Entdecken"
-  - valeur: "15 000+"             # impressions LinkedIn (chiffre donné par Timo le 10 octobre 2026) : à mettre à jour à la main
-    valeur_en: "15,000+"
-    valeur_it: "15.000+"
-    valeur_de: "15.000+"
-    legende: "impressions sur LinkedIn"
-    legende_en: "LinkedIn impressions"
-    legende_it: "visualizzazioni su LinkedIn"
-    legende_de: "Impressionen auf LinkedIn"
+  - valeur: "21 600+"             # impressions LinkedIn du 17/11/2025 au 16/11/2026 (21 625, 438 réactions ; donné par Timo le 18 novembre 2026) : à mettre à jour à la main
+    valeur_en: "21,600+"
+    valeur_it: "21.600+"
+    valeur_de: "21.600+"
+    legende: "impressions sur LinkedIn en un an"
+    legende_en: "LinkedIn impressions in one year"
+    legende_it: "visualizzazioni su LinkedIn in un anno"
+    legende_de: "Impressionen auf LinkedIn in einem Jahr"
   - auto: evenements
     legende: "salons, forums et conférences dans notre agenda"
     legende_en: "fairs, forums and conferences in our calendar"
